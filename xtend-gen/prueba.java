@@ -3,6 +3,6 @@ import org.eclipse.xtext.xbase.lib.InputOutput;
 @SuppressWarnings("all")
 public class prueba {
   public static void main(final String[] args) {
-    InputOutput.<String>println("Holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa- modificado por lean");
+    InputOutput.<String>println("prueba 2 sin tocar lo de java sfsafldñsfsdkfz");
   }
 }
