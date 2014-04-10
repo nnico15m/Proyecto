@@ -1,5 +1,5 @@
 class prueba {
   def static void main(String[] args) {
-    println("Holaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa- modificado por lean- desde notebook")
+    println("HolaaA LO MODIFIQUE CON LA NOTEBOOK")
   }
 }
