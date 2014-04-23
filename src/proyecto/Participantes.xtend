@@ -1,0 +1,5 @@
+package proyecto
+
+class Participantes {
+	
+}

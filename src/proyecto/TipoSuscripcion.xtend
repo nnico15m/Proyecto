@@ -1,0 +1,5 @@
+package proyecto
+
+interface TipoSuscripcion {
+	
+}
