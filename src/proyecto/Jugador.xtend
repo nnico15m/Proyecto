@@ -18,4 +18,12 @@ def double getContadorPartidos() {
 		this.contadorPartidos
 		
 		}
+def jugoUnPartido(){
+	this.contadorPartidos = this.contadorPartidos + 1
+}
+
+def faltoAUnPartido(){
+	this.nivelAdvertencia = this.nivelAdvertencia +1
+}
+
 }

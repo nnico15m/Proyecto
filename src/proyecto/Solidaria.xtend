@@ -1,8 +1,9 @@
 package proyecto
+import proyecto.Partido
 
 class Solidaria implements TipoSuscripcion {
 	def inscribirJugador (Jugador jugador,Partido partido){
-		partido.inscriptos.add(jugador)
+		partido.inscriptosSolidarios.add(jugador)
 		}
 	}
 	
