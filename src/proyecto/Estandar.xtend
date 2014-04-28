@@ -6,7 +6,10 @@ class Estandar implements TipoSuscripcion {
 
 	override  inscribirSegunTipoDeSuscripcion(Partido partido,Jugador jugador){
 		
-		if(partido.participantes.length <10){
+			var String nombreDeClase = "Estandar"
+		
+		
+		if((partido.participantes.length <10) &&(nombreDeClase == jugador. getestiloParaPartido) ){
 		partido.participantes.add(jugador)
 		}
 	}

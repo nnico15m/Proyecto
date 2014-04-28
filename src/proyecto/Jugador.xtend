@@ -5,11 +5,25 @@ class Jugador {
 	@Property int nivelDePrioridad
 	
 	
+	var String estiloParaPartido //creo este atributo de tipo string para que cuando se pase 
+	//por parametro a este jugador, tengo que ver de que manera decidir a que tipo de inscripcion entrara, 
+	//lo que hago es comparar con el atributo de cada uno de los tipos de suscripcion con un if y
+	// entrara en el que cumpla con este requisito
+	
+	
 new() {
-		nivelAdvertencia = 0
-		contadorPartidos = 0
+		nivelAdvertencia = 0 //atributo de jugador
+		contadorPartidos = 0 //atributo de jugador
 		
 	}
+	
+	def getestiloParaPartido( ){
+		
+		this.estiloParaPartido
+		
+	}
+	
+	
 	
 	def double getNivelAdvertencia() {
 		this.nivelAdvertencia
