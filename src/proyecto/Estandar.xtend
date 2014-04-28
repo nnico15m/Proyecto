@@ -1,7 +1,6 @@
 package proyecto
-import java.util.List
 import proyecto.Partido
-import java.util.ArrayList
+
 
 class Estandar implements TipoSuscripcion {
 	
