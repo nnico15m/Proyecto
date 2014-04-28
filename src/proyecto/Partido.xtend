@@ -8,6 +8,8 @@ class Partido {
 	@Property double fecha
 	@Property double hora
 	@Property boolean condicion
+	@Property TipoSuscripcion tiposuscripcion
+	@Property Jugador jugador = new Jugador
 	
 	
 	List<Jugador> participantes = new ArrayList // es para crear una lista, 									
@@ -16,7 +18,35 @@ class Partido {
 	
 	
 	var int faltantesSol
+	var int faltantesCond
 	
+	
+	def getTipoSuscripcion(){
+		
+		this.tiposuscripcion
+		
+	}
+	
+	def getInscriptosSolidarios(){
+		this.inscriptosSolidarios
+	}
+	
+	def getInscriptosCondicionales(){
+		
+		this.inscriptosCondicionales
+		
+	}
+	
+	def getParticipantes(){
+	this.participantes
+	}
+	
+	
+	
+	
+	def inscribirJugador(){
+		this.getTipoSuscripcion().inscribirSegunTipoDeSuscripcion(this,jugador)
+	}
 	
 	
 
@@ -32,29 +62,36 @@ class Partido {
 			this.agregarFaltantesSolidarios(acumPrioridad)
 			faltantesSol = faltantesSol  - 1
 			}
+			acumPrioridad = 0
+		while(faltantesCond != 0){
+		acumPrioridad = 1	
+		this.agregarCondicionalesSiFaltan(acumPrioridad)
+		faltantesCond = faltantesCond - 1	
+		
+			}
+			
 		}
 	
 
 	def agregarFaltantesSolidarios (int acumPrioridad) {
 		 
-		 participantes.add(inscriptosSolidarios.findFirst[jugador | jugador.nivelDePrioridad == acumPrioridad])
-		// remove 
+		this.participantes.add(inscriptosSolidarios.findFirst[jugador | jugador.nivelDePrioridad == acumPrioridad])
+		//habria que corroborar que la lista de solidario no este vacia
 	}
 
-	//def agregarCondicionalesSiFaltan (){
-	//if ((participantes.length) < 10 ){
-	//	faltantesCond = (10 - (participantes.length))
-	//	participantes = (participantes + inscriptosCondicionales(1,faltantesCond))
-	//	}
-			
+	def agregarCondicionalesSiFaltan (int acumPrioridad){
 		
-	//}
+			this.participantes.add(inscriptosCondicionales.findFirst[jugador | jugador.nivelDePrioridad == acumPrioridad])	
+		
+	}
 	
-	//def procesarResultados(){
+	def procesarResultados(){
 	
-	//participantes.forEach[jugador|jugador.jugoUnPartido]
- 	//}
-
+	 participantes.forEach[jugador|jugador.jugoUnPartido]
+ 	}
 
 
  }
+ 
+ 
+ 

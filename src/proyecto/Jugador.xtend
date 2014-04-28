@@ -4,6 +4,7 @@ class Jugador {
 	@Property double contadorPartidos
 	@Property int nivelDePrioridad
 	
+	
 new() {
 		nivelAdvertencia = 0
 		contadorPartidos = 0
@@ -12,6 +13,7 @@ new() {
 	
 	def double getNivelAdvertencia() {
 		this.nivelAdvertencia
+	
 	}
 
 	def double getContadorPartidos() {
