@@ -9,7 +9,7 @@ class Estandar implements TipoSuscripcion {
 			var String nombreDeClase = "Estandar"
 		
 		
-		if((partido.participantes.length <10) &&(nombreDeClase == jugador. getestiloParaPartido) ){
+		if((partido.participantes.length <10) &&(nombreDeClase == jugador. estiloParaPartido) ){
 		partido.participantes.add(jugador)
 		}
 	}

@@ -9,9 +9,9 @@ class Condicional implements TipoSuscripcion{
 		//se podria hacer un testeo de que lo que se ingresa es una de las tres cosas que se esperan
 		
 		
-		if( nombreDeClase   == jugador.getestiloParaPartido){
+		if( nombreDeClase   == jugador.estiloParaPartido){
 			
-			partido.getInscriptosCondicionales.add(jugador)	
+			partido.inscriptosCondicionales.add(jugador)	
 			
 		}
 		

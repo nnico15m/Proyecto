@@ -5,9 +5,6 @@ class Jugador {
 	@Property double nivelAdvertencia // me parece que sirve para definir el getter por lo cual no hace falta crear el mensaje
 	@Property double contadorPartidos
 	@Property int nivelDePrioridad
-
-	
-	
 	@Property String estiloParaPartido //creo este atributo de tipo string para que cuando se pase 
 	//por paramentro a este jugador, tengo que ver de que manera decidir a que tipo de inscripcion entrara, 
 	//lo que hago es comparar con el atributo de cada uno de los tipos de suscripcion con un if y
@@ -29,11 +26,7 @@ class Jugador {
 		
 	}
 	
-	def getestiloParaPartido( ){
-		
-		this.estiloParaPartido
-		
-	}
+	
 	
 	
 	

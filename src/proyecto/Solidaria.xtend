@@ -7,13 +7,13 @@ class Solidaria implements TipoSuscripcion {
 		
 		var String nombreDeClase = "Solidaria"
 		
-		if( nombreDeClase   == jugador.getestiloParaPartido){
+		if( nombreDeClase   == jugador.estiloParaPartido){
 			
 			partido.getInscriptosSolidarios.add(jugador)
 			
 		}
 		
-		partido.getInscriptosSolidarios.add(jugador)
+		partido.inscriptosSolidarios.add(jugador)
 		}
 	}
 	
