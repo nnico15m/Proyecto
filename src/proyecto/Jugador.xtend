@@ -27,18 +27,6 @@ class Jugador {
 	}
 	
 	
-	
-	
-	
-	def double getNivelAdvertencia() {
-		this.nivelAdvertencia
-	
-	}
-
-	def double getContadorPartidos() {
-		this.contadorPartidos
-		
-		}
 	def jugoUnPartido(){ //Aumento en 1 uno si el jugador jugo un partido, esta bien porque el que jugo fue el, el se incrementa
 		this.contadorPartidos = this.contadorPartidos + 1
 	}
