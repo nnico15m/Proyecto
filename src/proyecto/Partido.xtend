@@ -12,7 +12,7 @@ class Partido {
 	@Property double hora
 	@Property boolean condicion
 	@Property TipoSuscripcion tiposuscripcion
-	@Property Jugador jugador = new Jugador
+
 	
 
 	
@@ -26,6 +26,13 @@ class Partido {
 	
 	var int faltantesSol 
 	var int faltantesCond
+	
+	
+	def inscribimeAlaLista(Jugador jugador){
+		
+		this.inscribirJugador(jugador)
+		
+	}
 	
 	
 	def getTipoSuscripcion(){  //getter
@@ -51,7 +58,7 @@ class Partido {
 	
 	
 	
-	def inscribirJugador(){ //Inscribir jugador lo que hace es definir dentro de su metodo un mensaje para el tipo de inscripcion con los parametros partido y jugador para que el tipo de suscripcion haga la inscripcion
+	def inscribirJugador(Jugador jugador){ //Inscribir jugador lo que hace es definir dentro de su metodo un mensaje para el tipo de inscripcion con los parametros partido y jugador para que el tipo de suscripcion haga la inscripcion
 		this.getTipoSuscripcion().inscribirSegunTipoDeSuscripcion(this,jugador)
 	}
 	
