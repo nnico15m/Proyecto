@@ -17,7 +17,8 @@ class PartidoTest {
 				partidoInagural.setFecha(13021992)
 				partidoInagural.setCondicion(false)
 				partidoInagural.setHora(500)
-				partidoInagural.participantes.add(carlos)
+				carlos.setEstiloParaPartido("Estandar")
+				
 				
 				
 				
@@ -27,22 +28,27 @@ class PartidoTest {
 	@Test 
 	
 		def void verificarQueUnaVezQueMetoAlJugadorLaListaEstaEnUno(){
-		
-	Assert.assertTrue(partidoInagural.participantes.size == 1)		
+		 partidoInagural.participantes.add(carlos)
+		 Assert.assertTrue(partidoInagural.participantes.size == 1)		
 		
 	}
 	
+	@Test 	
+		
+		def void verificarQueElQueEstaEnLaListaEsEseJugador(){
+			partidoInagural.participantes.add(carlos)
+			Assert.assertTrue(partidoInagural.participantes.contains(carlos))
+			
+			
+		}
 	
-	//@Test 
-		//	def void verificarQueElJugadorEsteEnLaLista(){
-				
-		//		partidoInagural.participantes.contains(carlos)
-				
-				
-				
-		//	}
-				
-				
+		
+		@Test 
+				def void verificarQueLaListaInicialEsIgualaCero(){
+					
+					Assert.assertTrue(partidoInagural.participantes.size == 0)
+					
+				}			
 				
 }
 

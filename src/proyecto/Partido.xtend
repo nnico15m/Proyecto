@@ -11,7 +11,7 @@ class Partido {
 	@Property double fecha
 	@Property double hora
 	@Property boolean condicion
-	@Property TipoSuscripcion tiposuscripcion
+	@Property TipoSuscripcion2 tiposuscripcion
 	@Property	List<Jugador> participantes = new ArrayList //Es la lista de participantes en donde si el jugador que se quisiera anotar fuera estandar, directamente el tipo de inscripcion lo anota aca 									
 	@Property	List<Jugador> inscriptosSolidarios = new ArrayList() //Esta lista es la de solidarios en donde la prioridad de solidarios la tendran de acuerdo como se vayan anotando
 	@Property	List<Jugador> inscriptosCondicionales = new ArrayList() //Esta lista es la de condicionales en donde la prioridad de condicionales la tendran de acuerdo como se vayan anotando
@@ -31,13 +31,8 @@ class Partido {
 	}
 	
 
-	 
-	
-	
-	
-	
-	
 	def inscribirJugador(Jugador jugador){ //Inscribir jugador lo que hace es definir dentro de su metodo un mensaje para el tipo de inscripcion con los parametros partido y jugador para que el tipo de suscripcion haga la inscripcion
+		
 		this.tiposuscripcion.inscribirSegunTipoDeSuscripcion(this,jugador)
 	}
 	

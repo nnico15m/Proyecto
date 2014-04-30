@@ -4,13 +4,13 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.Assert
 import proyecto.Jugador
-
-
+//import proyecto.TipoSuscripcion2
+//import proyecto.Partido
 
 class JugadorTest {
 	
 	var Jugador carlos
-	
+//	var Partido partidoInagural
 	
 	@Before
 	def void init(){
@@ -23,7 +23,7 @@ class JugadorTest {
 		carlos.setNombreJugador("Epi la locomotora Epifanio")
 		carlos.setNivelDePrioridad(0)
 		carlos.setEstiloParaPartido("Estandar")
-	
+		
 		
 	}
 	
@@ -46,5 +46,18 @@ class JugadorTest {
 
 }
 
-
+//@Test
+	//def void verificarQueElUsuarioSeInscribeAtravesDePartido(){
+		
+	
+		//Assert.assertTrue(partidoInagural.participantes.contains(carlos))
+		
+		
+	//}
+	
+	
+	
+	
+	
+	
 }

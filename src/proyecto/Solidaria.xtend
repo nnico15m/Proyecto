@@ -1,7 +1,7 @@
 package proyecto
 
 
-class Solidaria implements TipoSuscripcion {
+class Solidaria implements TipoSuscripcion2 {
 	override  inscribirSegunTipoDeSuscripcion(Partido partido,Jugador jugador){
 		
 		

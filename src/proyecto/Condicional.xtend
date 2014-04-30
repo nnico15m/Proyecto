@@ -1,6 +1,6 @@
 package proyecto
 
-class Condicional implements TipoSuscripcion{
+class Condicional implements TipoSuscripcion2{
 	
 	override inscribirSegunTipoDeSuscripcion(Partido partido,Jugador jugador){
 		

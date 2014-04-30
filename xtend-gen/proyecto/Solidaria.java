@@ -4,10 +4,10 @@ import com.google.common.base.Objects;
 import java.util.List;
 import proyecto.Jugador;
 import proyecto.Partido;
-import proyecto.TipoSuscripcion;
+import proyecto.TipoSuscripcion2;
 
 @SuppressWarnings("all")
-public class Solidaria implements TipoSuscripcion {
+public class Solidaria implements TipoSuscripcion2 {
   public void inscribirSegunTipoDeSuscripcion(final Partido partido, final Jugador jugador) {
     String nombreDeClase = "Solidaria";
     String _estiloParaPartido = jugador.getEstiloParaPartido();

@@ -7,7 +7,7 @@ import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import proyecto.Jugador;
-import proyecto.TipoSuscripcion;
+import proyecto.TipoSuscripcion2;
 
 @SuppressWarnings("all")
 public class Partido {
@@ -41,13 +41,13 @@ public class Partido {
     this._condicion = condicion;
   }
   
-  private TipoSuscripcion _tiposuscripcion;
+  private TipoSuscripcion2 _tiposuscripcion;
   
-  public TipoSuscripcion getTiposuscripcion() {
+  public TipoSuscripcion2 getTiposuscripcion() {
     return this._tiposuscripcion;
   }
   
-  public void setTiposuscripcion(final TipoSuscripcion tiposuscripcion) {
+  public void setTiposuscripcion(final TipoSuscripcion2 tiposuscripcion) {
     this._tiposuscripcion = tiposuscripcion;
   }
   
@@ -90,7 +90,7 @@ public class Partido {
   }
   
   public void inscribirJugador(final Jugador jugador) {
-    TipoSuscripcion _tiposuscripcion = this.getTiposuscripcion();
+    TipoSuscripcion2 _tiposuscripcion = this.getTiposuscripcion();
     _tiposuscripcion.inscribirSegunTipoDeSuscripcion(this, jugador);
   }
   

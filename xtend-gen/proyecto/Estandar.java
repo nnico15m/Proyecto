@@ -5,10 +5,10 @@ import java.util.List;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import proyecto.Jugador;
 import proyecto.Partido;
-import proyecto.TipoSuscripcion;
+import proyecto.TipoSuscripcion2;
 
 @SuppressWarnings("all")
-public class Estandar implements TipoSuscripcion {
+public class Estandar implements TipoSuscripcion2 {
   public void inscribirSegunTipoDeSuscripcion(final Partido partido, final Jugador jugador) {
     String nombreDeClase = "Estandar";
     boolean _and = false;
