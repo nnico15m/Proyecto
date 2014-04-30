@@ -10,7 +10,6 @@ import java.util.List
 class Partido {
 	@Property double fecha
 	@Property double hora
-	@Property boolean condicion
 	@Property TipoSuscripcion2 tiposuscripcion
 	@Property List<Jugador> participantes = new ArrayList //Es la lista de participantes en donde si el jugador que se quisiera anotar fuera estandar, directamente el tipo de inscripcion lo anota aca 									
 	@Property List<Jugador> inscriptosSolidarios = new ArrayList() //Esta lista es la de solidarios en donde la prioridad de solidarios la tendran de acuerdo como se vayan anotando
@@ -20,8 +19,7 @@ class Partido {
 	//Como estamos implementando Stateless partido se pasara como parametro para la interface llamada tipo de suscripcion, la cual sera la encargada de madarle un mensaje al partido para que haga la lista de los jugadores para el partido
 	
 	
-	///var int faltantesSol 
-	///var int faltantesCond
+
 	
 	
 	def inscribimeAlaLista(Jugador jugador){

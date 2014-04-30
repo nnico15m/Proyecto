@@ -15,9 +15,8 @@ class PartidoTest {
 				carlos = new Jugador
 				partidoInagural = new Partido
 				partidoInagural.setFecha(13021992)
-				partidoInagural.setCondicion(false)
 				partidoInagural.setHora(500)
-				carlos.setEstiloParaPartido("Estandar")
+				
 				
 				
 				
@@ -36,8 +35,8 @@ class PartidoTest {
 	@Test 	
 		
 		def void verificarQueElQueEstaEnLaListaEsEseJugador(){
-			partidoInagural.participantes.add(carlos)
-			Assert.assertTrue(partidoInagural.participantes.contains(carlos))
+		partidoInagural.participantes.add(carlos)
+		Assert.assertTrue(partidoInagural.participantes.contains(carlos))
 			
 			
 		}
@@ -48,7 +47,9 @@ class PartidoTest {
 					
 					Assert.assertTrue(partidoInagural.participantes.size == 0)
 					
-				}			
+				}
+				
+							
 				
 }
 

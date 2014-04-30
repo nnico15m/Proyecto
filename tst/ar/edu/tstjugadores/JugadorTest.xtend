@@ -4,13 +4,13 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.Assert
 import proyecto.Jugador
-//import proyecto.TipoSuscripcion2
-//import proyecto.Partido
+
+
 
 class JugadorTest {
 	
 	var Jugador carlos
-//	var Partido partidoInagural
+
 	
 	@Before
 	def void init(){
@@ -22,7 +22,7 @@ class JugadorTest {
 		carlos.setNivelAdvertencia(4)
 		carlos.setNombreJugador("Epi la locomotora Epifanio")
 		carlos.setNivelDePrioridad(0)
-		carlos.setEstiloParaPartido("Estandar")
+		carlos.setEstiloParaPartido("Solidaria")
 		
 		
 	}
@@ -32,7 +32,7 @@ class JugadorTest {
 @Test
 	def void primerTestQueCorroboraQueElgetestiloParaPartidoFunciona(){
 		
-		Assert.assertTrue(carlos.estiloParaPartido == "Estandar") 
+		Assert.assertTrue(carlos.estiloParaPartido == "Solidaria") 
 	
 	}
 
@@ -42,21 +42,23 @@ class JugadorTest {
 	
 		Assert.assertTrue(carlos.contadorPartidos == 2) 
 	
-
-
 }
 
-//@Test
-	//def void verificarQueElUsuarioSeInscribeAtravesDePartido(){
+//@Test 
+	//def void testQcorroborarSiLaComparacionDelAtributoJugadorFunciona(){
 		
-	
-		//Assert.assertTrue(partidoInagural.participantes.contains(carlos))
+	//	solidario.inscribirSegunTipoDeSuscripcion(partidoInagural,carlos)
+	//	Assert.assertTrue(partidoInagural.inscriptosSolidarios.contains(carlos))
+		
 		
 		
 	//}
-	
-	
-	
+
+
+
+
+
+			
 	
 	
 	
