@@ -9,7 +9,7 @@ class Condicional implements TipoSuscripcion2{
 		//se podria hacer un testeo de que lo que se ingresa es una de las tres cosas que se esperan
 		
 		
-		if( nombreDeClase   == jugador.estiloParaPartido){
+		if(partido.hayLugarParaCondicional() && (nombreDeClase == jugador.estiloParaPartido)){
 			
 			partido.inscriptosCondicionales.add(jugador)	
 			
