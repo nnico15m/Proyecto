@@ -1,6 +1,8 @@
 package proyecto;
 
+import java.util.List;
 import proyecto.Partido;
+import proyecto.TipoDeSuscripcion;
 
 @SuppressWarnings("all")
 public class Jugador {
@@ -44,34 +46,22 @@ public class Jugador {
     this._nivelDePrioridad = nivelDePrioridad;
   }
   
-  private String _estiloParaPartido;
+  private TipoDeSuscripcion _formaDeInscripcion;
   
-  public String getEstiloParaPartido() {
-    return this._estiloParaPartido;
+  public TipoDeSuscripcion getFormaDeInscripcion() {
+    return this._formaDeInscripcion;
   }
   
-  public void setEstiloParaPartido(final String estiloParaPartido) {
-    this._estiloParaPartido = estiloParaPartido;
+  public void setFormaDeInscripcion(final TipoDeSuscripcion formaDeInscripcion) {
+    this._formaDeInscripcion = formaDeInscripcion;
   }
   
-  public void inscribirPartido(final Partido partido) {
-    partido.inscribimeAlaLista(this);
-  }
-  
-  public Jugador() {
-    this.setNivelAdvertencia(0);
-    this.setContadorPartidos(0);
-  }
-  
-  public void jugoUnPartido() {
-    double _contadorPartidos = this.getContadorPartidos();
-    double _plus = (_contadorPartidos + 1);
-    this.setContadorPartidos(_plus);
-  }
-  
-  public void faltoAUnPartido() {
-    double _nivelAdvertencia = this.getNivelAdvertencia();
-    double _plus = (_nivelAdvertencia + 1);
-    this.setNivelAdvertencia(_plus);
+  public void inscribirsePartido(final Partido partido) {
+    List<Jugador> _comunidad = partido.getComunidad();
+    boolean _contains = _comunidad.contains(this);
+    if (_contains) {
+      TipoDeSuscripcion _formaDeInscripcion = this.getFormaDeInscripcion();
+      _formaDeInscripcion.inscribirSegunTipoDeSuscripcion(partido, this);
+    }
   }
 }

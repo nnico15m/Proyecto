@@ -1,19 +1,22 @@
 package proyecto
 
-
-class Solidaria implements TipoSuscripcion2 {
+class Solidaria implements TipoDeSuscripcion {
 	
-	override  inscribirSegunTipoDeSuscripcion(Partido partido,Jugador jugador){
+	override inscribirSegunTipoDeSuscripcion(Partido partido,Jugador jugador){
 		
-		var String nombreDeClase = "Solidaria"
-		
-		if(partido.hayLugarParaSolidario() && (nombreDeClase == jugador.estiloParaPartido)){
+		if((partido.hayLugarParaSolidario) && !(partido.inscriptosSolidarios.contains(jugador))){
+			
 			
 			partido.inscriptosSolidarios.add(jugador)
 			
 		}
 		
-		}
+		
+		
 	}
 	
+	}
+
+
+
 	

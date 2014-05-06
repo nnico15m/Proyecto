@@ -12,13 +12,13 @@ import proyecto.Solidaria2
 class Testverificartipos {
 	
 	
-		var Jugador2 carlos	
-		var Jugador2 martin
-		var Jugador2 juan
-		var Estandar2 estandar2
-		var Partido2 partidoInagural	
-		var Condicional2 condicional2
-		var Solidaria2 solidaria2
+		var Jugador carlos	
+		var Jugador martin
+		var Jugador juan
+		var Estandar estandar
+		var Partido partidoInagural	
+		var Condicional condicional
+		var Solidaria solidaria
 		
 @Before	
 		
@@ -26,24 +26,24 @@ class Testverificartipos {
 			
 			
 			
-				carlos = new Jugador2
-				martin = new Jugador2
-				juan = new Jugador2
+				carlos = new Jugador
+				martin = new Jugador
+				juan = new Jugador
 				
 					
-				estandar2 = new Estandar2
-				condicional2 = new Condicional2
-				solidaria2 = new Solidaria2
+				estandar = new Estandar
+				condicional = new Condicional
+				solidaria = new Solidaria
 				
 				carlos.setContadorPartidos(2)
-				carlos.setFormaDeInscripcion(estandar2)
+				carlos.setFormaDeInscripcion(estandar)
 				martin.setContadorPartidos(2)
-				martin.setFormaDeInscripcion(condicional2)
+				martin.setFormaDeInscripcion(condicional)
 				juan.setContadorPartidos(2)
-				juan.setFormaDeInscripcion(solidaria2)
+				juan.setFormaDeInscripcion(solidaria)
 				
 				
-				partidoInagural = new Partido2
+				partidoInagural = new Partido
 				partidoInagural.comunidad.add(carlos)
 				partidoInagural.comunidad.add(martin)
 				partidoInagural.comunidad.add(juan)
@@ -52,7 +52,7 @@ class Testverificartipos {
 	
 @Test
 
-		def verificarSiUnaVezQueElUsuarioSeInscribioSeEncuentraEnLaListaParticipantes(){
+		def verificarSiUnaVezQueElUsuarioSeInscribioDeFormaEstandarSeEncuentraEnLaListaParticipantes(){
 			
 			carlos.inscribirsePartido(partidoInagural)
 			
@@ -88,7 +88,7 @@ class Testverificartipos {
 		
 @Test
 
-		def verificarSiUnaVezQueElUsuarioSeInscribioSeEncuentraEnLaListaCondicional(){
+		def verificarSiUnaVezQueElUsuarioSeInscribioDeFormaCondicionalSeEncuentraEnLaListaCondicional(){
 			
 			martin.inscribirsePartido(partidoInagural)
 			
@@ -103,7 +103,7 @@ class Testverificartipos {
 			Assert.assertTrue(partidoInagural.inscriptosSolidarios.contains(juan))
 		}	
 @Test
-		def verificarQueSeENcuentranEnLaListaComunidadLos3PartcipantesQueYoInventamos(){
+		def verificarQueSeENcuentranEnLaListaComunidadLos3PartcipantesQueInventamos(){
 			
 			Assert.assertTrue(partidoInagural.comunidad.size == 3)
 			

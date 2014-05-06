@@ -1,22 +1,26 @@
 package proyecto;
 
-import com.google.common.base.Objects;
 import java.util.List;
 import proyecto.Jugador;
 import proyecto.Partido;
-import proyecto.TipoSuscripcion2;
+import proyecto.TipoDeSuscripcion;
 
 @SuppressWarnings("all")
-public class Solidaria implements TipoSuscripcion2 {
+public class Solidaria implements TipoDeSuscripcion {
   public void inscribirSegunTipoDeSuscripcion(final Partido partido, final Jugador jugador) {
-    String nombreDeClase = "Solidaria";
-    String _estiloParaPartido = jugador.getEstiloParaPartido();
-    boolean _equals = Objects.equal(nombreDeClase, _estiloParaPartido);
-    if (_equals) {
+    boolean _and = false;
+    boolean _hayLugarParaSolidario = partido.hayLugarParaSolidario();
+    if (!_hayLugarParaSolidario) {
+      _and = false;
+    } else {
       List<Jugador> _inscriptosSolidarios = partido.getInscriptosSolidarios();
-      _inscriptosSolidarios.add(jugador);
+      boolean _contains = _inscriptosSolidarios.contains(jugador);
+      boolean _not = (!_contains);
+      _and = _not;
     }
-    List<Jugador> _inscriptosSolidarios_1 = partido.getInscriptosSolidarios();
-    _inscriptosSolidarios_1.add(jugador);
+    if (_and) {
+      List<Jugador> _inscriptosSolidarios_1 = partido.getInscriptosSolidarios();
+      _inscriptosSolidarios_1.add(jugador);
+    }
   }
 }

@@ -1,26 +1,27 @@
 package proyecto
-import proyecto.Partido
 
-
-class Estandar implements TipoSuscripcion2 {
-
-	override inscribirSegunTipoDeSuscripcion(Partido partido, Jugador jugador){
+class Estandar implements TipoDeSuscripcion {
+	
+	override inscribirSegunTipoDeSuscripcion(Partido partido,Jugador jugador){
 		
-			var String nombreDeClase = "Estandar"
-		
-		
-		if(partido.quedaLugar() &&(nombreDeClase == jugador.estiloParaPartido) ){
+		if(partido.quedaLugar  && !(partido.participantes.contains(jugador))){
 			
-		partido.participantes.add(jugador)
-		
-		} else {
+			
+			partido.participantes.add(jugador)	
 			
 		}
+		
+		
 	}
 	
 	
-	
+	def sosEstandar(TipoDeSuscripcion Estandar){
 		
+		true
+		
+		
+		
+	}
 	
 	
 	
