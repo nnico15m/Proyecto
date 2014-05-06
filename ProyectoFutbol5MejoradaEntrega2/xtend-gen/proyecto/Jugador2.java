@@ -1,5 +1,6 @@
 package proyecto;
 
+import java.util.List;
 import proyecto.Partido2;
 import proyecto.TipoDeSuscripcionn2;
 
@@ -55,22 +56,12 @@ public class Jugador2 {
     this._formaDeInscripcion = formaDeInscripcion;
   }
   
-  private TipoDeSuscripcionn2 _tipoDeSuscripcionn2;
-  
-  public TipoDeSuscripcionn2 getTipoDeSuscripcionn2() {
-    return this._tipoDeSuscripcionn2;
-  }
-  
-  public void setTipoDeSuscripcionn2(final TipoDeSuscripcionn2 tipoDeSuscripcionn2) {
-    this._tipoDeSuscripcionn2 = tipoDeSuscripcionn2;
-  }
-  
-  public void inscribirAjugador(final Partido2 partido2) {
-    partido2.inscribimeApartido(this);
-  }
-  
-  public void ComoTeQueresInscribir(final Partido2 partido2) {
-    TipoDeSuscripcionn2 _tipoDeSuscripcionn2 = this.getTipoDeSuscripcionn2();
-    _tipoDeSuscripcionn2.inscribirSegunTipoDeSuscripcion2(partido2, this);
+  public void inscribirsePartido(final Partido2 partido2) {
+    List<Jugador2> _comunidad = partido2.getComunidad();
+    boolean _contains = _comunidad.contains(this);
+    if (_contains) {
+      TipoDeSuscripcionn2 _formaDeInscripcion = this.getFormaDeInscripcion();
+      _formaDeInscripcion.inscribirSegunTipoDeSuscripcion2(partido2, this);
+    }
   }
 }

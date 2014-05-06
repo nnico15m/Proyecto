@@ -9,21 +9,18 @@ import proyecto.TipoDeSuscripcionn2;
 public class Condicional2 implements TipoDeSuscripcionn2 {
   public void inscribirSegunTipoDeSuscripcion2(final Partido2 partido2, final Jugador2 jugador2) {
     boolean _and = false;
-    TipoDeSuscripcionn2 _formaDeInscripcion = jugador2.getFormaDeInscripcion();
-    boolean _sosCondicional2 = this.sosCondicional2(_formaDeInscripcion);
-    if (!_sosCondicional2) {
+    boolean _hayLugarParaCondicional = partido2.hayLugarParaCondicional();
+    if (!_hayLugarParaCondicional) {
       _and = false;
     } else {
-      boolean _hayLugarParaCondicional = partido2.hayLugarParaCondicional();
-      _and = _hayLugarParaCondicional;
+      List<Jugador2> _inscriptosCondicionales = partido2.getInscriptosCondicionales();
+      boolean _contains = _inscriptosCondicionales.contains(jugador2);
+      boolean _not = (!_contains);
+      _and = _not;
     }
     if (_and) {
-      List<Jugador2> _inscriptosCondicionales = partido2.getInscriptosCondicionales();
-      _inscriptosCondicionales.add(jugador2);
+      List<Jugador2> _inscriptosCondicionales_1 = partido2.getInscriptosCondicionales();
+      _inscriptosCondicionales_1.add(jugador2);
     }
-  }
-  
-  public boolean sosCondicional2(final TipoDeSuscripcionn2 Condicional2) {
-    return true;
   }
 }

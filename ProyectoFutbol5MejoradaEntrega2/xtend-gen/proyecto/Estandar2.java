@@ -9,17 +9,18 @@ import proyecto.TipoDeSuscripcionn2;
 public class Estandar2 implements TipoDeSuscripcionn2 {
   public void inscribirSegunTipoDeSuscripcion2(final Partido2 partido2, final Jugador2 jugador2) {
     boolean _and = false;
-    TipoDeSuscripcionn2 _formaDeInscripcion = jugador2.getFormaDeInscripcion();
-    boolean _sosEstandar2 = this.sosEstandar2(_formaDeInscripcion);
-    if (!_sosEstandar2) {
+    boolean _quedaLugar = partido2.quedaLugar();
+    if (!_quedaLugar) {
       _and = false;
     } else {
-      boolean _quedaLugar = partido2.quedaLugar();
-      _and = _quedaLugar;
+      List<Jugador2> _participantes = partido2.getParticipantes();
+      boolean _contains = _participantes.contains(jugador2);
+      boolean _not = (!_contains);
+      _and = _not;
     }
     if (_and) {
-      List<Jugador2> _participantes = partido2.getParticipantes();
-      _participantes.add(jugador2);
+      List<Jugador2> _participantes_1 = partido2.getParticipantes();
+      _participantes_1.add(jugador2);
     }
   }
   

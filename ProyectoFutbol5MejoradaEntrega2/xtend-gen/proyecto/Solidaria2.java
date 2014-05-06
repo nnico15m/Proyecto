@@ -9,21 +9,18 @@ import proyecto.TipoDeSuscripcionn2;
 public class Solidaria2 implements TipoDeSuscripcionn2 {
   public void inscribirSegunTipoDeSuscripcion2(final Partido2 partido2, final Jugador2 jugador2) {
     boolean _and = false;
-    TipoDeSuscripcionn2 _formaDeInscripcion = jugador2.getFormaDeInscripcion();
-    boolean _sosSolidario = this.sosSolidario(_formaDeInscripcion);
-    if (!_sosSolidario) {
+    boolean _hayLugarParaSolidario = partido2.hayLugarParaSolidario();
+    if (!_hayLugarParaSolidario) {
       _and = false;
     } else {
-      boolean _hayLugarParaSolidario = partido2.hayLugarParaSolidario();
-      _and = _hayLugarParaSolidario;
+      List<Jugador2> _inscriptosSolidarios = partido2.getInscriptosSolidarios();
+      boolean _contains = _inscriptosSolidarios.contains(jugador2);
+      boolean _not = (!_contains);
+      _and = _not;
     }
     if (_and) {
-      List<Jugador2> _inscriptosSolidarios = partido2.getInscriptosSolidarios();
-      _inscriptosSolidarios.add(jugador2);
+      List<Jugador2> _inscriptosSolidarios_1 = partido2.getInscriptosSolidarios();
+      _inscriptosSolidarios_1.add(jugador2);
     }
-  }
-  
-  public boolean sosSolidario(final TipoDeSuscripcionn2 Solidaria2) {
-    return true;
   }
 }

@@ -4,7 +4,7 @@ class Estandar2 implements TipoDeSuscripcionn2 {
 	
 	override inscribirSegunTipoDeSuscripcion2(Partido2 partido2,Jugador2 jugador2){
 		
-		if(sosEstandar2(jugador2.formaDeInscripcion) && (partido2.quedaLugar)){
+		if(partido2.quedaLugar  && !(partido2.participantes.contains(jugador2))){
 			
 			
 			partido2.participantes.add(jugador2)	
