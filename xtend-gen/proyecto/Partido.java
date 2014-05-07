@@ -59,7 +59,7 @@ public class Partido {
     this._inscriptosCondicionales = inscriptosCondicionales;
   }
   
-  private List<Jugador> _comunidad = new ArrayList<Jugador>();
+  private List<Jugador> _comunidad = new ArrayList<Jugador>(50);
   
   public List<Jugador> getComunidad() {
     return this._comunidad;
@@ -154,7 +154,7 @@ public class Partido {
     _participantes.add(ultimoCondicional);
     List<Jugador> _inscriptosCondicionales_1 = this.getInscriptosCondicionales();
     _inscriptosCondicionales_1.remove(ultimoCondicional);
-    this.completarConCondicionales();
+    this.confirmarEquipo();
   }
   
   public boolean noHayMasJugadores() {

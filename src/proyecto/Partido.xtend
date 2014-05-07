@@ -3,7 +3,6 @@ package proyecto
 import java.util.ArrayList			
 import java.util.List
 
-
 class Partido {
 	
 	@Property FechaPartido fecha
@@ -11,7 +10,7 @@ class Partido {
 	@Property List<Jugador> participantes = new ArrayList //Es la lista de participantes en donde si el jugador que se quisiera anotar fuera estandar, directamente el tipo de inscripcion lo anota aca 									
 	@Property List<Jugador> inscriptosSolidarios = new ArrayList //Esta lista es la de solidarios en donde la prioridad de solidarios la tendran de acuerdo como se vayan anotando
 	@Property List<Jugador> inscriptosCondicionales = new ArrayList //Esta lista es la de condicionales en donde la prioridad de condicionales la tendran de acuerdo como se vayan anotando
-	@Property List<Jugador> comunidad = new ArrayList
+	@Property List<Jugador> comunidad = new ArrayList(50)
 	
 	
 	
@@ -73,7 +72,7 @@ class Partido {
 		var ultimoCondicional = this.inscriptosCondicionales.get(cantCondicionales()-1)
 		this.participantes.add(ultimoCondicional)
 		this.inscriptosCondicionales.remove(ultimoCondicional)
-		this.completarConCondicionales()		
+		this.confirmarEquipo()		
 	}
 	
 	
