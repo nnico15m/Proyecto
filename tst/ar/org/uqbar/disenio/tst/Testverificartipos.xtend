@@ -186,9 +186,9 @@ class Testverificartipos {
 			var estandar4 = this.crearEstandar()
 			partidoInagural.comunidad.add(estandar4)
 			estandar4.inscribirsePartido(partidoInagural)
-			var estandar5 = this.crearEstandar()
-			partidoInagural.comunidad.add(estandar5)
-			estandar5.inscribirsePartido(partidoInagural)
+			var estandar9 = this.crearEstandar()
+			partidoInagural.comunidad.add(estandar9)
+			estandar9.inscribirsePartido(partidoInagural)
 			
 			var solidario1 = this.crearSolidario()
 			partidoInagural.comunidad.add(solidario1)
