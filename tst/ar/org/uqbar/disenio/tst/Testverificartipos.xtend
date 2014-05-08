@@ -75,7 +75,7 @@ class Testverificartipos {
 		}
 		
 @Test
-		def verificarQueLaListaParticipantesEsDeTamañoIgualAUnoLugoDeQueSeInscribioUnSoloJugador(){
+		def verificarQueLaListaParticipantesEsDeTamaÃ±oIgualAUnoLugoDeQueSeInscribioUnSoloJugador(){
 			
 			carlos.inscribirsePartido(partidoInagural)
 			Assert.assertTrue(partidoInagural.participantes.size == 1)
