@@ -14,12 +14,20 @@ class Jugador {
 	def inscribirsePartido(Partido partido){
 		
 		if(partido.comunidad.contains(this)){
-			this.formaDeInscripcion.inscribirSegunTipoDeSuscripcion(partido,this)
+			this.inscribiSiPodes(partido)
 		}
 		
 	}
 	
+	def inscribiSiPodes(Partido partido){
+		if (partido.noQuedaLugar) {
+			}
+			else{
+			this.formaDeInscripcion.inscribirSegunTipoDeSuscripcion(partido,this)
+		}
+		}
+	}
 		
-}
+
 	
 	

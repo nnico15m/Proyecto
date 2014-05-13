@@ -3,13 +3,10 @@ package proyecto
 
 class Condicional implements TipoDeSuscripcion{
 	
+	@Property int prioridad = 2
 	
-	override inscribirSegunTipoDeSuscripcion(Partido partido,Jugador jugador){
-		
-		if (partido.hayLugarParaCondicional  && !(partido.inscriptosCondicionales.contains(jugador))){
-			
-			
-			partido.inscriptosCondicionales.add(jugador)	
+		override inscribirSegunTipoDeSuscripcion(Partido partido,Jugador jugador){
+		partido.inscribirAlPartido(jugador)		
 			
 			
 		}
@@ -21,4 +18,3 @@ class Condicional implements TipoDeSuscripcion{
 	
 	
 	
-}	

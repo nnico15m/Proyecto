@@ -1,28 +1,20 @@
 package proyecto
 
+
+
+
+
 class Estandar implements TipoDeSuscripcion {
 	
+	@Property int prioridad = 0
+	
+	
+	
 	override inscribirSegunTipoDeSuscripcion(Partido partido,Jugador jugador){
-		
-		if(partido.quedaLugar  && !(partido.participantes.contains(jugador))){
-			
-			
-			partido.participantes.add(jugador)	
-			
-		}
-		
+		partido.inscribirAlPartido(jugador)	
+				}
+	
 		
 	}
 	
 	
-	def sosEstandar(TipoDeSuscripcion Estandar){
-		
-		true
-		
-		
-		
-	}
-	
-	
-	
-}

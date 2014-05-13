@@ -1,22 +1,21 @@
 package proyecto
 
+import java.util.List
+import proyecto.Partido
+
 class Solidaria implements TipoDeSuscripcion {
 	
-	override inscribirSegunTipoDeSuscripcion(Partido partido,Jugador jugador){
-		
-		if((partido.hayLugarParaSolidario) && !(partido.inscriptosSolidarios.contains(jugador))){
-			
-			
-			partido.inscriptosSolidarios.add(jugador)
-			
-		}
-		
-		
-		
-	}
+	@Property int prioridad = 1
 	
+		override inscribirSegunTipoDeSuscripcion(Partido partido,Jugador jugador){
+		partido.inscribirAlPartido(jugador)	
+		
+		
+		
 	}
 
+
+}
 
 
 	
