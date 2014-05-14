@@ -80,13 +80,13 @@ public class Testverificartipos {
   }
   
   @Test
-  public void verificarQueLaListaParticipantesEsDeTamaÃ±oIgualAUnoLugoDeQueSeInscribioUnSoloJugador() {
+  public void verificarQueLaListaParticipantesEsDeTamañoIgualAUnoLugoDeQueSeInscribioUnSoloJugador() {
     this.carlos.inscribirsePartido(this.partidoInagural);
-   List<Jugador> _participantes = this.partidoInagural.getParticipantes();
-   int _size = _participantes.size();
-   boolean _equals = (_size == 1);
-   Assert.assertTrue(_equals);
-   }
+    List<Jugador> _participantes = this.partidoInagural.getParticipantes();
+    int _size = _participantes.size();
+    boolean _equals = (_size == 1);
+    Assert.assertTrue(_equals);
+  }
   
   @Test
   public void verificarQueSiElUsuarioSeQuiereIngresarMuchasVecesNoVaAPoderHacerlo() {

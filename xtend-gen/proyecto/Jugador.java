@@ -1,6 +1,5 @@
 package proyecto;
 
-import java.util.List;
 import proyecto.Partido;
 import proyecto.TipoDeSuscripcion;
 
@@ -36,16 +35,6 @@ public class Jugador {
     this._contadorPartidos = contadorPartidos;
   }
   
-  private int _nivelDePrioridad;
-  
-  public int getNivelDePrioridad() {
-    return this._nivelDePrioridad;
-  }
-  
-  public void setNivelDePrioridad(final int nivelDePrioridad) {
-    this._nivelDePrioridad = nivelDePrioridad;
-  }
-  
   private TipoDeSuscripcion _formaDeInscripcion;
   
   public TipoDeSuscripcion getFormaDeInscripcion() {
@@ -56,12 +45,13 @@ public class Jugador {
     this._formaDeInscripcion = formaDeInscripcion;
   }
   
-  public void inscribirsePartido(final Partido partido) {
-    List<Jugador> _comunidad = partido.getComunidad();
-    boolean _contains = _comunidad.contains(this);
-    if (_contains) {
-      TipoDeSuscripcion _formaDeInscripcion = this.getFormaDeInscripcion();
-      _formaDeInscripcion.inscribirSegunTipoDeSuscripcion(partido, this);
-    }
+  public void trataDeInscribirteAlPartido(final Partido partido) {
+    TipoDeSuscripcion _formaDeInscripcion = this.getFormaDeInscripcion();
+    _formaDeInscripcion.inscribirSegunTipoDeSuscripcion(partido, this);
+  }
+  
+  public int prioridad() {
+    TipoDeSuscripcion _formaDeInscripcion = this.getFormaDeInscripcion();
+    return _formaDeInscripcion.prioridad();
   }
 }

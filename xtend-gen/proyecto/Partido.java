@@ -1,11 +1,14 @@
 package proyecto;
 
+import com.google.common.base.Objects;
 import java.util.ArrayList;
 import java.util.List;
 import org.eclipse.xtext.xbase.lib.Conversions;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import proyecto.ElCupoEstaLlenoException;
 import proyecto.FechaPartido;
 import proyecto.Jugador;
-import proyecto.NoJuntamos10ParaElPartidoException;
 
 @SuppressWarnings("all")
 public class Partido {
@@ -29,7 +32,7 @@ public class Partido {
     this._hora = hora;
   }
   
-  private List<Jugador> _participantes = new ArrayList<Jugador>();
+  private List<Jugador> _participantes = new ArrayList<Jugador>(10);
   
   public List<Jugador> getParticipantes() {
     return this._participantes;
@@ -39,27 +42,7 @@ public class Partido {
     this._participantes = participantes;
   }
   
-  private List<Jugador> _inscriptosSolidarios = new ArrayList<Jugador>();
-  
-  public List<Jugador> getInscriptosSolidarios() {
-    return this._inscriptosSolidarios;
-  }
-  
-  public void setInscriptosSolidarios(final List<Jugador> inscriptosSolidarios) {
-    this._inscriptosSolidarios = inscriptosSolidarios;
-  }
-  
-  private List<Jugador> _inscriptosCondicionales = new ArrayList<Jugador>();
-  
-  public List<Jugador> getInscriptosCondicionales() {
-    return this._inscriptosCondicionales;
-  }
-  
-  public void setInscriptosCondicionales(final List<Jugador> inscriptosCondicionales) {
-    this._inscriptosCondicionales = inscriptosCondicionales;
-  }
-  
-  private List<Jugador> _comunidad = new ArrayList<Jugador>(50);
+  private List<Jugador> _comunidad = new ArrayList<Jugador>(25);
   
   public List<Jugador> getComunidad() {
     return this._comunidad;
@@ -69,105 +52,124 @@ public class Partido {
     this._comunidad = comunidad;
   }
   
-  public boolean quedaLugar() {
-    int _cantParticipantes = this.cantParticipantes();
-    return (_cantParticipantes < 10);
-  }
-  
-  public boolean hayLugarParaSolidario() {
-    int _cantParticipantes = this.cantParticipantes();
-    int _cantSolidarios = this.cantSolidarios();
-    int _plus = (_cantParticipantes + _cantSolidarios);
-    return (_plus < 10);
-  }
-  
-  public boolean hayLugarParaCondicional() {
-    int _cantParticipantes = this.cantParticipantes();
-    int _cantSolidarios = this.cantSolidarios();
-    int _plus = (_cantParticipantes + _cantSolidarios);
-    int _cantCondicionales = this.cantCondicionales();
-    int _plus_1 = (_plus + _cantCondicionales);
-    return (_plus_1 < 10);
-  }
-  
-  public int cantCondicionales() {
-    List<Jugador> _inscriptosCondicionales = this.getInscriptosCondicionales();
-    return ((Object[])Conversions.unwrapArray(_inscriptosCondicionales, Object.class)).length;
-  }
-  
   public int cantParticipantes() {
     List<Jugador> _participantes = this.getParticipantes();
     return ((Object[])Conversions.unwrapArray(_participantes, Object.class)).length;
   }
   
-  public int cantSolidarios() {
-    List<Jugador> _inscriptosSolidarios = this.getInscriptosSolidarios();
-    return ((Object[])Conversions.unwrapArray(_inscriptosSolidarios, Object.class)).length;
-  }
-  
-  public void confirmarEquipo() {
-    boolean _quedaLugar = this.quedaLugar();
-    if (_quedaLugar) {
-      int _cantSolidarios = this.cantSolidarios();
-      boolean _notEquals = (_cantSolidarios != 0);
-      if (_notEquals) {
-        this.completarConSolidarios();
-      } else {
-        int _cantCondicionales = this.cantCondicionales();
-        boolean _notEquals_1 = (_cantCondicionales != 0);
-        if (_notEquals_1) {
-          this.completarConCondicionales();
-        }
-      }
-    }
+  public Boolean inscribiSiPodesA(final Jugador jugador) {
+    Boolean _xifexpression = null;
     boolean _and = false;
-    boolean _quedaLugar_1 = this.quedaLugar();
-    if (!_quedaLugar_1) {
+    boolean _esDeLaComunidad = this.esDeLaComunidad(jugador);
+    if (!_esDeLaComunidad) {
       _and = false;
     } else {
-      boolean _noHayMasJugadores = this.noHayMasJugadores();
-      _and = _noHayMasJugadores;
+      boolean _yaEstaAnotado = this.yaEstaAnotado(jugador);
+      boolean _not = (!_yaEstaAnotado);
+      _and = _not;
     }
     if (_and) {
-      throw new NoJuntamos10ParaElPartidoException();
+      _xifexpression = this.inscribirSiHayLugarA(jugador);
     }
+    return _xifexpression;
   }
   
-  public void completarConSolidarios() {
-    List<Jugador> _inscriptosSolidarios = this.getInscriptosSolidarios();
-    int _cantSolidarios = this.cantSolidarios();
-    int _minus = (_cantSolidarios - 1);
-    Jugador ultimoSolidario = _inscriptosSolidarios.get(_minus);
+  public boolean yaEstaAnotado(final Jugador jugador) {
     List<Jugador> _participantes = this.getParticipantes();
-    _participantes.add(ultimoSolidario);
-    List<Jugador> _inscriptosSolidarios_1 = this.getInscriptosSolidarios();
-    _inscriptosSolidarios_1.remove(ultimoSolidario);
-    this.confirmarEquipo();
+    return _participantes.contains(jugador);
   }
   
-  public void completarConCondicionales() {
-    List<Jugador> _inscriptosCondicionales = this.getInscriptosCondicionales();
-    int _cantCondicionales = this.cantCondicionales();
-    int _minus = (_cantCondicionales - 1);
-    Jugador ultimoCondicional = _inscriptosCondicionales.get(_minus);
-    List<Jugador> _participantes = this.getParticipantes();
-    _participantes.add(ultimoCondicional);
-    List<Jugador> _inscriptosCondicionales_1 = this.getInscriptosCondicionales();
-    _inscriptosCondicionales_1.remove(ultimoCondicional);
-    this.confirmarEquipo();
-  }
-  
-  public boolean noHayMasJugadores() {
-    boolean _and = false;
-    int _cantSolidarios = this.cantSolidarios();
-    boolean _equals = (_cantSolidarios == 0);
-    if (!_equals) {
-      _and = false;
+  public Boolean inscribirSiHayLugarA(final Jugador jugador) {
+    boolean _xifexpression = false;
+    boolean _quedaLugar = this.quedaLugar();
+    if (_quedaLugar) {
+      List<Jugador> _participantes = this.getParticipantes();
+      _xifexpression = _participantes.add(jugador);
     } else {
-      int _cantCondicionales = this.cantCondicionales();
-      boolean _equals_1 = (_cantCondicionales == 0);
-      _and = _equals_1;
+      jugador.trataDeInscribirteAlPartido(this);
     }
-    return _and;
+    return _xifexpression;
+  }
+  
+  public boolean quedaLugar() {
+    int _cantParticipantes = this.cantParticipantes();
+    return (_cantParticipantes < 10);
+  }
+  
+  public boolean esDeLaComunidad(final Jugador jugador) {
+    List<Jugador> _comunidad = this.getComunidad();
+    return _comunidad.contains(jugador);
+  }
+  
+  public boolean inscribirCondicional(final Jugador jugador) {
+    boolean _xblockexpression = false;
+    {
+      Jugador reemplazado = this.obtenerInscriptoCondicional();
+      _xblockexpression = this.cambiar(reemplazado, jugador);
+    }
+    return _xblockexpression;
+  }
+  
+  public boolean inscribirEstandarOSolidario(final Jugador jugador) {
+    boolean _xblockexpression = false;
+    {
+      Jugador reemplazado = this.obtenerInscriptoDeMenorPrioridad();
+      _xblockexpression = this.cambiar(reemplazado, jugador);
+    }
+    return _xblockexpression;
+  }
+  
+  public Jugador obtenerInscriptoDeMenorPrioridad() {
+    Jugador _xblockexpression = null;
+    {
+      Jugador jugador = this.obtenerInscriptoCondicional();
+      boolean _equals = Objects.equal(jugador, null);
+      if (_equals) {
+        Jugador _obtenerInscriptoSolidario = this.obtenerInscriptoSolidario();
+        jugador = _obtenerInscriptoSolidario;
+      }
+      _xblockexpression = jugador;
+    }
+    return _xblockexpression;
+  }
+  
+  public Jugador obtenerInscriptoSolidario() {
+    List<Jugador> _participantes = this.getParticipantes();
+    final Function1<Jugador,Boolean> _function = new Function1<Jugador,Boolean>() {
+      public Boolean apply(final Jugador unJugador) {
+        int _prioridad = unJugador.prioridad();
+        return Boolean.valueOf((_prioridad == 1));
+      }
+    };
+    return IterableExtensions.<Jugador>findFirst(_participantes, _function);
+  }
+  
+  public Jugador obtenerInscriptoCondicional() {
+    List<Jugador> _participantes = this.getParticipantes();
+    final Function1<Jugador,Boolean> _function = new Function1<Jugador,Boolean>() {
+      public Boolean apply(final Jugador unJugador) {
+        int _prioridad = unJugador.prioridad();
+        return Boolean.valueOf((_prioridad == 2));
+      }
+    };
+    return IterableExtensions.<Jugador>findFirst(_participantes, _function);
+  }
+  
+  public boolean cambiar(final Jugador saliente, final Jugador entrante) {
+    boolean _xifexpression = false;
+    boolean _notEquals = (!Objects.equal(saliente, null));
+    if (_notEquals) {
+      boolean _xblockexpression = false;
+      {
+        List<Jugador> _participantes = this.getParticipantes();
+        _participantes.remove(saliente);
+        List<Jugador> _participantes_1 = this.getParticipantes();
+        _xblockexpression = _participantes_1.add(entrante);
+      }
+      _xifexpression = _xblockexpression;
+    } else {
+      throw new ElCupoEstaLlenoException();
+    }
+    return _xifexpression;
   }
 }

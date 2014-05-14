@@ -57,80 +57,46 @@ class Testverificartipos {
 	
 @Test
 
-		def verificarSiUnaVezQueElUsuarioSeInscribioDeFormaEstandarSeEncuentraEnLaListaParticipantes(){
+		def verificarSiSeIntentaInscribirUnJugadorYFaltaGenteSeAgregaALaListaParticipantes(){
 			
-			carlos.inscribirsePartido(partidoInagural)
+			partidoInagural.inscribiSiPodesA(carlos)
 			
 			Assert.assertTrue(partidoInagural.participantes.contains(carlos))
 		}	
 	
-		
 
-@Test
-		def verificarQueLaListaCondicionalEstaEn0(){
-			Assert.assertFalse(partidoInagural.inscriptosCondicionales.size == 1)
-			
-			
-			
-		}
 		
 @Test
-		def verificarQueLaListaParticipantesEsDeTamañoIgualAUnoLugoDeQueSeInscribioUnSoloJugador(){
+		def verificarQueLaListaParticipantesEsDeTamanioIgualAUnoLugoDeQueSeInscribioUnSoloJugador(){
 			
-			carlos.inscribirsePartido(partidoInagural)
+			partidoInagural.inscribiSiPodesA(carlos)
 			Assert.assertTrue(partidoInagural.participantes.size == 1)
 			
 		}		
 
 @Test
 		def verificarQueSiElUsuarioSeQuiereIngresarMuchasVecesNoVaAPoderHacerlo(){
-			carlos.inscribirsePartido(partidoInagural)
-			carlos.inscribirsePartido(partidoInagural)
-			carlos.inscribirsePartido(partidoInagural)
+			partidoInagural.inscribiSiPodesA(carlos)
+			partidoInagural.inscribiSiPodesA(carlos)
+			partidoInagural.inscribiSiPodesA(carlos)
 			
 			Assert.assertTrue(partidoInagural.participantes.size == 1)
 		}
-		
-@Test
 
-		def verificarSiUnaVezQueElUsuarioSeInscribioDeFormaCondicionalSeEncuentraEnLaListaCondicional(){
-			
-			martin.inscribirsePartido(partidoInagural)
-			
-			Assert.assertTrue(partidoInagural.inscriptosCondicionales.contains(martin))
-		}	
 
-@Test 
-		def verificarSiUnaVezQueElUsuarioSeInscribioSeEncuentraEnLaListaSolidaria(){
-			
-			juan.inscribirsePartido(partidoInagural)
-			
-			Assert.assertTrue(partidoInagural.inscriptosSolidarios.contains(juan))
-		}	
 @Test
 		def verificarQueSeENcuentranEnLaListaComunidadLos3PartcipantesQueInventamos(){
 			
 			Assert.assertTrue(partidoInagural.comunidad.size == 3)
 			
-			
-		}
-
-@Test (expected = NoJuntamos10ParaElPartidoException)
-		def verificarQueConfirmarEquipoSiNoHay10JugadoresOMasTiraError() {
-			
-			carlos.inscribirsePartido(partidoInagural)
-			martin.inscribirsePartido(partidoInagural)
-			juan.inscribirsePartido(partidoInagural)
-			
-			partidoInagural.confirmarEquipo()
-		}
+			}
 		
 @Test
-		def verificarQueUnCondicionalQuedaAfueraSiSeCompletanLos10(){
+		def verificarQueUnCondicionalQuedaAfueraSiHay10AnotadosYNingunoEsCondicional(){   ////////////////////////////
 			
 			this.crearEInscribir5Estandares3Solidarios2Concicionales()
-			martin.inscribirsePartido(partidoInagural)
-			partidoInagural.confirmarEquipo()
+			this.crearEInscribir5Estandares3Solidarios2Concicionales()
+			partidoInagural.inscribiSiPodesA(martin)
 
 			Assert.assertFalse(partidoInagural.participantes.contains(martin))
 			
@@ -140,8 +106,7 @@ class Testverificartipos {
 		def verificarQueUnEstandarJuegaAunqueSeHayanAnotado10SiNoSonTodosEstandares() {
 			
 			this.crearEInscribir5Estandares3Solidarios2Concicionales()
-			carlos.inscribirsePartido(partidoInagural)
-			partidoInagural.confirmarEquipo()
+			partidoInagural.inscribiSiPodesA(carlos)
 			
 			Assert.assertTrue(partidoInagural.participantes.contains(carlos))
 		}
@@ -150,8 +115,7 @@ class Testverificartipos {
 		def verificarQueUnSolidarioJuegaAunqueSeHayanAnotado10SiHayOtrosSolidarios() {
 			
 			this.crearEInscribir5Estandares3Solidarios2Concicionales()
-			juan.inscribirsePartido(partidoInagural)
-			partidoInagural.confirmarEquipo()
+			partidoInagural.inscribiSiPodesA(juan)
 			
 			Assert.assertTrue(partidoInagural.participantes.contains(juan))
 		}
@@ -161,10 +125,9 @@ class Testverificartipos {
 			
 			this.crearEInscribir5Estandares3Solidarios2Concicionales()
 			this.crearEInscribir5Estandares3Solidarios2Concicionales()
-			carlos.inscribirsePartido(partidoInagural)
-			juan.inscribirsePartido(partidoInagural)
-			martin.inscribirsePartido(partidoInagural)
-			partidoInagural.confirmarEquipo()
+			partidoInagural.inscribiSiPodesA(carlos)
+			partidoInagural.inscribiSiPodesA(juan)
+			partidoInagural.inscribiSiPodesA(martin)
 			
 			Assert.assertFalse(partidoInagural.participantes.contains(martin))
 			Assert.assertFalse(partidoInagural.participantes.contains(carlos))
@@ -176,36 +139,36 @@ class Testverificartipos {
 			
 			var estandar1 = this.crearEstandar()
 			partidoInagural.comunidad.add(estandar1)
-			estandar1.inscribirsePartido(partidoInagural)
+			partidoInagural.inscribiSiPodesA(estandar1)
 			var estandar2 = this.crearEstandar()
 			partidoInagural.comunidad.add(estandar2)
-			estandar2.inscribirsePartido(partidoInagural)
+			partidoInagural.inscribiSiPodesA(estandar2)
 			var estandar3 = this.crearEstandar()
 			partidoInagural.comunidad.add(estandar3)
-			estandar3.inscribirsePartido(partidoInagural)
+			partidoInagural.inscribiSiPodesA(estandar3)
 			var estandar4 = this.crearEstandar()
 			partidoInagural.comunidad.add(estandar4)
-			estandar4.inscribirsePartido(partidoInagural)
+			partidoInagural.inscribiSiPodesA(estandar4)
 			var estandar6 = this.crearEstandar()
 			partidoInagural.comunidad.add(estandar6)
-			estandar6.inscribirsePartido(partidoInagural)
+			partidoInagural.inscribiSiPodesA(estandar5)
 			
 			var solidario1 = this.crearSolidario()
 			partidoInagural.comunidad.add(solidario1)
-			solidario1.inscribirsePartido(partidoInagural)
+			partidoInagural.inscribiSiPodesA(solidario1)
 			var solidario2 = this.crearSolidario()
 			partidoInagural.comunidad.add(solidario2)
-			solidario2.inscribirsePartido(partidoInagural)
+			partidoInagural.inscribiSiPodesA(solidario2)
 			var solidario3 = this.crearSolidario()
 			partidoInagural.comunidad.add(solidario3)
-			solidario3.inscribirsePartido(partidoInagural)
+			partidoInagural.inscribiSiPodesA(solidario3)
 
 			var condicional1 = this.crearCondicional()
 			partidoInagural.comunidad.add(condicional1)
-			condicional1.inscribirsePartido(partidoInagural)
+			partidoInagural.inscribiSiPodesA(condicional1)
 			var condicional2 = this.crearCondicional()
 			partidoInagural.comunidad.add(condicional2)
-			condicional2.inscribirsePartido(partidoInagural)
+			partidoInagural.inscribiSiPodesA(condicional2)
 			
 		}
 		
