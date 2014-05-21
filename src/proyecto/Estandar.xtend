@@ -7,7 +7,7 @@ class Estandar implements TipoDeSuscripcion {
 	
 	
 	override inscribirSegunTipoDeSuscripcion(Partido partido,Jugador jugador){
-		partido.inscribirEstandarOSolidario(jugador)	
+		partido.inscribiSiPodesA(jugador)	
 	}
 	
 	override prioridad() {
@@ -18,3 +18,4 @@ class Estandar implements TipoDeSuscripcion {
 }
 	
 	
+//AHORA EL MESNSAJE ES POLIMORFICO A LAS 3 CLASES, LO NICO QUE VARIA ES LA PRIORIDAD. QUIZAS SE PODRIA REDUCIR MAS PARA NO REPETIR CODIGO

@@ -2,6 +2,7 @@ package proyecto
 
 import java.util.ArrayList			
 import java.util.List
+import org.junit.Test
 
 class Partido {
 	
@@ -9,8 +10,7 @@ class Partido {
 	@Property double hora
 	@Property List<Jugador> participantes = new ArrayList (10) //Es la lista de participantes en donde si el jugador que se quisiera anotar fuera estandar, directamente el tipo de inscripcion lo anota aca 									
 	@Property List<Jugador> comunidad = new ArrayList(25)
-	
-	//@Property Condicional
+
 	
 	
 	
@@ -26,11 +26,17 @@ class Partido {
 		this.participantes.length
 	}
 	
-	def inscribiSiPodesA(Jugador jugador){
+	def inscribiSiPodesA(Jugador jugador){ //PREGUNTO SI ESTA EN LA LISTA COMUNIDAD Y SI NO ESTA ANOTADO. SI CUMPLE; ORDENO LA LISTA Y VEO SI HAY LUGAR
 		if (this.esDeLaComunidad(jugador) && !this.yaEstaAnotado(jugador)){
 			this.inscribirSiHayLugarA(jugador)
+			this.ordenarListaParticipantes()
+			
 		}
 	}
+	
+	def ordenarListaParticipantes(){
+ 	participantes.sortBy[prioridad]
+ }
 	
 	def yaEstaAnotado(Jugador jugador) {
 		this.participantes.contains(jugador)
@@ -40,9 +46,27 @@ class Partido {
 		if (this.quedaLugar()) {
 			this.participantes.add(jugador)
 		}else{
-			jugador.trataDeInscribirteAlPartido(this)
+			//SI LA LISTA ESTA LLENA,SACO EL DE MENOS PRIORIDAD. 
+			this.sacarElDeMenosPrioridad()
 		}
 	}
+	
+	def sacarElDeMenosPrioridad(){
+		if 
+		(!this.sonTodosEstandar()){
+			this.encontrarElDeMenosPrioridadParaEliminar()
+				
+			
+			
+		
+		
+		}
+		else{
+			//ESTA LLENO EL PARTIDO
+		}
+		}
+		
+	
 	
 	def quedaLugar() {
 		this.cantParticipantes < 10
@@ -52,11 +76,20 @@ class Partido {
 		comunidad.contains(jugador)
 	}
 	
+		
+	def encontrarElDeMenosPrioridadParaEliminar(){
+		val elDeMenosPrioridad = participantes.filter [ unJugador|unJugador.prioridad == 2 ||unJugador.prioridad == 1].sortBy[-prioridad].head
+		participantes.remove(elDeMenosPrioridad)//FILTRO LA LISTA BUSCANDO SOLIDARIOS Y CONDICIONALES. INVIERTO EL ORDEN, PARA QUE ME QUEDEN LOS CONDICIONALES AL PRINCIPIO Y SACO EL PRIMERO. SI NO HAY CONDICIONALES, VA A SACAR EL SOLIDARIO QUE CORRESPONDA
+		
+	}
+	
+
+	
 	
 //	def void organizarParticipantes(){ // La manera de confirmar equipo seria que los jugadores estandar se agregar automaticamente pero tantos los solidarios y los condicionales se debe verificar primero la cantidad de jugadores inscriptos y acorde de eso agregar los jugadores que poseen cada uno en su lista
 //         this.ordenarListaPorTipoSuscripcion()
 //    }
-	
+	/*
 	def inscribirCondicional(Jugador jugador) {
 		var Jugador reemplazado = this.obtenerInscriptoCondicional()
 		this.cambiar(reemplazado, jugador)
@@ -87,6 +120,9 @@ class Partido {
 	def obtenerInscriptoCondicional() {
 		participantes.findFirst(unJugador| unJugador.prioridad() == 2)
 	}
+	* 
+	*  */
+	
 	
 	def cambiar(Jugador saliente, Jugador entrante) {
 		if (saliente != null){
@@ -97,7 +133,7 @@ class Partido {
 		}
 	}
 	
-	def generarInfraccionParaInfractor(Jugador jugador){
+	/* def generarInfraccionParaInfractor(Jugador jugador){
 		jugador.agregarInfraccion
 	
 		
@@ -106,6 +142,8 @@ class Partido {
 	
 	}
 
+* *
+*/
 
 
 	def darDeBajaJugador(Jugador jugador){
@@ -114,30 +152,23 @@ class Partido {
 		this.participantes.remove(jugador)
 		
 	}
+	
+	def sonTodosEstandar(){
+		 val cantidadEstandar =participantes.filter [ jugador | jugador.prioridad == 0].size
+ 		cantidadEstandar == 10
+		
+	
+	
 
+ }	//ACA ME QUEDAN DUDAS SI FUNCIONA, ESTA BUSCANDO LOS QUE TIENEN PRIORIDAD 0, PERO SI NO LO ESCRIBIA ASI ME TIRABA ERROR, HABRIA QUE HACER UN TEST Y VER QUE ONDA
+ 
 
 }
 	
     	
-//   def sonTodosEstandar(){
-//    	this.participantes.filter[jugador | jugador.prioridad() == 0].size() == 10
-//    }	
+	
+ 
         
-//    def ordenarListaPorTipoSuscripcion(){
-    			
-//		participantes.sort(participantes, new Comparator<DataNode>()){
-//    		public int compare(DataNode o1, DataNode o2){
-//    			if(o1.prioridad == o2.prioridad)
-//            return 0;
-//            }
-//   		return o1.prioridad < o2.prioridad ? -1 : 1;
-//    	}
-//	}
 
-//	def eliminarLosSolidariosyCondicionalesSobrantes(){
-//		participantes.removeRange(10,int participantes.size)
-//	}
-//}
-			
 
 
