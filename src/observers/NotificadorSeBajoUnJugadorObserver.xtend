@@ -3,7 +3,7 @@ package observers
 import proyecto.Partido
 import proyecto.Jugador
 
-class NotificadorSeBajoUnJugadorObserver extends NotificadorObserver {
+class NotificadorSeBajoUnJugadorObserver implements NotificadorObserver {
 	
 	override avisarPartidoConfirmado(Partido partido) {}
 	

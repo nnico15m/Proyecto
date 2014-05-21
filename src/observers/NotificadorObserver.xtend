@@ -3,9 +3,9 @@ package observers
 import proyecto.Partido
 import proyecto.Jugador
 
-abstract class NotificadorObserver {
+interface NotificadorObserver {
 	
-	def void avisarPartidoConfirmado(Partido partido){}
+	def void avisarPartidoConfirmado(Partido partido)
 	
 	def void avisarQueSeBajoUno(Partido partido, Jugador jugador)
 	

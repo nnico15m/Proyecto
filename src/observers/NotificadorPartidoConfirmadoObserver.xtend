@@ -3,7 +3,7 @@ package observers
 import proyecto.Partido
 import proyecto.Jugador
 
-class NotificadorPartidoConfirmadoObserver extends NotificadorObserver{
+class NotificadorPartidoConfirmadoObserver implements NotificadorObserver{
 	
 	@Property String mailAdministrador
 	

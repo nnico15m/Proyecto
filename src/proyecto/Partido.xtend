@@ -95,6 +95,27 @@ class Partido {
 			throw new ElCupoEstaLlenoException
 		}
 	}
+	
+	def generarInfraccionParaInfractor(Jugador jugador){
+	
+		
+	
+	
+	
+	}
+
+
+
+	def darDeBajaJugador(Jugador jugador){
+		
+		
+		this.participantes.remove(jugador)
+		
+	}
+
+
+}
+	
     	
 //   def sonTodosEstandar(){
 //    	this.participantes.filter[jugador | jugador.prioridad() == 0].size() == 10
@@ -118,4 +139,3 @@ class Partido {
 			
 
 
-}

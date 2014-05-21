@@ -19,6 +19,28 @@ class Jugador {
 		this.formaDeInscripcion.prioridad()
 	}
 
+def darseDeBajaAPartido(Partido partido){
+		 
+		var Jugador reemplazante 
+		
+		if(reemplazante != null){
+			
+			partido.darDeBajaJugador(this)
+			partido.inscribiSiPodesA(reemplazante) 
+			// reemplazante dar aviso que se anoto a sus amigos observer
+			
+		}else{
+			
+			// partido.darAvisoAlAdministrador() observer
+			partido.darDeBajaJugador(this)
+			partido.generarInfraccionParaInfractor(this)
+			
+			
+			
+		}
+		
+	}
+
 }
 	
 		
