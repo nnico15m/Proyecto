@@ -1,5 +1,6 @@
 package proyecto
-
+import java.util.ArrayList			
+import java.util.List
 
 
 class Jugador {
@@ -9,6 +10,7 @@ class Jugador {
 	@Property double contadorPartidos
 //	@Property int nivelDePrioridad
 	@Property TipoDeSuscripcion formaDeInscripcion
+	@Property List<Infracciones> infracciones = new ArrayList
 
 	
 	def trataDeInscribirteAlPartido(Partido partido){
@@ -40,6 +42,10 @@ def darseDeBajaAPartido(Partido partido){
 		}
 		
 	}
+	
+def agregarInfraccion(){
+	this.infracciones.add(infraccion)
+}
 
 }
 	

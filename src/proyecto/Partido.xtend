@@ -9,6 +9,7 @@ class Partido {
 	@Property double hora
 	@Property List<Jugador> participantes = new ArrayList (10) //Es la lista de participantes en donde si el jugador que se quisiera anotar fuera estandar, directamente el tipo de inscripcion lo anota aca 									
 	@Property List<Jugador> comunidad = new ArrayList(25)
+	
 	//@Property Condicional
 	
 	
@@ -97,6 +98,7 @@ class Partido {
 	}
 	
 	def generarInfraccionParaInfractor(Jugador jugador){
+		jugador.agregarInfraccion
 	
 		
 	
