@@ -10,5 +10,5 @@ interface NotificadorObserver {
 	def void avisarQueSeBajoUno(Partido partido, Jugador jugador)
 	
 	def void avisarALosAmigos(Partido partido, Jugador jugador)
-	
+
 }

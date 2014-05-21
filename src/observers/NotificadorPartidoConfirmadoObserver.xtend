@@ -16,7 +16,4 @@ class NotificadorPartidoConfirmadoObserver implements NotificadorObserver{
 	override avisarQueSeBajoUno(Partido partido, Jugador jugador) {}
 	
 	override avisarALosAmigos(Partido partido, Jugador jugador) {}
-	
-	
-	
 }
