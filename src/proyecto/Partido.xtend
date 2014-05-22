@@ -13,15 +13,7 @@ class Partido {
 	@Property List<NotificadorObserver> observers = new ArrayList
 
 	
-	
-	
-	
-	
 
-// 	def noQuedaLugar() { //verifica que en la lista participantes queda lugar (10 jugadores maximo)
-// 		this.sonTodosEstandar()
-// 	}
-	
 	
 	def cantParticipantes() { // mide la longitud de la lista de participantes
 		this.participantes.length
@@ -31,6 +23,7 @@ class Partido {
 		if (this.esDeLaComunidad(jugador) && !this.yaEstaAnotado(jugador)){
 			this.inscribirSiHayLugarA(jugador)
 			this.ordenarListaParticipantes()
+			jugador.avisarQueSeAnotoASusAmigos()
 			
 		}
 	}
@@ -53,10 +46,17 @@ class Partido {
 	}
 	
 	//Es mejor que sea un mensaje en Jugador
-	def anotarA(Jugador jugador) {
-		participantes.add(jugador)
+	//def anotarA(Jugador jugador) {
+		//participantes.add(jugador)
+		//observers.forEach[obs|obs.avisarALosAmigos(this, jugador)]
+	//}
+	//CUANDO USA ESTO ???
+	
+	def avisarQueSeAnotoASusAmigos(Jugador jugador) {
 		observers.forEach[obs|obs.avisarALosAmigos(this, jugador)]
-	}
+		
+		}
+	
 	
 		def avisarSiYaTenemos10() {
 		if (!this.quedaLugar()){
@@ -99,7 +99,25 @@ class Partido {
 		
 	}
 	
+	def confirmarEquipo (){
+		this.generarFormacion()
+		this.darAvisoAlAdministrador()
+		this.confirmarEquipos()
+	}
 
+	def generarFormacion(){
+		
+	}
+	
+	def confirmarEquipos(){
+		this.anotarAusentesYSancionarlos()
+	}
+	
+	def anotarAusentesYSancionarlos(){
+		var List<Jugador> ausentes
+		ausentes.forEach[jug|jug.generarInfraccionParaInfractor()]
+		
+	}
 	
 	
 //	def void organizarParticipantes(){ // La manera de confirmar equipo seria que los jugadores estandar se agregar automaticamente pero tantos los solidarios y los condicionales se debe verificar primero la cantidad de jugadores inscriptos y acorde de eso agregar los jugadores que poseen cada uno en su lista
@@ -163,11 +181,14 @@ class Partido {
 	def sonTodosEstandar(){
 		 val cantidadEstandar =participantes.filter [ jugador | jugador.prioridad == 0].size
  		cantidadEstandar == 10
-		
 	
 	
 
  }	//ACA ME QUEDAN DUDAS SI FUNCIONA, ESTA BUSCANDO LOS QUE TIENEN PRIORIDAD 0. SI SON 10 ES QUE SON TODOS ESTANDAR
+ 
+def darAvisoAlAdministrador(){
+	//MENSAJE PARA AVISARLE AL OBSERVER
+}
  
  def generarInfraccionParaInfractor(Jugador jugador){
 		

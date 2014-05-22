@@ -14,6 +14,7 @@ class Jugador {
 	@Property List<Jugador> amigos = new ArrayList(25)
 	@Property String mail
 	
+	
 
 	
 	def trataDeInscribirteAlPartido(Partido partido){
@@ -36,9 +37,9 @@ def darseDeBajaAPartido(Partido partido){
 			
 		}else{
 			
-			// partido.darAvisoAlAdministrador() observer
-			//partido.darDeBajaJugador(this)
-			//partido.generarInfraccionParaInfractor(this)
+			partido.darAvisoAlAdministrador()
+			partido.darDeBajaJugador(this)
+			partido.generarInfraccionParaInfractor(this)
 			
 			
 			
