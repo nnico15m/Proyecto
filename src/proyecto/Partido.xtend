@@ -2,7 +2,7 @@ package proyecto
 
 import java.util.ArrayList			
 import java.util.List
-import org.junit.Test
+import observers.NotificadorObserver
 
 class Partido {
 	
@@ -10,6 +10,7 @@ class Partido {
 	@Property double hora
 	@Property List<Jugador> participantes = new ArrayList (10) //Es la lista de participantes en donde si el jugador que se quisiera anotar fuera estandar, directamente el tipo de inscripcion lo anota aca 									
 	@Property List<Jugador> comunidad = new ArrayList(25)
+	@Property List<NotificadorObserver> observers = new ArrayList
 
 	
 	
@@ -51,6 +52,20 @@ class Partido {
 		}
 	}
 	
+	//Es mejor que sea un mensaje en Jugador
+	def anotarA(Jugador jugador) {
+		participantes.add(jugador)
+		observers.forEach[obs|obs.avisarALosAmigos(this, jugador)]
+	}
+	
+		def avisarSiYaTenemos10() {
+		if (!this.quedaLugar()){
+			observers.forEach[obs|obs.avisarPartidoConfirmado(this)]
+		}
+	}
+	
+	
+	
 	def sacarElDeMenosPrioridad(){
 		if 
 		(!this.sonTodosEstandar()){
@@ -62,7 +77,8 @@ class Partido {
 		
 		}
 		else{
-			//ESTA LLENO EL PARTIDO
+			throw new ElCupoEstaLlenoException
+			//ESTA LLENO DE ESTANDAR EL PARTIDO
 		}
 		}
 		
@@ -133,25 +149,16 @@ class Partido {
 		}
 	}
 	
-	/* def generarInfraccionParaInfractor(Jugador jugador){
-		jugador.agregarInfraccion
 	
-		
-	
-	
-	
-	}
 
-* *
-*/
 
 
 	def darDeBajaJugador(Jugador jugador){
 		
-		
+		observers.forEach[obs|obs.avisarQueSeBajoUno(this,jugador)]
 		this.participantes.remove(jugador)
 		
-	}
+		}
 	
 	def sonTodosEstandar(){
 		 val cantidadEstandar =participantes.filter [ jugador | jugador.prioridad == 0].size
@@ -160,8 +167,14 @@ class Partido {
 	
 	
 
- }	//ACA ME QUEDAN DUDAS SI FUNCIONA, ESTA BUSCANDO LOS QUE TIENEN PRIORIDAD 0, PERO SI NO LO ESCRIBIA ASI ME TIRABA ERROR, HABRIA QUE HACER UN TEST Y VER QUE ONDA
+ }	//ACA ME QUEDAN DUDAS SI FUNCIONA, ESTA BUSCANDO LOS QUE TIENEN PRIORIDAD 0. SI SON 10 ES QUE SON TODOS ESTANDAR
  
+ def generarInfraccionParaInfractor(Jugador jugador){
+		
+		
+		
+		
+	}
 
 }
 	

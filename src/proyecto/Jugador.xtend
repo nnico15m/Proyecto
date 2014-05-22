@@ -11,6 +11,9 @@ class Jugador {
 //	@Property int nivelDePrioridad
 	@Property TipoDeSuscripcion formaDeInscripcion
 	@Property List<Infracciones> infracciones = new ArrayList
+	@Property List<Jugador> amigos = new ArrayList(25)
+	@Property String mail
+	
 
 	
 	def trataDeInscribirteAlPartido(Partido partido){
@@ -34,19 +37,17 @@ def darseDeBajaAPartido(Partido partido){
 		}else{
 			
 			// partido.darAvisoAlAdministrador() observer
-			partido.darDeBajaJugador(this)
-			partido.generarInfraccionParaInfractor(this)
+			//partido.darDeBajaJugador(this)
+			//partido.generarInfraccionParaInfractor(this)
 			
 			
 			
 		}
 		
 	}
-	
-def agregarInfraccion(){
-	this.infracciones.add(infraccion)
-}
-
+def sancionateCon(Infracciones infraccion) {
+		infracciones.add(infraccion)
+	}
 }
 	
 		
