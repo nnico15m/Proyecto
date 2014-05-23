@@ -44,6 +44,7 @@ class TestMiosParaVerificar {
 			var Jugador joaquin = new Jugador
 			var Jugador manu = new Jugador
 			
+
 			
 
 @Before	
@@ -99,6 +100,11 @@ class TestMiosParaVerificar {
 			partidoLleno.comunidad.add(p9)
 			partidoLleno.comunidad.add(p10)
 			partidoLleno.comunidad.add(lean)
+			partidoLleno.comunidad.add(p11)
+			partidoLleno.comunidad.add(nico)
+			partidoLleno.comunidad.add(martin)
+			partidoLleno.comunidad.add(carlos)
+			partidoLleno.comunidad.add(juan)
 			partidoLleno.comunidad.add(fermin)
 			partidoLleno.participantes.add(p1)
 			partidoLleno.participantes.add(p2)
@@ -111,38 +117,46 @@ class TestMiosParaVerificar {
 			partidoLleno.participantes.add(p9)
 			partidoLleno.participantes.add(p10)
 			
+			
+			
 
 			
 			
 			}
 
 @Test			
-	def verificarqueParticipanteEstaEnLaComunidad(){
+	def verificarQueUnParticipanteQueEstaEnLaComunidadPuedeInscribirse(){
 		
-		partidoInagural.inscribiSiPodesA(carlos)
+		partidoInagural.inscribirJugador(carlos)
 		Assert.assertTrue(partidoInagural.participantes.contains(carlos))
 		
 		}
-		
+
+
+	
 @Test
  def siSeInscriben2Hay2Participantes(){
- 	partidoInagural.inscribiSiPodesA(martin)
- 	partidoInagural.inscribiSiPodesA(carlos)
+ 		partidoInagural.inscribirJugador(carlos)
+ 	 	partidoInagural.inscribirJugador(martin)
  	
  	
 
 	Assert.assertTrue(partidoInagural.participantes.size ==2)
  }	
  
- 	
 @Test
 def agregoEstandarAUnPartidoLleno(){
 			
-			partidoLleno.inscribiSiPodesA(p11)
+			partidoLleno.inscribirJugador(p11)
 			Assert.assertTrue(partidoLleno.participantes.contains(p11))
-			
+ 
+ 			
 			
 		}
-			
-			
+@Test
+def filtrarLalista(){
+	Assert.assertEquals(6,(partidoLleno.participantes.filter[prioridad ==(0)].size))
+	
+		}
+
 	}
