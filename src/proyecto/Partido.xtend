@@ -22,7 +22,7 @@ class Partido {
 	def inscribiSiPodesA(Jugador jugador){ //PREGUNTO SI ESTA EN LA LISTA COMUNIDAD Y SI NO ESTA ANOTADO. SI CUMPLE; ORDENO LA LISTA Y VEO SI HAY LUGAR
 		if (this.esDeLaComunidad(jugador) && !this.yaEstaAnotado(jugador)){
 			this.inscribirSiHayLugarA(jugador)
-			this.ordenarListaParticipantes()
+		//	this.ordenarListaParticipantes()
 			jugador.avisarQueSeAnotoASusAmigos()
 			
 		}

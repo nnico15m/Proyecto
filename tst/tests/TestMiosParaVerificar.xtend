@@ -50,72 +50,74 @@ class TestMiosParaVerificar {
 @Before	
 		def void init() {
 		
-			carlos.setFormaDeInscripcion(new Estandar)
-			martin.setFormaDeInscripcion(new Condicional)
-			fermin.setFormaDeInscripcion(new Solidaria)
-			juanesteban.setFormaDeInscripcion(new Estandar)
-			juanmartin.setFormaDeInscripcion(new Estandar)
-			lean.setFormaDeInscripcion(new Solidaria)
-			nico.setFormaDeInscripcion(new Estandar)
-			lorenzo.setFormaDeInscripcion(new Estandar)
-			patri.setFormaDeInscripcion(new Solidaria)
-			berna.setFormaDeInscripcion(new Estandar)
-			mati.setFormaDeInscripcion(new Estandar)
-			mateo.setFormaDeInscripcion(new Condicional)
-			p1.setFormaDeInscripcion(new Condicional)
-			p2.setFormaDeInscripcion(new Condicional)
-			p3.setFormaDeInscripcion(new Condicional)
-			p4.setFormaDeInscripcion(new Solidaria)
-			p5.setFormaDeInscripcion(new Condicional)
-			p6.setFormaDeInscripcion(new Estandar)
-			p7.setFormaDeInscripcion(new Estandar)
-			p8.setFormaDeInscripcion(new Estandar)
-			p9.setFormaDeInscripcion(new Estandar)
-			p10.setFormaDeInscripcion(new Estandar)
-			p11.setFormaDeInscripcion(new Estandar)
-			partidoInagural.comunidad.add(carlos)
-			partidoInagural.comunidad.add(martin)
-			partidoInagural.comunidad.add(juan)
-			partidoInagural.comunidad.add(fermin)
-			partidoInagural.comunidad.add(juanesteban)
-			partidoInagural.comunidad.add(juanmartin)
-			partidoInagural.comunidad.add(lean)
-			partidoInagural.comunidad.add(nico)
-			partidoInagural.comunidad.add(berna)
-			partidoInagural.comunidad.add(lorenzo)
-			partidoInagural.comunidad.add(patri)
-			partidoInagural.comunidad.add(fede)
-			partidoInagural.comunidad.add(mati)
-			partidoInagural.comunidad.add(mateo)
-			partidoInagural.comunidad.add(baldomero)
-			partidoInagural.comunidad.add(manu)
-			partidoInagural.comunidad.add(joaquin)
+		
 			partidoLleno.comunidad.add(p1)
 			partidoLleno.comunidad.add(p2)
 			partidoLleno.comunidad.add(p3)
 			partidoLleno.comunidad.add(p4)
 			partidoLleno.comunidad.add(p5)
 			partidoLleno.comunidad.add(p6)
-			partidoLleno.comunidad.add(p8)
-			partidoLleno.comunidad.add(p9)
-			partidoLleno.comunidad.add(p10)
-			partidoLleno.comunidad.add(lean)
-			partidoLleno.comunidad.add(p11)
-			partidoLleno.comunidad.add(nico)
-			partidoLleno.comunidad.add(martin)
-			partidoLleno.comunidad.add(carlos)
-			partidoLleno.comunidad.add(juan)
-			partidoLleno.comunidad.add(fermin)
-			partidoLleno.participantes.add(p1)
-			partidoLleno.participantes.add(p2)
-			partidoLleno.participantes.add(p3)
-			partidoLleno.participantes.add(p4)
-			partidoLleno.participantes.add(p5)
-			partidoLleno.participantes.add(p6)
-			partidoLleno.participantes.add(p7)
-			partidoLleno.participantes.add(p8)
-			partidoLleno.participantes.add(p9)
-			partidoLleno.participantes.add(p10)
+			
+			
+		//	fermin.setFormaDeInscripcion(new Solidaria)
+		//	juanesteban.setFormaDeInscripcion(new Estandar)
+		//	juanmartin.setFormaDeInscripcion(new Estandar)
+		//	lean.setFormaDeInscripcion(new Solidaria)
+		//	nico.setFormaDeInscripcion(new Estandar)
+		//	lorenzo.setFormaDeInscripcion(new Estandar)
+		//	patri.setFormaDeInscripcion(new Solidaria)
+		//	berna.setFormaDeInscripcion(new Estandar)
+		//	mati.setFormaDeInscripcion(new Estandar)
+		//	mateo.setFormaDeInscripcion(new Condicional)
+		
+		//	p7.setFormaDeInscripcion(new Estandar)
+		//	p8.setFormaDeInscripcion(new Estandar)
+		//	p9.setFormaDeInscripcion(new Estandar)
+		//	p10.setFormaDeInscripcion(new Estandar)
+			
+			partidoInagural.comunidad.add(carlos)
+			partidoInagural.comunidad.add(martin)
+		//	partidoInagural.comunidad.add(juan)
+		//	partidoInagural.comunidad.add(fermin)
+		//	partidoInagural.comunidad.add(juanesteban)
+		//	partidoInagural.comunidad.add(juanmartin)
+		//	partidoInagural.comunidad.add(lean)
+		//	partidoInagural.comunidad.add(nico)
+		//	partidoInagural.comunidad.add(berna)
+		//	partidoInagural.comunidad.add(lorenzo)
+		//	partidoInagural.comunidad.add(patri)
+		//	partidoInagural.comunidad.add(fede)
+		//	partidoInagural.comunidad.add(mati)
+		//	partidoInagural.comunidad.add(mateo)
+		//	partidoInagural.comunidad.add(baldomero)
+		//	partidoInagural.comunidad.add(manu)
+		//	partidoInagural.comunidad.add(joaquin)
+		//	partidoLleno.comunidad.add(p1)
+		//	partidoLleno.comunidad.add(p2)
+		//	partidoLleno.comunidad.add(p3)
+		//	partidoLleno.comunidad.add(p4)
+		//	partidoLleno.comunidad.add(p5)
+		//	partidoLleno.comunidad.add(p6)
+		//	partidoLleno.comunidad.add(p8)
+		//	partidoLleno.comunidad.add(p9)
+		//	partidoLleno.comunidad.add(p10)
+		//	partidoLleno.comunidad.add(lean)
+		//	partidoLleno.comunidad.add(p11)
+		//	partidoLleno.comunidad.add(nico)
+		//	partidoLleno.comunidad.add(martin)
+		//	partidoLleno.comunidad.add(carlos)
+		//	partidoLleno.comunidad.add(juan)
+		//	partidoLleno.comunidad.add(fermin)
+		//	partidoLleno.participantes.add(p1)
+		//	partidoLleno.participantes.add(p2)
+		//	partidoLleno.participantes.add(p3)
+		//	partidoLleno.participantes.add(p4)
+		//	partidoLleno.participantes.add(p5)
+		//	partidoLleno.participantes.add(p6)
+		//	partidoLleno.participantes.add(p7)
+		//	partidoLleno.participantes.add(p8)
+		//	partidoLleno.participantes.add(p9)
+		//	partidoLleno.participantes.add(p10)
 			
 			
 			
@@ -126,8 +128,8 @@ class TestMiosParaVerificar {
 
 @Test			
 	def verificarQueUnParticipanteQueEstaEnLaComunidadPuedeInscribirse(){
-		
-		partidoInagural.inscribirJugador(carlos)
+		carlos.setFormaDeInscripcion(new Estandar)
+		partidoInagural.inscribirSiHayLugarA(carlos)
 		Assert.assertTrue(partidoInagural.participantes.contains(carlos))
 		
 		}
@@ -136,8 +138,10 @@ class TestMiosParaVerificar {
 	
 @Test
  def siSeInscriben2Hay2Participantes(){
- 		partidoInagural.inscribirJugador(carlos)
- 	 	partidoInagural.inscribirJugador(martin)
+ 		carlos.setFormaDeInscripcion(new Estandar)
+ 		martin.setFormaDeInscripcion(new Condicional)
+ 		partidoInagural.inscribirSiHayLugarA(carlos)
+ 	 	partidoInagural.inscribirSiHayLugarA(martin)
  	
  	
 
@@ -146,8 +150,8 @@ class TestMiosParaVerificar {
  
 @Test
 def agregoEstandarAUnPartidoLleno(){
-			
-			partidoLleno.inscribirJugador(p11)
+			p11.setFormaDeInscripcion(new Estandar)
+			partidoLleno.inscribirSiHayLugarA(p11)
 			Assert.assertTrue(partidoLleno.participantes.contains(p11))
  
  			
@@ -155,7 +159,14 @@ def agregoEstandarAUnPartidoLleno(){
 		}
 @Test
 def filtrarLalista(){
-	Assert.assertEquals(6,(partidoLleno.participantes.filter[prioridad ==(0)].size))
+			
+		carlos.setFormaDeInscripcion(new Estandar)
+ 		martin.setFormaDeInscripcion(new Condicional)
+ 		partidoInagural.inscribirSiHayLugarA(carlos)
+ 	 	partidoInagural.inscribirSiHayLugarA(martin)
+ 	
+			
+	Assert.assertEquals(1,partidoInagural.participantes.filter[prioridad ==(0)].size)
 	
 		}
 

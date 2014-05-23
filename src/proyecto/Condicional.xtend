@@ -10,7 +10,7 @@ class Condicional implements TipoDeSuscripcion{
 	}
 	
 	override prioridad() {
-		this.prioridad()
+		this.getPrioridad
 	}
 			
 } 

@@ -10,7 +10,7 @@ class Solidaria implements TipoDeSuscripcion {
 	}
 	
 	override prioridad() {
-		this.prioridad()
+		this.getPrioridad
 	}
 
 
