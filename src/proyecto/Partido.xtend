@@ -28,9 +28,9 @@ class Partido {
 		}
 	}
 	
-	def ordenarListaParticipantes(){
- 	participantes.sortBy[prioridad]
- }
+//	def ordenarListaParticipantes(){
+ //	participantes.sortBy[prioridad]
+ //}
 	
 	def yaEstaAnotado(Jugador jugador) {
 		this.participantes.contains(jugador)
