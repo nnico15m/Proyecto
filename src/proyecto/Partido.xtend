@@ -42,6 +42,7 @@ class Partido {
 		}else{
 			//SI LA LISTA ESTA LLENA,SACO EL DE MENOS PRIORIDAD. 
 			this.sacarElDeMenosPrioridad()
+			this.participantes.add(jugador)
 		}
 	}
 	
@@ -70,7 +71,7 @@ class Partido {
 		if 
 		(!this.sonTodosEstandar()){
 			this.encontrarElDeMenosPrioridadParaEliminar()
-				
+					
 			
 			
 		
@@ -94,7 +95,7 @@ class Partido {
 	
 		
 	def encontrarElDeMenosPrioridadParaEliminar(){
-		val elDeMenosPrioridad = participantes.filter [ unJugador|unJugador.prioridad == 2 ||unJugador.prioridad == 1].sortBy[-prioridad].head
+		val elDeMenosPrioridad = participantes.filter [ prioridad == 2 ||prioridad == 1].sortBy[-prioridad].head
 		participantes.remove(elDeMenosPrioridad)//FILTRO LA LISTA BUSCANDO SOLIDARIOS Y CONDICIONALES. INVIERTO EL ORDEN, PARA QUE ME QUEDEN LOS CONDICIONALES AL PRINCIPIO Y SACO EL PRIMERO. SI NO HAY CONDICIONALES, VA A SACAR EL SOLIDARIO QUE CORRESPONDA
 		
 	}

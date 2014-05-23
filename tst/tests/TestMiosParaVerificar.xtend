@@ -30,19 +30,7 @@ class TestMiosParaVerificar {
 			var Jugador martin = new Jugador
 			var Jugador juan = new Jugador
 			var Jugador fermin = new Jugador
-			var Jugador juanesteban = new Jugador
-			var Jugador juanmartin = new Jugador
-			var Jugador lean = new Jugador
-			var Jugador nico = new Jugador
-			var Jugador lorenzo = new Jugador
-			var Jugador berna = new Jugador
-			var Jugador patri = new Jugador
-			var Jugador fede = new Jugador
-			var Jugador mati = new Jugador
-			var Jugador mateo = new Jugador
-			var Jugador baldomero = new Jugador
-			var Jugador joaquin = new Jugador
-			var Jugador manu = new Jugador
+
 			
 
 			
@@ -92,32 +80,23 @@ class TestMiosParaVerificar {
 		//	partidoInagural.comunidad.add(baldomero)
 		//	partidoInagural.comunidad.add(manu)
 		//	partidoInagural.comunidad.add(joaquin)
-		//	partidoLleno.comunidad.add(p1)
-		//	partidoLleno.comunidad.add(p2)
-		//	partidoLleno.comunidad.add(p3)
-		//	partidoLleno.comunidad.add(p4)
-		//	partidoLleno.comunidad.add(p5)
-		//	partidoLleno.comunidad.add(p6)
-		//	partidoLleno.comunidad.add(p8)
-		//	partidoLleno.comunidad.add(p9)
-		//	partidoLleno.comunidad.add(p10)
-		//	partidoLleno.comunidad.add(lean)
-		//	partidoLleno.comunidad.add(p11)
-		//	partidoLleno.comunidad.add(nico)
-		//	partidoLleno.comunidad.add(martin)
-		//	partidoLleno.comunidad.add(carlos)
-		//	partidoLleno.comunidad.add(juan)
-		//	partidoLleno.comunidad.add(fermin)
-		//	partidoLleno.participantes.add(p1)
-		//	partidoLleno.participantes.add(p2)
-		//	partidoLleno.participantes.add(p3)
-		//	partidoLleno.participantes.add(p4)
-		//	partidoLleno.participantes.add(p5)
-		//	partidoLleno.participantes.add(p6)
-		//	partidoLleno.participantes.add(p7)
-		//	partidoLleno.participantes.add(p8)
-		//	partidoLleno.participantes.add(p9)
-		//	partidoLleno.participantes.add(p10)
+			partidoLleno.comunidad.add(p1)
+			partidoLleno.comunidad.add(p2)
+			partidoLleno.comunidad.add(p3)
+			partidoLleno.comunidad.add(p4)
+			partidoLleno.comunidad.add(p5)
+			partidoLleno.comunidad.add(p6)
+			partidoLleno.comunidad.add(p8)
+			partidoLleno.comunidad.add(p9)
+			partidoLleno.comunidad.add(p10)
+	
+			partidoLleno.comunidad.add(p11)
+			
+			partidoLleno.comunidad.add(martin)
+			partidoLleno.comunidad.add(carlos)
+			partidoLleno.comunidad.add(juan)
+			partidoLleno.comunidad.add(fermin)
+			
 			
 			
 			
@@ -150,7 +129,27 @@ class TestMiosParaVerificar {
  
 @Test
 def agregoEstandarAUnPartidoLleno(){
+			p2.setFormaDeInscripcion(new Estandar)
+			p1.setFormaDeInscripcion(new Estandar)
+			p3.setFormaDeInscripcion(new Solidaria)
+			p4.setFormaDeInscripcion(new Condicional)
+			p5.setFormaDeInscripcion(new Estandar)
+			p6.setFormaDeInscripcion(new Estandar)
+			p7.setFormaDeInscripcion(new Estandar)
+			p8.setFormaDeInscripcion(new Estandar)
+			p9.setFormaDeInscripcion(new Estandar)
+			p10.setFormaDeInscripcion(new Estandar)
 			p11.setFormaDeInscripcion(new Estandar)
+			partidoLleno.participantes.add(p1)
+			partidoLleno.participantes.add(p2)
+			partidoLleno.participantes.add(p3)
+			partidoLleno.participantes.add(p4)
+			partidoLleno.participantes.add(p5)
+			partidoLleno.participantes.add(p6)
+			partidoLleno.participantes.add(p7)
+			partidoLleno.participantes.add(p8)
+			partidoLleno.participantes.add(p9)
+			partidoLleno.participantes.add(p10)
 			partidoLleno.inscribirSiHayLugarA(p11)
 			Assert.assertTrue(partidoLleno.participantes.contains(p11))
  
@@ -169,5 +168,34 @@ def filtrarLalista(){
 	Assert.assertEquals(1,partidoInagural.participantes.filter[prioridad ==(0)].size)
 	
 		}
+		
+@Test
+def verificarQueSacaElDeMenosPrioridad(){
+	p2.setFormaDeInscripcion(new Estandar)
+			p1.setFormaDeInscripcion(new Estandar)
+			p3.setFormaDeInscripcion(new Solidaria)
+			p4.setFormaDeInscripcion(new Condicional)
+			p5.setFormaDeInscripcion(new Estandar)
+			p6.setFormaDeInscripcion(new Estandar)
+			p7.setFormaDeInscripcion(new Estandar)
+			p8.setFormaDeInscripcion(new Estandar)
+			p9.setFormaDeInscripcion(new Estandar)
+			p10.setFormaDeInscripcion(new Estandar)
+			p11.setFormaDeInscripcion(new Estandar)
+			partidoLleno.participantes.add(p1)
+			partidoLleno.participantes.add(p2)
+			partidoLleno.participantes.add(p3)
+			partidoLleno.participantes.add(p4)
+			partidoLleno.participantes.add(p5)
+			partidoLleno.participantes.add(p6)
+			partidoLleno.participantes.add(p7)
+			partidoLleno.participantes.add(p8)
+			partidoLleno.participantes.add(p9)
+			partidoLleno.participantes.add(p10)
+			partidoLleno.inscribirSiHayLugarA(p11)
+			Assert.assertFalse(partidoLleno.participantes.contains(p4))
+			
+	
+}
 
 	}
