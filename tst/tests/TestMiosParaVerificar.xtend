@@ -171,7 +171,7 @@ def filtrarLalista(){
 		
 @Test
 def verificarQueSacaElDeMenosPrioridad(){
-	p2.setFormaDeInscripcion(new Estandar)
+			p2.setFormaDeInscripcion(new Estandar)
 			p1.setFormaDeInscripcion(new Estandar)
 			p3.setFormaDeInscripcion(new Solidaria)
 			p4.setFormaDeInscripcion(new Condicional)
@@ -197,5 +197,69 @@ def verificarQueSacaElDeMenosPrioridad(){
 			
 	
 }
+
+@Test 
+
+def verificoSiMeSacaAlCondicionalQueYoQuieroQueEseSeaElPrimeroQueSeaNota(){
+	
+			p2.setFormaDeInscripcion(new Estandar)
+			p1.setFormaDeInscripcion(new Condicional)
+			p3.setFormaDeInscripcion(new Solidaria)
+			p4.setFormaDeInscripcion(new Condicional)
+			p5.setFormaDeInscripcion(new Estandar)
+			p6.setFormaDeInscripcion(new Estandar)
+			p7.setFormaDeInscripcion(new Estandar)
+			p8.setFormaDeInscripcion(new Condicional)
+			p9.setFormaDeInscripcion(new Estandar)
+			p10.setFormaDeInscripcion(new Estandar)
+			p11.setFormaDeInscripcion(new Estandar)
+			partidoLleno.participantes.add(p1)
+			partidoLleno.participantes.add(p2)
+			partidoLleno.participantes.add(p3)
+			partidoLleno.participantes.add(p4)
+			partidoLleno.participantes.add(p5)
+			partidoLleno.participantes.add(p6)
+			partidoLleno.participantes.add(p7)
+			partidoLleno.participantes.add(p8)
+			partidoLleno.participantes.add(p9)
+			partidoLleno.participantes.add(p10)
+			partidoLleno.inscribirSiHayLugarA(p11)
+	
+	
+	Assert.assertFalse(partidoLleno.participantes.contains(p1))
+	
+	
+	
+}
+
+@Test
+def SiAgrego1SolidarioA1PartidoLlenoSacaElCondicional(){
+			p2.setFormaDeInscripcion(new Estandar)
+			p1.setFormaDeInscripcion(new Estandar)
+			p3.setFormaDeInscripcion(new Solidaria)
+			p4.setFormaDeInscripcion(new Condicional)
+			p5.setFormaDeInscripcion(new Condicional)
+			p6.setFormaDeInscripcion(new Estandar)
+			p7.setFormaDeInscripcion(new Estandar)
+			p8.setFormaDeInscripcion(new Estandar)
+			p9.setFormaDeInscripcion(new Estandar)
+			p10.setFormaDeInscripcion(new Estandar)
+			p11.setFormaDeInscripcion(new Solidaria)
+			partidoLleno.participantes.add(p1)
+			partidoLleno.participantes.add(p2)
+			partidoLleno.participantes.add(p3)
+			partidoLleno.participantes.add(p4)
+			partidoLleno.participantes.add(p5)
+			partidoLleno.participantes.add(p6)
+			partidoLleno.participantes.add(p7)
+			partidoLleno.participantes.add(p8)
+			partidoLleno.participantes.add(p9)
+			partidoLleno.participantes.add(p10)
+			partidoLleno.inscribirSiHayLugarA(p11)
+			Assert.assertFalse(partidoLleno.participantes.contains(p4))
+			Assert.assertTrue(partidoLleno.participantes.contains(p11))
+}
+
+
 
 	}
