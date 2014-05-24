@@ -25,7 +25,7 @@ class Jugador {
 		this.formaDeInscripcion.prioridad()
 	}
 
-def darseDeBajaAPartido(Partido partido){
+def void darseDeBajaAPartido(Partido partido){
 		 
 		var Jugador reemplazante 
 		
