@@ -260,6 +260,19 @@ def SiAgrego1SolidarioA1PartidoLlenoSacaElCondicional(){
 			Assert.assertTrue(partidoLleno.participantes.contains(p11))
 }
 
+@Test
+def doyDeBajaAUnJugadoryDejaDeEstarEnLaLista(){
+	p9.setFormaDeInscripcion(new Estandar)
+	p9.trataDeInscribirteAlPartido(partidoLleno)
+	Assert.assertTrue(partidoLleno.participantes.contains(p9))
+	p9.darseDeBajaAPartido(partidoLleno)
+	Assert.assertFalse(partidoLleno.participantes.contains(p9))
+	
+	
+	
+
+}
+
 
 
 	}
