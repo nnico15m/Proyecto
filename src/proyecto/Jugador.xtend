@@ -2,6 +2,7 @@ package proyecto
 import java.util.ArrayList			
 import java.util.List
 import observers.StubMensajero
+import proyecto.Partido
 
 class Jugador {
 	
@@ -14,13 +15,12 @@ class Jugador {
 	@Property List<Jugador> amigos = new ArrayList(25)
 	@Property String mail
 	@Property StubMensajero mensajero
+	@Property Jugador reemplazante
+	
 	
 	
 
 	
-	def trataDeInscribirteAlPartido(Partido partido){
-		this.formaDeInscripcion.inscribirSegunTipoDeSuscripcion(partido,this)
-	}
 	
 	def prioridad() {
 		this.formaDeInscripcion.prioridad()
@@ -28,22 +28,21 @@ class Jugador {
 
 	def void darseDeBajaAPartido(Partido partido){
 		 
-		var Jugador reemplazante 
-		
-		if(reemplazante != null){
-			
-			partido.darDeBajaJugador(this)
-			partido.inscribiSiPodesA(reemplazante) 
-			// reemplazante dar aviso que se anoto a sus amigos observer
-			
-		}else{
-
-			partido.darDeBajaJugador(this)
-			partido.generarInfraccionParaInfractor(this)
+		partido.darDeBajaJugador(this)
+		partido.generarInfraccionParaInfractor(this) 
+					
 			
 		}
 		
+	
+	
+	def void darseDeBajaAPartidoTeniendoReemplazante(Partido partido, Jugador reemplazante){
+		
+		partido.darDeBajaJugador(this)
+		partido.inscribiSiPodesA(reemplazante)
 	}
+	
+	
 	
 	def sancionateCon(Infracciones infraccion) {
 		infracciones.add(infraccion)

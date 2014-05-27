@@ -6,9 +6,7 @@ class Estandar implements TipoDeSuscripcion {
 	
 	
 	
-	override inscribirSegunTipoDeSuscripcion(Partido partido,Jugador jugador){
-		partido.inscribiSiPodesA(jugador)	
-	}
+	
 	
 	override prioridad() {
 		this.getPrioridad
