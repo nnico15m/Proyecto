@@ -139,6 +139,14 @@ class TestMiosParaVerificar {
  	 	Assert.assertTrue(partidoInagural.participantes.size ==2)
  }
  
+@Test (expected = NoSePudoAnotarException)
+	def unJugadorNoSePuedeAnotarDosVecesAlMismoPartido(){
+		carlos.setFormaDeInscripcion(new Estandar)
+		partidoInagural.inscribiSiPodesA(carlos)
+		carlos.setFormaDeInscripcion(new Solidaria)
+		partidoInagural.inscribiSiPodesA(carlos)
+	}
+ 
 @Test
 def agregoEstandarAUnPartidoLleno(){
 			
