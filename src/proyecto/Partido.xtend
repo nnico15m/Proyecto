@@ -44,7 +44,7 @@ class Partido {
 			this.avisarSiYaTenemos10()
 		}else{
 			//SI LA LISTA ESTA LLENA,SACO EL DE MENOS PRIORIDAD. 
-			this.sacarElDeMenosPrioridad()
+			this.sacarElDeMenosPrioridad(jugador)
 			this.anotaA(jugador)
 		}
 	}
@@ -62,15 +62,19 @@ class Partido {
 	
 	
 	
-	def sacarElDeMenosPrioridad(){
+	def sacarElDeMenosPrioridad(Jugador jugador){
 		
-		if (!this.sonTodosEstandar()){
+		if (!this.todosTienenMayorPrioridadQue(jugador)){
 			this.encontrarElDeMenosPrioridadParaEliminar()
 		}
 		else{
 			throw new ElCupoEstaLlenoException
 			//ESTA LLENO DE ESTANDAR EL PARTIDO
 		}
+	}
+	
+	def todosTienenMayorPrioridadQue(Jugador jugador) {
+		this.participantes.forall[anotado| anotado.prioridad < jugador.prioridad]
 	}
 		
 	
@@ -176,12 +180,12 @@ class Partido {
 		
 	}
 	
-	def sonTodosEstandar(){
+/* 	def sonTodosEstandar(){
 		val cantidadEstandar = participantes.filter [ jugador | jugador.prioridad == 0].size
  		cantidadEstandar == 10
 	
 	}	//ACA ME QUEDAN DUDAS SI FUNCIONA, ESTA BUSCANDO LOS QUE TIENEN PRIORIDAD 0. SI SON 10 ES QUE SON TODOS ESTANDAR
-
+*/
  
  	def generarInfraccionParaInfractor(Jugador jugador){
 		

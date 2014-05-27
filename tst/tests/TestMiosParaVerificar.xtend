@@ -9,6 +9,8 @@ import proyecto.Estandar
 import proyecto.Solidaria
 import proyecto.Condicionalimport observers.NotificadorDeAdministradorObserver
 import observers.StubMensajero
+import proyecto.ElCupoEstaLlenoException
+import proyecto.NoSePudoAnotarException
 
 class TestMiosParaVerificar {
 
@@ -121,7 +123,11 @@ class TestMiosParaVerificar {
 		
 	}
 
-
+@Test (expected = NoSePudoAnotarException)
+	def unParticipanteQueNoEstaEnLaComunidadNoPuedeInscribirse(){
+		p7.setFormaDeInscripcion(new Estandar)
+		partidoInagural.inscribiSiPodesA(p7)
+	}
 	
 @Test
  def siSeInscriben2Hay2Participantes(){
@@ -129,10 +135,9 @@ class TestMiosParaVerificar {
  		martin.setFormaDeInscripcion(new Condicional)
  		partidoInagural.inscribiSiPodesA(carlos)
  		partidoInagural.inscribiSiPodesA(martin)
- 	 	
- 	 	
- 		Assert.assertTrue(partidoInagural.participantes.size ==2)
- }	
+ 		
+ 	 	Assert.assertTrue(partidoInagural.participantes.size ==2)
+ }
  
 @Test
 def agregoEstandarAUnPartidoLleno(){
@@ -220,6 +225,23 @@ def SiAgrego1SolidarioA1PartidoLlenoSacaElCondicional(){
 			Assert.assertFalse(partidoLleno.participantes.contains(p4))
 			Assert.assertTrue(partidoLleno.participantes.contains(p11))
 }
+
+@Test (expected = ElCupoEstaLlenoException)
+def SiAgrego1CondicionalAlPartidoLlenoConEstandaresYSolidariosNoLoAnota(){
+			p2.setFormaDeInscripcion(new Estandar)
+			p1.setFormaDeInscripcion(new Estandar)
+			p3.setFormaDeInscripcion(new Solidaria)
+			p4.setFormaDeInscripcion(new Solidaria)
+			p5.setFormaDeInscripcion(new Solidaria)
+			p6.setFormaDeInscripcion(new Estandar)
+			p7.setFormaDeInscripcion(new Estandar)
+			p8.setFormaDeInscripcion(new Estandar)
+			p9.setFormaDeInscripcion(new Estandar)
+			p10.setFormaDeInscripcion(new Estandar)
+			p11.setFormaDeInscripcion(new Condicional)
+			this.anotarALos11PAlPartidoLleno()
+}
+
 
 @Test
 def doyDeBajaAUnJugadorYDejaDeEstarEnLaLista(){
