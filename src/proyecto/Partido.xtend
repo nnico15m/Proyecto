@@ -25,6 +25,9 @@ class Partido {
 			this.inscribirSiHayLugarA(jugador)
 		//	this.ordenarListaParticipantes()	
 		}
+		else{
+			throw new NoSePudoAnotarException
+		}
 	}
 	
 //	def ordenarListaParticipantes(){

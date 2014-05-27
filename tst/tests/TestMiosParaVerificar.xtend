@@ -128,7 +128,8 @@ class TestMiosParaVerificar {
  		carlos.setFormaDeInscripcion(new Estandar)
  		martin.setFormaDeInscripcion(new Condicional)
  		partidoInagural.inscribiSiPodesA(carlos)
- 	 	partidoInagural.inscribiSiPodesA(martin)
+ 		partidoInagural.inscribiSiPodesA(martin)
+ 	 	
  	 	
  		Assert.assertTrue(partidoInagural.participantes.size ==2)
  }	
@@ -254,6 +255,7 @@ def anotarA10AlPartidoLleno(){
 			partidoLleno.inscribiSiPodesA(p8)
 			partidoLleno.inscribiSiPodesA(p9)
 			partidoLleno.inscribiSiPodesA(p10)
+			
 }
 
 @Test
