@@ -9,8 +9,8 @@ import proyecto.Estandar
 import proyecto.Solidaria
 import proyecto.Condicionalimport observers.NotificadorDeAdministradorObserver
 import observers.StubMensajero
-import proyecto.ElCupoEstaLlenoException
-import proyecto.NoSePudoAnotarException
+import excepciones.ElCupoEstaLlenoException
+import excepciones.NoSePudoAnotarException
 
 class TestMiosParaVerificar {
 

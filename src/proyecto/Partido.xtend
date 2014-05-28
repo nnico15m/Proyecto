@@ -3,6 +3,8 @@ package proyecto
 import java.util.ArrayList			
 import java.util.List
 import observers.NotificadorDeAdministradorObserver
+import excepciones.NoSePudoAnotarException
+import excepciones.ElCupoEstaLlenoException
 
 class Partido {
 	
@@ -22,17 +24,18 @@ class Partido {
 	// ESTE ES EL MÉTODO QUE USAMOS PARA INSCRIBIR JUGADORES		
 	def void inscribiSiPodesA(Jugador jugador){ //PREGUNTO SI ESTA EN LA LISTA COMUNIDAD Y SI NO ESTA ANOTADO. SI CUMPLE; ORDENO LA LISTA Y VEO SI HAY LUGAR
 		if (this.esDeLaComunidad(jugador) && !this.yaEstaAnotado(jugador)){
+			this.ordenarListaParticipantes()
 			this.inscribirSiHayLugarA(jugador)
-		//	this.ordenarListaParticipantes()	
+				
 		}
 		else{
 			throw new NoSePudoAnotarException
 		}
 	}
 	
-//	def ordenarListaParticipantes(){
- //	participantes.sortBy[prioridad]
- //}
+def ordenarListaParticipantes(){
+ participantes.sortBy[prioridad]
+ }
  
  	def reinscribiA(Jugador jugador, TipoDeSuscripcion suscripcion){
  		jugador.setFormaDeInscripcion(suscripcion)

@@ -1,4 +1,4 @@
-package proyecto
+package excepciones
 
 class NoSePudoAnotarException extends RuntimeException {
 	
