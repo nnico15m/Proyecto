@@ -13,7 +13,7 @@ class NotificadorDeAdministradorObserver {
 	
 	def avisarQueSeBajoUno() {
 		
-		mensajero.mandaMail(mailAdministrador, "Se baj— uno")
+		mensajero.mandaMail(mailAdministrador, "Se bajo uno")
 		
 	}
 	

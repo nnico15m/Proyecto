@@ -262,11 +262,51 @@ def doyDeBajaAUnJugadorYDejaDeEstarEnLaLista(){
 }
 
 @Test
-def cuandoUnoSeDaDeBajaAvisoAlAdministrador(){
+def doyDeBajaAUnJugadorProponiendoReemplazanteSeEfectuaElCambio(){
+	carlos.setFormaDeInscripcion(new Estandar)
+ 	martin.setFormaDeInscripcion(new Condicional)
+ 	partidoInagural.inscribiSiPodesA(carlos)
+ 	carlos.darseDeBajaAPartidoTeniendoReemplazante(partidoInagural, martin)
+ 		
+ 	Assert.assertTrue(partidoInagural.participantes.contains(martin))
+ 	Assert.assertFalse(partidoInagural.participantes.contains(carlos))
+}
+
+@Test
+def reinscribirAUnJugadorEstandarConUnaSuscripcionCondicional(){
+	carlos.setFormaDeInscripcion(new Estandar)
+	partidoInagural.inscribiSiPodesA(carlos)
+	partidoInagural.reinscribiA(carlos, new Condicional)
+	
+	Assert.assertTrue(partidoInagural.participantes.exists[jugador| jugador.prioridad == 2])
+	Assert.assertFalse(partidoInagural.participantes.exists[jugador| jugador.prioridad == 0])
+}
+
+@Test
+def siUnJugadorSeDaDeBajaSinProponerReemplazanteSeLoSanciona(){
+	carlos.setFormaDeInscripcion(new Estandar)
+	partidoInagural.inscribiSiPodesA(carlos)
+	carlos.darseDeBajaAPartido(partidoInagural)
+	
+	Assert.assertTrue(carlos.infracciones.length == 1)
+}
+
+@Test
+def cuandoUnoSeDaDeBajaYHabia10ParticipantesAvisoAlAdministrador(){
+	p1.setFormaDeInscripcion(new Estandar)
+	p2.setFormaDeInscripcion(new Estandar)
+	p3.setFormaDeInscripcion(new Solidaria)
+	p4.setFormaDeInscripcion(new Condicional)
+	p5.setFormaDeInscripcion(new Estandar)
+	p6.setFormaDeInscripcion(new Estandar)
+	p7.setFormaDeInscripcion(new Estandar)
+	p8.setFormaDeInscripcion(new Estandar)
 	p9.setFormaDeInscripcion(new Estandar)
-	partidoLleno.inscribiSiPodesA(p9)
+	p10.setFormaDeInscripcion(new Estandar)
+	this.anotarA10AlPartidoLleno()
 	p9.darseDeBajaAPartido(partidoLleno)
-	Assert.assertTrue(this.mensajero.cantMailsEnviadosA("adminlleno@gmail.com") == 1)
+	
+	Assert.assertTrue(this.mensajero.cantMailsEnviadosConMotivoDe("Se bajo uno") == 1)
 }
 
 def anotarALos11PAlPartidoLleno(){

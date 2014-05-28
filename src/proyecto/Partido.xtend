@@ -33,6 +33,11 @@ class Partido {
 //	def ordenarListaParticipantes(){
  //	participantes.sortBy[prioridad]
  //}
+ 
+ 	def reinscribiA(Jugador jugador, TipoDeSuscripcion suscripcion){
+ 		jugador.setFormaDeInscripcion(suscripcion)
+ 		jugador.darseDeBajaAPartidoTeniendoReemplazante(this, jugador)
+ 	}
 	
 	def yaEstaAnotado(Jugador jugador) {
 		this.participantes.contains(jugador)
@@ -54,7 +59,7 @@ class Partido {
 		jugador.fuisteAnotadoAlPartido()
 	}
 	
-		def avisarSiYaTenemos10() {
+	def avisarSiYaTenemos10() {
 		if (!this.quedaLugar()){
 			observer.avisarPartidoConfirmado()
 		}
@@ -175,9 +180,15 @@ class Partido {
 
 	def darDeBajaJugador(Jugador jugador){
 		
-		observer.avisarQueSeBajoUno()
+		this.avisarSiDejoDeEstarConfirmado()
 		this.participantes.remove(jugador)
 		
+	}
+	
+	def avisarSiDejoDeEstarConfirmado() {
+		if (!this.quedaLugar){
+			observer.avisarQueSeBajoUno()
+		}
 	}
 	
 /* 	def sonTodosEstandar(){
