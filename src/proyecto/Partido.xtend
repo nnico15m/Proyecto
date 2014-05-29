@@ -37,6 +37,8 @@ def ordenarListaParticipantes(){
  participantes.sortBy[prioridad]
  }
  
+ // Debemos modificar este reinscribir
+ 
  	def reinscribiA(Jugador jugador, TipoDeSuscripcion suscripcion){
  		jugador.setFormaDeInscripcion(suscripcion)
  		jugador.darseDeBajaAPartidoTeniendoReemplazante(this, jugador)
@@ -207,6 +209,13 @@ def ordenarListaParticipantes(){
 		jugador.sancionateCon(infraccion)
 		
 	}
+	
+	def verificarCualesAgregoALaComunidadDeLosPropuestos(){
+		this.pendientesDeComunidad.forEach[jug|jug.tomarDecisionSiLoAgrego()]
+		
+		
+	}
+	
 
 }
 	

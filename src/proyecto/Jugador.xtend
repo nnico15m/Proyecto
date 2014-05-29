@@ -3,6 +3,9 @@ import java.util.ArrayList
 import java.util.List
 import observers.StubMensajero
 import proyecto.Partido
+import builders.CreadorNuevoJugadorBuilder
+
+
 
 class Jugador {
 	
@@ -16,7 +19,7 @@ class Jugador {
 	@Property String mail
 	@Property StubMensajero mensajero
 	@Property Jugador reemplazante
-	
+	@Property CreadorNuevoJugadorBuilder creadorJugador
 	
 	
 
@@ -25,6 +28,8 @@ class Jugador {
 	def prioridad() {
 		this.formaDeInscripcion.prioridad()
 	}
+
+// Hay que modificar esto 
 
 	def void darseDeBajaAPartido(Partido partido){
 		 
@@ -51,6 +56,13 @@ class Jugador {
 	def fuisteAnotadoAlPartido() {
 		amigos.forEach[amigo| mensajero.mandaMail(amigo.mail, "Voy a jugar un partido")]
 	}
+	
+	def proponerUnAmigoParaAgregarALaComunidad(Partido partido){
+		var amigo = new Jugador
+		
+		creadorJugador.crearNuevoParticipante(amigo)
+		
+	}	
 	
 }
 	
