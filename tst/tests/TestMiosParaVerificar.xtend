@@ -400,11 +400,10 @@ def unJugadorCalificaAOtro(){
 	Assert.assertTrue(carlos.calificaciones.size ==1)
 	Assert.assertTrue(carlos.calificaciones.filter[descripcion.contains('muerto')].size ==1)
 	
-		
 }
 
 @Test
-def unJugadorCalificaATodosSuspendientes(){
+def unJugadorCalificaATodosSusPendientes(){
 	carlos.agregarALaListaDependientesDeCalificar(martin)
 	carlos.agregarALaListaDependientesDeCalificar(fermin)
 	carlos.agregarALaListaDependientesDeCalificar(juan)
@@ -414,9 +413,19 @@ def unJugadorCalificaATodosSuspendientes(){
 	Assert.assertTrue(fermin.calificaciones.size ==1)
 }
 	
-/* @Test
+@Test
 def unJugadorCalificaATodosLosQueJugaronUnPartido(){
+	carlos.setFormaDeInscripcion(new Estandar)
+	juan.setFormaDeInscripcion(new Estandar)
+	martin.setFormaDeInscripcion(new Estandar)
+	partidoInagural.inscribiSiPodesA(carlos)
+	partidoInagural.inscribiSiPodesA(juan)
+	partidoInagural.inscribiSiPodesA(martin)
+	partidoInagural.seJugoElPartido()
 	
+	Assert.assertTrue(carlos.pendientesDeCalificar.length == 2)
+	Assert.assertTrue(juan.pendientesDeCalificar.length == 2)
+	Assert.assertTrue(martin.pendientesDeCalificar.length == 2)
 }	
-*/
+
 }

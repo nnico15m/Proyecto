@@ -57,8 +57,8 @@ class Jugador {
 	}
 	
 
-	def calificarYCriticarACadaJug(Partido partido){
-		val listaAux = partido.participantes.filter[jugador|jugador != this]//UN JUGADOR NO DEBE CALIFICARSE A SI MISMO
+	def calificarYCriticarACadaJug(List<Jugador> jugadores){
+		var listaAux = jugadores.filter[jugador|jugador != this]//UN JUGADOR NO DEBE CALIFICARSE A SI MISMO
 		listaAux.forEach[jug|this.agregarALaListaDependientesDeCalificar(jug)]
 			
 	}
@@ -71,9 +71,14 @@ class Jugador {
 	def generarUnaCalificacionParaEseJug(Jugador otroJug, int nota, String descripcion){
 		this.pendientesDeCalificar.remove(otroJug)
 		var nuevaCalificacion = new Calificaciones(nota,descripcion)
-		otroJug.calificaciones.add(nuevaCalificacion)
+		otroJug.agregarCalificacion(nuevaCalificacion)
 		
 	}
+	
+	def agregarCalificacion(Calificaciones calificacion) {
+		this.calificaciones.add(calificacion)
+	}
+	
 }
 	
 		

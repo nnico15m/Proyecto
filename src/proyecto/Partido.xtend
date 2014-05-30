@@ -217,8 +217,12 @@ def ordenarListaParticipantes(){
 		this.comunidad = comunidad
 	}
 	
+	def seJugoElPartido(){
+		this.seCalificanLosJugadoresDespuesDeJugarElPartido()	
+	}
+	
 	def seCalificanLosJugadoresDespuesDeJugarElPartido(){
-		this.participantes.forEach[jug|jug.calificarYCriticarACadaJug(this)]
+		this.participantes.forEach[jug|jug.calificarYCriticarACadaJug(participantes)]
 	}
 
 }
