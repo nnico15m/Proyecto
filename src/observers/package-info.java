@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * @author Laik
- *
- */
-package observers;
