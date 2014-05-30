@@ -3,6 +3,7 @@ import java.util.ArrayList
 import java.util.List
 import observers.StubMensajero
 import proyecto.Partido
+import proyecto.Calificaciones
 
 
 
@@ -19,6 +20,7 @@ class Jugador {
 	@Property String mail
 	@Property StubMensajero mensajero
 	@Property Jugador reemplazante
+	@Property List<Calificaciones> calificaciones = new ArrayList
 	
 	
 	def prioridad() {
@@ -53,6 +55,18 @@ class Jugador {
 		this.amigos.add(jugador)
 	}
 	
+
+	def calificarYCriticarACadaJug(Partido partido){
+		val listaAux = partido.participantes.filter[jugador|jugador != this]//UN JUGADOR NO DEBE CALIFICARSE A SI MISMO
+		//listaAux.forEach[jug|this.generarUnaCalificacionParaEseJug(jug)]
+			
+	}
+	
+	def generarUnaCalificacionParaEseJug(Jugador otroJug, int nota, String descripcion){
+		var nuevaCalificacion = new Calificaciones(nota,descripcion)
+		otroJug.calificaciones.add(nuevaCalificacion)
+		
+	}
 }
 	
 		

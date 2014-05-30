@@ -12,6 +12,7 @@ import observers.StubMensajero
 import excepciones.ElCupoEstaLlenoException
 import excepciones.NoSePudoAnotarException
 import proyecto.ComunidadFutbolera
+import proyecto.Calificaciones
 
 class TestMiosParaVerificar {
 
@@ -35,6 +36,7 @@ class TestMiosParaVerificar {
 			var Jugador fermin = new Jugador
 			var Jugador elLoco = new Jugador
 			var mensajero = new StubMensajero
+			
 
 			
 
@@ -391,6 +393,19 @@ def cuandoSeRechazaAUnPendienteSeRegistraElRechazo(){
 	Assert.assertFalse(losPibes.pendientesDeAprobacion.contains(elLoco))
 	Assert.assertFalse(losPibes.esDeLaComunidad(elLoco))
 }
-	
 
+@Test
+def unJugadorCalificaAOtro(){
+	juan.generarUnaCalificacionParaEseJug(carlos,2,"muerto")
+	Assert.assertTrue(carlos.calificaciones.size ==1)
+	Assert.assertTrue(carlos.calificaciones.filter[descripcion.contains('muerto')].size ==1)
+	
+		
+}
+	
+/* @Test
+def unJugadorCalificaATodosLosQueJugaronUnPartido(){
+	
+}	
+*/
 }

@@ -216,6 +216,10 @@ def ordenarListaParticipantes(){
 	def tuComunidadEs(ComunidadFutbolera comunidad){
 		this.comunidad = comunidad
 	}
+	
+	def seCalificanLosJugadoresDespuesDeJugarElPartido(){
+		this.participantes.forEach[jug|jug.calificarYCriticarACadaJug(this)]
+	}
 
 }
 	
