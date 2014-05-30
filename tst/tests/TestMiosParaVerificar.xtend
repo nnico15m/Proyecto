@@ -402,6 +402,17 @@ def unJugadorCalificaAOtro(){
 	
 		
 }
+
+@Test
+def unJugadorCalificaATodosSuspendientes(){
+	carlos.agregarALaListaDependientesDeCalificar(martin)
+	carlos.agregarALaListaDependientesDeCalificar(fermin)
+	carlos.agregarALaListaDependientesDeCalificar(juan)
+	carlos.generarUnaCalificacionParaEseJug(juan,10,"crack")
+	carlos.generarUnaCalificacionParaEseJug(fermin,1,"pechofrio")
+	Assert.assertTrue(juan.calificaciones.size ==1)
+	Assert.assertTrue(fermin.calificaciones.size ==1)
+}
 	
 /* @Test
 def unJugadorCalificaATodosLosQueJugaronUnPartido(){

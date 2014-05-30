@@ -21,6 +21,7 @@ class Jugador {
 	@Property StubMensajero mensajero
 	@Property Jugador reemplazante
 	@Property List<Calificaciones> calificaciones = new ArrayList
+	@Property List<Jugador> pendientesDeCalificar = new ArrayList
 	
 	
 	def prioridad() {
@@ -58,11 +59,17 @@ class Jugador {
 
 	def calificarYCriticarACadaJug(Partido partido){
 		val listaAux = partido.participantes.filter[jugador|jugador != this]//UN JUGADOR NO DEBE CALIFICARSE A SI MISMO
-		//listaAux.forEach[jug|this.generarUnaCalificacionParaEseJug(jug)]
+		listaAux.forEach[jug|this.agregarALaListaDependientesDeCalificar(jug)]
 			
 	}
 	
+	def agregarALaListaDependientesDeCalificar(Jugador jug){
+		pendientesDeCalificar.add(jug)
+	}
+	
+	
 	def generarUnaCalificacionParaEseJug(Jugador otroJug, int nota, String descripcion){
+		this.pendientesDeCalificar.remove(otroJug)
 		var nuevaCalificacion = new Calificaciones(nota,descripcion)
 		otroJug.calificaciones.add(nuevaCalificacion)
 		
