@@ -24,7 +24,7 @@ class Partido {
 	// ESTE ES EL MÉTODO QUE USAMOS PARA INSCRIBIR JUGADORES		
 	def void inscribiSiPodesA(Jugador jugador){ //PREGUNTO SI ESTA EN LA LISTA COMUNIDAD Y SI NO ESTA ANOTADO. SI CUMPLE; ORDENO LA LISTA Y VEO SI HAY LUGAR
 		if (this.esDeLaComunidad(jugador) && !this.yaEstaAnotado(jugador)){
-			this.ordenarListaParticipantes()
+			//this.ordenarListaParticipantes()
 			this.inscribirSiHayLugarA(jugador)
 				
 		}
@@ -33,7 +33,7 @@ class Partido {
 		}
 	}
 	
-def ordenarListaParticipantes(){
+def ordenarListaParticipantes(){		//¿NOS SIRVE DE ALGO ORDENAR LA LISTA?
  participantes.sortBy[prioridad]
  }
 

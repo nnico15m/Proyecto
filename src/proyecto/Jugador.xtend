@@ -19,7 +19,7 @@ class Jugador {
 	@Property List<Jugador> amigos = new ArrayList(25)
 	@Property String mail
 	@Property StubMensajero mensajero
-	@Property Jugador reemplazante
+//	@Property Jugador reemplazante	NO ES UN ATRIBUTO
 	@Property List<Calificaciones> calificaciones = new ArrayList
 	@Property List<Jugador> pendientesDeCalificar = new ArrayList
 	

@@ -12,7 +12,6 @@ import observers.StubMensajero
 import excepciones.ElCupoEstaLlenoException
 import excepciones.NoSePudoAnotarException
 import proyecto.ComunidadFutbolera
-import proyecto.Calificaciones
 
 class TestMiosParaVerificar {
 
@@ -35,7 +34,7 @@ class TestMiosParaVerificar {
 			var Jugador juan = new Jugador
 			var Jugador fermin = new Jugador
 			var Jugador elLoco = new Jugador
-			var mensajero = new StubMensajero
+			var mensajero = new StubMensajero	//EL JUGADOR NO TIENE POR QUƒ CONOCER AL MENSAJERO
 			
 
 			
@@ -63,56 +62,6 @@ class TestMiosParaVerificar {
 			losPibes.agregarALaComunidad(martin)
 			losPibes.agregarALaComunidad(fermin)
 			losPibes.agregarALaComunidad(juan)
-		//	fermin.setFormaDeInscripcion(new Solidaria)
-		//	juanesteban.setFormaDeInscripcion(new Estandar)
-		//	juanmartin.setFormaDeInscripcion(new Estandar)
-		//	lean.setFormaDeInscripcion(new Solidaria)
-		//	nico.setFormaDeInscripcion(new Estandar)
-		//	lorenzo.setFormaDeInscripcion(new Estandar)
-		//	patri.setFormaDeInscripcion(new Solidaria)
-		//	berna.setFormaDeInscripcion(new Estandar)
-		//	mati.setFormaDeInscripcion(new Estandar)
-		//	mateo.setFormaDeInscripcion(new Condicional)
-		
-		//	p7.setFormaDeInscripcion(new Estandar)
-		//	p8.setFormaDeInscripcion(new Estandar)
-		//	p9.setFormaDeInscripcion(new Estandar)
-		//	p10.setFormaDeInscripcion(new Estandar)
-			
-/*			partidoInagural.comunidad.add(carlos)
-			partidoInagural.comunidad.add(martin)
-			partidoInagural.comunidad.add(juan)
-		//	partidoInagural.comunidad.add(fermin)
-		//	partidoInagural.comunidad.add(juanesteban)
-		//	partidoInagural.comunidad.add(juanmartin)
-		//	partidoInagural.comunidad.add(lean)
-		//	partidoInagural.comunidad.add(nico)
-		//	partidoInagural.comunidad.add(berna)
-		//	partidoInagural.comunidad.add(lorenzo)
-		//	partidoInagural.comunidad.add(patri)
-		//	partidoInagural.comunidad.add(fede)
-		//	partidoInagural.comunidad.add(mati)
-		//	partidoInagural.comunidad.add(mateo)
-		//	partidoInagural.comunidad.add(baldomero)
-		//	partidoInagural.comunidad.add(manu)
-		//	partidoInagural.comunidad.add(joaquin)
-			partidoLleno.comunidad.add(p1)
-			partidoLleno.comunidad.add(p2)
-			partidoLleno.comunidad.add(p3)
-			partidoLleno.comunidad.add(p4)
-			partidoLleno.comunidad.add(p5)
-			partidoLleno.comunidad.add(p6)
-			partidoLleno.comunidad.add(p7)
-			partidoLleno.comunidad.add(p8)
-			partidoLleno.comunidad.add(p9)
-			partidoLleno.comunidad.add(p10)
-	
-			partidoLleno.comunidad.add(p11)
-			
-			partidoLleno.comunidad.add(martin)
-			partidoLleno.comunidad.add(carlos)
-			partidoLleno.comunidad.add(juan)
-			partidoLleno.comunidad.add(fermin) */
 			
 			carlos.mail = "carlos@gmail.com"
 			martin.mail = "martin@gmail.com"
@@ -404,7 +353,6 @@ def unJugadorCalificaAOtro(){
 
 @Test
 def unJugadorCalificaATodosSusPendientes(){
-	carlos.agregarALaListaDependientesDeCalificar(martin)
 	carlos.agregarALaListaDependientesDeCalificar(fermin)
 	carlos.agregarALaListaDependientesDeCalificar(juan)
 	carlos.generarUnaCalificacionParaEseJug(juan,10,"crack")
