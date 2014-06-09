@@ -12,9 +12,11 @@ import observers.StubMensajero
 import excepciones.ElCupoEstaLlenoException
 import excepciones.NoSePudoAnotarException
 import proyecto.ComunidadFutbolera
+import proyecto.Administrador
 
 class TestMiosParaVerificar {
-
+			
+			var administrador = new Administrador
 			var losPibes = new ComunidadFutbolera
 			var Partido partidoInagural = new Partido
 			var Partido partidoLleno = new Partido
@@ -44,9 +46,11 @@ class TestMiosParaVerificar {
 			
 			losPibes.agregaPartido(partidoLleno)
 			losPibes.agregaPartido(partidoInagural)
+			losPibes.setAdmin(administrador)
 			partidoLleno.setObserver(crearObserverDePartido("adminlleno@gmail.com"))
 			partidoInagural.setObserver(crearObserverDePartido("admininagural@gmail.com"))
 			
+			losPibes.agregarALaComunidad(administrador)
 			losPibes.agregarALaComunidad(p1)
 			losPibes.agregarALaComunidad(p2)
 			losPibes.agregarALaComunidad(p3)
@@ -322,24 +326,24 @@ def cuandoSeAnotaUnJugadorLeMandaMailsASus2Amigos(){
 	
 @Test
 def cuandoSePostulaAUnJugadorParaLaComunidadQuedaPendienteDeAprobacion(){
-	losPibes.sugerirMiembro(elLoco)
-	Assert.assertTrue(losPibes.pendientesDeAprobacion.contains(elLoco))
+	carlos.sugerirMiembro(elLoco)
+	Assert.assertTrue(administrador.pendientesDeAprobacion.contains(elLoco))
 }
 
 @Test
 def cuandoSeApruebaAUnPendientePasaASerMiembroDeLaComunidad(){
-	losPibes.sugerirMiembro(elLoco)
-	losPibes.aprobarJugador(elLoco)
+	carlos.sugerirMiembro(elLoco)
+	administrador.aprobarJugador(elLoco)
 	Assert.assertTrue(losPibes.esDeLaComunidad(elLoco))
-	Assert.assertFalse(losPibes.pendientesDeAprobacion.contains(elLoco))
+	Assert.assertFalse(administrador.pendientesDeAprobacion.contains(elLoco))
 }
 
 @Test
 def cuandoSeRechazaAUnPendienteSeRegistraElRechazo(){
-	losPibes.sugerirMiembro(elLoco)
-	losPibes.rechazarJugador(elLoco, "No queremos locos.")
-	Assert.assertTrue(losPibes.rechazos.length == 1)
-	Assert.assertFalse(losPibes.pendientesDeAprobacion.contains(elLoco))
+	carlos.sugerirMiembro(elLoco)
+	administrador.rechazarJugador(elLoco, "No queremos locos.")
+	Assert.assertTrue(administrador.rechazos.length == 1)
+	Assert.assertFalse(administrador.pendientesDeAprobacion.contains(elLoco))
 	Assert.assertFalse(losPibes.esDeLaComunidad(elLoco))
 }
 

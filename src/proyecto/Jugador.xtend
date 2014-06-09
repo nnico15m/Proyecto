@@ -22,6 +22,7 @@ class Jugador {
 //	@Property Jugador reemplazante	NO ES UN ATRIBUTO
 	@Property List<Calificaciones> calificaciones = new ArrayList
 	@Property List<Jugador> pendientesDeCalificar = new ArrayList
+	@Property ComunidadFutbolera comunidad
 	
 	
 	def prioridad() {
@@ -56,6 +57,10 @@ class Jugador {
 		this.amigos.add(jugador)
 	}
 	
+	def sugerirMiembro(Jugador jugador){
+		comunidad.sugerirMiembro(jugador)
+	}
+	
 
 	def calificarYCriticarACadaJug(List<Jugador> jugadores){
 		var listaAux = jugadores.filter[jugador|jugador != this]//UN JUGADOR NO DEBE CALIFICARSE A SI MISMO
@@ -77,6 +82,10 @@ class Jugador {
 	
 	def agregarCalificacion(Calificaciones calificacion) {
 		this.calificaciones.add(calificacion)
+	}
+	
+	def sosDeLaComunidad(ComunidadFutbolera comunidad){
+		this.setComunidad(comunidad)
 	}
 	
 }
