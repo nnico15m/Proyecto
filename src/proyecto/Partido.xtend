@@ -5,6 +5,7 @@ import java.util.List
 import observers.NotificadorDeAdministradorObserver
 import excepciones.NoSePudoAnotarException
 import excepciones.ElCupoEstaLlenoException
+import commands.OrganizadorCommand
 
 class Partido {
 	
@@ -13,7 +14,7 @@ class Partido {
 	@Property List<Jugador> participantes = new ArrayList (10) //Es la lista de participantes en donde si el jugador que se quisiera anotar fuera estandar, directamente el tipo de inscripcion lo anota aca 									
 	@Property ComunidadFutbolera comunidad
 	@Property NotificadorDeAdministradorObserver observer
-
+	@Property OrganizadorCommand criterioDeOrdenamiento 
 	
 
 	
@@ -224,6 +225,33 @@ def ordenarListaParticipantes(){		//ÀNOS SIRVE DE ALGO ORDENAR LA LISTA?
 	def seCalificanLosJugadoresDespuesDeJugarElPartido(){
 		this.participantes.forEach[jug|jug.calificarYCriticarACadaJug(participantes)]
 	}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+							//Entrega 4 //
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////							
+							
+	def ordenarLaListaPorCriterio(OrganizadorCommand criterio) {
+		
+		this.setCriterioDeOrdenamiento(criterio) // guardo el criterio por si me lo piden
+		//this.criterioDeOrdenamiento.ordenarLaLista(this)
+		criterio.ordenarLaLista(this)
+		
+	
+	}
+	
+	def ordenaListaPorHandicap() {
+		
+		 participantes.sortBy[nivelDeJuego]
+		
+		
+		
+	}
+
+
+
+
+
+
 
 }
 	

@@ -3,12 +3,14 @@ package proyecto
 import java.util.List
 import java.util.ArrayList
 
+import commands.OrganizadorCommand
+
 class Administrador extends Jugador {
 	
 	@Property List<Jugador> pendientesDeAprobacion = new ArrayList(25)
 	@Property List<NotaDeRechazo> rechazos = new ArrayList(25)
 	
-	def sugerirMiembro(Jugador jugador){
+	override sugerirMiembro(Jugador jugador){
 		this.pendientesDeAprobacion.add(jugador)
 	}
 	
@@ -26,5 +28,30 @@ class Administrador extends Jugador {
 		this.pendientesDeAprobacion.remove(jugador)
 		comunidad.agregarALaComunidad(jugador)
 	}
+	
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+														//Entrega 4//
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////							
+	
+	def organizaElPartido(Partido partido,OrganizadorCommand criterio){
+		
+		partido.ordenarLaListaPorCriterio(criterio)
+		
+		
+		
+		
+	}
+
+
+
+
+	
+		
+		
+		
+		
+		
+		
+	
 	
 }
