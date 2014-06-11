@@ -39,7 +39,6 @@ class testsentrega4 {
 			var Jugador martin = new Jugador
 			var Jugador juan = new Jugador
 			var Jugador fermin = new Jugador
-			var Jugador elLoco = new Jugador
 			var mensajero = new StubMensajero
 
 
@@ -121,9 +120,9 @@ def anotar10JugadoresAlPartido(){
 
 		def verificarQueLos10JugadoresEstanInscriptos(){
 			
-			p1.setFormaDeInscripcion(new Estandar)
+			p1.setFormaDeInscripcion(new Solidaria)
 			p2.setFormaDeInscripcion(new Condicional)
-			p3.setFormaDeInscripcion(new Solidaria)
+			p3.setFormaDeInscripcion(new Estandar)
 			p4.setFormaDeInscripcion(new Estandar)
 			p5.setFormaDeInscripcion(new Condicional)
 			p6.setFormaDeInscripcion(new Estandar)
@@ -160,9 +159,8 @@ def anotar10JugadoresAlPartido(){
 			
 			//administrador.organizaElPartido(partidoInagural,new OrdenamientoPorHandicap)
 			
-			partidoInagural.ordenaListaPorHandicap()
-			
-			Assert.assertTrue(partidoInagural.participantes.get(0) == p6)
+			val listaPrueba = partidoInagural.ordenaListaPorHandicap()
+			Assert.assertTrue(listaPrueba.get(0) == p6)
 			
 		}
 

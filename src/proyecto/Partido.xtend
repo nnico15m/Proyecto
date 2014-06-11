@@ -7,7 +7,7 @@ import excepciones.NoSePudoAnotarException
 import excepciones.ElCupoEstaLlenoException
 import commands.OrganizadorCommand
 
-class Partido {
+class Partido  {
 	
 	@Property Fecha fecha
 	@Property double hora
@@ -16,6 +16,8 @@ class Partido {
 	@Property NotificadorDeAdministradorObserver observer
 	@Property OrganizadorCommand criterioDeOrdenamiento 
 	
+
+
 
 	
 	def cantParticipantes() { // mide la longitud de la lista de participantes
@@ -246,6 +248,8 @@ def ordenarListaParticipantes(){		//ÀNOS SIRVE DE ALGO ORDENAR LA LISTA?
 		
 		
 	}
+	
+	
 
 
 

@@ -11,19 +11,18 @@ class Jugador {
 	
 	@Property String nombreJugador
 	@Property Fecha fechaDeNacimiento
-//	@Property double nivelAdvertencia 
-//	@Property double contadorPartidos
-//	@Property int nivelDePrioridad
+//	----@Property double nivelAdvertencia 
+//	---@Property double contadorPartidos
+//---	@Property int nivelDePrioridad
 	@Property TipoDeSuscripcion formaDeInscripcion
 	@Property List<Infracciones> infracciones = new ArrayList
 	@Property List<Jugador> amigos = new ArrayList(25)
 	@Property String mail
 	@Property StubMensajero mensajero
-//	@Property Jugador reemplazante	NO ES UN ATRIBUTO
 	@Property List<Calificaciones> calificaciones = new ArrayList
 	@Property List<Jugador> pendientesDeCalificar = new ArrayList
 	@Property ComunidadFutbolera comunidad
-	@Property int NivelDeJuego
+	@Property int nivelDeJuego
 	
 	def prioridad() {
 		this.formaDeInscripcion.prioridad()
