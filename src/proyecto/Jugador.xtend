@@ -72,9 +72,9 @@ class Jugador {
 	}
 	
 	
-	def generarUnaCalificacionParaEseJug(Jugador otroJug, int nota, String descripcion){
+	def generarUnaCalificacionParaEseJug(Jugador otroJug, int nota, String descripcion,Partido partidoJugado){
 		this.pendientesDeCalificar.remove(otroJug)
-		var nuevaCalificacion = new Calificaciones(nota,descripcion)
+		var nuevaCalificacion = new Calificaciones(partidoJugado,nota,descripcion)
 		otroJug.agregarCalificacion(nuevaCalificacion)
 		
 	}
@@ -86,6 +86,13 @@ class Jugador {
 	def sosDeLaComunidad(ComunidadFutbolera comunidad){
 		this.setComunidad(comunidad)
 	}
+	
+		def promedioDeCalificacionesUltimoPartido(Partido partidoAOrganizar){
+			val ultimoPartidoJugado = partidoAOrganizar.getCodPartido() - 1
+			val listaCalificacionesAux = calificaciones.filter[(partido.codPartido) == ultimoPartidoJugado]
+			listaCalificacionesAux.fold   (0, [ acum, jugador | acum + jugador.nota])
+		}
+	
 	
 }
 	

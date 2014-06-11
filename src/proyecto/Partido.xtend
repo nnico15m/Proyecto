@@ -15,7 +15,7 @@ class Partido  {
 	@Property ComunidadFutbolera comunidad
 	@Property NotificadorDeAdministradorObserver observer
 	@Property OrganizadorCommand criterioDeOrdenamiento 
-	
+	@Property int codPartido
 
 
 
@@ -249,6 +249,9 @@ def ordenarListaParticipantes(){		//ÀNOS SIRVE DE ALGO ORDENAR LA LISTA?
 		
 	}
 	
+	def ordenarListaPorPromedioCalificaciones(){
+		
+	}
 	
 
 
