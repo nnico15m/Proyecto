@@ -23,6 +23,7 @@ class Jugador {
 	@Property List<Jugador> pendientesDeCalificar = new ArrayList
 	@Property ComunidadFutbolera comunidad
 	@Property int nivelDeJuego
+	@Property ArrayList<Integer> listaCriterioDelJugador = new ArrayList<Integer>()
 	
 	def prioridad() {
 		this.formaDeInscripcion.prioridad()

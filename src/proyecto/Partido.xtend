@@ -245,11 +245,11 @@ def ordenarListaParticipantes(){		//ÀNOS SIRVE DE ALGO ORDENAR LA LISTA?
 		
 		 participantes.sortBy[nivelDeJuego]
 		
-		
+	//	participantes.forEach[jugador|jugador.listaCriterioDelJugador.add(jugador.nivelDeJuego)]
 		
 	}
 	
-	def ordenarListaPorPromedioCalificaciones(){
+	def ordenarListaPorPromedioCalificacionesUltimoPartido(){
 		
 	}
 	

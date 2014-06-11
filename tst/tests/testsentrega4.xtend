@@ -11,12 +11,12 @@ import proyecto.Solidaria
 import proyecto.Condicional
 import observers.NotificadorDeAdministradorObserver
 import observers.StubMensajero
-import excepciones.ElCupoEstaLlenoException
-import excepciones.NoSePudoAnotarException
+//import excepciones.ElCupoEstaLlenoException
+//import excepciones.NoSePudoAnotarException
 import proyecto.ComunidadFutbolera
 import proyecto.Administrador
-import org.junit.experimental.theories.suppliers.TestedOn
-import commands.OrdenamientoPorHandicap
+//import org.junit.experimental.theories.suppliers.TestedOn
+//import commands.OrdenamientoPorHandicap
 
 class testsentrega4 {
 
