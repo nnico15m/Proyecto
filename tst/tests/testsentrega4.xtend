@@ -214,12 +214,11 @@ def promedioDeCalificacionesDeUnJugadorEnElUltimoPartido(){
 	martin.agregarALaListaDependientesDeCalificar(carlos)
 	fermin.agregarALaListaDependientesDeCalificar(carlos)
 	
-	p1.generarUnaCalificacionParaEseJug(carlos,2,"muerto",1)
-	martin.generarUnaCalificacionParaEseJug(carlos,10,"crack",2)
-	fermin.generarUnaCalificacionParaEseJug(carlos,4,"amargo",2)
+	p1.generarUnaCalificacionParaEseJug(carlos,40,"muerto",1)
+	martin.generarUnaCalificacionParaEseJug(carlos,20,"crack",2)
+	fermin.generarUnaCalificacionParaEseJug(carlos,10,"amargo",2)
 		
-	Assert.assertEquals(4,carlos.promedioDeCalificacionesUltimoPartido(partidoNuevo))
-	//deberia dar 7, pero por ahora no da
+	Assert.assertEquals(15,carlos.promedioDeCalificacionesUltimoPartido(partidoNuevo))
 	}
 
 @Test
