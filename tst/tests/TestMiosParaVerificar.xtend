@@ -350,7 +350,7 @@ def cuandoSeRechazaAUnPendienteSeRegistraElRechazo(){
 
 @Test
 def unJugadorCalificaAOtro(){
-	juan.generarUnaCalificacionParaEseJug(carlos,2,"muerto",partidoLleno)
+	juan.generarUnaCalificacionParaEseJug(carlos,2,"muerto",2)
 	Assert.assertTrue(carlos.calificaciones.size ==1)
 	Assert.assertTrue(carlos.calificaciones.filter[descripcion.contains('muerto')].size ==1)
 	
@@ -360,8 +360,8 @@ def unJugadorCalificaAOtro(){
 def unJugadorCalificaATodosSusPendientes(){
 	carlos.agregarALaListaDependientesDeCalificar(fermin)
 	carlos.agregarALaListaDependientesDeCalificar(juan)
-	carlos.generarUnaCalificacionParaEseJug(juan,10,"crack",partidoLleno)
-	carlos.generarUnaCalificacionParaEseJug(fermin,1,"pechofrio",partidoLleno)
+	carlos.generarUnaCalificacionParaEseJug(juan,10,"crack",2)
+	carlos.generarUnaCalificacionParaEseJug(fermin,1,"pechofrio",2)
 	Assert.assertTrue(juan.calificaciones.size ==1)
 	Assert.assertTrue(fermin.calificaciones.size ==1)
 }

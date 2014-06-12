@@ -15,16 +15,22 @@ class OrdenamientoPorHandicap implements OrganizadorCommand {
 	}
 	
 	
-	override ordenameLaLista(List<Jugador> jugadors){
+	override ordenameLaLista(List<Jugador> jugadores){
 		
 		
-		jugadors.sortBy[nivelDeJuego]
+		jugadores.sortBy[nivelDeJuego]
 		
 		
 		
 	}
 	
 	
+	}
+
+
+
+
+
 	
 	
-}
+	

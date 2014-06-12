@@ -10,7 +10,7 @@ class Administrador extends Jugador {
 	@Property List<Jugador> pendientesDeAprobacion = new ArrayList(25)
 	@Property List<NotaDeRechazo> rechazos = new ArrayList(25)
 	
-	def sugerirMiembro(Jugador jugador){
+	override sugerirMiembro(Jugador jugador){
 		this.pendientesDeAprobacion.add(jugador)
 	}
 	

@@ -254,11 +254,11 @@ def ordenarListaParticipantes(){		//ÀNOS SIRVE DE ALGO ORDENAR LA LISTA?
 		
 //	}
 	
-
- def pasameLaLista(){
+//
+def pasameLaLista(){
 	
 	
-	this.criterioDeOrdenamiento.ordenameLaLista(this.participantes)	
+this.criterioDeOrdenamiento.ordenameLaLista(this.participantes)	
 	
 	
 }
