@@ -118,7 +118,7 @@ def anotar10JugadoresAlPartido(){
 	
 }
 
-@Test 
+/* @Test 
 
 		def verificarQueLos10JugadoresEstanInscriptos(){
 		val criterio1 = new OrdenamientoPorHandicap
@@ -172,33 +172,33 @@ def anotar10JugadoresAlPartido(){
 			
 			Assert.assertTrue(listaAux.get(0) == p6)
 			
-		}
+		} */
 		
- //* @Test
-//	def laListaQuedaOrdenadaPorHandicap (){
+  @Test
+	def laListaQuedaOrdenadaPorHandicap (){
 	
-//	val criterio1 = new OrdenamientoPorHandicap
+	val criterio1 = new OrdenamientoPorHandicap
 	
-//	fermin.setFormaDeInscripcion(new Estandar)
-	//martin.setFormaDeInscripcion(new Estandar)
-//	carlos.setFormaDeInscripcion(new Estandar)
-//	carlos.setNivelDeJuego(6)
-	//martin.setNivelDeJuego(10)
-//	fermin.setNivelDeJuego(9)
+	fermin.setFormaDeInscripcion(new Estandar)
+	martin.setFormaDeInscripcion(new Estandar)
+	carlos.setFormaDeInscripcion(new Estandar)
+	carlos.setNivelDeJuego(6)
+	martin.setNivelDeJuego(10)
+	fermin.setNivelDeJuego(9)
 	
-//	partidoLleno.inscribiSiPodesA(martin)
-//	partidoLleno.inscribiSiPodesA(carlos)
-//	partidoLleno.inscribiSiPodesA(fermin)
+	partidoLleno.inscribiSiPodesA(martin)
+	partidoLleno.inscribiSiPodesA(carlos)
+	partidoLleno.inscribiSiPodesA(fermin)
 	
-//	val listP = partidoLleno.participantes
+	val listP = partidoLleno.participantes
 	
-//	val aux = criterio1.ordenarLaLista(listP)
+	val aux = criterio1.ordenarLaLista(listP)
 	
 	
-//	Assert.assertTrue(aux.get(0) == carlos)
-//	Assert.assertTrue(aux.get(2) == martin)
-//	Assert.assertTrue(aux.get(1) == fermin)
-//}/* 		
+	Assert.assertTrue(aux.get(0) == carlos)
+	Assert.assertTrue(aux.get(2) == martin)
+	Assert.assertTrue(aux.get(1) == fermin)
+} 		
 
 @Test 
 def promedioDeCalificacionesDeUnJugadorEnElUltimoPartido(){
