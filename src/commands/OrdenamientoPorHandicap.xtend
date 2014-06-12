@@ -6,7 +6,7 @@ import proyecto.Jugador
 
 class OrdenamientoPorHandicap implements OrganizadorCommand {
 	
-	override def List<Jugador> ordenarLaLista(Partido partido){
+	override def List<Jugador> ordenarLaLista(Partido partido,int n){
 		
 		
 		partido.participantes.sortBy[nivelDeJuego]

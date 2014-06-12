@@ -237,7 +237,7 @@ def ordenarListaParticipantes(){		//ÀNOS SIRVE DE ALGO ORDENAR LA LISTA?
 		
 		this.setCriterioDeOrdenamiento(criterio) // guardo el criterio por si me lo piden
 		//this.criterioDeOrdenamiento.ordenarLaLista(this)
-		criterio.ordenarLaLista(this)
+		criterio.ordenarLaLista(this,1)
 		
 	
 	}
