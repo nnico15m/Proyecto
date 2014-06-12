@@ -11,12 +11,12 @@ import proyecto.Solidaria
 import proyecto.Condicional
 import observers.NotificadorDeAdministradorObserver
 import observers.StubMensajero
-//import excepciones.ElCupoEstaLlenoException
-//import excepciones.NoSePudoAnotarException
+import excepciones.ElCupoEstaLlenoException
+import excepciones.NoSePudoAnotarException
 import proyecto.ComunidadFutbolera
 import proyecto.Administrador
-//import org.junit.experimental.theories.suppliers.TestedOn
-//import commands.OrdenamientoPorHandicap
+import org.junit.experimental.theories.suppliers.TestedOn
+import commands.OrdenamientoPorHandicap
 
 class testsentrega4 {
 
@@ -24,6 +24,7 @@ class testsentrega4 {
 			var losPibes = new ComunidadFutbolera
 			var Partido partidoInagural = new Partido
 			var Partido partidoLleno = new Partido
+			var Partido partidoNuevo= new Partido
 			var Jugador p1 = new Jugador
 			var Jugador p2 = new Jugador
 			var Jugador p3 = new Jugador
@@ -39,6 +40,7 @@ class testsentrega4 {
 			var Jugador martin = new Jugador
 			var Jugador juan = new Jugador
 			var Jugador fermin = new Jugador
+			var Jugador epi = new Jugador
 			var mensajero = new StubMensajero
 
 
@@ -163,9 +165,48 @@ def anotar10JugadoresAlPartido(){
 			Assert.assertTrue(listaPrueba.get(0) == p6)
 			
 		}
+		
+@Test
+def laListaQuedaOrdenadaPorHandicap (){
+	
+	fermin.setFormaDeInscripcion(new Estandar)
+	martin.setFormaDeInscripcion(new Estandar)
+	carlos.setFormaDeInscripcion(new Estandar)
+	carlos.setNivelDeJuego(6)
+	martin.setNivelDeJuego(10)
+	fermin.setNivelDeJuego(9)
+	
+	partidoLleno.inscribiSiPodesA(carlos)
+	partidoLleno.inscribiSiPodesA(martin)
+	partidoLleno.inscribiSiPodesA(fermin)
+	val listaAux = partidoLleno.ordenaListaPorHandicap()
+	Assert.assertTrue(listaAux.get(2) == carlos)
+	Assert.assertTrue(listaAux.get(1) == fermin)
+	Assert.assertTrue(listaAux.get(0) == martin)
+}		
+/* 
+@Test 
+def promedioDeCalificacionesDeUnJugadorEnElUltimoPartido(){
+	
+	partidoInagural.setCodPartido(1)
+	partidoLleno.setCodPartido(2)
+	partidoNuevo.setCodPartido(3)
+	
+	
+	
+	carlos.agregarALaListaDependientesDeCalificar(fermin)
+	carlos.agregarALaListaDependientesDeCalificar(juan)
+	carlos.agregarALaListaDependientesDeCalificar(martin)
+	carlos.generarUnaCalificacionParaEseJug(juan,10,"crack",partidoInagural)
+	carlos.generarUnaCalificacionParaEseJug(fermin,1,"pechofrio",partidoInagural)
+	carlos.generarUnaCalificacionParaEseJug(martin,5,"amargo",partidoLleno)
+	carlos.generarUnaCalificacionParaEseJug(epi,1,"ladri",partidoLleno)
+	
+	Assert.assertEquals(6,carlos.promedioDeCalificacionesUltimoPartido(partidoNuevo))
+	
+}
 
-
-
+*/
 
 
 }	
