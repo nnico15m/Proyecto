@@ -190,9 +190,9 @@ def anotar10JugadoresAlPartido(){
 	partidoLleno.inscribiSiPodesA(carlos)
 	partidoLleno.inscribiSiPodesA(fermin)
 	
-	val listP = partidoLleno.participantes
+//	val listP = partidoLleno.participantes
 	
-	val aux = criterio1.ordenarLaLista(listP)
+	val aux = criterio1.ordenarLaLista(partidoLleno)
 	
 	
 	Assert.assertTrue(aux.get(0) == carlos)
