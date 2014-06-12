@@ -11,7 +11,7 @@ class OrdenamientoPorHandicap implements OrganizadorCommand {
 	
 	
 	
-	override def List<Jugador> ordenarLaLista(Partido partido,int cantidadDePartido){
+	override def List<Jugador> ordenarLaLista(Partido partido,int n){
 		
 		
 		partido.participantes.sortBy[nivelDeJuego]
@@ -21,7 +21,7 @@ class OrdenamientoPorHandicap implements OrganizadorCommand {
 	}
 	
 	override inicializarCntidadDePartido() {
-			this.setCantidadDePartido(0)
+			
 			
 			
 	}
