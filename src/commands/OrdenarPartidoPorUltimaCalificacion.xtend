@@ -4,22 +4,16 @@ import proyecto.Partido
 import java.util.List
 import proyecto.Jugador
 
-abstract class OrdenarPartidoPorUltimaCalificacion implements OrganizadorCommand  {
+class OrdenarPartidoPorUltimaCalificacion implements OrganizadorCommand  {
 	
-	override ordenarLaLista(Partido partido){
+	override def ordenarLaLista(Partido partido){
 		
 		
-		//partido.ordenarListaPorPromedioCalificacionesUltimoPartido()
+	//jugadors.forEach[j|j.promedioDeCalificacionesUltimoPartido(Partido)]
 		
 		
 		
-		}
-		
-		override ordenameLaLista(List<Jugador> jugadores){
-					
-	//	jugadores.sortBy[promedioCalificacionesUltimoPartido]
-		
-		}
+	}
 		
 
 	
