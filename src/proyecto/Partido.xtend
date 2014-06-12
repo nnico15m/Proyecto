@@ -6,6 +6,7 @@ import observers.NotificadorDeAdministradorObserver
 import excepciones.NoSePudoAnotarException
 import excepciones.ElCupoEstaLlenoException
 import commands.OrganizadorCommand
+import commands.OrdenamientoPorHandicap
 
 class Partido  {
 	
@@ -241,21 +242,26 @@ def ordenarListaParticipantes(){		//ÀNOS SIRVE DE ALGO ORDENAR LA LISTA?
 	
 	}
 	
-	def ordenaListaPorHandicap() {
+	//def ordenaLista() {
 		
-		 participantes.sortBy[nivelDeJuego]
+		// participantes.sortBy[nivelDeJuego]
 		
 	//	participantes.forEach[jugador|jugador.listaCriterioDelJugador.add(jugador.nivelDeJuego)]
 		
-	}
+//	}
 	
-	def ordenarListaPorPromedioCalificacionesUltimoPartido(){
+//	def ordenarListaPorPromedioCalificacionesUltimoPartido(){
 		
-	}
+//	}
 	
 
-
-
+ def pasameLaLista(){
+	
+	
+	this.criterioDeOrdenamiento.ordenameLaLista(this.participantes)	
+	
+	
+}
 
 
 

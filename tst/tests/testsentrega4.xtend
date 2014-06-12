@@ -121,6 +121,7 @@ def anotar10JugadoresAlPartido(){
 @Test 
 
 		def verificarQueLos10JugadoresEstanInscriptos(){
+		val criterio1 = new OrdenamientoPorHandicap
 			
 			p1.setFormaDeInscripcion(new Solidaria)
 			p2.setFormaDeInscripcion(new Condicional)
@@ -145,7 +146,9 @@ def anotar10JugadoresAlPartido(){
 			p9.setNivelDeJuego(10)
 			p10.setNivelDeJuego(5)
 			
+			partidoInagural.setCriterioDeOrdenamiento(new OrdenamientoPorHandicap)
 			
+		
 		
 			partidoInagural.inscribiSiPodesA(p1)
 			partidoInagural.inscribiSiPodesA(p2)
@@ -161,8 +164,13 @@ def anotar10JugadoresAlPartido(){
 			
 			//administrador.organizaElPartido(partidoInagural,new OrdenamientoPorHandicap)
 			
-			val listaPrueba = partidoInagural.ordenaListaPorHandicap()
-			Assert.assertTrue(listaPrueba.get(0) == p6)
+			partidoInagural.pasameLaLista()
+			
+			val	listaAux = partidoInagural.participantes
+			
+		 	criterio1.ordenameLaLista(listaAux)
+			
+			Assert.assertTrue(listaAux.get(0) == p6)
 			
 		}
 		
@@ -180,11 +188,11 @@ def laListaQuedaOrdenadaPorHandicap (){
 	partidoLleno.inscribiSiPodesA(martin)
 	partidoLleno.inscribiSiPodesA(fermin)
 	val listaAux = partidoLleno.ordenaListaPorHandicap()
-	Assert.assertTrue(listaAux.get(2) == carlos)
+	Assert.assertTrue(listaAux.get(0) == carlos)
 	Assert.assertTrue(listaAux.get(1) == fermin)
-	Assert.assertTrue(listaAux.get(0) == martin)
+	Assert.assertTrue(listaAux.get(2) == martin)
 }		
-/* 
+
 @Test 
 def promedioDeCalificacionesDeUnJugadorEnElUltimoPartido(){
 	
@@ -206,7 +214,7 @@ def promedioDeCalificacionesDeUnJugadorEnElUltimoPartido(){
 	
 }
 
-*/
+
 
 
 }	
