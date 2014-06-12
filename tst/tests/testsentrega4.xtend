@@ -178,6 +178,8 @@ def anotar10JugadoresAlPartido(){
   @Test
 	def laListaQuedaOrdenadaPorHandicap (){
 	
+	var int n
+	
 	val criterio1 = new OrdenamientoPorHandicap
 	
 	fermin.setFormaDeInscripcion(new Estandar)
@@ -193,7 +195,7 @@ def anotar10JugadoresAlPartido(){
 	
 //	val listP = partidoLleno.participantes
 	
-	val aux = criterio1.ordenarLaLista(partidoLleno)
+	val aux = criterio1.ordenarLaLista(partidoLleno,n)
 	
 	
 	Assert.assertTrue(aux.get(0) == carlos)
@@ -223,6 +225,9 @@ def promedioDeCalificacionesDeUnJugadorEnElUltimoPartido(){
 
 @Test
 def laListaQuedaOrdenadaPorUltimasCalificaciones(){
+	
+	var int n
+	
 	val criterio2 = new OrdenarPartidoPorUltimaCalificacion
 	partidoInagural.setCodPartido(1)
 	partidoLleno.setCodPartido(2)
@@ -262,7 +267,7 @@ def laListaQuedaOrdenadaPorUltimasCalificaciones(){
 	martin.generarUnaCalificacionParaEseJug(fermin,2,"amargo",2)
 	//deberia ser 1
 	
-	val aux = criterio2.ordenarLaLista(partidoLleno)
+	val aux = criterio2.ordenarLaLista(partidoLleno,n)
 	
 	Assert.assertTrue(aux.get(2) == martin)
 	Assert.assertTrue(aux.get(0) == carlos)
@@ -272,6 +277,7 @@ def laListaQuedaOrdenadaPorUltimasCalificaciones(){
 @Test 
 		def verificarQueEnLaListaDeCalificacionesMiJugadorTiene3Calificaciones(){
 			
+		
 			
 			partidoInagural.setCodPartido(1)
 	  		partidoLleno.setCodPartido(2)

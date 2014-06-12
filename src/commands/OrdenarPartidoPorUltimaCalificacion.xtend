@@ -6,7 +6,7 @@ import proyecto.Jugador
 
 class OrdenarPartidoPorUltimaCalificacion implements OrganizadorCommand  {
 	
-	override def ordenarLaLista(Partido partido, int n){
+	override def ordenarLaLista(Partido partido,int n){
 		
 		
 	partido.participantes.forEach[j|j.promedioDeCalificacionesUltimoPartido(partido)]
