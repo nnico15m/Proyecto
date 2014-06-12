@@ -89,15 +89,23 @@ class Jugador {
 		this.setComunidad(comunidad)
 	}
 	
-		def promedioDeCalificacionesUltimoPartido(Partido partidoAOrganizar){
-			val codUltimoPartidoJugado = (partidoAOrganizar.getCodPartido() ) - 1
-			val listaCalificacionesAux = calificaciones.filter[codPartidoJugado == codUltimoPartidoJugado]
-			val promedioObtenido = listaCalificacionesAux.fold (0, [ acum, jugador | (acum + jugador.nota)])/(listaCalificacionesAux.size)
-			this.setPromedioCalificacionesUltPart(promedioObtenido)
-			return promedioObtenido
+	def promedioDeCalificacionesUltimoPartido(Partido partidoAOrganizar){
+		val codUltimoPartidoJugado = (partidoAOrganizar.getCodPartido() ) - 1
+		val listaCalificacionesAux = calificaciones.filter[codPartidoJugado == codUltimoPartidoJugado]
+		val promedioObtenido = listaCalificacionesAux.fold (0, [ acum, jugador | (acum + jugador.nota)])/(listaCalificacionesAux.size)
+		this.setPromedioCalificacionesUltPart(promedioObtenido)
+		return promedioObtenido
 			
 		}
 	
+	def promedioDeCalificacionesDeUltimosNPartidos(Partido partidoAOrganizar,int numeroPedido){
+		val codUltimoPartidoJugado = (partidoAOrganizar.getCodPartido() ) - numeroPedido
+		val listaCalificacionesAux = calificaciones.filter[codPartidoJugado > codUltimoPartidoJugado]
+		val promedioObtenido = listaCalificacionesAux.fold (0, [ acum, jugador | (acum + jugador.nota)])/(listaCalificacionesAux.size)
+		this.setPromedioCalificacionesUltPart(promedioObtenido)
+		return promedioObtenido
+	
+	}
 	
 }
 	
