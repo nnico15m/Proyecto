@@ -24,6 +24,7 @@ class Jugador {
 	@Property ComunidadFutbolera comunidad
 	@Property int nivelDeJuego
 	@Property ArrayList<Integer> listaCriterioDelJugador = new ArrayList<Integer>()
+	@Property int promedioCalificacionesUltPart
 	
 	def prioridad() {
 		this.formaDeInscripcion.prioridad()
@@ -91,7 +92,9 @@ class Jugador {
 		def promedioDeCalificacionesUltimoPartido(Partido partidoAOrganizar){
 			val codUltimoPartidoJugado = (partidoAOrganizar.getCodPartido() ) - 1
 			val listaCalificacionesAux = calificaciones.filter[codPartidoJugado == codUltimoPartidoJugado]
-			listaCalificacionesAux.fold (0, [ acum, jugador | (acum + jugador.nota)/(listaCalificacionesAux.size)]) 
+			var promedioObtenido = listaCalificacionesAux.fold (0, [ acum, jugador | (acum + jugador.nota)/(listaCalificacionesAux.size)])
+			this.setPromedioCalificacionesUltPart(promedioObtenido)
+			return promedioObtenido
 			
 		}
 	
