@@ -269,6 +269,25 @@ def laListaQuedaOrdenadaPorUltimasCalificaciones(){
 	Assert.assertTrue(aux.get(1) == fermin)
 }
 
-
+@Test 
+		def verificarQueEnLaListaDeCalificacionesMiJugadorTiene3Calificaciones(){
+			
+			
+			partidoInagural.setCodPartido(1)
+	  		partidoLleno.setCodPartido(2)
+			partidoNuevo.setCodPartido(3)
+	
+			p1.agregarALaListaDependientesDeCalificar(carlos)
+			martin.agregarALaListaDependientesDeCalificar(carlos)
+			fermin.agregarALaListaDependientesDeCalificar(carlos)
+	
+			p1.generarUnaCalificacionParaEseJug(carlos,2,"muerto",1)
+			martin.generarUnaCalificacionParaEseJug(carlos,10,"crack",2)
+			fermin.generarUnaCalificacionParaEseJug(carlos,4,"amargo",2)
+			
+				
+			Assert.assertEquals(3,carlos.calificaciones.size)	
+						
+		}
 
 }	
