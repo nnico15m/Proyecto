@@ -225,6 +225,9 @@ def promedioDeCalificacionesDeUnJugadorEnElUltimoPartido(){
 @Test
 def laListaQuedaOrdenadaPorUltimasCalificaciones(){
 	val criterio2 = new OrdenarPartidoPorUltimaCalificacion
+	partidoInagural.setCodPartido(1)
+	partidoLleno.setCodPartido(2)
+	partidoNuevo.setCodPartido(3)
 	fermin.setFormaDeInscripcion(new Estandar)
 	martin.setFormaDeInscripcion(new Estandar)
 	carlos.setFormaDeInscripcion(new Estandar)
@@ -238,8 +241,9 @@ def laListaQuedaOrdenadaPorUltimasCalificaciones(){
 	fermin.agregarALaListaDependientesDeCalificar(carlos)
 	
 	p1.generarUnaCalificacionParaEseJug(carlos,2,"muerto",1)
-	martin.generarUnaCalificacionParaEseJug(carlos,10,"crack",2)
-	fermin.generarUnaCalificacionParaEseJug(carlos,4,"amargo",2)
+	martin.generarUnaCalificacionParaEseJug(carlos,0,"crack",2)
+	fermin.generarUnaCalificacionParaEseJug(carlos,0,"amargo",2)
+	//deberia ser 0
 	
 	p1.agregarALaListaDependientesDeCalificar(martin)
 	carlos.agregarALaListaDependientesDeCalificar(martin)
@@ -248,20 +252,22 @@ def laListaQuedaOrdenadaPorUltimasCalificaciones(){
 	p1.generarUnaCalificacionParaEseJug(martin,6,"muerto",1)
 	carlos.generarUnaCalificacionParaEseJug(martin,8,"crack",2)
 	fermin.generarUnaCalificacionParaEseJug(martin,2,"amargo",2)
+	//deberia ser 5
 	
 	p1.agregarALaListaDependientesDeCalificar(fermin)
 	carlos.agregarALaListaDependientesDeCalificar(fermin)
 	fermin.agregarALaListaDependientesDeCalificar(fermin)
 	
 	p1.generarUnaCalificacionParaEseJug(fermin,2,"muerto",1)
-	carlos.generarUnaCalificacionParaEseJug(fermin,6,"crack",2)
-	martin.generarUnaCalificacionParaEseJug(fermin,4,"amargo",2)
+	carlos.generarUnaCalificacionParaEseJug(fermin,0,"crack",2)
+	martin.generarUnaCalificacionParaEseJug(fermin,2,"amargo",2)
+	//deberia ser 1
 	
 	val aux = criterio2.ordenarLaLista(partidoLleno)
 	
-	Assert.assertTrue(aux.get(0) == martin)
-	Assert.assertTrue(aux.get(1) == carlos)
-	Assert.assertTrue(aux.get(2) == fermin)
+	Assert.assertTrue(aux.get(2) == martin)
+	Assert.assertTrue(aux.get(0) == carlos)
+	Assert.assertTrue(aux.get(1) == fermin)
 }
 
 

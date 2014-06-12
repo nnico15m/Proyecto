@@ -92,7 +92,7 @@ class Jugador {
 		def promedioDeCalificacionesUltimoPartido(Partido partidoAOrganizar){
 			val codUltimoPartidoJugado = (partidoAOrganizar.getCodPartido() ) - 1
 			val listaCalificacionesAux = calificaciones.filter[codPartidoJugado == codUltimoPartidoJugado]
-			var promedioObtenido = listaCalificacionesAux.fold (0, [ acum, jugador | (acum + jugador.nota)/(listaCalificacionesAux.size)])
+			val promedioObtenido = listaCalificacionesAux.fold (0, [ acum, jugador | (acum + jugador.nota)/(listaCalificacionesAux.size)])
 			this.setPromedioCalificacionesUltPart(promedioObtenido)
 			return promedioObtenido
 			

@@ -10,8 +10,8 @@ class OrdenarPartidoPorUltimaCalificacion implements OrganizadorCommand  {
 		
 		
 	partido.participantes.forEach[j|j.promedioDeCalificacionesUltimoPartido(partido)]
-	partido.participantes.sortBy[promedioCalificacionesUltPart]
-	return partido.participantes
+	val aux1= partido.participantes.sortBy[promedioCalificacionesUltPart]
+	return aux1
 		
 		
 		
