@@ -7,7 +7,7 @@ import proyecto.Jugador
 
 interface OrganizadorCommand {
 	
-	def void ordenarLaLista(List<Jugador> jugadors)
+	def List<Jugador> ordenarLaLista(List<Jugador> jugadors)
 	
 	
 	
