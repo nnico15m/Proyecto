@@ -4,6 +4,8 @@ import java.util.List
 
 class OrdenarPartidoPorNCalificaciones implements OrganizadorCommand  {
 	
+	@Property int cantidadDePartido
+	
 	override def ordenarLaLista(Partido partido, int n){
 				
 	partido.participantes.forEach[j|j.promedioDeCalificacionesDeUltimosNPartidos(partido,n)]
@@ -13,6 +15,11 @@ class OrdenarPartidoPorNCalificaciones implements OrganizadorCommand  {
 		
 		
 	}
+	
+	override inicializarCntidadDePartido() {
+		
+		
+		}
 		
 
 	

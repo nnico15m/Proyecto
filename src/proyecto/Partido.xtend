@@ -233,11 +233,11 @@ def ordenarListaParticipantes(){		//ÀNOS SIRVE DE ALGO ORDENAR LA LISTA?
 							//Entrega 4 //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////							
 							
-	def ordenarLaListaPorCriterio(OrganizadorCommand criterio) {
+	def ordenarLaListaPorCriterio(OrganizadorCommand criterio,int n) {
 		
 		this.setCriterioDeOrdenamiento(criterio) // guardo el criterio por si me lo piden
 		//this.criterioDeOrdenamiento.ordenarLaLista(this)
-		criterio.ordenarLaLista(this,1)
+		criterio.ordenarLaLista(this,n)
 		
 	
 	}

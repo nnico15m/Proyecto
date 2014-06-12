@@ -7,6 +7,11 @@ import proyecto.Jugador
 
 interface OrganizadorCommand {
 	
+	
+	
+	def void inicializarCntidadDePartido()
+	
+	
 	def List<Jugador> ordenarLaLista(Partido partido,int n)
 	
 	

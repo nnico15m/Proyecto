@@ -6,7 +6,10 @@ import proyecto.Jugador
 
 class OrdenarPartidoPorUltimaCalificacion implements OrganizadorCommand  {
 	
-	override def ordenarLaLista(Partido partido,int n){
+	
+		@Property int cantidadDePartido
+	
+	override def ordenarLaLista(Partido partido,int cantidadDePartido){
 		
 		
 	partido.participantes.forEach[j|j.promedioDeCalificacionesUltimoPartido(partido)]
@@ -14,6 +17,12 @@ class OrdenarPartidoPorUltimaCalificacion implements OrganizadorCommand  {
 	return aux1
 		
 		
+		
+	}
+	
+	override inicializarCntidadDePartido() {
+		
+		this.setCantidadDePartido(1)
 		
 	}
 		

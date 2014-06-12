@@ -36,9 +36,9 @@ class Administrador extends Jugador {
 														//Entrega 4//
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////							
 	
-	def organizaElPartido(Partido partidoAOrganizar,OrganizadorCommand criterio){
+	def organizaElPartido(Partido partidoAOrganizar,OrganizadorCommand criterio,int n){
 		
-		partidoAOrganizar.ordenarLaListaPorCriterio(criterio)
+		partidoAOrganizar.ordenarLaListaPorCriterio(criterio,n)
 		
 		
 		
