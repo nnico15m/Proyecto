@@ -242,6 +242,10 @@ def ordenarListaParticipantes(){		//ÀNOS SIRVE DE ALGO ORDENAR LA LISTA?
 	
 	}
 	
+	def ordenarLaListaPorPromedioDeVariosCriterios(Partido partidoAOrganizar,List<OrganizadorCommand> listaCriterios){
+		
+	}
+	
 	//def ordenaLista() {
 		
 		// participantes.sortBy[nivelDeJuego]

@@ -21,8 +21,7 @@ class OrdenarPartidoPorUltimaCalificacion implements OrganizadorCommand  {
 	}
 	
 	override inicializarCntidadDePartido() {
-		
-		this.setCantidadDePartido(1)
+				
 		
 	}
 		
