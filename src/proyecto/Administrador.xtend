@@ -46,9 +46,9 @@ class Administrador extends Jugador {
 	}
 
 
-def organizaElPartidoConVariosCriterios(Partido partidoAOrganizar,List<OrganizadorCommand> listaCriterios){
+def organizaElPartidoConVariosCriterios(Partido partidoAOrganizar,List<OrganizadorCommand> listaCriterios,int n){
 		
-		partidoAOrganizar.ordenarLaListaPorPromedioDeVariosCriterios(partidoAOrganizar,listaCriterios)
+		partidoAOrganizar.ordenarLaListaPorPromedioDeVariosCriterios(partidoAOrganizar,listaCriterios,n)
 		
 		
 		
