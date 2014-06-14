@@ -25,7 +25,7 @@ class OrdenarPartidoPorUltimaCalificacion implements OrganizadorCommand  {
 		
 	}
 	
-	override int obtenerValor(Partido partido,Jugador jugador){
+	override int obtenerValor(Partido partido,Jugador jugador, int n){
 		
 	
 		
