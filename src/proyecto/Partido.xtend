@@ -242,8 +242,8 @@ def ordenarListaParticipantes(){		//ÀNOS SIRVE DE ALGO ORDENAR LA LISTA?
 	
 	}
 	
-	def ordenarLaListaPorPromedioDeVariosCriterios(Partido partidoAOrganizar,List<OrganizadorCommand> listaCriterios){
-		partidoAOrganizar.participantes.forEach[jug|jug.valorPromedioDeVariosCriterios(this,listaCriterios)]
+	def ordenarLaListaPorPromedioDeVariosCriterios(Partido partidoAOrganizar,List<OrganizadorCommand> listaCriterios, int n){
+		partidoAOrganizar.participantes.forEach[jug|jug.valorPromedioDeVariosCriterios(this,listaCriterios, n)]
 		partidoAOrganizar.participantes.sortBy[promedioConVariosCriteriosAplicados]
 		
 		
