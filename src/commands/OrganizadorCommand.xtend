@@ -14,7 +14,7 @@ interface OrganizadorCommand {
 	
 	def List<Jugador> ordenarLaLista(Partido partido,int n)
 	
-	def int obtenerValor(Partido partido,Jugador jugador)
+	def int obtenerValor(Partido partido,Jugador jugador, int n)
 	
 	
 	
