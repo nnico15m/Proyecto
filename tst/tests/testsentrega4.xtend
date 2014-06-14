@@ -19,6 +19,9 @@ import org.junit.experimental.theories.suppliers.TestedOn
 import commands.OrdenamientoPorHandicap
 import commands.OrdenarPartidoPorUltimaCalificacion
 import commands.OrdenarPartidoPorNCalificaciones
+import commands.OrganizadorCommand
+import java.util.List
+import java.util.ArrayList
 
 class testsentrega4 {
 
@@ -361,6 +364,68 @@ def laListaQuedaOrdenadaPorUltimasNCalificacionesPedidas(){
 @Test
 
 def ordenarUnaListaDeAcuerdoAVariosCriterios(){
+	var List<OrganizadorCommand> criterios = new ArrayList
+	criterios.add(new OrdenamientoPorHandicap)
+	criterios.add(new OrdenarPartidoPorNCalificaciones)
+	criterios.add(new OrdenarPartidoPorUltimaCalificacion)
+	
+	
+	
+	partidoInagural.setCodPartido(1)
+	partidoLleno.setCodPartido(2)
+	partidoNuevo.setCodPartido(3)
+	fermin.setFormaDeInscripcion(new Estandar)
+	martin.setFormaDeInscripcion(new Estandar)
+	carlos.setFormaDeInscripcion(new Estandar)
+	carlos.setFormaDeInscripcion(new Solidaria)
+	
+	partidoLleno.inscribiSiPodesA(p1)
+	partidoLleno.inscribiSiPodesA(martin)
+	partidoLleno.inscribiSiPodesA(carlos)
+	partidoLleno.inscribiSiPodesA(fermin)
+	
+	p1.agregarALaListaDependientesDeCalificar(carlos)
+	martin.agregarALaListaDependientesDeCalificar(carlos)
+	fermin.agregarALaListaDependientesDeCalificar(carlos)
+	
+	p1.generarUnaCalificacionParaEseJug(carlos,2,"muerto",1)
+	martin.generarUnaCalificacionParaEseJug(carlos,0,"crack",2)
+	fermin.generarUnaCalificacionParaEseJug(carlos,0,"amargo",2)
+	//deberia ser 2
+	
+	p1.agregarALaListaDependientesDeCalificar(martin)
+	carlos.agregarALaListaDependientesDeCalificar(martin)
+	fermin.agregarALaListaDependientesDeCalificar(martin)
+	
+	p1.generarUnaCalificacionParaEseJug(martin,6,"muerto",1)
+	carlos.generarUnaCalificacionParaEseJug(martin,8,"crack",2)
+	fermin.generarUnaCalificacionParaEseJug(martin,2,"amargo",2)
+	//deberia ser 16
+	
+	p1.agregarALaListaDependientesDeCalificar(fermin)
+	carlos.agregarALaListaDependientesDeCalificar(fermin)
+	fermin.agregarALaListaDependientesDeCalificar(fermin)
+	
+	p1.generarUnaCalificacionParaEseJug(fermin,2,"muerto",1)
+	carlos.generarUnaCalificacionParaEseJug(fermin,0,"crack",2)
+	martin.generarUnaCalificacionParaEseJug(fermin,2,"amargo",2)
+	//deberia ser 4
+	
+	martin.agregarALaListaDependientesDeCalificar(p1)
+	carlos.agregarALaListaDependientesDeCalificar(p1)
+	fermin.agregarALaListaDependientesDeCalificar(p1)
+	
+	fermin.generarUnaCalificacionParaEseJug(p1,2,"muerto",1)
+	carlos.generarUnaCalificacionParaEseJug(p1,0,"crack",2)
+	martin.generarUnaCalificacionParaEseJug(p1,20,"amargo",2)
+	//deberia ser 22
+	
+	
+	Assert.assertTrue(partidoLleno.participantes.get (0) == p1)
+	val aux = administrador.organizaElPartidoConVariosCriterios(partidoLleno,criterios,2)
+	Assert.assertFalse(aux.get (0) == p1)
+
+	
 	
 	
 	
