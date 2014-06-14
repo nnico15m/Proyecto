@@ -4,6 +4,7 @@ import java.util.List
 import java.util.ArrayList
 
 import commands.OrganizadorCommand
+import commands.DividirEquiposCommand
 
 class Administrador extends Jugador {
 	
@@ -54,6 +55,12 @@ def organizaElPartidoConVariosCriterios(Partido partidoAOrganizar,List<Organizad
 		
 		
 	}
+	
+def dividirEquiposPorCriterio(Partido partido, DividirEquiposCommand criterioDivision){
+	
+	partido.dividirEquipos(criterioDivision)
+	
+}
 
 
 	

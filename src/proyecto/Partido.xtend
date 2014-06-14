@@ -7,6 +7,7 @@ import excepciones.NoSePudoAnotarException
 import excepciones.ElCupoEstaLlenoException
 import commands.OrganizadorCommand
 import commands.OrdenamientoPorHandicap
+import commands.DividirEquiposCommand
 
 class Partido  {
 	
@@ -17,6 +18,8 @@ class Partido  {
 	@Property NotificadorDeAdministradorObserver observer
 	@Property OrganizadorCommand criterioDeOrdenamiento 
 	@Property int codPartido
+	@Property Iterable<Jugador> equipo1 = new ArrayList (5)
+	@Property Iterable<Jugador> equipo2 = new ArrayList (5)
 
 
 
@@ -249,7 +252,9 @@ def ordenarListaParticipantes(){		//ÀNOS SIRVE DE ALGO ORDENAR LA LISTA?
 		
 	}
 	
-	
+	def dividirEquipos(DividirEquiposCommand criterioDivision){
+		criterioDivision.dividirEquipos(this)
+	}
 	
 	//def ordenaLista() {
 		

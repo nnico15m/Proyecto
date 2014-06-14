@@ -22,6 +22,7 @@ import commands.OrdenarPartidoPorNCalificaciones
 import commands.OrganizadorCommand
 import java.util.List
 import java.util.ArrayList
+import commands.DividirPorParEImpar
 
 class testsentrega4 {
 
@@ -104,24 +105,58 @@ def crearObserverDePartido(String mailAdministrador){
 	}
 
 
-def anotar10JugadoresAlPartido(){
-	
-	partidoInagural.inscribiSiPodesA(p1)
-	partidoInagural.inscribiSiPodesA(p2)
-	partidoInagural.inscribiSiPodesA(p3)
-	partidoInagural.inscribiSiPodesA(p4)
-	partidoInagural.inscribiSiPodesA(p5)
-	partidoInagural.inscribiSiPodesA(p6)
-	partidoInagural.inscribiSiPodesA(p7)
-	partidoInagural.inscribiSiPodesA(p8)
-	partidoInagural.inscribiSiPodesA(p9)
-	partidoInagural.inscribiSiPodesA(p10)
+def anotar10JugadoresAlPartido(Partido partido){
+	p1.setFormaDeInscripcion(new Solidaria)
+			p2.setFormaDeInscripcion(new Condicional)
+			p3.setFormaDeInscripcion(new Estandar)
+			p4.setFormaDeInscripcion(new Estandar)
+			p5.setFormaDeInscripcion(new Condicional)
+			p6.setFormaDeInscripcion(new Estandar)
+			p7.setFormaDeInscripcion(new Solidaria)
+			p8.setFormaDeInscripcion(new Estandar)
+			p9.setFormaDeInscripcion(new Condicional)
+			p10.setFormaDeInscripcion(new Estandar)
+	partido.inscribiSiPodesA(p1)
+	partido.inscribiSiPodesA(p2)
+	partido.inscribiSiPodesA(p3)
+	partido.inscribiSiPodesA(p4)
+	partido.inscribiSiPodesA(p5)
+	partido.inscribiSiPodesA(p6)
+	partido.inscribiSiPodesA(p7)
+	partido.inscribiSiPodesA(p8)
+	partido.inscribiSiPodesA(p9)
+	partido.inscribiSiPodesA(p10)
 	
 	
 	       
 			
 	
 }
+
+def anotarA10AlPartidoLleno(){
+	p1.setFormaDeInscripcion(new Solidaria)
+			p2.setFormaDeInscripcion(new Condicional)
+			p3.setFormaDeInscripcion(new Estandar)
+			p4.setFormaDeInscripcion(new Estandar)
+			p5.setFormaDeInscripcion(new Condicional)
+			p6.setFormaDeInscripcion(new Estandar)
+			p7.setFormaDeInscripcion(new Solidaria)
+			p8.setFormaDeInscripcion(new Estandar)
+			p9.setFormaDeInscripcion(new Condicional)
+			p10.setFormaDeInscripcion(new Estandar)
+			partidoLleno.inscribiSiPodesA(p1)
+			partidoLleno.inscribiSiPodesA(p2)
+			partidoLleno.inscribiSiPodesA(p3)
+			partidoLleno.inscribiSiPodesA(p4)
+			partidoLleno.inscribiSiPodesA(p5)
+			partidoLleno.inscribiSiPodesA(p6)
+			partidoLleno.inscribiSiPodesA(p7)
+			partidoLleno.inscribiSiPodesA(p8)
+			partidoLleno.inscribiSiPodesA(p9)
+			partidoLleno.inscribiSiPodesA(p10)
+			
+}
+
 
 /* @Test 
 
@@ -369,18 +404,18 @@ def ordenarUnaListaDeAcuerdoAVariosCriterios(){
 	criterios.add(new OrdenarPartidoPorNCalificaciones)
 	criterios.add(new OrdenarPartidoPorUltimaCalificacion)
 	
-	fermin.setNivelDeJuego(1)
+	fermin.setNivelDeJuego(6)
 	p1.setNivelDeJuego(10)
-	carlos.setNivelDeJuego(9)
+	carlos.setNivelDeJuego(5)
 	
 	
 	
 	partidoInagural.setCodPartido(1)
-	partidoLleno.setCodPartido(3)
-	partidoNuevo.setCodPartido(2)
+	partidoLleno.setCodPartido(2)
+	partidoNuevo.setCodPartido(3)
 	fermin.setFormaDeInscripcion(new Estandar)
 	martin.setFormaDeInscripcion(new Estandar)
-	p1.setFormaDeInscripcion(new Estandar)
+	carlos.setFormaDeInscripcion(new Estandar)
 	carlos.setFormaDeInscripcion(new Solidaria)
 	
 	partidoLleno.inscribiSiPodesA(p1)
@@ -411,7 +446,7 @@ def ordenarUnaListaDeAcuerdoAVariosCriterios(){
 	fermin.agregarALaListaDependientesDeCalificar(fermin)
 	
 	p1.generarUnaCalificacionParaEseJug(fermin,2,"muerto",1)
-	carlos.generarUnaCalificacionParaEseJug(fermin,2,"crack",2)
+	carlos.generarUnaCalificacionParaEseJug(fermin,0,"crack",2)
 	martin.generarUnaCalificacionParaEseJug(fermin,2,"amargo",2)
 	//deberia ser 4
 	
@@ -421,18 +456,37 @@ def ordenarUnaListaDeAcuerdoAVariosCriterios(){
 	
 	fermin.generarUnaCalificacionParaEseJug(p1,2,"muerto",1)
 	carlos.generarUnaCalificacionParaEseJug(p1,0,"crack",2)
-	martin.generarUnaCalificacionParaEseJug(p1,16,"amargo",2)
+	martin.generarUnaCalificacionParaEseJug(p1,20,"amargo",2)
 	//deberia ser 22
 	
 	
 	Assert.assertTrue(partidoLleno.participantes.get (0) == p1)
 	val aux = administrador.organizaElPartidoConVariosCriterios(partidoLleno,criterios,2)
-	Assert.assertTrue(aux.get (0) == fermin)
+	Assert.assertFalse(aux.get (0) == p1)
 
 	
 	
 	
 	
 }	
+@Test 
+def void funcionaElSizeEn1Iterable(){
+	partidoLleno.anotar10JugadoresAlPartido()
+	val listaImpares = partidoLleno.participantes.filter[jug|jug.unJugEsImpar(partidoLleno)]
+	partidoLleno.setEquipo1(listaImpares)
+	partidoLleno.equipo1.size == 5
+}
+
+
+@Test
+def seDividenLosParticipantesYSeObtienen2Equipos(){
+	this.anotarA10AlPartidoLleno()
+	val criterioOrd = new DividirPorParEImpar
+	administrador.dividirEquiposPorCriterio(partidoLleno,criterioOrd)
+	Assert.assertTrue(partidoLleno.equipo1.size == 5)
+	Assert.assertTrue(partidoLleno.equipo2.size == 5)
+	
+	
+}
 
 }	
