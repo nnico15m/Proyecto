@@ -369,6 +369,10 @@ def ordenarUnaListaDeAcuerdoAVariosCriterios(){
 	criterios.add(new OrdenarPartidoPorNCalificaciones)
 	criterios.add(new OrdenarPartidoPorUltimaCalificacion)
 	
+	fermin.setNivelDeJuego(6)
+	p1.setNivelDeJuego(10)
+	carlos.setNivelDeJuego(5)
+	
 	
 	
 	partidoInagural.setCodPartido(1)
