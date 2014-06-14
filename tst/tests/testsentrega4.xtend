@@ -470,11 +470,11 @@ def ordenarUnaListaDeAcuerdoAVariosCriterios(){
 	
 }	
 @Test 
-def void funcionaElSizeEn1Iterable(){
+def funcionaElSizeEn1Iterable(){
 	partidoLleno.anotar10JugadoresAlPartido()
 	val listaImpares = partidoLleno.participantes.filter[jug|jug.unJugEsImpar(partidoLleno)]
-	partidoLleno.setEquipo1(listaImpares)
-	partidoLleno.equipo1.size == 5
+	Assert.assertEquals(5,listaImpares.size)
+	
 }
 
 
@@ -483,8 +483,8 @@ def seDividenLosParticipantesYSeObtienen2Equipos(){
 	this.anotarA10AlPartidoLleno()
 	val criterioOrd = new DividirPorParEImpar
 	administrador.dividirEquiposPorCriterio(partidoLleno,criterioOrd)
-	Assert.assertTrue(partidoLleno.equipo1.size == 5)
-	Assert.assertTrue(partidoLleno.equipo2.size == 5)
+	Assert.assertEquals(5,partidoLleno.equipo1.size)
+	Assert.assertEquals(5,partidoLleno.equipo2.size)
 	
 	
 }

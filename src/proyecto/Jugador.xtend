@@ -118,12 +118,12 @@ class Jugador {
 	
 	def unJugEsImpar(Partido partido){
 	val posicionJug = partido.participantes.indexOf(this)
-	(posicionJug / 2) == 1
+	(posicionJug % 2) == 1
 	}
 	
 	def unJugEsPar(Partido partido){
 	val posicionJug = partido.participantes.indexOf(this)
-	(posicionJug / 2) == 1
+	(posicionJug % 2) == 0
 	}
 }
 	
