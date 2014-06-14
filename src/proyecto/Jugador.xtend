@@ -107,10 +107,10 @@ class Jugador {
 	
 	}
 	
-	def int valorPromedioDeVariosCriterios(Partido partidoAOrganizar,List<OrganizadorCommand> listaCriterios){
+	def int valorPromedioDeVariosCriterios(Partido partidoAOrganizar,List<OrganizadorCommand> listaCriterios,int n){
 		
 	
-		val numeroObtenido = listaCriterios.fold(0,[acum,criterio|(acum + criterio.obtenerValor(partidoAOrganizar,this))])/(listaCriterios.size)
+		val numeroObtenido = listaCriterios.fold(0,[acum,criterio|(acum + criterio.obtenerValor(partidoAOrganizar,this, n))])/(listaCriterios.size)
 		this.setPromedioConVariosCriteriosAplicados(numeroObtenido)
 		return numeroObtenido
 	
