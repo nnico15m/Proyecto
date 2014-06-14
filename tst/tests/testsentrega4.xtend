@@ -369,18 +369,18 @@ def ordenarUnaListaDeAcuerdoAVariosCriterios(){
 	criterios.add(new OrdenarPartidoPorNCalificaciones)
 	criterios.add(new OrdenarPartidoPorUltimaCalificacion)
 	
-	fermin.setNivelDeJuego(6)
+	fermin.setNivelDeJuego(1)
 	p1.setNivelDeJuego(10)
-	carlos.setNivelDeJuego(5)
+	carlos.setNivelDeJuego(9)
 	
 	
 	
 	partidoInagural.setCodPartido(1)
-	partidoLleno.setCodPartido(2)
-	partidoNuevo.setCodPartido(3)
+	partidoLleno.setCodPartido(3)
+	partidoNuevo.setCodPartido(2)
 	fermin.setFormaDeInscripcion(new Estandar)
 	martin.setFormaDeInscripcion(new Estandar)
-	carlos.setFormaDeInscripcion(new Estandar)
+	p1.setFormaDeInscripcion(new Estandar)
 	carlos.setFormaDeInscripcion(new Solidaria)
 	
 	partidoLleno.inscribiSiPodesA(p1)
@@ -411,7 +411,7 @@ def ordenarUnaListaDeAcuerdoAVariosCriterios(){
 	fermin.agregarALaListaDependientesDeCalificar(fermin)
 	
 	p1.generarUnaCalificacionParaEseJug(fermin,2,"muerto",1)
-	carlos.generarUnaCalificacionParaEseJug(fermin,0,"crack",2)
+	carlos.generarUnaCalificacionParaEseJug(fermin,2,"crack",2)
 	martin.generarUnaCalificacionParaEseJug(fermin,2,"amargo",2)
 	//deberia ser 4
 	
@@ -421,13 +421,13 @@ def ordenarUnaListaDeAcuerdoAVariosCriterios(){
 	
 	fermin.generarUnaCalificacionParaEseJug(p1,2,"muerto",1)
 	carlos.generarUnaCalificacionParaEseJug(p1,0,"crack",2)
-	martin.generarUnaCalificacionParaEseJug(p1,20,"amargo",2)
+	martin.generarUnaCalificacionParaEseJug(p1,16,"amargo",2)
 	//deberia ser 22
 	
 	
 	Assert.assertTrue(partidoLleno.participantes.get (0) == p1)
 	val aux = administrador.organizaElPartidoConVariosCriterios(partidoLleno,criterios,2)
-	Assert.assertFalse(aux.get (0) == p1)
+	Assert.assertTrue(aux.get (0) == fermin)
 
 	
 	
