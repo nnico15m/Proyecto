@@ -356,6 +356,13 @@ def laListaQuedaOrdenadaPorUltimasNCalificacionesPedidas(){
 	Assert.assertTrue(aux.get(1) == fermin)
 	Assert.assertTrue(aux.get(3) == p1)
 	
-}		
+}	
+
+@Test
+
+def ordenarUnaListaDeAcuerdoAVariosCriterios(){
+	
+	
+}	
 
 }	

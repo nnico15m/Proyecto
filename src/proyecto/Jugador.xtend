@@ -4,8 +4,7 @@ import java.util.List
 import observers.StubMensajero
 import proyecto.Partido
 import proyecto.Calificaciones
-
-
+import commands.OrganizadorCommand
 
 class Jugador {
 	
@@ -25,6 +24,7 @@ class Jugador {
 	@Property int nivelDeJuego
 	@Property ArrayList<Integer> listaCriterioDelJugador = new ArrayList<Integer>()
 	@Property int promedioCalificacionesUltPart
+	@Property int promedioConVariosCriteriosAplicados
 	
 	def prioridad() {
 		this.formaDeInscripcion.prioridad()
@@ -107,6 +107,14 @@ class Jugador {
 	
 	}
 	
+	def int valorPromedioDeVariosCriterios(Partido partidoAOrganizar,List<OrganizadorCommand> listaCriterios){
+		
+	
+		val numeroObtenido = listaCriterios.fold(0,[acum,criterio|(acum + criterio.obtenerValor(partidoAOrganizar,this))])/(listaCriterios.size)
+		this.setPromedioConVariosCriteriosAplicados(numeroObtenido)
+		return numeroObtenido
+	
+	}
 }
 	
 		

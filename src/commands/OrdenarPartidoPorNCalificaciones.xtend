@@ -1,6 +1,7 @@
 package commands
 import proyecto.Partido
 import java.util.List
+import proyecto.Jugador
 
 class OrdenarPartidoPorNCalificaciones implements OrganizadorCommand  {
 	
@@ -21,7 +22,14 @@ class OrdenarPartidoPorNCalificaciones implements OrganizadorCommand  {
 		
 		}
 		
+	override int obtenerValor(Partido partido,Jugador jugador){
+		
+	
+		
+		return 0
 
+	
+	}
 	
 	
 	

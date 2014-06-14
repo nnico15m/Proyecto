@@ -26,6 +26,14 @@ class OrdenamientoPorHandicap implements OrganizadorCommand {
 			
 	}
 	
+	override int obtenerValor(Partido partido,Jugador jugador){
+		
+		jugador.nivelDeJuego
+		
+		
+	
+		
+	}
 	
 	
 	}
