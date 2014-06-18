@@ -29,6 +29,11 @@ class Jugador {
 	def prioridad() {
 		this.formaDeInscripcion.prioridad()
 	}
+	
+	// AHORA TENEMOS QUE INSCRIBIRNOS POR ACç
+	def inscribiteA(Partido partido){
+		partido.inscribiSiPodesA(this)
+	}
 
 	def void darseDeBajaAPartido(Partido partido){
 		

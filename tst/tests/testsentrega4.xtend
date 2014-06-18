@@ -22,7 +22,8 @@ import commands.OrdenarPartidoPorNCalificaciones
 import commands.OrganizadorCommand
 import java.util.List
 import java.util.ArrayList
-import commands.DividirPorParEImpar
+import commands.DividirPorParEImparimport proyecto.InscripcionAbierta
+import excepciones.LaInscripcionEstaCerradaException
 
 class testsentrega4 {
 
@@ -60,9 +61,9 @@ class testsentrega4 {
 			losPibes.agregaPartido(partidoLleno)
 			losPibes.agregaPartido(partidoInagural)
 			losPibes.setAdmin(administrador)
-			partidoLleno.setObserver(crearObserverDePartido("adminlleno@gmail.com"))
-			partidoInagural.setObserver(crearObserverDePartido("admininagural@gmail.com"))
-			
+			partidoInagural.setInscripciones(new InscripcionAbierta(partidoInagural, this.crearObserverDePartido("admininagural@gmail.com")))
+			partidoLleno.setInscripciones(new InscripcionAbierta(partidoLleno, this.crearObserverDePartido("adminlleno@gmail.com")))
+						
 			losPibes.agregarALaComunidad(administrador)
 			losPibes.agregarALaComunidad(p1)
 			losPibes.agregarALaComunidad(p2)
@@ -487,6 +488,19 @@ def seDividenLosParticipantesYSeObtienen2Equipos(){
 	Assert.assertEquals(5,partidoLleno.equipo2.size)
 	
 	
+}
+
+@Test (expected = LaInscripcionEstaCerradaException)
+def nadiePuedeInscribirseCuandoSeConfirmanLosEquipos(){
+	administrador.confirmarEquipos(partidoLleno)
+	carlos.inscribiteA(partidoLleno)
+}
+
+@Test (expected = LaInscripcionEstaCerradaException)
+def nadiePuedeDarseDeBajaCuandoSeConfirmaronLosEquipos(){
+	carlos.inscribiteA(partidoInagural)
+	administrador.confirmarEquipos(partidoInagural)
+	carlos.darseDeBajaAPartido(partidoInagural)
 }
 
 }	

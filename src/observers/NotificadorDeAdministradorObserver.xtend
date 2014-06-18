@@ -7,14 +7,15 @@ class NotificadorDeAdministradorObserver {
 	
 	def avisarPartidoConfirmado(){
 		
-		mensajero.mandaMail(mailAdministrador, "Partido Confirmado")
+		new StubMensajero().mandaMail(mailAdministrador, "Partido Confirmado")
 		
 	}
 	
 	def avisarQueSeBajoUno() {
 		
-		mensajero.mandaMail(mailAdministrador, "Se bajo uno")
+		new StubMensajero().mandaMail(mailAdministrador, "Se bajo uno")
 		
 	}
 	
+
 }

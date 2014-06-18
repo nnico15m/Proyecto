@@ -62,6 +62,10 @@ def dividirEquiposPorCriterio(Partido partido, DividirEquiposCommand criterioDiv
 	
 }
 
+def confirmarEquipos(Partido partido){
+	partido.confirmaTusEquipos()
+}
+
 
 	
 		

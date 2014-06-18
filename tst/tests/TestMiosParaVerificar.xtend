@@ -13,6 +13,7 @@ import excepciones.ElCupoEstaLlenoException
 import excepciones.NoSePudoAnotarException
 import proyecto.ComunidadFutbolera
 import proyecto.Administrador
+import proyecto.InscripcionAbierta
 
 class TestMiosParaVerificar {
 			
@@ -47,8 +48,10 @@ class TestMiosParaVerificar {
 			losPibes.agregaPartido(partidoLleno)
 			losPibes.agregaPartido(partidoInagural)
 			losPibes.setAdmin(administrador)
-			partidoLleno.setObserver(crearObserverDePartido("adminlleno@gmail.com"))
-			partidoInagural.setObserver(crearObserverDePartido("admininagural@gmail.com"))
+//			partidoLleno.setObserver(crearObserverDePartido("adminlleno@gmail.com"))
+//			partidoInagural.setObserver(crearObserverDePartido("admininagural@gmail.com"))
+			partidoInagural.setInscripciones(new InscripcionAbierta(partidoInagural, this.crearObserverDePartido("admininagural@gmail.com")))
+			partidoLleno.setInscripciones(new InscripcionAbierta(partidoLleno, this.crearObserverDePartido("adminlleno@gmail.com")))
 			
 			losPibes.agregarALaComunidad(administrador)
 			losPibes.agregarALaComunidad(p1)
@@ -69,7 +72,7 @@ class TestMiosParaVerificar {
 			
 			carlos.mail = "carlos@gmail.com"
 			martin.mail = "martin@gmail.com"
-		juan.setMensajero(mensajero)
+			juan.setMensajero(mensajero)
 			
 		}
 	
