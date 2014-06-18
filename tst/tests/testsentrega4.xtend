@@ -24,6 +24,7 @@ import java.util.List
 import java.util.ArrayList
 import commands.DividirPorParEImparimport proyecto.InscripcionAbierta
 import excepciones.LaInscripcionEstaCerradaException
+import commands.DividirPorPosicion14589
 
 class testsentrega4 {
 
@@ -475,12 +476,30 @@ def funcionaElSizeEn1Iterable(){
 
 
 @Test
-def seDividenLosParticipantesYSeObtienen2Equipos(){
+def seDividenLosParticipantesYSeObtienen2EquiposOrdenadoPorParEImpar(){
 	this.anotarA10AlPartidoLleno()
 	val criterioOrd = new DividirPorParEImpar
 	administrador.dividirEquiposPorCriterio(partidoLleno,criterioOrd)
 	Assert.assertEquals(5,partidoLleno.equipo1.size)
 	Assert.assertEquals(5,partidoLleno.equipo2.size)
+	Assert.assertEquals(p1,partidoLleno.equipo2.get(0))
+	Assert.assertEquals(p2,partidoLleno.equipo1.get(0))
+	Assert.assertEquals(p3,partidoLleno.equipo2.get(1))
+	Assert.assertEquals(p4,partidoLleno.equipo1.get(1))
+	
+	
+}
+
+@Test
+def seDividenLosParticipantesYSeObtienen2EquiposOrdenadoPorPar14589(){
+	this.anotarA10AlPartidoLleno()
+	val criterioOrd = new DividirPorPosicion14589
+	administrador.dividirEquiposPorCriterio(partidoLleno,criterioOrd)
+	Assert.assertEquals(p1,partidoLleno.equipo1.get(0))
+	Assert.assertEquals(p4,partidoLleno.equipo1.get(1))
+	Assert.assertEquals(p5,partidoLleno.equipo1.get(2))
+	Assert.assertEquals(p8,partidoLleno.equipo1.get(3))
+	Assert.assertEquals(p9,partidoLleno.equipo1.get(4))
 	
 	
 }
