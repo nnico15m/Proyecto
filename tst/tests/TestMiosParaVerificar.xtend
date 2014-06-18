@@ -37,10 +37,7 @@ class TestMiosParaVerificar {
 			var Jugador juan = new Jugador
 			var Jugador fermin = new Jugador
 			var Jugador elLoco = new Jugador
-			var mensajero = new StubMensajero	//EL JUGADOR NO TIENE POR QUƒ CONOCER AL MENSAJERO
-			
-
-			
+			var mensajero = new StubMensajero
 
 @Before	
 		def void init() {
@@ -48,8 +45,6 @@ class TestMiosParaVerificar {
 			losPibes.agregaPartido(partidoLleno)
 			losPibes.agregaPartido(partidoInagural)
 			losPibes.setAdmin(administrador)
-//			partidoLleno.setObserver(crearObserverDePartido("adminlleno@gmail.com"))
-//			partidoInagural.setObserver(crearObserverDePartido("admininagural@gmail.com"))
 			partidoInagural.setInscripciones(new InscripcionAbierta(partidoInagural, this.crearObserverDePartido("admininagural@gmail.com")))
 			partidoLleno.setInscripciones(new InscripcionAbierta(partidoLleno, this.crearObserverDePartido("adminlleno@gmail.com")))
 			
@@ -258,7 +253,7 @@ def siUnJugadorSeDaDeBajaSinProponerReemplazanteSeLoSanciona(){
 	partidoInagural.inscribiSiPodesA(carlos)
 	carlos.darseDeBajaAPartido(partidoInagural)
 	
-///	Assert.assertTrue(carlos.infracciones.length == 1)
+	Assert.assertTrue(carlos.infracciones.length == 1)
 }
 
 @Test

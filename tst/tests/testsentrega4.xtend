@@ -98,11 +98,6 @@ def crearObserverDePartido(String mailAdministrador){
 		observerDelPartido.setMailAdministrador(mailAdministrador)
 		observerDelPartido.setMensajero(mensajero)
 		observerDelPartido
-	
-	
-	
-	
-	
 	}
 
 
