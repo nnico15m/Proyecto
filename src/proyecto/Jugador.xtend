@@ -1,10 +1,11 @@
 package proyecto
-import java.util.ArrayList			
+
+import commands.OrganizadorCommand
+import java.util.ArrayList
 import java.util.List
 import observers.StubMensajero
-import proyecto.Partido
 import proyecto.Calificaciones
-import commands.OrganizadorCommand
+import proyecto.Partido
 
 class Jugador {
 	
@@ -97,20 +98,24 @@ class Jugador {
 	def promedioDeCalificacionesUltimoPartido(Partido partidoAOrganizar){
 		val codUltimoPartidoJugado = (partidoAOrganizar.getCodPartido() ) - 1
 		val listaCalificacionesAux = calificaciones.filter[codPartidoJugado == codUltimoPartidoJugado]
-		val promedioObtenido = listaCalificacionesAux.fold (0, [ acum, jugador | (acum + jugador.nota)])/(listaCalificacionesAux.size)
-		this.setPromedioCalificacionesUltPart(promedioObtenido)
-		return promedioObtenido
+		setearPromedioObtenido(listaCalificacionesAux)
 			
 		}
+	
+	
 	
 	def promedioDeCalificacionesDeUltimosNPartidos(Partido partidoAOrganizar,int numeroPedido){
 		val codUltimoPartidoJugado = (partidoAOrganizar.getCodPartido() ) - numeroPedido
 		val listaCalificacionesAux = calificaciones.filter[codPartidoJugado > codUltimoPartidoJugado]
+		setearPromedioObtenido(listaCalificacionesAux)
+	
+	}
+	
+		def setearPromedioObtenido(Iterable<Calificaciones> listaCalificacionesAux) {
 		val promedioObtenido = listaCalificacionesAux.fold (0, [ acum, jugador | (acum + jugador.nota)])/(listaCalificacionesAux.size)
 		this.setPromedioCalificacionesUltPart(promedioObtenido)
 		return promedioObtenido
-	
-	}
+		}
 	
 	def int valorPromedioDeVariosCriterios(Partido partidoAOrganizar,List<OrganizadorCommand> listaCriterios,int n){
 		
