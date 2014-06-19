@@ -496,15 +496,20 @@ def seDividenLosParticipantesYSeObtienen2EquiposOrdenadoPorPar14589(){
 	val criterioOrd = new DividirPorPosicion14589
 	administrador.dividirEquiposPorCriterio(partidoLleno,criterioOrd)
 	Assert.assertEquals(p1,partidoLleno.equipo1.get(0))
-	Assert.assertEquals(p4,partidoLleno.equipo1.get(1))
+		Assert.assertEquals(p4,partidoLleno.equipo1.get(1))
 	Assert.assertEquals(p5,partidoLleno.equipo1.get(2))
 	Assert.assertEquals(p8,partidoLleno.equipo1.get(3))
 	Assert.assertEquals(p9,partidoLleno.equipo1.get(4))
-	Assert.assertEquals(p2,partidoLleno.equipo2.get(0))
+		Assert.assertEquals(p2,partidoLleno.equipo2.get(0))
 	Assert.assertEquals(p3,partidoLleno.equipo2.get(1))
 	Assert.assertEquals(p6,partidoLleno.equipo2.get(2))
 	Assert.assertEquals(p7,partidoLleno.equipo2.get(3))
 	Assert.assertEquals(p10,partidoLleno.equipo2.get(4))
+	
+
+
+
+	
 	
 	
 }

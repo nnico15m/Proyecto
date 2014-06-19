@@ -18,6 +18,23 @@ class DividirPorParEImpar implements DividirEquiposCommand {
 		
 	}
 	
+	def agregarPosicionesParaEquipo(){
+		
+		}
+	
+	
+	
+	override verSiLaPosicionDelJugEsValida(int posicionJug) {
+		false
+	}
+	
+	override posicionesSobrantes(int posicionJug) {
+		false
+	}
+		
+	
+	
+	
 	}
 	
 	

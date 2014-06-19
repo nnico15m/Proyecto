@@ -6,6 +6,8 @@ import java.util.List
 import observers.StubMensajero
 import proyecto.Calificaciones
 import proyecto.Partido
+import commands.DividirPorPosicion14589
+import commands.DividirEquiposCommand
 
 class Jugador {
 	
@@ -139,32 +141,26 @@ class Jugador {
 	
 	
 	def esDeLaPosicion14589(Partido partido){
-		val List<Integer> listPosicionesValidas = new ArrayList<Integer>()
-		listPosicionesValidas.add(0)
-		listPosicionesValidas.add(3)
-		listPosicionesValidas.add(4)
-		listPosicionesValidas.add(7)
-		listPosicionesValidas.add(8)
 		val posicionJug = obtenerPosicion(partido)
-		listPosicionesValidas.contains(posicionJug)
+		val DividirEquiposCommand criterioOrd = new DividirPorPosicion14589
+		criterioOrd.verSiLaPosicionDelJugEsValida(posicionJug)
 		
 	}
 	
 	def esDeLaPosicion236710(Partido partido){
-		val List<Integer> listPosicionesValidas = new ArrayList<Integer>()
-		listPosicionesValidas.add(1)
-		listPosicionesValidas.add(2)
-		listPosicionesValidas.add(5)
-		listPosicionesValidas.add(6)
-		listPosicionesValidas.add(9)
 		val posicionJug = obtenerPosicion(partido)
-		listPosicionesValidas.contains(posicionJug)
+		val DividirEquiposCommand criterioOrd = new DividirPorPosicion14589
+		criterioOrd.posicionesSobrantes(posicionJug)
 	}
 	
 	def obtenerPosicion(Partido partido) {
 		val posicionJug = partido.participantes.indexOf(this)
 		posicionJug
 	}
+	
+	
+
+
 }
 	
 		
