@@ -494,12 +494,6 @@ def seDividenLosParticipantesYSeObtienen2EquiposOrdenadoPorPar14589(){
 	Assert.assertArrayEquals(newArrayList(p1, p4, p5, p8, p9), partidoLleno.equipo1)
 	Assert.assertArrayEquals(newArrayList(p2, p3, p6, p7, p10), partidoLleno.equipo2)
 	
-
-
-
-	
-	
-	
 }
 
 @Test (expected = LaInscripcionEstaCerradaException)
@@ -513,6 +507,13 @@ def nadiePuedeDarseDeBajaCuandoSeConfirmaronLosEquipos(){
 	carlos.inscribiteA(partidoInagural)
 	administrador.confirmarEquipos(partidoInagural)
 	carlos.darseDeBajaAPartido(partidoInagural)
+}
+
+@Test
+def unPartidoQueCuerraSuInscripcionMantieneSuListaDeParticipantes(){
+	this.anotarA10AlPartidoLleno
+	administrador.confirmarEquipos(partidoLleno)
+	Assert.assertArrayEquals(newArrayList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10), partidoLleno.participantes)
 }
 
 }	

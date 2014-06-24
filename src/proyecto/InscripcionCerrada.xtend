@@ -17,8 +17,9 @@ class InscripcionCerrada implements TipoDeInscripcion{
 		this.getPartido
 	}
 	
-	new(Partido unPartido){
+	new(Partido unPartido, List<Jugador> jugadores){
 		this.setPartido(unPartido)
+		this.setParticipantes(jugadores)
 	}
 	
 	override inscribiA(Jugador jugador){

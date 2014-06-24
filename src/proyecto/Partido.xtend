@@ -94,7 +94,7 @@ class Partido  {
 	}
 	
 	def confirmaTusEquipos() {
-		this.setInscripciones(new InscripcionCerrada(this))
+		this.setInscripciones(new InscripcionCerrada(this, this.participantes))
 	}
 	
 	//def ordenaLista() {
