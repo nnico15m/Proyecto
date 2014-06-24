@@ -24,11 +24,11 @@ class DividirPorParEImpar implements DividirEquiposCommand {
 	
 	
 	
-	override verSiLaPosicionDelJugEsValida(int posicionJug) {
+	override es14589(int posicionJug) {
 		false
 	}
 	
-	override posicionesSobrantes(int posicionJug) {
+	override es236710(int posicionJug) {
 		false
 	}
 		

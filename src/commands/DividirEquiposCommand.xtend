@@ -8,6 +8,6 @@ interface DividirEquiposCommand {
 
 
 def void dividirEquipos(Partido partido)
-def boolean verSiLaPosicionDelJugEsValida(int posicionJug)
-def boolean posicionesSobrantes(int posicionJug)
+def boolean es14589(int posicionJug)
+def boolean es236710(int posicionJug)
 }

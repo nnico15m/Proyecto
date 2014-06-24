@@ -97,13 +97,18 @@ class Jugador {
 		this.setComunidad(comunidad)
 	}
 	
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+														//Entrega 4//
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////							
+
+	
 	def promedioDeCalificacionesUltimoPartido(Partido partidoAOrganizar){
-		val codUltimoPartidoJugado = (partidoAOrganizar.getCodPartido() ) - 1
+/*		val codUltimoPartidoJugado = (partidoAOrganizar.getCodPartido() ) - 1
 		val listaCalificacionesAux = calificaciones.filter[codPartidoJugado == codUltimoPartidoJugado]
 		setearPromedioObtenido(listaCalificacionesAux)
-			
-		}
-	
+*/		
+		this.promedioDeCalificacionesDeUltimosNPartidos(partidoAOrganizar, 2)		
+	}
 	
 	
 	def promedioDeCalificacionesDeUltimosNPartidos(Partido partidoAOrganizar,int numeroPedido){
@@ -113,57 +118,49 @@ class Jugador {
 	
 	}
 	
-		def setearPromedioObtenido(Iterable<Calificaciones> listaCalificacionesAux) {
+	
+	
+	def setearPromedioObtenido(Iterable<Calificaciones> listaCalificacionesAux) {
 		val promedioObtenido = listaCalificacionesAux.fold (0, [ acum, jugador | (acum + jugador.nota)])/(listaCalificacionesAux.size)
 		this.setPromedioCalificacionesUltPart(promedioObtenido)
 		return promedioObtenido
-		}
+	}
 	
 	def int valorPromedioDeVariosCriterios(Partido partidoAOrganizar,List<OrganizadorCommand> listaCriterios,int n){
 		
-	
 		val numeroObtenido = listaCriterios.fold(0,[acum,criterio|(acum + criterio.obtenerValor(partidoAOrganizar,this, n))])/(listaCriterios.size)
 		this.setPromedioConVariosCriteriosAplicados(numeroObtenido)
 		return numeroObtenido
 	
 	}
 	
-	def unJugEsImpar(Partido partido){
-	val posicionJug = obtenerPosicion(partido)
-	(posicionJug % 2) == 1
+ 	def unJugEsImpar(Partido partido){
+		val posicionJug = obtenerPosicion(partido)
+		(posicionJug % 2) == 1
 	}
 	
 	def unJugEsPar(Partido partido){
-	val posicionJug = obtenerPosicion(partido)
-	(posicionJug % 2) == 0
+/*		val posicionJug = obtenerPosicion(partido)
+		(posicionJug % 2) == 0
+		*/
+		!this.unJugEsImpar(partido)
 	}
 	
-	
-	
-	def esDeLaPosicion14589(Partido partido){
+		
+/*	def esDeLaPosicion14589(Partido partido){
 		val posicionJug = obtenerPosicion(partido)
 		val DividirEquiposCommand criterioOrd = new DividirPorPosicion14589
-		criterioOrd.verSiLaPosicionDelJugEsValida(posicionJug)
-		
+		criterioOrd.es14589(posicionJug)
 	}
 	
 	def esDeLaPosicion236710(Partido partido){
 		val posicionJug = obtenerPosicion(partido)
 		val DividirEquiposCommand criterioOrd = new DividirPorPosicion14589
-		criterioOrd.posicionesSobrantes(posicionJug)
+		criterioOrd.es236710(posicionJug)
 	}
-	
+*/	
 	def obtenerPosicion(Partido partido) {
-		val posicionJug = partido.participantes.indexOf(this)
-		posicionJug
+		partido.participantes.indexOf(this)
 	}
 	
-	
-
-
 }
-	
-		
-
-	
-	
