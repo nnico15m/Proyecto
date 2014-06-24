@@ -516,4 +516,29 @@ def unPartidoQueCuerraSuInscripcionMantieneSuListaDeParticipantes(){
 	Assert.assertArrayEquals(newArrayList(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10), partidoLleno.participantes)
 }
 
+@Test
+def saberElPromedioDeNCalificacionesPedidas(){
+	
+	partidoInagural.setCodPartido(1)
+	partidoLleno.setCodPartido(2)
+	partidoNuevo.setCodPartido(3)
+	
+	p1.agregarALaListaDependientesDeCalificar(carlos)
+	martin.agregarALaListaDependientesDeCalificar(carlos)
+	fermin.agregarALaListaDependientesDeCalificar(carlos)
+	p2.agregarALaListaDependientesDeCalificar(carlos)
+	p3.agregarALaListaDependientesDeCalificar(carlos)
+	p4.agregarALaListaDependientesDeCalificar(carlos)
+	
+	p1.generarUnaCalificacionParaEseJug(carlos,40,"muerto",1)
+	martin.generarUnaCalificacionParaEseJug(carlos,20,"crack",2)
+	fermin.generarUnaCalificacionParaEseJug(carlos,10,"amargo",2)
+	p2.generarUnaCalificacionParaEseJug(carlos,5,"amargo",2)
+	p3.generarUnaCalificacionParaEseJug(carlos,1,"amargo",2)
+	p4.generarUnaCalificacionParaEseJug(carlos,6,"amargo",2)
+		
+	Assert.assertEquals(4,carlos.promedioDeUltimasNCalificacionesPedidas(partidoNuevo,3))
+	}
+	
+
 }	

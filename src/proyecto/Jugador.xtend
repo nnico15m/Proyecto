@@ -103,21 +103,19 @@ class Jugador {
 
 	
 	def promedioDeCalificacionesUltimoPartido(Partido partidoAOrganizar){
-/*		val codUltimoPartidoJugado = (partidoAOrganizar.getCodPartido() ) - 1
+		val codUltimoPartidoJugado = (partidoAOrganizar.getCodPartido() ) - 1
 		val listaCalificacionesAux = calificaciones.filter[codPartidoJugado == codUltimoPartidoJugado]
 		setearPromedioObtenido(listaCalificacionesAux)
-*/		
-		this.promedioDeCalificacionesDeUltimosNPartidos(partidoAOrganizar, 2)		
+	
+			
 	}
-	
-	
-	def promedioDeCalificacionesDeUltimosNPartidos(Partido partidoAOrganizar,int numeroPedido){
-		val codUltimoPartidoJugado = (partidoAOrganizar.getCodPartido() ) - numeroPedido
-		val listaCalificacionesAux = calificaciones.filter[codPartidoJugado > codUltimoPartidoJugado]
-		setearPromedioObtenido(listaCalificacionesAux)
+		
+
+	def promedioDeUltimasNCalificacionesPedidas(Partido partidoAOrganizar,int numeroPedido){
+		val ultimasNCalificaciones = calificaciones.subList(calificaciones.size - numeroPedido ,calificaciones.size)
+		setearPromedioObtenido(ultimasNCalificaciones)
 	
 	}
-	
 	
 	
 	def setearPromedioObtenido(Iterable<Calificaciones> listaCalificacionesAux) {

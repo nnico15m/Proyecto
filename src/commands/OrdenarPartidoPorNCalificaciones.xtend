@@ -10,7 +10,7 @@ class OrdenarPartidoPorNCalificaciones implements OrganizadorCommand  {
 	
 	override def ordenarLaLista(Partido partido, int n){
 				
-	partido.participantes.forEach[j|j.promedioDeCalificacionesDeUltimosNPartidos(partido,n)]
+	partido.participantes.forEach[j|j.promedioDeUltimasNCalificacionesPedidas(partido,n)]
 	setearPromedioCalificaciones(partido)
 		
 		
@@ -31,7 +31,7 @@ class OrdenarPartidoPorNCalificaciones implements OrganizadorCommand  {
 		
 	
 		
-		jugador.promedioDeCalificacionesDeUltimosNPartidos(partido,n)
+		jugador.promedioDeUltimasNCalificacionesPedidas(partido,n)
 
 	
 	}
