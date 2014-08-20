@@ -16,7 +16,7 @@ import proyecto.Administrador
 import proyecto.InscripcionAbierta
 
 class TestMiosParaVerificar {
-			
+			//hola despues se borra
 			var administrador = new Administrador
 			var losPibes = new ComunidadFutbolera
 			var Partido partidoInagural = new Partido
