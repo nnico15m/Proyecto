@@ -17,7 +17,7 @@ class Partido  {
 	@Property Iterable<Jugador> equipo2 = new ArrayList (5)
 	@Property TipoDeInscripcion inscripciones
 
-
+//es una prueba
 	def participantes(){
 		this.inscripciones.participantes
 	}
