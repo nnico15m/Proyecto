@@ -9,14 +9,12 @@ import java.util.List
 import uqbar.tpFutbol.inscripcion.TipoDeSuscripcion
 import uqbar.tpFutbol.observers.StubMensajero
 import uqbar.tpFutbol.ordenamiento.OrganizadorCommand
+import org.uqbar.commons.model.Entity
 
-class Jugador {
+class Jugador extends Entity {
 	
 	@Property String nombreJugador
 	@Property Fecha fechaDeNacimiento
-//	----@Property double nivelAdvertencia 
-//	---@Property double contadorPartidos
-//---	@Property int nivelDePrioridad
 	@Property TipoDeSuscripcion formaDeInscripcion
 	@Property List<Infracciones> infracciones = new ArrayList
 	@Property List<Jugador> amigos = new ArrayList(25)

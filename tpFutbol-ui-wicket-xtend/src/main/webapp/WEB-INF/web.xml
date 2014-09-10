@@ -21,7 +21,7 @@
 		<filter-class>org.apache.wicket.protocol.http.WicketFilter</filter-class>
 		<init-param>
 			<param-name>applicationClassName</param-name>
-			<param-value>uqbar.WicketApplication</param-value>
+			<param-value>uqbar.tpFutbol.ui.wicket.app.TpFutbolApplication</param-value>
 		</init-param>
 	</filter>
 
