@@ -25,17 +25,18 @@ class HomeJugadores extends CollectionBasedHome<Jugador>{
 		var pendientesC = new ArrayList()
 		var comunidad = new ComunidadFutbolera()
 		var listaC= new ArrayList()
-		this.create("nombreJugador",fecha,formaDeInsc,infracciones,amigos,"jaun@hotmail.com", mensajero,calificaciones,pendientesC,comunidad,10,listaC,5,8)
+		this.create("epi","epielbostero",fecha,formaDeInsc,infracciones,amigos,"jaun@hotmail.com", mensajero,calificaciones,pendientesC,comunidad,1,listaC,5,8)
 		
 		}
 
 
 //USAR BUILDER!!!!
 
-	def void create(String nombreJugador, Fecha fecha, TipoDeSuscripcion formaDeInsc, List<Infracciones> infracciones, List<Jugador> amigos,String mail, StubMensajero mensajero,List<Calificaciones> calificaciones, List<Jugador> pendientesDeCalificar, ComunidadFutbolera comunidad,int nivelDeJuego,ArrayList<Integer> listaCriterioDelJugador, int promedioCalificacionesUltPart, int promedioConVariosCriteriosAplicados
+	def void create(String nombreJugador, String apodo, Fecha fecha, TipoDeSuscripcion formaDeInsc, List<Infracciones> infracciones, List<Jugador> amigos,String mail, StubMensajero mensajero,List<Calificaciones> calificaciones, List<Jugador> pendientesDeCalificar, ComunidadFutbolera comunidad,int nivelDeJuego,ArrayList<Integer> listaCriterioDelJugador, int promedioCalificacionesUltPart, int promedioConVariosCriteriosAplicados
 	) {
 		var jugador = new Jugador
 		jugador.nombreJugador = nombreJugador
+		jugador.apodo = apodo
 		jugador.fechaDeNacimiento = fecha
 		jugador.formaDeInscripcion = formaDeInsc
 		jugador.infracciones = new ArrayList<Infracciones>

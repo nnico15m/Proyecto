@@ -80,6 +80,13 @@ class OrganizadorFutbolPage extends WebPage {
 			listViewJugadores.populateItem = [ item |
 			item.model = item.modelObject.asCompoundModel
 			item.addChild(new Label("nombreJugador"))
+			item.addChild(new Label("apodo"))
+			item.addChild(new Label("nivelDeJuego"))
+			item.addChild(new Label("promedioCalificacionesUltPart"))
+			item.addChild(new Label("promedioConVariosCriteriosAplicados"))
+			item.addChild(new Label("fechaDeNacimiento"))
+			item.addChild(new Label("amigos"))
+			item.addChild(new Label("infracciones"))
 			
 			
 			//item.addChild(new XButton("editarDatosMateria").onClick = [| editarDatos(item.modelObject) ])

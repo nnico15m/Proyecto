@@ -14,6 +14,7 @@ import org.uqbar.commons.model.Entity
 class Jugador extends Entity {
 	
 	@Property String nombreJugador
+	@Property String apodo
 	@Property Fecha fechaDeNacimiento
 	@Property TipoDeSuscripcion formaDeInscripcion
 	@Property List<Infracciones> infracciones = new ArrayList
