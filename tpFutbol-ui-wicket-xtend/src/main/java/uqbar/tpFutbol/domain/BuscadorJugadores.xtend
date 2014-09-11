@@ -25,7 +25,9 @@ import uqbar.tpFutbol.domain.Jugador
 @org.uqbar.commons.utils.Observable
 class BuscadorJugadores implements Serializable {
 
-
+	@Property String nombre
+	@Property String apodo
+	@Property int fecha
 	@Property List<Jugador> results
 	@Property Jugador jugadorSeleccionado
 	// ********************************************************
@@ -34,7 +36,7 @@ class BuscadorJugadores implements Serializable {
 	
 	def void buscar(){
 		results = new ArrayList<Jugador>
-		results = getHomeJugadores.search()
+		results = getHomeJugadores.search(getNombre, getApodo, getFecha)
 	}
 	
 	

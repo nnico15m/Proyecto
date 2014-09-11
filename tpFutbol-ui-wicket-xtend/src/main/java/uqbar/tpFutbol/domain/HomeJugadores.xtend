@@ -16,7 +16,7 @@ class HomeJugadores extends CollectionBasedHome<Jugador>{
 	
 	def void init() {
 		
-		var fecha = new Fecha()
+		
 		var formaDeInsc = new Estandar()
 		var mensajero = new StubMensajero()
 		var infracciones = new ArrayList()
@@ -25,14 +25,14 @@ class HomeJugadores extends CollectionBasedHome<Jugador>{
 		var pendientesC = new ArrayList()
 		var comunidad = new ComunidadFutbolera()
 		var listaC= new ArrayList()
-		this.create("epi","epielbostero",fecha,formaDeInsc,infracciones,amigos,"jaun@hotmail.com", mensajero,calificaciones,pendientesC,comunidad,1,listaC,5,8)
+		this.create("epi","epielbostero",1990,formaDeInsc,infracciones,amigos,"jaun@hotmail.com", mensajero,calificaciones,pendientesC,comunidad,1,listaC,5,8)
 		
 		}
 
 
 //USAR BUILDER!!!!
 
-	def void create(String nombreJugador, String apodo, Fecha fecha, TipoDeSuscripcion formaDeInsc, List<Infracciones> infracciones, List<Jugador> amigos,String mail, StubMensajero mensajero,List<Calificaciones> calificaciones, List<Jugador> pendientesDeCalificar, ComunidadFutbolera comunidad,int nivelDeJuego,ArrayList<Integer> listaCriterioDelJugador, int promedioCalificacionesUltPart, int promedioConVariosCriteriosAplicados
+	def void create(String nombreJugador, String apodo, int fecha, TipoDeSuscripcion formaDeInsc, List<Infracciones> infracciones, List<Jugador> amigos,String mail, StubMensajero mensajero,List<Calificaciones> calificaciones, List<Jugador> pendientesDeCalificar, ComunidadFutbolera comunidad,int nivelDeJuego,ArrayList<Integer> listaCriterioDelJugador, int promedioCalificacionesUltPart, int promedioConVariosCriteriosAplicados
 	) {
 		var jugador = new Jugador
 		jugador.nombreJugador = nombreJugador
@@ -53,11 +53,30 @@ class HomeJugadores extends CollectionBasedHome<Jugador>{
 		
 		this.create(jugador)
 	}
+	// ********************************************************
+	// ** Búsquedas
+	// ********************************************************
+	
+		
 	
 	
 		
-	def search(){
-		allInstances
+	def search(String nombreJugador, String apodo, int fechaPedida) {
+		allInstances.filter[jugador|this.match(nombreJugador, jugador.getNombreJugador) && this.match(apodo, jugador.getApodo) ].toList
+	}
+	
+	def search(String nombreJugador, String apodo) {
+		allInstances.filter[jugador|this.match(nombreJugador, jugador.getNombreJugador) && this.match(apodo, jugador.getApodo)].toList
+	}
+	
+	def match(Object expectedValue, Object realValue) {
+		if (expectedValue == null) {
+			return true
+		}
+		if (realValue == null) {
+			return false
+		}
+		realValue.toString().toLowerCase().contains(expectedValue.toString().toLowerCase())
 	}
 	
 	def alguno(){
@@ -75,6 +94,7 @@ class HomeJugadores extends CollectionBasedHome<Jugador>{
 	override getEntityType() {
 		typeof (Jugador)
 	}
+	
 	
 	
 

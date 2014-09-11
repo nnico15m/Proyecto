@@ -15,7 +15,7 @@ class Jugador extends Entity {
 	
 	@Property String nombreJugador
 	@Property String apodo
-	@Property Fecha fechaDeNacimiento
+	@Property int fechaDeNacimiento //HASTA QUE SEPAMOS USAR FECHAS...
 	@Property TipoDeSuscripcion formaDeInscripcion
 	@Property List<Infracciones> infracciones = new ArrayList
 	@Property List<Jugador> amigos = new ArrayList(25)

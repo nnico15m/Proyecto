@@ -26,7 +26,7 @@ class OrganizadorFutbolPage extends WebPage {
 	
 		this.buscador = new BuscadorJugadores()
 		val Form<BuscadorJugadores> jugadoresForm = new Form<BuscadorJugadores>("buscarJugadoresForm", new CompoundPropertyModel<BuscadorJugadores>(this.buscador))
-		
+		this.agregarCamposBusqueda(jugadoresForm)
 		this.agregarGrillaResultadosJug(jugadoresForm)
 		this.agregarAccionesJug(jugadoresForm)
 		
@@ -50,6 +50,12 @@ class OrganizadorFutbolPage extends WebPage {
 	
 	}
 
+def agregarCamposBusqueda(Form<BuscadorJugadores> parent) {
+		parent.addChild(new TextField<String>("nombre"))
+		parent.addChild(new TextField<String>("apodo"))
+		parent.addChild(new TextField<String>("fecha"))
+	}
+
 //	def mostrarDatosMaterias(){
 	//	this.buscador2.buscarDatos()
 	
@@ -60,8 +66,10 @@ class OrganizadorFutbolPage extends WebPage {
 					
 		
 		parent.addChild(new XButton("nuevoJugador").onClick = [| nuevoJugador(new Jugador) ]) //PARA MATERIA
-				
-			
+		val buscarButton = new XButton("buscar")
+		buscarButton.onClick = [| buscador.buscar ]
+		parent.addChild(buscarButton)
+		
 		
 	}
 	
