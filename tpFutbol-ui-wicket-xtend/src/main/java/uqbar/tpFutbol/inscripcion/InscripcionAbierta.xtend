@@ -22,10 +22,13 @@ class InscripcionAbierta implements TipoDeInscripcion{
 		this.getPartido()
 	}
 	
-	new(Partido unPartido, NotificadorDeAdministradorObserver unObserver){
+ 	new(Partido unPartido, NotificadorDeAdministradorObserver unObserver){
 		this.setPartido(unPartido)
 		this.setObserver(unObserver)
 	}
+	
+	
+	
 	
 	override inscribiA(Jugador jugador){ //PREGUNTO SI ESTA EN LA LISTA COMUNIDAD Y SI NO ESTA ANOTADO. SI CUMPLE; ORDENO LA LISTA Y VEO SI HAY LUGAR
 		if (this.partido().esDeLaComunidad(jugador) && !this.yaEstaAnotado(jugador)){

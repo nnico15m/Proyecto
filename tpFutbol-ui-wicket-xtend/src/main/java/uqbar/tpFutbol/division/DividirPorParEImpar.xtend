@@ -5,8 +5,9 @@ package uqbar.tpFutbol.division
 import java.util.List
 import uqbar.tpFutbol.domain.Partido
 import uqbar.tpFutbol.domain.Jugador
+import org.uqbar.commons.model.Entity
 
-class DividirPorParEImpar implements DividirEquiposCommand {
+class DividirPorParEImpar implements DividirEquiposCommand    {
 	
 	override dividirEquipos(Partido partido){
 		

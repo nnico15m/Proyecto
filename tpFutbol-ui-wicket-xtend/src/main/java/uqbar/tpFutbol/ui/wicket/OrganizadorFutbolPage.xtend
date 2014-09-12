@@ -13,6 +13,8 @@ import org.uqbar.wicket.xtend.XListView
 import uqbar.tpFutbol.domain.BuscadorJugadores
 import uqbar.tpFutbol.domain.Jugador
 import uqbar.tpFutbol.domain.Partido
+import uqbar.tpFutbol.division.DividirPorPosicion14589
+import uqbar.tpFutbol.division.DividirPorParEImpar
 
 /**
  * Pagina de busqueda de la aplicacion de celulares.
@@ -21,6 +23,7 @@ class OrganizadorFutbolPage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
 	
 	var BuscadorJugadores buscador
+
 	
 	
 	new() {
@@ -81,7 +84,7 @@ def agregarCamposBusqueda(Form<BuscadorJugadores> parent) {
 	}
 	
 	def generarEquipos(Partido partido) {
-		responsePage = new GenerarEquiposPage(partido, this) 
+		responsePage = new GenerarEquiposPage(partido,this ) 
 	}
 	
 	

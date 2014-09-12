@@ -6,7 +6,7 @@ import java.util.ArrayList
 import uqbar.tpFutbol.domain.Partido
 import uqbar.tpFutbol.domain.Jugador
 
-class DividirPorPosicion14589 implements DividirEquiposCommand {
+class DividirPorPosicion14589  implements DividirEquiposCommand {
 	@Property List<Integer>  listPosicionesValidas =  newArrayList(0,3,4,7,8)
 	@Property List<Integer>  listPosicionesSobrantes =  newArrayList(1,2,5,6,9)
 

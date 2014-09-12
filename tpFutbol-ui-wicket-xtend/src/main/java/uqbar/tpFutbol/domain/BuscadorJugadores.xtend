@@ -29,6 +29,7 @@ class BuscadorJugadores implements Serializable {
 	@Property String apodo
 	@Property int fecha
 	@Property List<Jugador> results
+	@Property List<Partido> resultados
 	@Property Jugador jugadorSeleccionado
 	// ********************************************************
 	// ** Acciones
@@ -40,6 +41,10 @@ class BuscadorJugadores implements Serializable {
 	}
 	
 	
+	def void buscarPartidos(){
+		resultados = new ArrayList<Partido>
+		resultados = getHomePartidos.search()
+	}
 
 
 	
@@ -47,6 +52,10 @@ class BuscadorJugadores implements Serializable {
 	
 	def HomeJugadores getHomeJugadores() {
 		ApplicationContext::instance.getSingleton(typeof(Jugador))
+	}
+	
+	def HomePartidos getHomePartidos() {
+		ApplicationContext::instance.getSingleton(typeof(Partido))
 	}
 
 }

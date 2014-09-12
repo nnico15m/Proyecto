@@ -9,6 +9,8 @@ import uqbar.tpFutbol.ui.wicket.OrganizadorFutbolPage
 import uqbar.tpFutbol.domain.Partido
 import uqbar.tpFutbol.domain.HomePartidos
 
+
+
 /**
  * 
  */
@@ -19,9 +21,9 @@ class TpFutbolApplication extends WebApplication {
 		
 	
 		
-		
-	ApplicationContext.instance.configureSingleton(Jugador, new HomePartidos)
-		ApplicationContext.instance.configureSingleton(Jugador, new HomeJugadores)
+	
+	ApplicationContext.instance.configureSingleton(Partido, new HomePartidos)
+	ApplicationContext.instance.configureSingleton(Jugador, new HomeJugadores)
 	}
 	
 	override getHomePage() {

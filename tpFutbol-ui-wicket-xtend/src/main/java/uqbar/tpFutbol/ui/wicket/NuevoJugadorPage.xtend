@@ -8,6 +8,7 @@ import org.apache.wicket.markup.html.basic.Label
 import org.apache.wicket.markup.html.form.TextField
 
 import uqbar.tpFutbol.domain.Jugador
+import uqbar.tpFutbol.division.DividirPorParEImpar
 
 class NuevoJugadorPage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
@@ -18,6 +19,7 @@ class NuevoJugadorPage extends WebPage {
 		
 		this.mainPage = mainPage
 		this.jugador = jugadorNuevo
+		
 		val nuevoJugadorForm=  new Form<Jugador>("nombreJugador", this.jugador.asCompoundModel)
 		this.agregarCamposEdicion(nuevoJugadorForm)
 		this.agregarAcciones(nuevoJugadorForm)
