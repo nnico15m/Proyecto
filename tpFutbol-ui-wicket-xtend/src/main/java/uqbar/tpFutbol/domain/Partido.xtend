@@ -7,8 +7,9 @@ import uqbar.tpFutbol.inscripcion.TipoDeInscripcion
 import uqbar.tpFutbol.ordenamiento.OrganizadorCommand
 import uqbar.tpFutbol.inscripcion.InscripcionCerrada
 import uqbar.tpFutbol.division.DividirEquiposCommand
+import org.uqbar.commons.model.Entity
 
-class Partido  {
+class Partido extends Entity {
 	
 	@Property Fecha fecha
 	@Property double hora

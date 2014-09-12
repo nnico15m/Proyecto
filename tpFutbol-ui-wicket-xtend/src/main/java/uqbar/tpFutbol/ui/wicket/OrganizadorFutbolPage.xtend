@@ -12,6 +12,7 @@ import org.uqbar.wicket.xtend.XListView
 
 import uqbar.tpFutbol.domain.BuscadorJugadores
 import uqbar.tpFutbol.domain.Jugador
+import uqbar.tpFutbol.domain.Partido
 
 /**
  * Pagina de busqueda de la aplicacion de celulares.
@@ -69,7 +70,7 @@ def agregarCamposBusqueda(Form<BuscadorJugadores> parent) {
 		val buscarButton = new XButton("buscar")
 		buscarButton.onClick = [| buscador.buscar ]
 		parent.addChild(buscarButton)
-		
+		parent.addChild(new XButton("generarEquipos").onClick = [| generarEquipos(new Partido) ])
 		
 	}
 	
@@ -77,6 +78,10 @@ def agregarCamposBusqueda(Form<BuscadorJugadores> parent) {
 	
 	def nuevoJugador(Jugador jugador) {
 		responsePage = new NuevoJugadorPage(jugador, this) 
+	}
+	
+	def generarEquipos(Partido partido) {
+		responsePage = new GenerarEquiposPage(partido, this) 
 	}
 	
 	
