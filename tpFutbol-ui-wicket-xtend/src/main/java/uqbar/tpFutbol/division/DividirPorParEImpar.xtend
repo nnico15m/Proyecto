@@ -6,6 +6,7 @@ import java.util.List
 import uqbar.tpFutbol.domain.Partido
 import uqbar.tpFutbol.domain.Jugador
 import org.uqbar.commons.model.Entity
+import uqbar.tpFutbol.domain.HomePartidos
 
 class DividirPorParEImpar implements DividirEquiposCommand    {
 	

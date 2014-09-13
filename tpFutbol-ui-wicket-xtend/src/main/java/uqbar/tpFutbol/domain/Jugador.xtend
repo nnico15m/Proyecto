@@ -11,6 +11,7 @@ import uqbar.tpFutbol.observers.StubMensajero
 import uqbar.tpFutbol.ordenamiento.OrganizadorCommand
 import org.uqbar.commons.model.Entity
 
+
 class Jugador extends Entity {
 	
 	@Property String nombreJugador
@@ -28,6 +29,8 @@ class Jugador extends Entity {
 	@Property ArrayList<Integer> listaCriterioDelJugador = new ArrayList<Integer>()
 	@Property int promedioCalificacionesUltPart
 	@Property int promedioConVariosCriteriosAplicados
+	
+		
 	
 	def prioridad() {
 		this.formaDeInscripcion.prioridad()

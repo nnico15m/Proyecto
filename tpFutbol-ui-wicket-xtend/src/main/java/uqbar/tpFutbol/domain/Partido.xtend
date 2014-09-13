@@ -19,11 +19,16 @@ class Partido extends Entity {
 	@Property Iterable<Jugador> equipo1 = new ArrayList (5)
 	@Property Iterable<Jugador> equipo2 = new ArrayList (5)
 	@Property TipoDeInscripcion inscripciones
+	@Property boolean dividirPar = false
+	@Property boolean dividir14589 = false
+	
 
 //es una prueba
 	def participantes(){
 		this.inscripciones.participantes
 	}
+	
+	
 	
 	// ESTE ES EL M�TODO QUE USAMOS PARA INSCRIBIR JUGADORES		
 	def void inscribiSiPodesA(Jugador jugador){ //PREGUNTO SI ESTA EN LA LISTA COMUNIDAD Y SI NO ESTA ANOTADO. SI CUMPLE; ORDENO LA LISTA Y VEO SI HAY LUGAR
