@@ -51,11 +51,14 @@ class GenerarEquiposPage extends WebPage{
 	def agregarAcciones(Form<GeneradorPartidos> parent) {
 		
 		parent.addChild(new XButton("dividir14589").onClick = [| criterio2.dividirEquipos(partido)
+			Partido.home.delete(partido)
+			Partido.home.create(partido)
 			this.generador.buscarPartidos()		
 		]	
 		
 		)
 		parent.addChild(new XButton("dividirPorParImpar").onClick = [| criterio.dividirEquipos(partido)
+			
 			this.generador.buscarPartidos()		
 		]
 			
