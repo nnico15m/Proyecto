@@ -12,8 +12,8 @@ class DividirPorParEImpar implements DividirEquiposCommand    {
 	
 	override dividirEquipos(Partido partido){
 		
-		val listaImpares = partido.participantes.filter[jug|jug.unJugEsImpar(partido)]
-		val listaPares = partido.participantes.filter[jug|jug.unJugEsPar(partido)]
+		val listaImpares = partido.participantes.filter[jug|jug.unJugEsImpar(partido)].toList
+		val listaPares = partido.participantes.filter[jug|jug.unJugEsPar(partido)].toList
 
  		
 		partido.setEquipo1(listaImpares)
@@ -25,8 +25,8 @@ class DividirPorParEImpar implements DividirEquiposCommand    {
 	
 	override dividirEquiposPrueba(Partido partido){
 		
-		val listaImpares = partido.participantes.filter[jug|jug.unJugEsImpar(partido)]
-		val listaPares = partido.participantes.filter[jug|jug.unJugEsPar(partido)]
+		val listaImpares = partido.participantes.filter[jug|jug.unJugEsImpar(partido)].toList
+		val listaPares = partido.participantes.filter[jug|jug.unJugEsPar(partido)].toList
 
  		
 		partido.setEquipo1(listaImpares)

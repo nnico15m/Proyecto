@@ -64,6 +64,13 @@ def dividirEquiposPorCriterio(Partido partido, DividirEquiposCommand criterioDiv
 	
 }
 
+def dividirEquiposPorCriterioPrueba(Partido partido, DividirEquiposCommand criterioDivision){
+	
+	partido.dividirEquiposPrueba(criterioDivision)
+	
+}
+
+
 def confirmarEquipos(Partido partido){
 	partido.confirmaTusEquipos()
 }

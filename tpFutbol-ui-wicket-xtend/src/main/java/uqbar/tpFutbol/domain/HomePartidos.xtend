@@ -17,19 +17,28 @@ import uqbar.tpFutbol.inscripcion.Condicional
 
 class HomePartidos extends CollectionBasedHome<Partido>{
 	
+	@Property Fecha fecha
+	@Property double hora
+	@Property ComunidadFutbolera comunidad
+	@Property OrganizadorCommand criterioDeOrdenamiento 
+	@Property int codPartido
+	@Property List<Jugador> equipo1 = new ArrayList (5)
+	@Property List<Jugador> equipo2 = new ArrayList (5)
+	@Property TipoDeInscripcion inscripciones
+	
 	new() {
 		this.init
 	 }
 	
 	def void init() {
 		
-		var fecha = new Fecha
+		//var fecha = new Fecha
 		var partido = new Partido
 		var losPibes = new ComunidadFutbolera()
 		var criterioOrdenamiento = new OrdenamientoPorHandicap()
 		var criterioDivision = new DividirPorParEImpar
-		var equipo1 = new ArrayList (5)
-		var equipo2 = new ArrayList (5)
+		//var equipo1 = new ArrayList (5)
+		//var equipo2 = new ArrayList (5)
 		var inscripciones = (new InscripcionAbierta(partido, this.crearObserverDePartido("admin@hotmail.com")))
 		var Jugador epi = new Jugador
 		var Jugador p1 = new Jugador
@@ -54,6 +63,7 @@ class HomePartidos extends CollectionBasedHome<Partido>{
 		inscriptosPartido.add(p9)
 		inscripciones.participantes().addAll(inscriptosPartido)
 		
+		
 	
 		
 		
@@ -64,7 +74,7 @@ class HomePartidos extends CollectionBasedHome<Partido>{
 
 //USAR BUILDER!!!!
 
-	def void create(Fecha fecha, double hora, ComunidadFutbolera losPibes, OrdenamientoPorHandicap criterioOrdenamiento, DividirPorParEImpar criterioDivision, int codPartido, Iterable<Jugador> equipo1,Iterable<Jugador> equipo2, InscripcionAbierta inscripciones)
+	def void create(Fecha fecha, double hora, ComunidadFutbolera losPibes, OrdenamientoPorHandicap criterioOrdenamiento, DividirPorParEImpar criterioDivision, int codPartido, List<Jugador> equipo1,List<Jugador> equipo2, InscripcionAbierta inscripciones)
 	 {
 		var partido = new Partido
 		partido.fecha = fecha
@@ -89,11 +99,14 @@ class HomePartidos extends CollectionBasedHome<Partido>{
 	}
 	
 
+
 	
 	def search() {
 		allInstances
 		
 	}
+	
+	
 	
 
 	def alguno(){
@@ -110,6 +123,16 @@ class HomePartidos extends CollectionBasedHome<Partido>{
 	
 	override getEntityType() {
 		typeof (Partido)
+	}
+	
+	def match(Object expectedValue, Object realValue) {
+		if (expectedValue == null) {
+			return true
+		}
+		if (realValue == null) {
+			return false
+		}
+		realValue.toString().toLowerCase().contains(expectedValue.toString().toLowerCase())
 	}
 	
 	

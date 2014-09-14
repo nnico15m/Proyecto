@@ -5,8 +5,7 @@ import java.util.List
 import org.uqbar.commons.utils.ApplicationContext
 import java.util.ArrayList
 import uqbar.tpFutbol.domain.HomePartidos
-import uqbar.tpFutbol.division.DividirPorParEImpar
-import uqbar.tpFutbol.division.DividirPorPosicion14589
+import uqbar.tpFutbol.ordenamiento.OrganizadorCommand
 
 /**
  * Application model que representa la búsqueda de {@link Celular}.
@@ -42,8 +41,6 @@ class GeneradorPartidos implements Serializable {
 		resultados = getHomePartidos.search()
 	}
 	
-	
-
 
 		
 	

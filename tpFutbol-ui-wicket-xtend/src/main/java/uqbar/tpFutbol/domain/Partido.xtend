@@ -16,8 +16,8 @@ class Partido extends Entity {
 	@Property ComunidadFutbolera comunidad
 	@Property OrganizadorCommand criterioDeOrdenamiento 
 	@Property int codPartido
-	@Property Iterable<Jugador> equipo1 = new ArrayList (5)
-	@Property Iterable<Jugador> equipo2 = new ArrayList (5)
+	@Property List<Jugador> equipo1 = new ArrayList (5)
+	@Property List<Jugador> equipo2 = new ArrayList (5)
 	@Property TipoDeInscripcion inscripciones
 	
 	
@@ -98,6 +98,10 @@ class Partido extends Entity {
 	
 	def dividirEquipos(DividirEquiposCommand criterioDivision){
 		criterioDivision.dividirEquipos(this)
+	}
+	
+	def dividirEquiposPrueba(DividirEquiposCommand criterioDivision){
+		criterioDivision.dividirEquiposPrueba(this)
 	}
 	
 	def confirmaTusEquipos() {
