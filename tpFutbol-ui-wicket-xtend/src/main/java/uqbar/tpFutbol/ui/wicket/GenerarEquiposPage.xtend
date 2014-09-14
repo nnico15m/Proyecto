@@ -21,8 +21,7 @@ class GenerarEquiposPage extends WebPage{
 	private final Partido partido
 	private final OrganizadorFutbolPage mainPage
 	private final GeneradorPartidos generador
-	private final DividirPorParEImpar criterio
-	private final DividirPorPosicion14589 criterio2
+	
 	
 	
 	
@@ -31,8 +30,7 @@ class GenerarEquiposPage extends WebPage{
 		this.generador= new GeneradorPartidos
 		this.mainPage = mainPage
 		this.partido = partidoNuevo
-		this.criterio = new DividirPorParEImpar()
-		this.criterio2 = new DividirPorPosicion14589()
+		
 			
 		val Form<GeneradorPartidos> nuevoPartidoForm = new Form<GeneradorPartidos>("equiposForm", new CompoundPropertyModel<GeneradorPartidos>(this.generador))
 		
@@ -50,16 +48,15 @@ class GenerarEquiposPage extends WebPage{
 	
 	def agregarAcciones(Form<GeneradorPartidos> parent) {
 		
-		parent.addChild(new XButton("dividir14589").onClick = [| criterio2.dividirEquipos(partido)
-			Partido.home.delete(partido)
-			Partido.home.create(partido)
-			this.generador.buscarPartidos()		
+		parent.addChild(new XButton("dividirPorParImpar").onClick = [| generador.dividirEquiposParImpar(partido)
+			
+				
 		]	
 		
 		)
-		parent.addChild(new XButton("dividirPorParImpar").onClick = [| criterio.dividirEquipos(partido)
+		parent.addChild(new XButton("dividir14589").onClick = [| generador.dividirEquipos14589(partido)
 			
-			this.generador.buscarPartidos()		
+				
 		]
 			
 			
