@@ -19,8 +19,7 @@ class Partido extends Entity {
 	@Property Iterable<Jugador> equipo1 = new ArrayList (5)
 	@Property Iterable<Jugador> equipo2 = new ArrayList (5)
 	@Property TipoDeInscripcion inscripciones
-	@Property boolean dividirPar = false
-	@Property boolean dividir14589 = false
+	
 	
 
 //es una prueba

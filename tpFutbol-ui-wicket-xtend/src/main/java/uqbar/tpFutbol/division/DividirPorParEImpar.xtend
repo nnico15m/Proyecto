@@ -19,6 +19,22 @@ class DividirPorParEImpar implements DividirEquiposCommand    {
 		partido.setEquipo1(listaImpares)
 		partido.setEquipo2(listaPares)
 		
+		
+		
+	}
+	
+	override dividirEquiposPrueba(Partido partido){
+		
+		val listaImpares = partido.participantes.filter[jug|jug.unJugEsImpar(partido)]
+		val listaPares = partido.participantes.filter[jug|jug.unJugEsPar(partido)]
+
+ 		
+		partido.setEquipo1(listaImpares)
+		partido.setEquipo2(listaPares)
+		return partido
+		
+		
+		
 	}
 	
 	def agregarPosicionesParaEquipo(){

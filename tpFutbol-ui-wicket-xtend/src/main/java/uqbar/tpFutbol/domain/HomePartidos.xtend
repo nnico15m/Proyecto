@@ -31,8 +31,6 @@ class HomePartidos extends CollectionBasedHome<Partido>{
 		var equipo1 = new ArrayList (5)
 		var equipo2 = new ArrayList (5)
 		var inscripciones = (new InscripcionAbierta(partido, this.crearObserverDePartido("admin@hotmail.com")))
-		var dividirPar = false
-		var dividir14589 = false
 		var Jugador epi = new Jugador
 		var Jugador p1 = new Jugador
 		var Jugador p2 = new Jugador
@@ -59,14 +57,14 @@ class HomePartidos extends CollectionBasedHome<Partido>{
 	
 		
 		
-		this.create(fecha,2144,losPibes,criterioOrdenamiento,criterioDivision,01,equipo1,equipo2,inscripciones,dividirPar,dividir14589)
+		this.create(fecha,2144,losPibes,criterioOrdenamiento,criterioDivision,01,equipo1,equipo2,inscripciones)
 		
 		}
 
 
 //USAR BUILDER!!!!
 
-	def void create(Fecha fecha, double hora, ComunidadFutbolera losPibes, OrdenamientoPorHandicap criterioOrdenamiento, DividirPorParEImpar criterioDivision, int codPartido, Iterable<Jugador> equipo1,Iterable<Jugador> equipo2, InscripcionAbierta inscripciones, boolean dividirPar, boolean dividir14589)
+	def void create(Fecha fecha, double hora, ComunidadFutbolera losPibes, OrdenamientoPorHandicap criterioOrdenamiento, DividirPorParEImpar criterioDivision, int codPartido, Iterable<Jugador> equipo1,Iterable<Jugador> equipo2, InscripcionAbierta inscripciones)
 	 {
 		var partido = new Partido
 		partido.fecha = fecha
@@ -77,8 +75,7 @@ class HomePartidos extends CollectionBasedHome<Partido>{
 		partido.equipo1 = equipo1
 		partido.equipo2 = equipo2
 		partido.inscripciones = inscripciones
-		partido.dividirPar = dividirPar
-		partido.dividir14589 = dividir14589
+		
 		
 		this.create(partido)
 	}

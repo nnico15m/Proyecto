@@ -4,7 +4,7 @@ import java.io.Serializable
 import java.util.List
 import org.uqbar.commons.utils.ApplicationContext
 import java.util.ArrayList
-import uqbar.tpFutbol.domain.Jugador
+import uqbar.tpFutbol.domain.HomePartidos
 import uqbar.tpFutbol.division.DividirPorParEImpar
 import uqbar.tpFutbol.division.DividirPorPosicion14589
 
@@ -30,8 +30,7 @@ class GeneradorPartidos implements Serializable {
 
 	@Property List<Partido> resultados
 	@Property Partido partidoSeleccionado
-	@Property DividirPorParEImpar criterioPar
-	@Property DividirPorPosicion14589 criterio14589
+
 	// ********************************************************
 	// ** Acciones
 	// ********************************************************
@@ -43,16 +42,6 @@ class GeneradorPartidos implements Serializable {
 		resultados = getHomePartidos.search()
 	}
 	
-	def  void dividirEquiposParImpar(Partido partido){
-		criterioPar.dividirEquipos(partido)
-		this.buscarPartidos()	
-	}
-	
-	def  void dividirEquipos14589(Partido partido){
-		val partidoPed = getHomePartidos.alguno()
-		criterio14589.dividirEquipos(partidoPed)
-		this.buscarPartidos()
-	}
 	
 
 

@@ -21,7 +21,8 @@ class GenerarEquiposPage extends WebPage{
 	private final Partido partido
 	private final OrganizadorFutbolPage mainPage
 	private final GeneradorPartidos generador
-	
+	private final DividirPorParEImpar criterioPar
+	private final DividirPorPosicion14589 criterio14589
 	
 	
 	
@@ -30,10 +31,11 @@ class GenerarEquiposPage extends WebPage{
 		this.generador= new GeneradorPartidos
 		this.mainPage = mainPage
 		this.partido = partidoNuevo
-		
+		this.criterioPar= new DividirPorParEImpar
+		this.criterio14589 = new DividirPorPosicion14589()
+			
 			
 		val Form<GeneradorPartidos> nuevoPartidoForm = new Form<GeneradorPartidos>("equiposForm", new CompoundPropertyModel<GeneradorPartidos>(this.generador))
-		
 		this.agregarAcciones(nuevoPartidoForm)
 		this.agregarResultados(nuevoPartidoForm)
 		this.addChild(nuevoPartidoForm)
@@ -48,13 +50,14 @@ class GenerarEquiposPage extends WebPage{
 	
 	def agregarAcciones(Form<GeneradorPartidos> parent) {
 		
-		parent.addChild(new XButton("dividirPorParImpar").onClick = [| generador.dividirEquiposParImpar(partido)
-			
+		parent.addChild(new XButton("dividirPorParImpar").onClick = [| this.dividirEquiposParImpar(partido)
+			volver()
 				
 		]	
 		
 		)
-		parent.addChild(new XButton("dividir14589").onClick = [| generador.dividirEquipos14589(partido)
+		parent.addChild(new XButton("dividir14589").onClick = [| this.dividirEquipos14589(partido)
+			volver()
 			
 				
 		]
@@ -67,7 +70,6 @@ class GenerarEquiposPage extends WebPage{
 		}
 		
 	
-		
 		
 	
 	
@@ -84,6 +86,30 @@ class GenerarEquiposPage extends WebPage{
 			
 		parent.addChild(listViewPartidos)
 	}
+	
+	def dividirEquiposParImpar(Partido partido){
+		val prueba = criterioPar.dividirEquiposPrueba(partido)
+		Partido.home.delete(prueba)
+		Partido.home.create(prueba)
+		
+	
+	
+	}
+	
+	def dividirEquipos14589(Partido partido){
+		val prueba = criterio14589.dividirEquiposPrueba(partido)
+		Partido.home.delete(prueba)
+		Partido.home.create(prueba)
+		
+	
+	}
+	
+	def volver() {
+		this.mostrarEquipos()
+		responsePage = mainPage
+	}
+	
+	
 	
 	
 	
