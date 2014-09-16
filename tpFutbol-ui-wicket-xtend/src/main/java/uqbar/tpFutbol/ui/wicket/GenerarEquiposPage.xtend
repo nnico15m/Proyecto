@@ -72,9 +72,11 @@ class GenerarEquiposPage extends WebPage{
 		parent.addChild(new XButton("ordenarPorHandicap").onClick = [| 
 			
 			val jugadoresOrd= partido.ordenarLaListaPorCriterio(ordHandicap,n)
-			
-			Partido.home.allInstances.get(0).inscripciones.participantes().empty
-			Partido.home.allInstances.get(0).inscripciones.participantes().addAll(jugadoresOrd)
+			val posPartido = Partido.home.allInstances.indexOf(partido)
+					
+			Partido.home.allInstances.get(posPartido).inscripciones.participantes().empty
+			Partido.home.allInstances.get(posPartido).inscripciones.participantes().addAll(jugadoresOrd)
+			Partido.home.delete(partido)
 			Partido.home.create(partido)
 			
 		
@@ -109,10 +111,12 @@ class GenerarEquiposPage extends WebPage{
 	}
 	
 	def dividirEquiposParImpar(Partido partido){
-		val prueba = administrador.dividirEquiposPorCriterioPrueba(partido,criterioPar)
+		//val prueba = administrador.dividirEquiposPorCriterioPrueba(partido,criterioPar)
+		//Partido.home.delete(partido)
+		//Partido.home.create(prueba)
+		administrador.dividirEquiposPorCriterioPrueba(partido,criterioPar)
 		Partido.home.delete(partido)
-		Partido.home.create(prueba)
-		
+		Partido.home.create(partido)
 		
 	
 	
@@ -122,6 +126,7 @@ class GenerarEquiposPage extends WebPage{
 		val prueba = administrador.dividirEquiposPorCriterioPrueba(partido,criterio14589)
 		Partido.home.delete(partido)
 		Partido.home.create(prueba)
+		
 		
 	
 	}

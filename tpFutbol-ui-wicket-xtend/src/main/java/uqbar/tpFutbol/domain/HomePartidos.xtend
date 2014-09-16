@@ -17,28 +17,18 @@ import uqbar.tpFutbol.inscripcion.Condicional
 
 class HomePartidos extends CollectionBasedHome<Partido>{
 	
-	@Property Fecha fecha
-	@Property double hora
-	@Property ComunidadFutbolera comunidad
-	@Property OrganizadorCommand criterioDeOrdenamiento 
-	@Property int codPartido
-	@Property List<Jugador> equipo1 = new ArrayList (5)
-	@Property List<Jugador> equipo2 = new ArrayList (5)
-	@Property TipoDeInscripcion inscripciones
-	
+
 	new() {
 		this.init
 	 }
 	
 	def void init() {
 		
-		//var fecha = new Fecha
+		var fecha = new Fecha
 		var partido = new Partido
 		var losPibes = new ComunidadFutbolera()
 		var criterioOrdenamiento = new OrdenamientoPorHandicap()
 		var criterioDivision = new DividirPorParEImpar
-		//var equipo1 = new ArrayList (5)
-		//var equipo2 = new ArrayList (5)
 		var inscripciones = (new InscripcionAbierta(partido, this.crearObserverDePartido("admin@hotmail.com")))
 		var Jugador epi = new Jugador
 		var Jugador p1 = new Jugador
@@ -51,6 +41,8 @@ class HomePartidos extends CollectionBasedHome<Partido>{
 		var Jugador p8 = new Jugador
 		var Jugador p9 = new Jugador
 		var inscriptosPartido = new ArrayList()
+		var equipo1 = new ArrayList(5)
+		var equipo2 = new ArrayList(5)
 		inscriptosPartido.add(epi)
 		inscriptosPartido.add(p1)
 		inscriptosPartido.add(p2)
@@ -61,6 +53,16 @@ class HomePartidos extends CollectionBasedHome<Partido>{
 		inscriptosPartido.add(p7)
 		inscriptosPartido.add(p8)
 		inscriptosPartido.add(p9)
+		equipo1.add(p1)
+		equipo1.add(p2)
+		equipo1.add(p3)
+		equipo1.add(p4)
+		equipo1.add(p5)
+		equipo2.add(p6)
+		equipo2.add(p7)
+		equipo2.add(p8)
+		equipo2.add(p9)
+		equipo2.add(epi)
 		inscripciones.participantes().addAll(inscriptosPartido)
 		
 		
