@@ -27,8 +27,8 @@ class HomePartidos extends CollectionBasedHome<Partido>{
 		var fecha = new Fecha
 		var partido = new Partido
 		var losPibes = new ComunidadFutbolera()
-		var criterioOrdenamiento = new OrdenamientoPorHandicap()
-		var criterioDivision = new DividirPorParEImpar
+		var criterioDeOrdenamiento = new OrdenamientoPorHandicap()
+		var criterioDeDivision = new DividirPorParEImpar
 		var inscripciones = (new InscripcionAbierta(partido, this.crearObserverDePartido("admin@hotmail.com")))
 		var Jugador epi = new Jugador
 		var Jugador p1 = new Jugador
@@ -69,7 +69,7 @@ class HomePartidos extends CollectionBasedHome<Partido>{
 	
 		
 		
-		this.create(fecha,2144,losPibes,criterioOrdenamiento,criterioDivision,01,equipo1,equipo2,inscripciones)
+		this.create(fecha,2144,losPibes,criterioDeOrdenamiento,criterioDeDivision,01,equipo1,equipo2,inscripciones)
 		
 		}
 
@@ -135,6 +135,14 @@ class HomePartidos extends CollectionBasedHome<Partido>{
 			return false
 		}
 		realValue.toString().toLowerCase().contains(expectedValue.toString().toLowerCase())
+	}
+	
+	def List<Partido> getPartido() {
+		allInstances	
+	}
+	
+	def Partido get(String criterio) {
+		getPartido.findFirst [ partido | partido.getCriterioDeDivision.equals(criterio) ]
 	}
 	
 	

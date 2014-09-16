@@ -14,7 +14,8 @@ class Partido extends Entity {
 	@Property Fecha fecha
 	@Property double hora
 	@Property ComunidadFutbolera comunidad
-	@Property OrganizadorCommand criterioDeOrdenamiento 
+	@Property OrganizadorCommand criterioDeOrdenamiento
+	@Property DividirEquiposCommand criterioDeDivision
 	@Property int codPartido
 	@Property List<Jugador> equipo1 = new ArrayList (5)
 	@Property List<Jugador> equipo2 = new ArrayList (5)

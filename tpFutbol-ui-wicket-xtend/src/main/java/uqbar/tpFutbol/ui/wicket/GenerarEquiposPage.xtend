@@ -21,6 +21,8 @@ import org.uqbar.commons.utils.ApplicationContext
 import org.uqbar.commons.model.Home
 import java.util.List
 import uqbar.tpFutbol.domain.Jugador
+import uqbar.tpFutbol.division.DividirEquiposCommand
+import org.apache.wicket.markup.html.form.DropDownChoice
 
 class GenerarEquiposPage extends WebPage{
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
@@ -58,6 +60,11 @@ class GenerarEquiposPage extends WebPage{
 	}
 	
 	def agregarAcciones(Form<GeneradorPartidos> parent) {
+		
+		//parent.addChild(new DropDownChoice<Partido>("criterioDeDivision") => [
+			//choices = loadableModel([| Partido.home.allInstances ])
+			//choiceRenderer = choiceRenderer([Partido m| m.criterioDeDivision])
+		//]) 
 		
 		parent.addChild(new XButton("dividirPorParImpar").onClick = [| this.dividirEquiposParImpar(partido)
 			volver()			
