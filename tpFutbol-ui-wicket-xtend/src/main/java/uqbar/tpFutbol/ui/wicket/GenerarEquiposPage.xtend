@@ -47,7 +47,7 @@ class GenerarEquiposPage extends WebPage{
 			
 			
 		val Form<GeneradorPartidos> nuevoPartidoForm = new Form<GeneradorPartidos>("equiposForm", new CompoundPropertyModel<GeneradorPartidos>(this.generador))
-		this.agregarAcciones(nuevoPartidoForm)
+		//this.agregarAcciones(nuevoPartidoForm)
 		this.agregarResultados(nuevoPartidoForm)
 		this.addChild(nuevoPartidoForm)
 		this.mostrarEquipos()
@@ -59,25 +59,37 @@ class GenerarEquiposPage extends WebPage{
 		
 	}
 	
-	def agregarAcciones(Form<GeneradorPartidos> parent) {
+	//def agregarAcciones(Form<GeneradorPartidos> parent) {
 		
-		//parent.addChild(new DropDownChoice<Partido>("criterioDeDivision") => [
-			//choices = loadableModel([| Partido.home.allInstances ])
-			//choiceRenderer = choiceRenderer([Partido m| m.criterioDeDivision])
-		//]) 
 		
-		parent.addChild(new XButton("dividirPorParImpar").onClick = [| this.dividirEquiposParImpar(partido)
-			volver()			
-			
-		])
 		
-		parent.addChild(new XButton("dividir14589").onClick = [| this.dividirEquipos14589(partido)
-					volver()
+		
 			
-						])
-			
-		parent.addChild(new XButton("ordenarPorHandicap").onClick = [| 
-			
+	
+		
+		
+		
+		
+		//}
+		
+		
+	
+	
+	
+	def agregarResultados(Form<GeneradorPartidos> parent) {
+		val listViewPartidos = new XListView("resultados")
+			listViewPartidos.populateItem = [ item |
+			item.model = item.modelObject.asCompoundModel
+			item.addChild(new Label("codPartido"))
+			item.addChild(new Label("inscripciones.participantes"))
+			item.addChild(new Label("equipo1"))
+			item.addChild(new Label("equipo2"))
+			item.addChild(new XButton("criterioPar").onClick = [| this.dividirEquiposParImpar(partido)
+			volver()]) 
+			item.addChild(new XButton("criterio14589").onClick = [| this.dividirEquipos14589(partido)
+			volver()])
+			item.addChild(new XButton("ordenarPorHandicap").onClick = [| 
+		
 			val jugadoresOrd= partido.ordenarLaListaPorCriterio(ordHandicap,n)
 			val posPartido = Partido.home.allInstances.indexOf(partido)
 					
@@ -92,47 +104,28 @@ class GenerarEquiposPage extends WebPage{
 				
 		]	)	
 			
-	
-		
-		
-		
-		
-		}
-		
-		
-	
-	
-	
-	def agregarResultados(Form<GeneradorPartidos> parent) {
-		val listViewPartidos = new XListView("resultados")
-			listViewPartidos.populateItem = [ item |
-			item.model = item.modelObject.asCompoundModel
-			item.addChild(new Label("codPartido"))
-			item.addChild(new Label("inscripciones.participantes"))
-			item.addChild(new Label("equipo1"))
-			item.addChild(new Label("equipo2"))
-			
 			]
 			
 		parent.addChild(listViewPartidos)
 	}
 	
 	def dividirEquiposParImpar(Partido partido){
-		//val prueba = administrador.dividirEquiposPorCriterioPrueba(partido,criterioPar)
+		//administrador.dividirEquiposPorCriterio(partido,criterioPar)
 		//Partido.home.delete(partido)
-		//Partido.home.create(prueba)
-		administrador.dividirEquiposPorCriterioPrueba(partido,criterioPar)
+		//Partido.home.create(partido)
+		val prueba = administrador.dividirEquiposPorCriterioPrueba(partido,criterioPar)
 		Partido.home.delete(partido)
-		Partido.home.create(partido)
+		Partido.home.create(prueba)
+		
 		
 	
 	
 	}
 	
 	def dividirEquipos14589(Partido partido){
-		val prueba = administrador.dividirEquiposPorCriterioPrueba(partido,criterio14589)
+		administrador.dividirEquiposPorCriterioPrueba(partido,criterio14589)
 		Partido.home.delete(partido)
-		Partido.home.create(prueba)
+		Partido.home.create(partido)
 		
 		
 	
