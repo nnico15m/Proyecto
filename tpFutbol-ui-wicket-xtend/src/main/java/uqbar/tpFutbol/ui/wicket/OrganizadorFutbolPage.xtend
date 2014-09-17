@@ -55,9 +55,11 @@ class OrganizadorFutbolPage extends WebPage {
 	}
 
 def agregarCamposBusqueda(Form<BuscadorJugadores> parent) {
-		parent.addChild(new TextField<String>("nombre"))
-		parent.addChild(new TextField<String>("apodo"))
-		parent.addChild(new TextField<String>("fecha"))
+	parent.addChild(new TextField<String>("nombre"))
+	parent.addChild(new TextField<String>("apodo"))
+	parent.addChild(new TextField<String>("fecha"))
+		
+		
 	}
 
 //	def mostrarDatosMaterias(){
@@ -99,11 +101,12 @@ def agregarCamposBusqueda(Form<BuscadorJugadores> parent) {
 			item.addChild(new Label("apodo"))
 			item.addChild(new Label("nivelDeJuego"))
 			item.addChild(new Label("promedioCalificacionesUltPart"))
-			item.addChild(new Label("promedioConVariosCriteriosAplicados"))
+			item.addChild(new Label("promedioCalificaciones"))
 			item.addChild(new Label("fechaDeNacimiento"))
 			item.addChild(new Label("amigos"))
 			item.addChild(new Label("infracciones"))
-			
+			item.addChild(new Label("cantPartidosJugados"))
+
 			
 			//item.addChild(new XButton("editarDatosMateria").onClick = [| editarDatos(item.modelObject) ])
 			//item.addChild(new XButton("editarNotasMateria").onClick = [| editarNotas(item.modelObject) ])

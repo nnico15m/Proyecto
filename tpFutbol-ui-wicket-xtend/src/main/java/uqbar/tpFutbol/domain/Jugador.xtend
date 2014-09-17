@@ -10,27 +10,48 @@ import uqbar.tpFutbol.inscripcion.TipoDeSuscripcion
 import uqbar.tpFutbol.observers.StubMensajero
 import uqbar.tpFutbol.ordenamiento.OrganizadorCommand
 import org.uqbar.commons.model.Entity
-
+import uqbar.tpFutbol.inscripcion.Estandar
 
 class Jugador extends Entity {
 	
 	@Property String nombreJugador
 	@Property String apodo
+	@Property int nivelDeJuego
+	@Property int promedioCalificacionesUltPart
+	@Property int promedioCalificaciones
 	@Property int fechaDeNacimiento //HASTA QUE SEPAMOS USAR FECHAS...
-	@Property TipoDeSuscripcion formaDeInscripcion
-	@Property List<Infracciones> infracciones = new ArrayList
 	@Property List<Jugador> amigos = new ArrayList(25)
+	@Property List<Infracciones> infracciones = new ArrayList
+	@Property int cantPartidosJugados
+	@Property TipoDeSuscripcion formaDeInscripcion
 	@Property String mail
 	@Property StubMensajero mensajero
 	@Property List<Calificaciones> calificaciones = new ArrayList
 	@Property List<Jugador> pendientesDeCalificar = new ArrayList
 	@Property ComunidadFutbolera comunidad
-	@Property int nivelDeJuego
 	@Property ArrayList<Integer> listaCriterioDelJugador = new ArrayList<Integer>()
-	@Property int promedioCalificacionesUltPart
 	@Property int promedioConVariosCriteriosAplicados
 	
+	
 		
+	
+	
+	
+	
+	
+	
+	
+	
+	//new(String nombreJugador, String apodo, int nivelDeJuego, int promedioCalificacionesUltPart, int promedioCalificaciones,int fechaDeNacimiento, ArrayList<Jugador> amigos, ArrayList<Infracciones> infracciones, int cantPartidosJugados, TipoDeSuscripcion formaDeInscripcion,String mail,StubMensajero mensajero, List<Calificaciones>  calificaciones,List<Jugador> pendientesDeCalificar,ComunidadFutbolera comunidad,ArrayList<Integer> listaCriterioDelJugador,  int m) {
+//		
+//	}
+	
+	
+	
+
+//USAR BUILDER!!!!
+
+
 	
 	def prioridad() {
 		this.formaDeInscripcion.prioridad()
@@ -162,6 +183,39 @@ class Jugador extends Entity {
 */	
 	def obtenerPosicion(Partido partido) {
 		partido.participantes.indexOf(this)
+	}
+	
+	def Jugador crearUnJugador(String nombreJugador, String apodo, int nivelDeJuego, int promedioCalificacionesUltPart, int promedioCalificaciones,int fechaDeNacimiento, ArrayList<Jugador> amigos, ArrayList<Infracciones> infracciones, int cantPartidosJugados, TipoDeSuscripcion formaDeInscripcion,String mail,StubMensajero mensajero, List<Calificaciones>  calificaciones,List<Jugador> pendientesDeCalificar,ComunidadFutbolera comunidad,ArrayList<Integer> listaCriterioDelJugador, int promedioConVariosCriteriosAplicados) {
+		
+		
+		var jugador = new Jugador
+		
+		jugador.nombreJugador = nombreJugador
+		jugador.apodo = apodo
+		jugador.nivelDeJuego = nivelDeJuego
+		jugador.promedioCalificacionesUltPart = promedioCalificacionesUltPart
+		jugador.promedioCalificaciones = promedioCalificaciones
+		jugador.fechaDeNacimiento = fechaDeNacimiento
+		jugador.amigos = amigos
+		jugador.infracciones = infracciones
+		jugador.cantPartidosJugados = cantPartidosJugados
+		jugador.formaDeInscripcion= formaDeInscripcion
+		jugador.mail = mail
+		jugador.mensajero = mensajero
+		jugador.calificaciones = calificaciones
+		jugador.pendientesDeCalificar = pendientesDeCalificar
+		jugador.comunidad = comunidad
+		jugador.listaCriterioDelJugador = listaCriterioDelJugador
+		jugador.promedioConVariosCriteriosAplicados = promedioConVariosCriteriosAplicados
+			
+		
+	
+		 
+				
+		
+		
+		
+		return jugador
 	}
 	
 }

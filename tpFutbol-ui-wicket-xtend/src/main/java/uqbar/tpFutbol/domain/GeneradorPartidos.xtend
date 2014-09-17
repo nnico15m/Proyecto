@@ -29,6 +29,7 @@ class GeneradorPartidos implements Serializable {
 
 	@Property List<Partido> resultados
 	@Property Partido partidoSeleccionado
+	
 
 	// ********************************************************
 	// ** Acciones
@@ -48,5 +49,6 @@ class GeneradorPartidos implements Serializable {
 	def HomePartidos getHomePartidos() {
 		ApplicationContext::instance.getSingleton(typeof(Partido))
 	}
-
+	
+	
 }
