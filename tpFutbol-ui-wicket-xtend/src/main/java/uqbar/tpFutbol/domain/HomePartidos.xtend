@@ -53,16 +53,16 @@ class HomePartidos extends CollectionBasedHome<Partido>{
 		inscriptosPartido.add(p7)
 		inscriptosPartido.add(p8)
 		inscriptosPartido.add(p9)
-		equipo1.add(p1)
-		equipo1.add(p2)
-		equipo1.add(p3)
-		equipo1.add(p4)
-		equipo1.add(p5)
-		equipo2.add(p6)
-		equipo2.add(p7)
-		equipo2.add(p8)
-		equipo2.add(p9)
-		equipo2.add(epi)
+		//equipo1.add(p1)
+		//equipo1.add(p2)
+		//equipo1.add(p3)
+		//equipo1.add(p4)
+		//equipo1.add(p5)
+		//equipo2.add(p6)
+		//equipo2.add(p7)
+		//equipo2.add(p8)
+		//equipo2.add(p9)
+		//equipo2.add(epi)
 		inscripciones.participantes().addAll(inscriptosPartido)
 		
 		
@@ -70,7 +70,7 @@ class HomePartidos extends CollectionBasedHome<Partido>{
 		
 		
 		this.create(fecha,2144,losPibes,criterioDeOrdenamiento,criterioDeDivision,01,equipo1,equipo2,inscripciones)
-		
+		this.create(fecha,2144,losPibes,criterioDeOrdenamiento,criterioDeDivision,02,equipo1,equipo2,inscripciones)
 		}
 
 

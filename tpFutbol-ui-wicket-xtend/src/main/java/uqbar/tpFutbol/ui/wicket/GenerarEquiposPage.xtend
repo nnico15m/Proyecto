@@ -26,7 +26,7 @@ import org.apache.wicket.markup.html.form.DropDownChoice
 
 class GenerarEquiposPage extends WebPage{
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
-	private final Partido partido
+	//private final Partido partido
 	private final OrganizadorFutbolPage mainPage
 	private final GeneradorPartidos generador
 	private final Administrador administrador
@@ -34,11 +34,13 @@ class GenerarEquiposPage extends WebPage{
 	private final DividirPorPosicion14589 criterio14589
 	private final OrdenamientoPorHandicap ordHandicap
 	private final int n = 1
+	private final List<Integer> listPosicionesValidas =  newArrayList(0,3,4,7,8)
+	private final List<Integer>  listPosicionesSobrantes =  newArrayList(1,2,5,6,9)
 	
 		new(Partido partidoNuevo, OrganizadorFutbolPage  mainPage) {
 		this.generador= new GeneradorPartidos
 		this.mainPage = mainPage
-		this.partido = partidoNuevo
+		//this.partido = partidoNuevo
 		this.administrador = administrador
 		this.criterioPar= new DividirPorParEImpar
 		this.criterio14589 = new DividirPorPosicion14589()
@@ -61,14 +63,7 @@ class GenerarEquiposPage extends WebPage{
 	
 	//def agregarAcciones(Form<GeneradorPartidos> parent) {
 		
-		
-		
-		
 			
-	
-		
-		
-		
 		
 		//}
 		
@@ -84,55 +79,73 @@ class GenerarEquiposPage extends WebPage{
 			item.addChild(new Label("inscripciones.participantes"))
 			item.addChild(new Label("equipo1"))
 			item.addChild(new Label("equipo2"))
-			item.addChild(new XButton("criterioPar").onClick = [| this.dividirEquiposParImpar(partido)
-			volver()]) 
-			item.addChild(new XButton("criterio14589").onClick = [| this.dividirEquipos14589(partido)
-			volver()])
-			item.addChild(new XButton("ordenarPorHandicap").onClick = [| 
-		
-			val jugadoresOrd= partido.ordenarLaListaPorCriterio(ordHandicap,n)
-			val posPartido = Partido.home.allInstances.indexOf(partido)
-					
-			Partido.home.allInstances.get(posPartido).inscripciones.participantes().empty
-			Partido.home.allInstances.get(posPartido).inscripciones.participantes().addAll(jugadoresOrd)
-			Partido.home.delete(partido)
-			Partido.home.create(partido)
-			
-		
-			volver()
-			
-				
-		]	)	
-			
+			item.addChild(new XButton("criterioPar").onClick = [| dividirEquiposParImpar(item.modelObject)
+			]) 
+			item.addChild(new XButton("criterio14589").onClick = [| dividirEquipos14589(item.modelObject)
+			])
+			item.addChild(new XButton("ordenarPorHandicap").onClick = [| ordenarPorHandicap(item.modelObject)])		
 			]
 			
 		parent.addChild(listViewPartidos)
 	}
 	
 	def dividirEquiposParImpar(Partido partido){
-		//administrador.dividirEquiposPorCriterio(partido,criterioPar)
-		//Partido.home.delete(partido)
-		//Partido.home.create(partido)
-		val prueba = administrador.dividirEquiposPorCriterioPrueba(partido,criterioPar)
-		Partido.home.delete(partido)
-		Partido.home.create(prueba)
+	
 		
+		val posPartido = Partido.home.allInstances.indexOf(partido)
+		Partido.home.allInstances.get(posPartido).equipo1.clear
+		Partido.home.allInstances.get(posPartido).equipo2.clear
+		val listaImpares = partido.participantes.filter[jug|jug.unJugEsImpar(partido)].toList
+		val listaPares = partido.participantes.filter[jug|jug.unJugEsPar(partido)].toList
+		//Partido.home.allInstances.get(posPartido).inscripciones.participantes().clear
+		Partido.home.allInstances.get(posPartido).equipo1.addAll(listaImpares)
+		Partido.home.allInstances.get(posPartido).equipo2.addAll(listaPares)
 		
+	
 	
 	
 	}
 	
 	def dividirEquipos14589(Partido partido){
-		administrador.dividirEquiposPorCriterioPrueba(partido,criterio14589)
-		Partido.home.delete(partido)
-		Partido.home.create(partido)
+		
+		
+		val posPartido = Partido.home.allInstances.indexOf(partido)
+		Partido.home.allInstances.get(posPartido).equipo1.clear
+		Partido.home.allInstances.get(posPartido).equipo2.clear
+		val lista14589= partido.participantes.filter[jug|this.es14589(jug.obtenerPosicion(partido))].toList
+		val lista236710= partido.participantes.filter[jug|this.es236710(jug.obtenerPosicion(partido))].toList
+		//Partido.home.allInstances.get(posPartido).inscripciones.participantes().clear
+		Partido.home.allInstances.get(posPartido).equipo1.addAll(lista14589)
+		Partido.home.allInstances.get(posPartido).equipo2.addAll(lista236710)
+		
+		
 		
 		
 	
 	}
 	
 	
+	def ordenarPorHandicap(Partido partido){
+		val jugadoresOrd= partido.ordenarLaListaPorCriterio(ordHandicap,n)
+		val posPartido = Partido.home.allInstances.indexOf(partido)
+					
+		Partido.home.allInstances.get(posPartido).inscripciones.participantes().clear
+		Partido.home.allInstances.get(posPartido).inscripciones.participantes().addAll(jugadoresOrd)
+		Partido.home.delete(partido)
+		Partido.home.create(partido)
+		
+		
+	}
 	
+	def es14589(int posicionJug){
+
+	listPosicionesValidas.contains(posicionJug)
+}
+	
+	def es236710(int posicionJug){
+
+	listPosicionesSobrantes.contains(posicionJug)
+}
 	
 	
 	def volver() {
