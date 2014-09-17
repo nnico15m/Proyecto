@@ -7,6 +7,7 @@ import uqbar.tpFutbol.domain.Partido
 interface TipoDeInscripcion {
 	
 	def abstract List<Jugador> participantes()
+	def abstract List<String> nombreParticipantes()
 	def abstract Partido partido()
 	
 	def abstract void inscribiA(Jugador jugador)

@@ -20,6 +20,15 @@ class OrdenamientoPorHandicap implements OrganizadorCommand {
 		
 	}
 	
+		override def Partido ordenarLaListaPrueba(Partido partido,int n){
+		
+		
+		partido.participantes.sortBy[nivelDeJuego]
+		return partido
+		
+		
+	}
+	
 	override inicializarCntidadDePartido() {
 			
 			

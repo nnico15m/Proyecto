@@ -13,6 +13,7 @@ interface OrganizadorCommand {
 	
 	
 	def List<Jugador> ordenarLaLista(Partido partido,int n)
+	def Partido ordenarLaListaPrueba(Partido partido,int n)
 	
 	def int obtenerValor(Partido partido,Jugador jugador, int n)
 	

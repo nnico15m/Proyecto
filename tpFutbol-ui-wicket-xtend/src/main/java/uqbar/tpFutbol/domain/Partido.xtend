@@ -28,6 +28,11 @@ class Partido extends Entity {
 		this.inscripciones.participantes
 	}
 	
+	def nombreParticipantes(){
+		this.inscripciones.nombreParticipantes
+	}
+	
+	
 	
 	
 	// ESTE ES EL M�TODO QUE USAMOS PARA INSCRIBIR JUGADORES		
@@ -86,6 +91,15 @@ class Partido extends Entity {
 		this.setCriterioDeOrdenamiento(criterio) // guardo el criterio por si me lo piden
 		//this.criterioDeOrdenamiento.ordenarLaLista(this)
 		criterio.ordenarLaLista(this,n)
+		
+	
+	}
+	
+	def ordenarLaListaPorCriterioPrueba(OrganizadorCommand criterio,int n) {
+		
+		this.setCriterioDeOrdenamiento(criterio) // guardo el criterio por si me lo piden
+		//this.criterioDeOrdenamiento.ordenarLaLista(this)
+		criterio.ordenarLaListaPrueba(this,n)
 		
 	
 	}

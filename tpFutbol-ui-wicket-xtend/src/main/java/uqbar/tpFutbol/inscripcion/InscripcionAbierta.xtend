@@ -18,6 +18,12 @@ class InscripcionAbierta implements TipoDeInscripcion{
 		this.getParticipantes()
 	}
 	
+	override List<String> nombreParticipantes(){
+		this.getParticipantes().map[nombreJugador]
+			}
+	
+	
+	
 	override partido(){
 		this.getPartido()
 	}

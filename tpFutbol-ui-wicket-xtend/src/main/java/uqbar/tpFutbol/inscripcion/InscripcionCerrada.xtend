@@ -15,7 +15,10 @@ class InscripcionCerrada implements TipoDeInscripcion{
 	override participantes() {
 		this.getParticipantes()
 	}
-	
+	override List<String> nombreParticipantes(){
+		this.getParticipantes.map[nombreJugador]
+			}
+			
 	override partido() {
 		this.getPartido
 	}
