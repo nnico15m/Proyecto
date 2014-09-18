@@ -16,14 +16,9 @@ import org.uqbar.wicket.xtend.XListView
 import org.apache.wicket.markup.html.basic.Label
 import uqbar.tpFutbol.domain.Administrador
 import uqbar.tpFutbol.ordenamiento.OrdenamientoPorHandicap
-import uqbar.tpFutbol.domain.HomePartidos
-import org.uqbar.commons.utils.ApplicationContext
-import org.uqbar.commons.model.Home
 import java.util.List
-import uqbar.tpFutbol.domain.Jugador
-import uqbar.tpFutbol.division.DividirEquiposCommand
-import org.apache.wicket.markup.html.form.DropDownChoice
-import org.apache.wicket.model.Model
+import uqbar.tpFutbol.ordenamiento.OrdenarPartidoPorUltimaCalificacion
+import uqbar.tpFutbol.ordenamiento.OrganizadorCommand
 
 class GenerarEquiposPage extends WebPage{
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
@@ -34,9 +29,9 @@ class GenerarEquiposPage extends WebPage{
 	private final DividirPorParEImpar criterioPar
 	private final DividirPorPosicion14589 criterio14589
 	private final OrdenamientoPorHandicap ordHandicap
+	private final OrdenarPartidoPorUltimaCalificacion ordPromedioNotasUltimo
 	private final int n = 1
-	private final List<Integer> listPosicionesValidas =  newArrayList(0,3,4,7,8)
-	private final List<Integer>  listPosicionesSobrantes =  newArrayList(1,2,5,6,9)
+
 	
 		new(Partido partidoNuevo, OrganizadorFutbolPage  mainPage) {
 		this.generador= new GeneradorPartidos
@@ -46,6 +41,7 @@ class GenerarEquiposPage extends WebPage{
 		this.criterioPar= new DividirPorParEImpar
 		this.criterio14589 = new DividirPorPosicion14589()
 		this.ordHandicap = new OrdenamientoPorHandicap()
+		this.ordPromedioNotasUltimo = new  OrdenarPartidoPorUltimaCalificacion ()
 		
 			
 			
@@ -84,7 +80,8 @@ class GenerarEquiposPage extends WebPage{
 			]) 
 			item.addChild(new XButton("criterio14589").onClick = [| dividirEquipos14589(item.modelObject)
 			])
-			item.addChild(new XButton("ordenarPorHandicap").onClick = [| ordenarPorHandicap(item.modelObject)])	
+			item.addChild(new XButton("ordenarPorHandicap").onClick = [| ordenarPartido(item.modelObject,ordHandicap)])	
+			item.addChild(new XButton("ordenarPorUltimaCalificacion").onClick = [| ordenarPartido(item.modelObject,ordPromedioNotasUltimo)])
 			item.addChild(new XButton("datosEquipo1").onClick = [| datosParticipantes(item.modelObject)])
 					
 			]
@@ -114,22 +111,29 @@ class GenerarEquiposPage extends WebPage{
 	
 	}
 	
-	
-	def ordenarPorHandicap(Partido partidoPed){
-		
-		 Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(ordHandicap,n))		
+	def ordenarPartido (Partido partidoPed, OrganizadorCommand criterio){
+		 Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(criterio,n))
 		
 	}
 	
-	def es14589(int posicionJug){
-
-	listPosicionesValidas.contains(posicionJug)
-}
 	
-	def es236710(int posicionJug){
-
-	listPosicionesSobrantes.contains(posicionJug)
-}
+	//def ordenarPorHandicap(Partido partidoPed){
+		
+		
+		// Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(ordHandicap,n))	
+		
+		
+//	}
+	
+	//def ordenarPorPromedioNotasUltimo(Partido partidoPed){
+		
+		
+		// Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(ordPromedioNotasUltimo,n))	
+		
+		
+//	}
+	
+	
 	
 	
 	def volver() {
