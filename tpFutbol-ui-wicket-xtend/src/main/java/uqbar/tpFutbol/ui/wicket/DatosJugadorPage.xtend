@@ -19,7 +19,7 @@ class DatosJugadorPage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
 	private final Jugador jugador
 	private final DatosEquipoPage mainPage
-	private final List<Jugador> datos
+	private final List datos
 	
 	
 	

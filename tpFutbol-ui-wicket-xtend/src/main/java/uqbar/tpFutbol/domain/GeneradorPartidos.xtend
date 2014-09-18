@@ -28,7 +28,9 @@ class GeneradorPartidos implements Serializable {
 
 
 	@Property List<Partido> resultados
+
 	@Property Partido partidoSeleccionado
+	//@Property List<Jugador> equipos
 	
 
 	// ********************************************************
@@ -41,6 +43,14 @@ class GeneradorPartidos implements Serializable {
 		resultados = new ArrayList<Partido>
 		resultados = getHomePartidos.search()
 	}
+	
+	//def void mostrarEquipos(Partido partidoPed){
+		//equipos = new ArrayList<Jugador>
+		//equipos = (partidoPed.participantes())
+		
+		
+	//}
+	
 	
 
 		

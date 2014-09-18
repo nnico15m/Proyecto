@@ -85,8 +85,8 @@ class GenerarEquiposPage extends WebPage{
 			item.addChild(new XButton("criterio14589").onClick = [| dividirEquipos14589(item.modelObject)
 			])
 			item.addChild(new XButton("ordenarPorHandicap").onClick = [| ordenarPorHandicap(item.modelObject)])	
-			item.addChild(new XButton("datosEquipo1").onClick = [| datosEquipo1(item.modelObject)])
-			item.addChild(new XButton("datosEquipo2").onClick = [| datosEquipo2(item.modelObject)])		
+			item.addChild(new XButton("datosEquipo1").onClick = [| datosParticipantes(item.modelObject)])
+					
 			]
 			
 		parent.addChild(listViewPartidos)
@@ -137,13 +137,11 @@ class GenerarEquiposPage extends WebPage{
 		responsePage = mainPage
 	}
 	
-	def datosEquipo1(Partido partido) {
+	def datosParticipantes(Partido partido) {
 		responsePage = new DatosEquipoPage(partido, this) 
 	}
 	
-	def datosEquipo2(Partido partido) {
-		responsePage = new DatosEquipoPage(partido, this) 
-	}	
+	
 	
 	
 	

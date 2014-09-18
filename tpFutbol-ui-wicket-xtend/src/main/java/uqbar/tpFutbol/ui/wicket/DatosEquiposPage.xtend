@@ -15,36 +15,33 @@ import org.uqbar.wicket.xtend.XListView
 import java.util.ArrayList
 import org.uqbar.commons.utils.ApplicationContext
 import uqbar.tpFutbol.domain.HomePartidos
+import uqbar.tpFutbol.domain.GeneradorPartidos
+import org.apache.wicket.model.CompoundPropertyModel
 
 class DatosEquipoPage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
-	private final Partido partido
 	private final GenerarEquiposPage mainPage
-	private final List<Jugador> equipo1
-	private final List<Jugador> equipo2
 	private final List<Jugador> equipos
 	
 	
+	private final Partido partido
 	
-	new(Partido partido, GenerarEquiposPage  mainPage) {
-		
+	new(Partido partidoPed, GenerarEquiposPage  mainPage) {
+
+		val posicion = Partido.home.allInstances.indexOf(partidoPed)
 		this.mainPage = mainPage
-		this.partido = partido
-		this.equipo1 = partido.equipo1
-		this.equipo2 = partido.equipo2
-		equipos = new ArrayList<Jugador>
+		//this.equipos = Partido.home.searchById(posicion).participantes
+		this.equipos = Partido.home.allInstances.get(posicion).participantes
+		this.partido = partido		
 		
-		
-		
-		val datosEquipoForm=  new Form<Partido>("nombreEquipo", this.partido.asCompoundModel)
+		val datosEquipoForm=   new Form<Partido>("nombreEquipoForm", this.partido.asCompoundModel)
 		this.agregarAcciones(datosEquipoForm)
 		this.addChild(datosEquipoForm)
 		this.mostrarEquipos()
+		
 	}
 	
-	def mostrarEquipos(){
-		getHomePartidos().allInstances
-	}
+	
 	
 	
 	
@@ -53,7 +50,7 @@ class DatosEquipoPage extends WebPage {
 			val listViewEquipos = new XListView("equipos")
 			listViewEquipos.populateItem = [ item |
 			item.model = item.modelObject.asCompoundModel
-			item.addChild(new Label("nombreJugador.equipo1"))	
+			item.addChild(new Label("nombreJugador"))	
 			item.addChild(new XButton("datosJugador").onClick = [| datosJugador(item.modelObject)
 			])
 			
@@ -66,18 +63,21 @@ class DatosEquipoPage extends WebPage {
 	
 	
 	
-	def volver() {
-		
-	}
+	
 	
 	def datosJugador(Jugador jugador) {
 		responsePage = new DatosJugadorPage(jugador, this) 
 	}
 	
+	def mostrarEquipos() {
+		equipos
+	}
 	
 	def HomePartidos getHomePartidos() {
 		ApplicationContext::instance.getSingleton(typeof(Partido))
 	}
+	
+		
 	}
 	
 	
