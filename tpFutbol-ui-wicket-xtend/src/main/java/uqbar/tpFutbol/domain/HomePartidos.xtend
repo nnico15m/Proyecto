@@ -12,10 +12,17 @@ import uqbar.tpFutbol.observers.StubMensajero
 import org.uqbar.commons.utils.ApplicationContext
 import uqbar.tpFutbol.inscripcion.TipoDeSuscripcion
 class HomePartidos extends CollectionBasedHome<Partido>{
+	
+	
+	
 new() {
 this.init
 }
+
+
 def void init() {
+	
+
 var fecha = new Fecha
 var partido = new Partido
 var losPibes = new ComunidadFutbolera()
@@ -23,7 +30,7 @@ var criterioDeOrdenamiento = new OrdenamientoPorHandicap()
 var criterioDeDivision = new DividirPorParEImpar
 var inscripciones = (new InscripcionAbierta(partido, this.crearObserverDePartido("admin@hotmail.com")))
 var inscripciones2 = (new InscripcionAbierta(partido, this.crearObserverDePartido("admin@hotmail.com")))
-//COSAS DE EPI
+
 var amigosEpi = new ArrayList
 var infraccionesEpi = new ArrayList
 var formaDeInsc = new Estandar()
@@ -32,7 +39,7 @@ var calificaciones = new ArrayList()
 var pendientesC = new ArrayList()
 var comunidad = new ComunidadFutbolera()
 var listaC= new ArrayList()
-//FIN COSAS EPI
+
 val epi2=this.createJug("epi","epielbostero",1,5,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,0)
 val p1=this.createJug("p1","p1",5,5,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,0)
 val p2=this.createJug("p2","p2",5,5,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,0)
@@ -60,11 +67,16 @@ inscriptosPartido.add(p9)
 inscriptosPartido2.add(p5)
 inscriptosPartido2.add(p6)
 inscriptosPartido2.add(p7)
+inscriptosPartido2.add(p1)
+inscriptosPartido2.add(p4)
 inscripciones.participantes().addAll(inscriptosPartido)
 inscripciones2.participantes().addAll(inscriptosPartido2)
 this.create(fecha,2144,losPibes,criterioDeOrdenamiento,criterioDeDivision,01,equipo1,equipo2,inscripciones)
 this.create(fecha,2124,losPibes,criterioDeOrdenamiento,criterioDeDivision,02,equipo1,equipo2,inscripciones2)
 }
+
+
+
 //USAR BUILDER!!!!
 def void create(Fecha fecha, double hora, ComunidadFutbolera losPibes, OrdenamientoPorHandicap criterioOrdenamiento, DividirPorParEImpar criterioDivision, int codPartido, List<Jugador> equipo1,List<Jugador> equipo2, InscripcionAbierta inscripciones)
 {
@@ -79,26 +91,43 @@ partido.equipo2 = equipo2
 partido.inscripciones = inscripciones
 this.create(partido)
 }
+
+
 def crearObserverDePartido(String mailAdministrador){
 var observerDelPartido = new NotificadorDeAdministradorObserver
 observerDelPartido.setMailAdministrador(mailAdministrador)
 observerDelPartido
 }
+
+
 def search() {
 allInstances
 }
+
+
+
 def alguno(){
 allInstances.get(0)
 }
+
+
 override def getCriterio(Partido example) {
 null
 }
+
+
 override createExample() {
 new Partido
 }
+
+
+
 override getEntityType() {
 typeof (Partido)
 }
+
+
+
 def match(Object expectedValue, Object realValue) {
 if (expectedValue == null) {
 return true
@@ -108,12 +137,15 @@ return false
 }
 realValue.toString().toLowerCase().contains(expectedValue.toString().toLowerCase())
 }
+
+
 def List<Partido> getPartido() {
 allInstances	
 }
-def Partido get(String criterio) {
-getPartido.findFirst [ partido | partido.getCriterioDeDivision.equals(criterio) ]
-}
+
+
+
+
 def Jugador createJug(String nombreJugador, String apodo, int nivelDeJuego, int promedioCalificacionesUltPart, int promedioCalificaciones,int fechaDeNacimiento, ArrayList<Jugador> amigos, ArrayList<Infracciones> infracciones, int cantPartidosJugados, TipoDeSuscripcion formaDeInscripcion,String mail,StubMensajero mensajero, List<Calificaciones> calificaciones,List<Jugador> pendientesDeCalificar,ComunidadFutbolera comunidad,ArrayList<Integer> listaCriterioDelJugador, int promedioConVariosCriteriosAplicados) {
 var jugador = new Jugador
 jugador.nombreJugador = nombreJugador
@@ -134,6 +166,8 @@ jugador.comunidad = comunidad
 jugador.listaCriterioDelJugador = listaCriterioDelJugador
 jugador.promedioConVariosCriteriosAplicados = promedioConVariosCriteriosAplicados
 return jugador
+
+
 }
 
  

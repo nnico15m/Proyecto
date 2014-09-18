@@ -32,6 +32,14 @@ class Partido extends Entity {
 		this.inscripciones.nombreParticipantes
 	}
 	
+	def nombreJugadorEquipo1(){
+		this.equipo1.map[nombreJugador]
+	}
+	
+	def nombreJugadorEquipo2(){
+		this.equipo2.map[nombreJugador]
+	}
+	
 	
 	
 	
