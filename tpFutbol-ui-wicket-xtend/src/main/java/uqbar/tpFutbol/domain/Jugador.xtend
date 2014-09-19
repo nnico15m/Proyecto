@@ -133,6 +133,14 @@ class Jugador extends Entity {
 	
 			
 	}
+	
+	def promedioDeCalificacionesUltimoPartidoPrueba(Partido partidoAOrganizar){
+		val codUltimoPartidoJugado = (partidoAOrganizar.getCodPartido())
+		val listaCalificacionesAux = calificaciones.filter[codPartidoJugado == codUltimoPartidoJugado].toList
+		setearPromedioObtenido(listaCalificacionesAux)
+	
+			
+	}
 		
 
 	def promedioDeUltimasNCalificacionesPedidas(Partido partidoAOrganizar,int numeroPedido){

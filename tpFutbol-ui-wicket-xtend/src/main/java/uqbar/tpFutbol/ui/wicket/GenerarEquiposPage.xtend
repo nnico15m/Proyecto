@@ -138,7 +138,7 @@ class GenerarEquiposPage extends WebPage{
 	}
 	
 	def ordenarPartidoCompuesto (Partido partidoPed, OrganizadorCommand criterio){
-		 Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(criterio,cantPartidos))
+		 Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(criterio,generador.cantPartidos))
 		
 	}
 	
