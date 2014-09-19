@@ -33,7 +33,7 @@ class GenerarEquiposPage extends WebPage{
 	private final OrdenamientoPorHandicap ordHandicap
 	private final OrdenarPartidoPorUltimaCalificacion ordPromedioNotasUltimo
 	private final OrdenarPartidoPorNCalificaciones ordPromedioNotasNPartidos
-	int cantPartidos = 1
+	private int cantPartidos = 1
 
 	
 		new(Partido partidoNuevo, OrganizadorFutbolPage  mainPage) {
@@ -100,7 +100,7 @@ class GenerarEquiposPage extends WebPage{
 			])
 			item.addChild(new XButton("ordenarPorHandicap").onClick = [| ordenarPartido(item.modelObject,ordHandicap)])	
 			item.addChild(new XButton("ordenarPorUltimaCalificacion").onClick = [| ordenarPartido(item.modelObject,ordPromedioNotasUltimo)])
-			item.addChild(new XButton("ordenarPorNCalificaciones").onClick = [| ordenarPartido(item.modelObject,ordPromedioNotasNPartidos)])
+			item.addChild(new XButton("ordenarPorNCalificaciones").onClick = [| ordenarPartidoCompuesto(item.modelObject,ordPromedioNotasNPartidos)])
 			item.addChild(new XButton("mixto").onClick = [| ordenarPartidoMixto(item.modelObject)])
 			item.addChild(new XButton("datosEquipo1").onClick = [| datosParticipantes(item.modelObject)])
 					
@@ -149,7 +149,7 @@ class GenerarEquiposPage extends WebPage{
 	}
 	
 	def cambiarCantidadPartidos(int valor){
-		cantPartidos = valor
+		generador.setCantPartidos(valor)
 	}
 
 
