@@ -119,6 +119,17 @@ class Partido extends Entity {
 		
 	}
 	
+	def ordenarLaListaPorPromedioDeVariosCriteriosPrueba(Partido partidoAOrganizar, int n){
+		//partidoAOrganizar.participantes.forEach[jug|jug.valorPromedioDeVariosCriterios(this,listaCriterios, n)]
+		val participantesOrd = partidoAOrganizar.participantes.sortBy[promedioConVariosCriteriosAplicados]
+		partidoAOrganizar.inscripciones.participantes.clear
+		partidoAOrganizar.inscripciones.participantes.addAll(participantesOrd)
+		return partidoAOrganizar
+		
+		
+		
+	}
+	
 	def dividirEquipos(DividirEquiposCommand criterioDivision){
 		criterioDivision.dividirEquipos(this)
 	}

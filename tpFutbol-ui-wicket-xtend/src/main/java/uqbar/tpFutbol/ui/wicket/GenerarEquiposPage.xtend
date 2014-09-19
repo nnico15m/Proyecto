@@ -20,6 +20,7 @@ import java.util.List
 import uqbar.tpFutbol.ordenamiento.OrdenarPartidoPorUltimaCalificacion
 import uqbar.tpFutbol.ordenamiento.OrganizadorCommand
 import org.apache.wicket.markup.html.form.TextField
+import uqbar.tpFutbol.ordenamiento.OrdenarPartidoPorNCalificaciones
 
 class GenerarEquiposPage extends WebPage{
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
@@ -31,7 +32,8 @@ class GenerarEquiposPage extends WebPage{
 	private final DividirPorPosicion14589 criterio14589
 	private final OrdenamientoPorHandicap ordHandicap
 	private final OrdenarPartidoPorUltimaCalificacion ordPromedioNotasUltimo
-	private int cantPartidos = 1
+	private final OrdenarPartidoPorNCalificaciones ordPromedioNotasNPartidos
+	int cantPartidos = 1
 
 	
 		new(Partido partidoNuevo, OrganizadorFutbolPage  mainPage) {
@@ -43,12 +45,14 @@ class GenerarEquiposPage extends WebPage{
 		this.criterio14589 = new DividirPorPosicion14589()
 		this.ordHandicap = new OrdenamientoPorHandicap()
 		this.ordPromedioNotasUltimo = new  OrdenarPartidoPorUltimaCalificacion ()
+		this.ordPromedioNotasNPartidos = new OrdenarPartidoPorNCalificaciones()
 		
 			
 			
 		val Form<GeneradorPartidos> nuevoPartidoForm = new Form<GeneradorPartidos>("equiposForm", new CompoundPropertyModel<GeneradorPartidos>(this.generador))
-		//this.agregarAcciones(nuevoPartidoForm)
+		this.agregarAcciones(nuevoPartidoForm)
 		this.agregarResultados(nuevoPartidoForm)
+		this.agregarCamposEdicion(nuevoPartidoForm)
 		this.addChild(nuevoPartidoForm)
 		this.mostrarEquipos()
 	
@@ -59,28 +63,23 @@ class GenerarEquiposPage extends WebPage{
 		
 	}
 	
-	//def agregarAcciones(Form<GeneradorPartidos> parent) {
-		
-			
-		
-		//}
-		
-		
-	//def agregarCamposEdicion(Form<GeneradorPartidos> parent){
-		//parent.addChild(new TextField<String>("cantidadPartidos"))
-		
-//	}
+	// BOTON PARA CAMBIAR CANTIDAD PARTIDOS
+	def agregarCamposEdicion(Form<GeneradorPartidos> parent){
+		parent.addChild(new TextField<String>("cantPartidos"))
 	
-	//def agregarOtrasAcciones(Form<GeneradorPartidos> parent) {
-		//val cambiarButton = new XButton("cambiar")
-		//cambiarButton.onClick = [| 
-			//this.cambiarCantidadPartidos(partido)
-	//	]
-		//parent.addChild(cambiarButton)
+	}
+	
+	def agregarAcciones(Form<GeneradorPartidos> parent) {
+		parent.addChild(new XButton("aceptar").onClick = [|this.cambiarCantidadPartidos(cantPartidos)
+		])
 			
 		
+		}
 		
-	//}
+		
+	///////////////////////////
+	
+
 	
 	
 	
@@ -101,6 +100,8 @@ class GenerarEquiposPage extends WebPage{
 			])
 			item.addChild(new XButton("ordenarPorHandicap").onClick = [| ordenarPartido(item.modelObject,ordHandicap)])	
 			item.addChild(new XButton("ordenarPorUltimaCalificacion").onClick = [| ordenarPartido(item.modelObject,ordPromedioNotasUltimo)])
+			item.addChild(new XButton("ordenarPorNCalificaciones").onClick = [| ordenarPartido(item.modelObject,ordPromedioNotasNPartidos)])
+			item.addChild(new XButton("mixto").onClick = [| ordenarPartidoMixto(item.modelObject)])
 			item.addChild(new XButton("datosEquipo1").onClick = [| datosParticipantes(item.modelObject)])
 					
 			]
@@ -131,12 +132,24 @@ class GenerarEquiposPage extends WebPage{
 	}
 	
 	def ordenarPartido (Partido partidoPed, OrganizadorCommand criterio){
+		
+		 Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(criterio,1))
+		
+	}
+	
+	def ordenarPartidoCompuesto (Partido partidoPed, OrganizadorCommand criterio){
 		 Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(criterio,cantPartidos))
 		
 	}
 	
-	def cambiarCantidadPartidos(Partido partido){
-		cantPartidos = 1
+	def ordenarPartidoMixto (Partido partidoPed){
+		
+		 Partido.home.update(partidoPed.ordenarLaListaPorPromedioDeVariosCriteriosPrueba(partidoPed,cantPartidos))
+		
+	}
+	
+	def cambiarCantidadPartidos(int valor){
+		cantPartidos = valor
 	}
 
 

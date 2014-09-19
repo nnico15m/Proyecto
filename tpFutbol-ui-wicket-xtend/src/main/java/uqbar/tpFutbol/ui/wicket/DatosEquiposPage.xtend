@@ -21,23 +21,26 @@ import org.apache.wicket.model.CompoundPropertyModel
 class DatosEquipoPage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
 	private final GenerarEquiposPage mainPage
-	private final List<Jugador> equipos
+	@Property List<Jugador> equipos
+
 	
 	
 	private final Partido partido
 	
 	new(Partido partidoPed, GenerarEquiposPage  mainPage) {
 
-		val posicion = Partido.home.allInstances.indexOf(partidoPed)
+		
 		this.mainPage = mainPage
 		//this.equipos = Partido.home.searchById(posicion).participantes
-		this.equipos = Partido.home.allInstances.get(posicion).participantes
+		//this.equipos = Partido.home.allInstances.get(posicion).participantes
+		//this.equipos = Partido.home.searchByExample(partidoPed).head.participantes
+		this.equipos =equipos
 		this.partido = partido		
 		
 		val datosEquipoForm=   new Form<Partido>("nombreEquipoForm", this.partido.asCompoundModel)
 		this.agregarAcciones(datosEquipoForm)
 		this.addChild(datosEquipoForm)
-		this.mostrarEquipos()
+		this.mostrarEquipos(partidoPed)
 		
 	}
 	
@@ -69,8 +72,12 @@ class DatosEquipoPage extends WebPage {
 		responsePage = new DatosJugadorPage(jugador, this) 
 	}
 	
-	def mostrarEquipos() {
-		equipos
+	def mostrarEquipos(Partido partidoPed) {
+		val posicion = Partido.home.allInstances.indexOf(partidoPed)
+		equipos = new ArrayList<Jugador>
+		equipos = Partido.home.allInstances.get(posicion).participantes
+		//equipos = Partido.home.searchByExample(partidoPed).head.participantes
+		
 	}
 	
 	def HomePartidos getHomePartidos() {

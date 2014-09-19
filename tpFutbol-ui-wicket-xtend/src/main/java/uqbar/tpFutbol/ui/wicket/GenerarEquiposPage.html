@@ -15,7 +15,17 @@
 	        </table>
 	        
 	        <form wicket:id=equiposForm class="form">
-	        	       	
+	        	       	<div class="form-group">
+		        	<label class="control-label" for="nombre">Cantidad Partidos para orden</label>
+		        	<div class="controls">
+		        		<input wicket:id="cantPartidos" type="text" placeholder="1" class="form-control" />
+		        	</div>
+	        	</div>
+	        	
+	        	<div class="form-actions">
+                    <button wicket:id="aceptar" type="submit" class="btn btn-primary">Aceptar</button>
+                    
+                </div>
 	     
 	        	 
 	        
@@ -50,7 +60,9 @@
 	           	        		<button wicket:id="criterioPar" class="btn-link">ParImpar</button>
 	           	        		<button wicket:id="criterio14589" class="btn-link">P14589</button>
 	           	        		<button wicket:id="ordenarPorHandicap" class="btn-link">ordHandicap</button>
-	           	        		<button wicket:id="ordenarPorUltimaCalificacion" class="btn-link">ordUltimaCalificacion</button>
+	           	        		<button wicket:id="ordenarPorUltimaCalificacion" class="btn-link">ordUltimoPartidos</button>
+	           	        		<button wicket:id="ordenarPorNCalificaciones" class="btn-link">ordUltimosNPartidos</button>
+	           	        		<button wicket:id="mixto" class="btn-link">Mixto</button>
 	           	        		<button wicket:id="datosEquipo1" class="btn-link">Datos Participantes</button>
 	           	        		
 	           	        	</div>
