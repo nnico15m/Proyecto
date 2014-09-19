@@ -128,7 +128,7 @@ class Jugador extends Entity {
 	
 	def promedioDeCalificacionesUltimoPartido(Partido partidoAOrganizar){
 		val codUltimoPartidoJugado = (partidoAOrganizar.getCodPartido() ) - 1
-		val listaCalificacionesAux = calificaciones.filter[codPartidoJugado == codUltimoPartidoJugado]
+		val listaCalificacionesAux = calificaciones.filter[codPartidoJugado == codUltimoPartidoJugado].toList
 		setearPromedioObtenido(listaCalificacionesAux)
 	
 			
@@ -142,7 +142,7 @@ class Jugador extends Entity {
 	}
 	
 	
-	def setearPromedioObtenido(Iterable<Calificaciones> listaCalificacionesAux) {
+	def setearPromedioObtenido(List<Calificaciones> listaCalificacionesAux) {
 		val promedioObtenido = listaCalificacionesAux.fold (0, [ acum, jugador | (acum + jugador.nota)])/(listaCalificacionesAux.size)
 		this.setPromedioCalificacionesUltPart(promedioObtenido)
 		return promedioObtenido

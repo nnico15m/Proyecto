@@ -51,7 +51,9 @@ class GeneradorPartidos implements Serializable {
 		
 	//}
 	
-	
+	def void cambiarCantidadPartidos(){
+		
+	}
 
 		
 	

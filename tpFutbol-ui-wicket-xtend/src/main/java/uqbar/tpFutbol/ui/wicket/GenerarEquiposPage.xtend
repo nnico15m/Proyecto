@@ -19,10 +19,11 @@ import uqbar.tpFutbol.ordenamiento.OrdenamientoPorHandicap
 import java.util.List
 import uqbar.tpFutbol.ordenamiento.OrdenarPartidoPorUltimaCalificacion
 import uqbar.tpFutbol.ordenamiento.OrganizadorCommand
+import org.apache.wicket.markup.html.form.TextField
 
 class GenerarEquiposPage extends WebPage{
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
-	//private final Partido partido
+	private final Partido partido
 	private final OrganizadorFutbolPage mainPage
 	private final GeneradorPartidos generador
 	private final Administrador administrador
@@ -30,13 +31,13 @@ class GenerarEquiposPage extends WebPage{
 	private final DividirPorPosicion14589 criterio14589
 	private final OrdenamientoPorHandicap ordHandicap
 	private final OrdenarPartidoPorUltimaCalificacion ordPromedioNotasUltimo
-	private final int n = 1
+	private int cantPartidos = 1
 
 	
 		new(Partido partidoNuevo, OrganizadorFutbolPage  mainPage) {
 		this.generador= new GeneradorPartidos
 		this.mainPage = mainPage
-		//this.partido = partidoNuevo
+		this.partido = partidoNuevo
 		this.administrador = administrador
 		this.criterioPar= new DividirPorParEImpar
 		this.criterio14589 = new DividirPorPosicion14589()
@@ -65,6 +66,24 @@ class GenerarEquiposPage extends WebPage{
 		//}
 		
 		
+	//def agregarCamposEdicion(Form<GeneradorPartidos> parent){
+		//parent.addChild(new TextField<String>("cantidadPartidos"))
+		
+//	}
+	
+	//def agregarOtrasAcciones(Form<GeneradorPartidos> parent) {
+		//val cambiarButton = new XButton("cambiar")
+		//cambiarButton.onClick = [| 
+			//this.cambiarCantidadPartidos(partido)
+	//	]
+		//parent.addChild(cambiarButton)
+			
+		
+		
+	//}
+	
+	
+	
 	
 	
 	
@@ -74,8 +93,8 @@ class GenerarEquiposPage extends WebPage{
 			item.model = item.modelObject.asCompoundModel
 			item.addChild(new Label("codPartido"))
 			item.addChild(new Label("inscripciones.nombreParticipantes"))
-			item.addChild(new Label("equipo1"))
-			item.addChild(new Label("equipo2"))
+			item.addChild(new Label("nombreJugadorEquipo1"))
+			item.addChild(new Label("nombreJugadorEquipo2"))
 			item.addChild(new XButton("criterioPar").onClick = [| dividirEquiposParImpar(item.modelObject)
 			]) 
 			item.addChild(new XButton("criterio14589").onClick = [| dividirEquipos14589(item.modelObject)
@@ -92,7 +111,7 @@ class GenerarEquiposPage extends WebPage{
 	def dividirEquiposParImpar(Partido partidoPed){
 	
 		
-	
+		
 		Partido.home.update(partidoPed.dividirEquiposPrueba(criterioPar))
 		
 		
@@ -112,26 +131,15 @@ class GenerarEquiposPage extends WebPage{
 	}
 	
 	def ordenarPartido (Partido partidoPed, OrganizadorCommand criterio){
-		 Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(criterio,n))
+		 Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(criterio,cantPartidos))
 		
 	}
 	
-	
-	//def ordenarPorHandicap(Partido partidoPed){
-		
-		
-		// Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(ordHandicap,n))	
-		
-		
-//	}
-	
-	//def ordenarPorPromedioNotasUltimo(Partido partidoPed){
-		
-		
-		// Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(ordPromedioNotasUltimo,n))	
-		
-		
-//	}
+	def cambiarCantidadPartidos(Partido partido){
+		cantPartidos = 1
+	}
+
+
 	
 	
 	

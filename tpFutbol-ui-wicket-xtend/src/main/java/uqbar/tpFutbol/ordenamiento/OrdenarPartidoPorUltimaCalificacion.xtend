@@ -23,7 +23,7 @@ class OrdenarPartidoPorUltimaCalificacion implements OrganizadorCommand  {
 	override def ordenarLaListaPrueba(Partido partido,int cantidadDePartido){
 		
 		
-	partido.participantes.forEach[j|j.promedioDeCalificacionesUltimoPartido(partido)]
+	
 	val aux1= partido.participantes.sortBy[promedioCalificacionesUltPart]
 	partido.inscripciones.participantes.clear
 	partido.inscripciones.participantes.addAll(aux1)
