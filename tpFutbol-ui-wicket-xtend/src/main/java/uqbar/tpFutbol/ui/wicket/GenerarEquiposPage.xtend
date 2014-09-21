@@ -41,6 +41,7 @@ class GenerarEquiposPage extends WebPage{
 		this.mainPage = mainPage
 		this.partido = partidoNuevo
 		this.administrador = administrador
+		this.cantPartidos = generador.cantPartidos
 		this.criterioPar= new DividirPorParEImpar
 		this.criterio14589 = new DividirPorPosicion14589()
 		this.ordHandicap = new OrdenamientoPorHandicap()
@@ -139,12 +140,13 @@ class GenerarEquiposPage extends WebPage{
 	
 	def ordenarPartidoCompuesto (Partido partidoPed, OrganizadorCommand criterio){
 		 Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(criterio,generador.cantPartidos))
+	
 		
 	}
 	
 	def ordenarPartidoMixto (Partido partidoPed){
 		
-		 Partido.home.update(partidoPed.ordenarLaListaPorPromedioDeVariosCriteriosPrueba(partidoPed,cantPartidos))
+		 Partido.home.update(partidoPed.ordenarLaListaPorPromedioDeVariosCriteriosPrueba(partidoPed,generador.cantPartidos))
 		
 	}
 	

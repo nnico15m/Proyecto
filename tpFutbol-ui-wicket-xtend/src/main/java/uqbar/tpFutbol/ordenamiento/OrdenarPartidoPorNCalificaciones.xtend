@@ -19,7 +19,7 @@ class OrdenarPartidoPorNCalificaciones implements OrganizadorCommand  {
 	
 	override def ordenarLaListaPrueba(Partido partido, int n){
 	
-	partido.participantes.forEach[j|j.promedioDeUltimasNCalificacionesPedidas(partido,n)]
+	partido.participantes.forEach[j|j.promedioDeUltimasNCalificacionesPedidasPrueba(partido,n)]
 	val aux1 = partido.participantes.sortBy[promedioCalificaciones]
 	partido.inscripciones.participantes.clear
 	partido.inscripciones.participantes.addAll(aux1)

@@ -44,7 +44,7 @@ class GeneradorPartidos implements Serializable {
 		resultados = getHomePartidos.search()
 	}
 	def cambiarCantidadPartidos(GeneradorPartidos generador,int valor){
-		cantPartidos = valor
+		setCantPartidos(valor)
 	}
 	//def void mostrarEquipos(Partido partidoPed){
 		//equipos = new ArrayList<Jugador>

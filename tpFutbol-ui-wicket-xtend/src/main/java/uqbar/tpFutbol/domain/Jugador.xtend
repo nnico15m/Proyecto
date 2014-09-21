@@ -128,16 +128,16 @@ class Jugador extends Entity {
 	
 	def promedioDeCalificacionesUltimoPartido(Partido partidoAOrganizar){
 		val codUltimoPartidoJugado = (partidoAOrganizar.getCodPartido() ) - 1
-		val listaCalificacionesAux = calificaciones.filter[codPartidoJugado == codUltimoPartidoJugado].toList
+		val listaCalificacionesAux = calificaciones.filter[codPartidoJugado == codUltimoPartidoJugado - 1].toList
 		setearPromedioObtenido(listaCalificacionesAux)
 	
 			
 	}
 	
 	def promedioDeCalificacionesUltimoPartidoPrueba(Partido partidoAOrganizar){
-		val codUltimoPartidoJugado = (partidoAOrganizar.getCodPartido())
+		val codUltimoPartidoJugado = (partidoAOrganizar.getCodPartido()) - 1
 		val listaCalificacionesAux = calificaciones.filter[codPartidoJugado == codUltimoPartidoJugado].toList
-		setearPromedioObtenido(listaCalificacionesAux)
+		setearPromedioObtenidoPrueba(listaCalificacionesAux)
 	
 			
 	}
@@ -149,12 +149,36 @@ class Jugador extends Entity {
 	
 	}
 	
+		def promedioDeUltimasNCalificacionesPedidasPrueba(Partido partidoAOrganizar,int numeroPedido){
+		val ultimasNCalificaciones = calificaciones.subList(calificaciones.size - numeroPedido ,calificaciones.size)
+		setearPromedioObtenidoPrueba(ultimasNCalificaciones)
+	
+	}
+	
 	
 	def setearPromedioObtenido(List<Calificaciones> listaCalificacionesAux) {
 		val promedioObtenido = listaCalificacionesAux.fold (0, [ acum, jugador | (acum + jugador.nota)])/(listaCalificacionesAux.size)
 		this.setPromedioCalificacionesUltPart(promedioObtenido)
 		return promedioObtenido
 	}
+	
+	def setearPromedioObtenidoPrueba(List<Calificaciones> listaCalificacionesAux) {
+		val valor =(listaCalificacionesAux.fold(0, [ acum, jugador | (acum + jugador.nota)]))
+		if (valor /(listaCalificacionesAux.size) == 0) {
+		 return 99999
+		 }
+			else{
+				return (valor / listaCalificacionesAux.size )
+				
+			}
+		}
+		
+		
+		
+		
+	
+	
+	
 	
 	def int valorPromedioDeVariosCriterios(Partido partidoAOrganizar,List<OrganizadorCommand> listaCriterios,int n){
 		

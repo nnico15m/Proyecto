@@ -30,9 +30,15 @@ class BuscadorJugadores implements Serializable {
 	@Property int fecha
 	@Property List<Jugador> results
 	
+	new(){
+		fecha = 0
+	}
+	
 	// ********************************************************
 	// ** Acciones
 	// ********************************************************
+	
+	
 	
 	def void buscar(){
 		results = new ArrayList<Jugador>
