@@ -18,6 +18,7 @@ import uqbar.tpFutbol.domain.HomePartidos
 import uqbar.tpFutbol.domain.GeneradorPartidos
 import org.apache.wicket.model.CompoundPropertyModel
 
+
 class DatosEquipoPage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
 	private final GenerarEquiposPage mainPage
@@ -35,7 +36,7 @@ class DatosEquipoPage extends WebPage {
 		//this.equipos = Partido.home.allInstances.get(posicion).participantes
 		//this.equipos = Partido.home.searchByExample(partidoPed).head.participantes
 		this.equipos =equipos
-		this.partido = partido		
+		this.partido = partidoPed		
 		
 		val datosEquipoForm=   new Form<Partido>("nombreEquipoForm", this.partido.asCompoundModel)
 		this.agregarAcciones(datosEquipoForm)
@@ -53,7 +54,7 @@ class DatosEquipoPage extends WebPage {
 			val listViewEquipos = new XListView("equipos")
 			listViewEquipos.populateItem = [ item |
 			item.model = item.modelObject.asCompoundModel
-			item.addChild(new Label("nombreJugador"))	
+			item.addChild(new Label("participantes.nombreJugador"))	
 			item.addChild(new XButton("datosJugador").onClick = [| datosJugador(item.modelObject)
 			])
 			
@@ -72,10 +73,14 @@ class DatosEquipoPage extends WebPage {
 		responsePage = new DatosJugadorPage(jugador, this) 
 	}
 	
-	def mostrarEquipos(Partido partidoPed) {
-		val posicion = Partido.home.allInstances.indexOf(partidoPed)
+	
+	def mostrarEquipos(Partido partido) {
+		
+		Partido.home.create(partido)
+		
 		equipos = new ArrayList<Jugador>
-		equipos = Partido.home.allInstances.get(posicion).participantes
+		equipos = Partido.home.allInstances.findFirst[partidoB|partidoB.equals(partido)].participantes.toList
+		Partido.home.delete(partido)
 		//equipos = Partido.home.searchByExample(partidoPed).head.participantes
 		
 	}
@@ -86,5 +91,3 @@ class DatosEquipoPage extends WebPage {
 	
 		
 	}
-	
-	

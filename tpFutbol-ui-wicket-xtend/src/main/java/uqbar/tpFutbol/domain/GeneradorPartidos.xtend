@@ -30,7 +30,6 @@ class GeneradorPartidos implements Serializable {
 	@Property List<Partido> resultados
 	@Property Partido partidoSeleccionado
 	@Property int cantPartidos
-	//@Property List<Jugador> equipos
 	
 
 	// ********************************************************
@@ -46,12 +45,7 @@ class GeneradorPartidos implements Serializable {
 	def cambiarCantidadPartidos(GeneradorPartidos generador,int valor){
 		setCantPartidos(valor)
 	}
-	//def void mostrarEquipos(Partido partidoPed){
-		//equipos = new ArrayList<Jugador>
-		//equipos = (partidoPed.participantes())
-		
-		
-	//}
+	
 	
 	
 		

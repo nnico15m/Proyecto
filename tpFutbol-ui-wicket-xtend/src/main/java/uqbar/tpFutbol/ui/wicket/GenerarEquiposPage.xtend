@@ -164,8 +164,8 @@ class GenerarEquiposPage extends WebPage{
 		responsePage = mainPage
 	}
 	
-	def datosParticipantes(Partido partido) {
-		responsePage = new DatosEquipoPage(partido, this) 
+	def datosParticipantes(Partido partidoACrear) {
+		responsePage = new DatosEquipoPage(partidoACrear, this) 
 	}
 	
 	
