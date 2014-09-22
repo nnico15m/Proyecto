@@ -19,7 +19,8 @@ class HomeJugadores extends CollectionBasedHome<Jugador>{
 		
 		
 		var infraccionesEpi = new ArrayList()
-		var amigosEpi = new ArrayList()
+		var amigos2 = new ArrayList<Jugador>()
+		var amigosEpi = new ArrayList<Jugador>()
 		var formaDeInsc = new Estandar()
 		var mensajero = new StubMensajero()
 		var calificaciones = new ArrayList()
@@ -37,6 +38,7 @@ class HomeJugadores extends CollectionBasedHome<Jugador>{
 		var calificacion5 = new Calificaciones(13,6,"descripcion")
 		var calificacion6 = new Calificaciones(10,5,"descripcion")
 		var calificacionX = new Calificaciones(10,4,"descripcion")
+		
 		
 		calificaciones.add(calificacion6)
 		calificaciones.add(calificacion1)
@@ -61,21 +63,17 @@ class HomeJugadores extends CollectionBasedHome<Jugador>{
 		calificaciones4.add(calificacion5)
 		calificaciones4.add(calificacionX)
 		
+		val p1 = this.createJug("p1","p1",5,6,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,5)
 		
-		//this.create("epi","epielbostero",1,5,5,1995,amigosEpi,infracciones,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,0)
-		//this.create("p2","p2",6,1,5,1996,amigosEpi,infracciones,6,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,2)
-		//this.create("p3","p3",3,8,5,1998,amigosEpi,infracciones,9,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,1)
-		//this.create("p4","p4",55,9,5,1991,amigosEpi,infracciones,12,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,2)
-		//this.create("p5","p5",3,3,5,1990,amigosEpi,infracciones,22,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,6)
-		//this.create("p6","p6",0,0,5,1990,amigosEpi,infracciones,1,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,2)
-		//this.create("p7","p7",3,11,5,1990,amigosEpi,infracciones,0,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,0
-		//this.create("p8","p8",30,22,5,1990,amigosEpi,infracciones,9,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,1)
-		//this.create("p9","p9",51,7,5,1990,amigosEpi,infracciones,4,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,4)
-		//this.create("p10","p10",12,7,5,1990,amigosEpi,infracciones,4,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,5)
+		amigos2.add(p1)
+		
+		
+		
+		
 		this.create("epi","epielbostero",1,2,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,0)
-		this.create("p1","p1",5,6,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,5)
+		this.createJug("p1","p1",5,6,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,5)
 		this.create("p2","p2",5,2,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,4)
-		this.create("p3","p3",7,1,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,3)
+		this.create("p3","p3",7,1,5,1990,amigos2,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,3)
 		this.create("p4","p4",11,7,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,9)
 		this.create("p5","p5",4,8,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,8)	
 		this.create("p6","p6",0,9,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,5)
@@ -85,7 +83,6 @@ class HomeJugadores extends CollectionBasedHome<Jugador>{
 		this.create("p10","p10",9,6,9,1994,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,2)
 		this.create("p11","p11",6,2,4,1991,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,1)
 		this.create("p12","p12",6,5,3,1942,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
-		this.create("p12","p12",6,5,3,1981,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
 		this.create("jorge","george",11,7,5,1960,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,9)
 		this.create("emanuel","manu",2,3,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
 		
@@ -236,7 +233,29 @@ class HomeJugadores extends CollectionBasedHome<Jugador>{
 		typeof (Jugador)
 	}
 	
-	
+	def Jugador createJug(String nombreJugador, String apodo, int nivelDeJuego, int promedioCalificacionesUltPart, int promedioCalificaciones,int fechaDeNacimiento, ArrayList<Jugador> amigos, ArrayList<Infracciones> infracciones, int cantPartidosJugados, TipoDeSuscripcion formaDeInscripcion,String mail,StubMensajero mensajero, List<Calificaciones> calificaciones,List<Jugador> pendientesDeCalificar,ComunidadFutbolera comunidad,ArrayList<Integer> listaCriterioDelJugador, int promedioConVariosCriteriosAplicados) {
+var jugador = new Jugador
+jugador.nombreJugador = nombreJugador
+jugador.apodo = apodo
+jugador.nivelDeJuego = nivelDeJuego
+jugador.promedioCalificacionesUltPart = promedioCalificacionesUltPart
+jugador.promedioCalificaciones = promedioCalificaciones
+jugador.fechaDeNacimiento = fechaDeNacimiento
+jugador.amigos = amigos
+jugador.infracciones = infracciones
+jugador.cantPartidosJugados = cantPartidosJugados
+jugador.formaDeInscripcion= formaDeInscripcion
+jugador.mail = mail
+jugador.mensajero = mensajero
+jugador.calificaciones = calificaciones
+jugador.pendientesDeCalificar = pendientesDeCalificar
+jugador.comunidad = comunidad
+jugador.listaCriterioDelJugador = listaCriterioDelJugador
+jugador.promedioConVariosCriteriosAplicados = promedioConVariosCriteriosAplicados
+return jugador
+
+
+}
 	
 
 }

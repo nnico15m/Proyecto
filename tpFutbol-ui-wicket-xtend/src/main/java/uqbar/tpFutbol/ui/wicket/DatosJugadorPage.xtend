@@ -9,6 +9,7 @@ import org.apache.wicket.markup.html.basic.Label
 import org.apache.wicket.model.CompoundPropertyModel
 import uqbar.tpFutbol.domain.BuscadorJugadores
 import org.uqbar.wicket.xtend.XButton
+import java.util.List
 
 class DatosJugadorPage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
@@ -83,7 +84,9 @@ class DatosJugadorPage extends WebPage {
 		responsePage = mainPage
 	}
 	
-	
+	def List<String> nombreAmigos(){
+		jugador.getAmigos().map[nombreJugador]
+			}
 	
 	
 	

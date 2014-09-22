@@ -108,40 +108,13 @@ def agregarCamposBusqueda(Form<BuscadorJugadores> parent) {
 		//	item.addChild(new Label("cantPartidosJugados"))
 
 			
-			//item.addChild(new XButton("editarDatosMateria").onClick = [| editarDatos(item.modelObject) ])
-			//item.addChild(new XButton("editarNotasMateria").onClick = [| editarNotas(item.modelObject) ])
-			//item.addChild(new XButton("eliminarMat")
-				//.onClick = [| 
-					//buscador2.materiaSeleccionada = item.modelObject
-					//buscador2.eliminarMateriaSeleccionada
-				//]
-		//	)
+	
 		]
 		parent.addChild(listViewJugadores)
 		
 	}
 	
-	/* 
-	def agregarGrillaDatosMat(Form<BuscadorMaterias> parent) {
-		val listViewDatos = new XListView("datos")
-			listViewDatos.populateItem = [ item2 |
-			item2.model = item2.modelObject.asCompoundModel
-			item2.addChild(new Label("profesor"))
-			item2.addChild(new Label("anioCursada"))
-			val checkResumen = new CheckBox("finalAprobado")
-			checkResumen.setEnabled(false)
-			item2.addChild(checkResumen)
-									
-			
-		]
-		parent.addChild(listViewDatos)
-		
-		
-		
-		
-	}
-		
-*/
+
 		
 			
 			
