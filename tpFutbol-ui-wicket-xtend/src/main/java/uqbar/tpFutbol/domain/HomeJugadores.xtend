@@ -18,7 +18,7 @@ class HomeJugadores extends CollectionBasedHome<Jugador>{
 		
 		
 		
-		var infracciones = new ArrayList()
+		var infraccionesEpi = new ArrayList()
 		var amigosEpi = new ArrayList()
 		var formaDeInsc = new Estandar()
 		var mensajero = new StubMensajero()
@@ -26,16 +26,71 @@ class HomeJugadores extends CollectionBasedHome<Jugador>{
 		var pendientesC = new ArrayList()
 		var listaC= new ArrayList()
 		var comunidad = new ComunidadFutbolera()
-		this.create("epi","epielbostero",1,5,5,1995,amigosEpi,infracciones,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,0)
-		this.create("p2","p2",6,1,5,1996,amigosEpi,infracciones,6,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,2)
-		this.create("p3","p3",3,8,5,1998,amigosEpi,infracciones,9,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,1)
-		this.create("p4","p4",55,9,5,1991,amigosEpi,infracciones,12,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,2)
-		this.create("p5","p5",3,3,5,1990,amigosEpi,infracciones,22,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,6)
-		this.create("p6","p6",0,0,5,1990,amigosEpi,infracciones,1,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,2)
+		
+		var calificaciones2 = new ArrayList
+		var calificaciones3 = new ArrayList
+		var calificaciones4 = new ArrayList
+		var calificacion1 = new Calificaciones(11,6,"descripcion")
+		var calificacion3 = new Calificaciones(12,4,"descripcion")
+		var calificacion2 = new Calificaciones(10,8,"descripcion")
+		var calificacion4 = new Calificaciones(13,5,"descripcion")
+		var calificacion5 = new Calificaciones(13,6,"descripcion")
+		var calificacion6 = new Calificaciones(10,5,"descripcion")
+		var calificacionX = new Calificaciones(10,4,"descripcion")
+		
+		calificaciones.add(calificacion6)
+		calificaciones.add(calificacion1)
+		calificaciones.add(calificacion2)
+		calificaciones.add(calificacion3)
+		calificaciones.add(calificacion4)
+		calificaciones4.add(calificacion5)	
+		calificaciones4.add(calificacionX)
+		calificaciones2.add(calificacion3)
+		calificaciones2.add(calificacion4)
+		calificaciones2.add(calificacion2)
+		calificaciones2.add(calificacion1)
+		calificaciones2.add(calificacionX)
+		calificaciones3.add(calificacion4)
+		calificaciones3.add(calificacion3)
+		calificaciones3.add(calificacion2)
+		calificaciones3.add(calificacionX)
+		calificaciones4.add(calificacion1)
+		calificaciones4.add(calificacion2)
+		calificaciones4.add(calificacion3)
+		calificaciones4.add(calificacion4)
+		calificaciones4.add(calificacion5)
+		calificaciones4.add(calificacionX)
+		
+		
+		//this.create("epi","epielbostero",1,5,5,1995,amigosEpi,infracciones,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,0)
+		//this.create("p2","p2",6,1,5,1996,amigosEpi,infracciones,6,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,2)
+		//this.create("p3","p3",3,8,5,1998,amigosEpi,infracciones,9,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,1)
+		//this.create("p4","p4",55,9,5,1991,amigosEpi,infracciones,12,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,2)
+		//this.create("p5","p5",3,3,5,1990,amigosEpi,infracciones,22,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,6)
+		//this.create("p6","p6",0,0,5,1990,amigosEpi,infracciones,1,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,2)
 		//this.create("p7","p7",3,11,5,1990,amigosEpi,infracciones,0,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,0
 		//this.create("p8","p8",30,22,5,1990,amigosEpi,infracciones,9,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,1)
 		//this.create("p9","p9",51,7,5,1990,amigosEpi,infracciones,4,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,4)
 		//this.create("p10","p10",12,7,5,1990,amigosEpi,infracciones,4,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,5)
+		this.create("epi","epielbostero",1,2,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,0)
+		this.create("p1","p1",5,6,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,5)
+		this.create("p2","p2",5,2,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,4)
+		this.create("p3","p3",7,1,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,3)
+		this.create("p4","p4",11,7,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,9)
+		this.create("p5","p5",4,8,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,8)	
+		this.create("p6","p6",0,9,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,5)
+		this.create("p7","p7",2,3,5,1993,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
+		this.create("p8","p8",9,5,5,1996,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,3)
+		this.create("p9","p9",4,5,5,1996,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,7)
+		this.create("p10","p10",9,6,9,1994,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,2)
+		this.create("p11","p11",6,2,4,1991,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,1)
+		this.create("p12","p12",6,5,3,1942,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
+		this.create("p12","p12",6,5,3,1981,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
+		this.create("jorge","george",11,7,5,1960,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,9)
+		this.create("emanuel","manu",2,3,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
+		
+		
+		
 		}
 
 

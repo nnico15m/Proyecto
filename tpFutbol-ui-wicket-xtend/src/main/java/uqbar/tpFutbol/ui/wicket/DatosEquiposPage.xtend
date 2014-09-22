@@ -32,15 +32,15 @@ class DatosEquipoPage extends WebPage {
 		this.generador = new GeneradorPartidos()
 		this.mainPage = mainPage
 		this.partido = partidoExistente
-		//this.equipos = new ArrayList
+		
 		
 		 
 		
 		val datosEquipoForm=   new Form<GeneradorPartidos>("nombreEquipoForm", new CompoundPropertyModel<GeneradorPartidos>(this.generador))
 		this.agregarAcciones(datosEquipoForm)
 		this.addChild(datosEquipoForm)
+		this.agregarBotones(datosEquipoForm)
 		this.mostrarEquipos()
-		
 	}
 	
 	
@@ -71,6 +71,7 @@ class DatosEquipoPage extends WebPage {
 		responsePage = new DatosJugadorPage(jugador, this) 
 	}
 	
+	
 	def mostrarEquipos() {
 		
 	
@@ -79,6 +80,20 @@ class DatosEquipoPage extends WebPage {
 	}
 	
 	
+	
+	
+	def volver() {
+		
+		responsePage = mainPage
+	}
+	
+	def agregarBotones(Form<GeneradorPartidos> parent) {
+		parent.addChild(new XButton("volver") => [
+			onClick = [| volver ]
+		])
+			
+		
+		}
 	
 	
 		

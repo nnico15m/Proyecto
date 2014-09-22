@@ -8,6 +8,7 @@ import uqbar.tpFutbol.domain.Jugador
 import org.apache.wicket.markup.html.basic.Label
 import org.apache.wicket.model.CompoundPropertyModel
 import uqbar.tpFutbol.domain.BuscadorJugadores
+import org.uqbar.wicket.xtend.XButton
 
 class DatosJugadorPage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
@@ -31,6 +32,7 @@ class DatosJugadorPage extends WebPage {
 		this.agregarAcciones(datosJugForm)
 		this.addChild(datosJugForm)
 		this.mostrarJugadores()
+		this.agregarBotones(datosJugForm)
 	}
 	
 	
@@ -65,10 +67,20 @@ class DatosJugadorPage extends WebPage {
 		
 	}
 	
+	def agregarBotones(Form<BuscadorJugadores> parent) {
+		parent.addChild(new XButton("volver") => [
+			onClick = [| volver ]
+		])
+			
+		
+		}
+		
+		
 	
 	
 	def volver() {
 		
+		responsePage = mainPage
 	}
 	
 	
