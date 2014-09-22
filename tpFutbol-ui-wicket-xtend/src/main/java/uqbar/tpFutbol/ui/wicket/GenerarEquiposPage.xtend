@@ -33,7 +33,9 @@ class GenerarEquiposPage extends WebPage{
 	private final OrdenamientoPorHandicap ordHandicap
 	private final OrdenarPartidoPorUltimaCalificacion ordPromedioNotasUltimo
 	private final OrdenarPartidoPorNCalificaciones ordPromedioNotasNPartidos
-	private int cantPartidos = 1
+	private int cantPartidos
+
+	
 
 	
 		new(Partido partidoNuevo, OrganizadorFutbolPage  mainPage) {
@@ -71,7 +73,7 @@ class GenerarEquiposPage extends WebPage{
 	}
 	
 	def agregarAcciones(Form<GeneradorPartidos> parent) {
-		parent.addChild(new XButton("aceptar").onClick = [|this.cambiarCantidadPartidos(cantPartidos)
+		parent.addChild(new XButton("nuevaCantidad").onClick = [|this.cambiarCantidadPartidos()
 		])
 			
 		
@@ -139,19 +141,19 @@ class GenerarEquiposPage extends WebPage{
 	}
 	
 	def ordenarPartidoCompuesto (Partido partidoPed, OrganizadorCommand criterio){
-		 Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(criterio,generador.cantPartidos))
+		 Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(criterio,generador.getCantPartidos))
 	
 		
 	}
 	
 	def ordenarPartidoMixto (Partido partidoPed){
 		
-		 Partido.home.update(partidoPed.ordenarLaListaPorPromedioDeVariosCriteriosPrueba(partidoPed,generador.cantPartidos))
+		 Partido.home.update(partidoPed.ordenarLaListaPorPromedioDeVariosCriteriosPrueba(partidoPed,generador.getCantPartidos))
 		
 	}
 	
-	def cambiarCantidadPartidos(int valor){
-		generador.setCantPartidos(valor)
+	def cambiarCantidadPartidos(){
+		generador.setCantPartidos(cantPartidos)
 	}
 
 

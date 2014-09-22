@@ -11,6 +11,7 @@ import uqbar.tpFutbol.observers.StubMensajero
 import uqbar.tpFutbol.ordenamiento.OrganizadorCommand
 import org.uqbar.commons.model.Entity
 import uqbar.tpFutbol.inscripcion.Estandar
+import uqbar.tpFutbol.excepciones.LaInscripcionEstaCerradaException
 
 class Jugador extends Entity {
 	
@@ -164,11 +165,12 @@ class Jugador extends Entity {
 	
 	def setearPromedioObtenidoPrueba(List<Calificaciones> listaCalificacionesAux) {
 		val valor =(listaCalificacionesAux.fold(0, [ acum, jugador | (acum + jugador.nota)]))
-		if (valor /(listaCalificacionesAux.size) == 0) {
-		 return 99999
+		if ((listaCalificacionesAux.size) == 0) {
+		 this.setPromedioCalificacionesUltPart(0)
+		 
 		 }
 			else{
-				return (valor / listaCalificacionesAux.size )
+				this.setPromedioCalificacionesUltPart(valor) 
 				
 			}
 		}
