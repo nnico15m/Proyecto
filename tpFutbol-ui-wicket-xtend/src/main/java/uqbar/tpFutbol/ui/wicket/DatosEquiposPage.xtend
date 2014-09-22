@@ -22,26 +22,24 @@ import org.apache.wicket.model.CompoundPropertyModel
 class DatosEquipoPage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
 	private final GenerarEquiposPage mainPage
-	@Property List<Jugador> equipos
-
 	
-	
+	var GeneradorPartidos generador
 	private final Partido partido
 	
-	new(Partido partidoPed, GenerarEquiposPage  mainPage) {
 
+	new(Partido partidoExistente, GenerarEquiposPage  mainPage) {
 		
+		this.generador = new GeneradorPartidos()
 		this.mainPage = mainPage
-		//this.equipos = Partido.home.searchById(posicion).participantes
-		//this.equipos = Partido.home.allInstances.get(posicion).participantes
-		//this.equipos = Partido.home.searchByExample(partidoPed).head.participantes
-		this.equipos =equipos
-		this.partido = partidoPed		
+		this.partido = partidoExistente
+		//this.equipos = new ArrayList
 		
-		val datosEquipoForm=   new Form<Partido>("nombreEquipoForm", this.partido.asCompoundModel)
+		 
+		
+		val datosEquipoForm=   new Form<GeneradorPartidos>("nombreEquipoForm", new CompoundPropertyModel<GeneradorPartidos>(this.generador))
 		this.agregarAcciones(datosEquipoForm)
 		this.addChild(datosEquipoForm)
-		this.mostrarEquipos(partidoPed)
+		this.mostrarEquipos()
 		
 	}
 	
@@ -50,11 +48,11 @@ class DatosEquipoPage extends WebPage {
 	
 	
 	
-	def agregarAcciones(Form<Partido> parent) {
+	def agregarAcciones(Form<GeneradorPartidos> parent) {
 			val listViewEquipos = new XListView("equipos")
 			listViewEquipos.populateItem = [ item |
 			item.model = item.modelObject.asCompoundModel
-			item.addChild(new Label("participantes.nombreJugador"))	
+			item.addChild(new Label("nombreJugador"))	
 			item.addChild(new XButton("datosJugador").onClick = [| datosJugador(item.modelObject)
 			])
 			
@@ -73,21 +71,15 @@ class DatosEquipoPage extends WebPage {
 		responsePage = new DatosJugadorPage(jugador, this) 
 	}
 	
+	def mostrarEquipos() {
+		
 	
-	def mostrarEquipos(Partido partido) {
-		
-		Partido.home.create(partido)
-		
-		equipos = new ArrayList<Jugador>
-		equipos = Partido.home.allInstances.findFirst[partidoB|partidoB.equals(partido)].participantes.toList
-		Partido.home.delete(partido)
-		//equipos = Partido.home.searchByExample(partidoPed).head.participantes
+		generador.mostrarEquiposGen(partido)
 		
 	}
 	
-	def HomePartidos getHomePartidos() {
-		ApplicationContext::instance.getSingleton(typeof(Partido))
-	}
+	
+	
 	
 		
 	}

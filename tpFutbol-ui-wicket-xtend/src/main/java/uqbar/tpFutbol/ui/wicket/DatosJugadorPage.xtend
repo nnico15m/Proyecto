@@ -3,37 +3,31 @@ package uqbar.tpFutbol.ui.wicket
 import org.apache.wicket.markup.html.WebPage
 import org.uqbar.wicket.xtend.WicketExtensionFactoryMethods
 import org.apache.wicket.markup.html.form.Form
-import org.uqbar.wicket.xtend.XButton
-
-
-import java.util.List
-
 import org.uqbar.wicket.xtend.XListView
-import java.util.ArrayList
-import org.uqbar.commons.utils.ApplicationContext
 import uqbar.tpFutbol.domain.Jugador
 import org.apache.wicket.markup.html.basic.Label
-import uqbar.tpFutbol.domain.HomeJugadores
+import org.apache.wicket.model.CompoundPropertyModel
+import uqbar.tpFutbol.domain.BuscadorJugadores
 
 class DatosJugadorPage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
 	private final Jugador jugador
 	private final DatosEquipoPage mainPage
-	private final List datos
+	var BuscadorJugadores buscador
 	
 	
 	
 	
-	new(Jugador jugador, DatosEquipoPage  mainPage) {
+	new(Jugador jugadorExistente, DatosEquipoPage  mainPage) {
 		
+		this.buscador = new BuscadorJugadores()
 		this.mainPage = mainPage
-		this.jugador = jugador
-		datos = new ArrayList
+		this.jugador = jugadorExistente
 		
 		
 		
 		
-		val datosJugForm=  new Form<Jugador>("nombreEquipo", this.jugador.asCompoundModel)
+		val datosJugForm=  new Form<BuscadorJugadores>("nombreEquipo", new CompoundPropertyModel<BuscadorJugadores>(this.buscador))
 		this.agregarAcciones(datosJugForm)
 		this.addChild(datosJugForm)
 		this.mostrarJugadores()
@@ -41,13 +35,14 @@ class DatosJugadorPage extends WebPage {
 	
 	
 	def mostrarJugadores(){
-		getHomeJugadores().allInstances
+			buscador.buscarJugador(jugador)
+
 	}
 	
 	
 	
 	
-	def agregarAcciones(Form<Jugador> parent) {
+	def agregarAcciones(Form<BuscadorJugadores> parent) {
 			val listViewJug = new XListView("datos")
 			listViewJug.populateItem = [ item |
 			item.model = item.modelObject.asCompoundModel
@@ -76,14 +71,10 @@ class DatosJugadorPage extends WebPage {
 		
 	}
 	
-	def datosJugador(Jugador jugador) {
-		//responsePage = new DatosJugadorPage(jugador, this) 
-	}
 	
 	
-	def HomeJugadores getHomeJugadores() {
-		ApplicationContext::instance.getSingleton(typeof(Jugador))
-	}
+	
+	
 	}
 	
 	

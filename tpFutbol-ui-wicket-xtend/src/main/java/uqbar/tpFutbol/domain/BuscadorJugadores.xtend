@@ -29,6 +29,7 @@ class BuscadorJugadores implements Serializable {
 	@Property String apodo
 	@Property int fecha
 	@Property List<Jugador> results
+	@Property List<Jugador> datos
 	
 	new(){
 		fecha = 0
@@ -43,6 +44,12 @@ class BuscadorJugadores implements Serializable {
 	def void buscar(){
 		results = new ArrayList<Jugador>
 		results = getHomeJugadores.search(getNombre, getApodo, getFecha)
+	}
+	
+	def void buscarJugador(Jugador jugadorPedido){
+
+		//datos = getHomeJugadores.allInstances().findFirst
+		datos = getHomeJugadores.search(getNombre, jugadorPedido.apodo, getFecha)
 	}
 	
 	

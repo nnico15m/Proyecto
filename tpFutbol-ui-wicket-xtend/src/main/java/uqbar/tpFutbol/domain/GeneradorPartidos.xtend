@@ -30,7 +30,7 @@ class GeneradorPartidos implements Serializable {
 	@Property List<Partido> resultados
 	@Property Partido partidoSeleccionado
 	@Property int cantPartidos
-	
+	@Property List<Jugador> equipos
 
 	// ********************************************************
 	// ** Acciones
@@ -46,6 +46,14 @@ class GeneradorPartidos implements Serializable {
 		setCantPartidos(valor)
 	}
 	
+	
+	def mostrarEquiposGen(Partido partido) {
+		
+	
+		val codPartidoActual = partido.codPartido
+		equipos = getHomePartidos.search().findFirst[codPartido == codPartidoActual].participantes
+		
+	}
 	
 	
 		
