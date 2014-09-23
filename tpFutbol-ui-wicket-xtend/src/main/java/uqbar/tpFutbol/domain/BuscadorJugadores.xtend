@@ -30,6 +30,8 @@ class BuscadorJugadores implements Serializable {
 	@Property int fecha
 	@Property List<Jugador> results
 	@Property List<Jugador> datos
+	@Property List<Jugador> amigos
+	@Property List<Infracciones> listaI
 	
 	new(){
 		fecha = 0
@@ -50,6 +52,20 @@ class BuscadorJugadores implements Serializable {
 
 		//datos = getHomeJugadores.allInstances().findFirst
 		datos = getHomeJugadores.search(getNombre, jugadorPedido.apodo, getFecha)
+	}
+	
+	def void mostrarAmigosJ(Jugador jugadorPedido){
+
+		
+		datos = jugadorPedido.amigos
+	
+		
+	}
+	
+	def void mostrarInfraccionesJ(Jugador jugadorPedido){
+
+		
+		listaI= jugadorPedido.infracciones
 	}
 	
 	

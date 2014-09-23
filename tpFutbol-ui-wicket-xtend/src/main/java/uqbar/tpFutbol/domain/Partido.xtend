@@ -73,7 +73,7 @@ class Partido extends Entity {
 	
  	def generarInfraccionParaInfractor(Jugador jugador){
 		
-		var infraccion = new Infracciones
+		var infraccion = new Infracciones("prueba",0)
 		jugador.sancionateCon(infraccion)
 		
 	}

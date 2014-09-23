@@ -34,6 +34,18 @@ class DatosJugadorPage extends WebPage {
 		this.addChild(datosJugForm)
 		this.mostrarJugadores()
 		this.agregarBotones(datosJugForm)
+		
+
+	
+		val infraccionesForm=  new Form<BuscadorJugadores>("datosInfracciones", new CompoundPropertyModel<BuscadorJugadores>(this.buscador))
+		this.addChild(infraccionesForm)
+		this.agregarAccionesInfracciones(infraccionesForm)
+		
+		
+		//val amigosForm=  new Form<BuscadorJugadores>("amigosForm", new CompoundPropertyModel<BuscadorJugadores>(this.buscador))
+		//this.addChild(amigosForm)
+		//this.agregarAccionesAmigos(amigosForm)
+		
 	}
 	
 	
@@ -59,9 +71,12 @@ class DatosJugadorPage extends WebPage {
 			item.addChild(new Label("promedioCalificacionesUltPart"))
 			item.addChild(new Label("promedioCalificaciones"))
 			item.addChild(new Label("fechaDeNacimiento"))
-			item.addChild(new Label("amigos"))
-			item.addChild(new Label("infracciones"))
+			//item.addChild(new Label("amigos"))
+			//item.addChild(new Label("infracciones"))
 			item.addChild(new Label("cantPartidosJugados"))
+			item.addChild(new XButton("amigos").onClick = [| mostrarAmigos(item.modelObject)])
+			item.addChild(new XButton("infracciones").onClick = [| mostrarInfracciones(item.modelObject)])
+			
 			
 			]
 			
@@ -69,6 +84,49 @@ class DatosJugadorPage extends WebPage {
 		
 		
 		parent.addChild(listViewJug)
+		
+	}
+	
+/* 	def agregarAccionesAmigos(Form<BuscadorJugadores> parent) {
+			val listViewJug = new XListView("amigos")
+			listViewJug.populateItem = [ item |
+			item.model = item.modelObject.asCompoundModel
+			item.addChild(new Label("nombreJugador"))
+			item.addChild(new Label("apodo"))
+			item.addChild(new Label("nivelDeJuego"))
+			item.addChild(new Label("promedioCalificacionesUltPart"))
+			item.addChild(new Label("promedioCalificaciones"))
+			item.addChild(new Label("fechaDeNacimiento"))
+			item.addChild(new Label("cantPartidosJugados"))
+			item.addChild(new XButton("amigos").onClick = [| mostrarAmigos(item.modelObject)])
+			item.addChild(new XButton("infracciones").onClick = [| mostrarInfracciones(item.modelObject)])
+			
+			
+			]
+			
+			
+		
+		
+		parent.addChild(listViewJug)
+		
+	}
+	
+	*/
+	def agregarAccionesInfracciones(Form<BuscadorJugadores> parent) {
+			val listViewInf = new XListView("listaI")
+			listViewInf.populateItem = [ item |
+			item.model = item.modelObject.asCompoundModel
+			item.addChild(new Label("motivo"))
+			item.addChild(new Label("duracion"))
+			
+			
+			
+			]
+			
+			
+		
+		
+		parent.addChild(listViewInf)
 		
 	}
 	
@@ -91,6 +149,20 @@ class DatosJugadorPage extends WebPage {
 	def List<String> nombreAmigos(){
 		jugador.getAmigos().map[nombreJugador]
 			}
+			
+	def mostrarAmigos(Jugador jugador){
+		buscador.mostrarAmigosJ(jugador)
+		
+		
+		
+	}
+	
+	def mostrarInfracciones(Jugador jugador){
+		buscador.mostrarInfraccionesJ(jugador)
+		
+		
+		
+	}
 	
 	
 	
