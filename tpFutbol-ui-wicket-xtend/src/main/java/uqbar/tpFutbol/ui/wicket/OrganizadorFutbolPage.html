@@ -3,10 +3,10 @@
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Bootstrap --> 
-    	<link href="css/bootstrap.css" rel="stylesheet" media="screen">
-    	<link href="css/bootstrap-theme.css" rel="stylesheet" media="screen">  
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Bootstrap -->
+<link href="css/bootstrap.css" rel="stylesheet" media="screen">
+<link href="css/bootstrap-theme.css" rel="stylesheet" media="screen">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 </head>
 <body>
 <div class="container">
@@ -37,11 +37,35 @@
 </div>
 </div>
 <div class="form-group">
-			        <label class="control-label" for="nombre">Tiene infracciones</label>
-			        <div class="controls">
-            			<input wicket:id="tieneInfracciones" type="checkbox"/>
-                	</div>
-	        	</div>
+<label class="control-label" for="nombre">Handicap Desde</label>
+<div class="controls">
+<input wicket:id="desdeHandicap" type="text" placeholder="0" class="form-control">
+</div>
+</div>
+<div class="form-group">
+<label class="control-label" for="nombre">Handicap Hasta</label>
+<div class="controls">
+<input wicket:id="hastaHandicap" type="text" placeholder="9" class="form-control">
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+<div class="form-group">
+<label class="control-label" for="nombre">Tiene infracciones</label>
+<div class="controls">
+<input wicket:id="tieneInfracciones" type="checkbox"/>
+</div>
+</div>
+
+
+
 <div class="form-actions">
 <button wicket:id="nuevoJugador" class="btn btn-success">Nuevo Jugador</button>
 <button wicket:id="buscar" class="btn btn-primary" type="submit">Buscar</button>
@@ -54,10 +78,8 @@
 <th id="main">Apodo</th>
 <th id="main">Handicap</th>
 <th id="main">Promedio total</th>
-
-<!--  
+<!--
 <th id="main">Promedio ultPart</th>
-
 <th id="main">Fecha nac</th>
 <th id="main">Amigos</th>
 <th id="main">Infracciones</th>
@@ -76,21 +98,16 @@
 <td>
 <span wicket:id="nivelDeJuego">unNombre</span>
 </td>
-
 <td>
 <span wicket:id="promedioCalificaciones">unNombre</span>
 </td>
 <td>
 <button wicket:id="datosJugador" class="btn-link">Datos Jugador</button>
 </td>
-
-
-
 </tr>
 </tbody>
 </table>
 </form>
-
 </div>
 </body>
 </html>

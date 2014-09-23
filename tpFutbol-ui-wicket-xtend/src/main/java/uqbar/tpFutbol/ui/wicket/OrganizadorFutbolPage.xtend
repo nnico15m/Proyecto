@@ -63,7 +63,8 @@ def agregarCamposBusqueda(Form<BuscadorJugadores> parent) {
 	parent.addChild(new TextField<String>("apodo"))
 	parent.addChild(new TextField<String>("fecha"))
 	parent.addChild(new CheckBox("tieneInfracciones"))
-	
+	parent.addChild(new TextField<String>("desdeHandicap"))
+	parent.addChild(new TextField<String>("hastaHandicap"))
 		
 		
 	}

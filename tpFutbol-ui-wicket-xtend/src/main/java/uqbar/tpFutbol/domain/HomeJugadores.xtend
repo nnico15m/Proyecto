@@ -257,13 +257,13 @@ calificaciones3.add(calificacion11)
 	// ********************************************************
 	
 	def search(String nombreJugador, String apodo) {
-		this.search(nombreJugador, apodo, null, false)
+		this.search(nombreJugador, apodo, null,0,100, false)
 	}	
 	
 	
 		
-	def search(String nombreJugador, String apodo, Date fechaPedida, boolean tieneInfracciones) {
-		allInstances.filter[jugador|this.empiezaCon(nombreJugador, jugador.getNombreJugador) && this.contiene(apodo, jugador.getApodo) && this.esAnterior(fechaPedida, jugador.getFechaDeNacimiento) && this.tieneInfracciones(tieneInfracciones,jugador.getInfracciones)].toList
+	def search(String nombreJugador, String apodo, Date fechaPedida, int desdeHandicap, int hastaHandicap, boolean tieneInfracciones) {
+		allInstances.filter[jugador|this.empiezaCon(nombreJugador, jugador.getNombreJugador) && this.contiene(apodo, jugador.getApodo) && this.esAnterior(fechaPedida, jugador.getFechaDeNacimiento) && this.tieneInfracciones(tieneInfracciones,jugador.getInfracciones)&& this.handicapEstaEntre(desdeHandicap,hastaHandicap,jugador.getNivelDeJuego)].toList
 	}
 	
 	
@@ -318,7 +318,20 @@ calificaciones3.add(calificacion11)
 			return false
 		}
 		
-		infracciones.size > 0
+		infracciones.size == 0
+		
+	}
+	
+	def handicapEstaEntre(int num1, int num2, int handicapActual){
+		//if ((num1 > handicapActual) && (handicapActual < num2)) {
+			return true
+		//}
+		
+		//else {
+			//return false
+		//}
+		
+	
 		
 	}
 	
