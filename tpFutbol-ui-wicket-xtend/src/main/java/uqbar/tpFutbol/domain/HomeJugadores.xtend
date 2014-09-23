@@ -257,13 +257,13 @@ calificaciones3.add(calificacion11)
 	// ********************************************************
 	
 	def search(String nombreJugador, String apodo) {
-		this.search(nombreJugador, apodo, null)
+		this.search(nombreJugador, apodo, null, false)
 	}	
 	
 	
 		
-	def search(String nombreJugador, String apodo, Date fechaPedida) {
-		allInstances.filter[jugador|this.empiezaCon(nombreJugador, jugador.getNombreJugador) && this.contiene(apodo, jugador.getApodo) && this.esAnterior(fechaPedida, jugador.getFechaDeNacimiento)].toList
+	def search(String nombreJugador, String apodo, Date fechaPedida, boolean tieneInfracciones) {
+		allInstances.filter[jugador|this.empiezaCon(nombreJugador, jugador.getNombreJugador) && this.contiene(apodo, jugador.getApodo) && this.esAnterior(fechaPedida, jugador.getFechaDeNacimiento) && this.tieneInfracciones(tieneInfracciones,jugador.getInfracciones)].toList
 	}
 	
 	
@@ -308,6 +308,21 @@ calificaciones3.add(calificacion11)
 		}
 		fechaReferencia.before(fecha)
 	}
+	
+	def tieneInfracciones(boolean tieneInfracciones, List<Infracciones> infracciones){
+		if (tieneInfracciones == false){
+			return true
+		}
+		
+		if (tieneInfracciones == true) {
+			return false
+		}
+		
+		infracciones.size > 0
+		
+	}
+	
+	
 	
 	def alguno(){
 		allInstances.get(0)
