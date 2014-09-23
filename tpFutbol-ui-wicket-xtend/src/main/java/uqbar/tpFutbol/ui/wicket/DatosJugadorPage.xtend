@@ -14,16 +14,16 @@ import java.util.List
 class DatosJugadorPage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
 	private final Jugador jugador
-	private final DatosEquipoPage mainPage
+	//private final DatosEquipoPage mainPage
 	var BuscadorJugadores buscador
+	private final  OrganizadorFutbolPage mainPage = new OrganizadorFutbolPage
 	
 	
 	
-	
-	new(Jugador jugadorExistente, DatosEquipoPage  mainPage) {
-		
+	//new(Jugador jugadorExistente, DatosEquipoPage  mainPage) {
+	new(Jugador jugadorExistente) {	
 		this.buscador = new BuscadorJugadores()
-		this.mainPage = mainPage
+		//this.mainPage = mainPage
 		this.jugador = jugadorExistente
 		
 		
@@ -35,6 +35,10 @@ class DatosJugadorPage extends WebPage {
 		this.mostrarJugadores()
 		this.agregarBotones(datosJugForm)
 	}
+	
+	
+	
+	
 	
 	
 	def mostrarJugadores(){

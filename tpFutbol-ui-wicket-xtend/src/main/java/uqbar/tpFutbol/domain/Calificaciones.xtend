@@ -9,7 +9,7 @@ class Calificaciones {
 	new(int codPartidoJugado,int nota, String descripcion){
 		this.codPartidoJugado = codPartidoJugado
 		this.nota = nota
-		this.descripcion = descripcion
+		 this.descripcion = descripcion
 }
 	
 	

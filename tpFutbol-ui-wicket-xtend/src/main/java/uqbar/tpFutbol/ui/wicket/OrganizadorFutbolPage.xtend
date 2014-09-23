@@ -25,6 +25,8 @@ class OrganizadorFutbolPage extends WebPage {
 	var BuscadorJugadores buscador
 
 	
+
+	
 	
 	new() {
 	
@@ -33,6 +35,8 @@ class OrganizadorFutbolPage extends WebPage {
 		this.agregarCamposBusqueda(jugadoresForm)
 		this.agregarGrillaResultadosJug(jugadoresForm)
 		this.agregarAccionesJug(jugadoresForm)
+		
+		
 		
 		this.addChild(jugadoresForm)
 		
@@ -102,17 +106,25 @@ def agregarCamposBusqueda(Form<BuscadorJugadores> parent) {
 			item.addChild(new Label("nivelDeJuego"))
 		//	item.addChild(new Label("promedioCalificacionesUltPart"))
 			item.addChild(new Label("promedioCalificaciones"))
-		//	item.addChild(new Label("fechaDeNacimiento"))
+		
+			item.addChild(new XButton("datosJugador").onClick = [| datosJugador(item.modelObject)
+
+			//	item.addChild(new Label("fechaDeNacimiento"))
 	//		item.addChild(new Label("amigos"))
 		//	item.addChild(new Label("infracciones"))
 		//	item.addChild(new Label("cantPartidosJugados"))
-
-			
 	
+		])
+		
 		]
 		parent.addChild(listViewJugadores)
 		
 	}
+	
+	def datosJugador(Jugador jugador) {
+		responsePage = new DatosJugadorPage(jugador) 
+	}
+	
 	
 
 		
