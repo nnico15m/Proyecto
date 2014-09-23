@@ -11,6 +11,9 @@ import uqbar.tpFutbol.inscripcion.Estandar
 import uqbar.tpFutbol.observers.StubMensajero
 import org.uqbar.commons.utils.ApplicationContext
 import uqbar.tpFutbol.inscripcion.TipoDeSuscripcion
+import java.util.Date
+import java.text.SimpleDateFormat
+
 class HomePartidos extends CollectionBasedHome<Partido>{
 	
 	
@@ -139,25 +142,30 @@ calificaciones3.add(calificacion11)
 var pendientesC = new ArrayList()
 var comunidad = new ComunidadFutbolera()
 var listaC= new ArrayList()
+val fecha1 = new Date(1991,12,24)
+val fecha2 = new Date(1971,10,4)
+val fecha3= new Date(1985,12,10)
+val fecha4= new Date(1976,12,12)
+
 listaC.add(6)
 listaC.add(5)
 
-val epi2=this.createJug("epi","epielbostero",1,3,2,1990,amigosEpi,infraccionesEpi,3,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,0)
-val p1=this.createJug("p1","p1",5,8,9,1990,amigos2,infracciones2,1,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,5)
-val p2=this.createJug("p2","p2",5,3,6,1990,amigos2,infracciones1,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,4)
-val p3=this.createJug("p3","p3",7,1,8,1990,amigos2,infracciones4,6,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,3)
-val p4=this.createJug("p4","p4",3,7,2,1990,amigos1,infracciones1,2,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,9)
-val p5=this.createJug("p5","p5",4,2,5,1990,amigos3,infracciones1,0,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,8)	
-val p6=this.createJug("p6","p6",5,6,4,1990,amigos3,infracciones2,0,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,5)
-val p7=this.createJug("p7","p7",2,2,6,1993,amigos1,infracciones3,4,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
-val p8=this.createJug("p8","p8",9,3,6,1996,amigos1,infracciones4,3,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,3)
-val p9=this.createJug("p9","p9",4,9,8,1996,amigos1,infracciones2,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,7)
-val p10=this.createJug("p10","p10",5,7,9,1994,amigos2,infracciones1,8,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,2)
-val p11=this.createJug("p11","p11",3,4,4,1991,amigosEpi,infracciones1,4,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,1)
-val p12=this.createJug("p12","p12",7,6,3,1942,amigos3,infracciones4,4,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
-val p13=this.createJug("p12","p12",3,1,3,1981,amigos3,infracciones2,1,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
-val jorge=this.createJug("jorge","george",11,7,5,1960,amigos1,infracciones1,2,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,9)
-val manu=this.createJug("emanuel","manu",2,3,5,1990,amigos2,infracciones2,2,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
+val epi2=this.createJug("epi","epielbostero",1,3,2,fecha1,amigosEpi,infraccionesEpi,3,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,0)
+val p1=this.createJug("p1","p1",5,8,9,fecha2,amigos2,infracciones2,1,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,5)
+val p2=this.createJug("p2","p2",5,3,6,fecha3,amigos2,infracciones1,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,4)
+val p3=this.createJug("p3","p3",7,1,8,fecha1,amigos2,infracciones4,6,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,3)
+val p4=this.createJug("p4","p4",3,7,2,fecha4,amigos1,infracciones1,2,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,9)
+val p5=this.createJug("p5","p5",4,2,5,fecha1,amigos3,infracciones1,0,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,8)	
+val p6=this.createJug("p6","p6",5,6,4,fecha2,amigos3,infracciones2,0,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,5)
+val p7=this.createJug("p7","p7",2,2,6,fecha3,amigos1,infracciones3,4,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
+val p8=this.createJug("p8","p8",9,3,6,fecha1,amigos1,infracciones4,3,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,3)
+val p9=this.createJug("p9","p9",4,9,8,fecha1,amigos1,infracciones2,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,7)
+val p10=this.createJug("p10","p10",5,7,9,fecha4,amigos2,infracciones1,8,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,2)
+val p11=this.createJug("p11","p11",3,4,4,fecha2,amigosEpi,infracciones1,4,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,1)
+val p12=this.createJug("p12","p12",7,6,3,fecha2,amigos3,infracciones4,4,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
+val p13=this.createJug("p12","p12",3,1,3,fecha1,amigos3,infracciones2,1,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
+val jorge=this.createJug("jorge","george",11,7,5,fecha3,amigos1,infracciones1,2,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,9)
+val manu=this.createJug("emanuel","manu",2,3,5,fecha4,amigos2,infracciones2,2,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
 
 //INSCRIPCIONES
 var inscriptosPartido = new ArrayList()
@@ -300,7 +308,7 @@ allInstances
 
 
 
-def Jugador createJug(String nombreJugador, String apodo, int nivelDeJuego, int promedioCalificacionesUltPart, int promedioCalificaciones,int fechaDeNacimiento, ArrayList<Jugador> amigos, ArrayList<Infracciones> infracciones, int cantPartidosJugados, TipoDeSuscripcion formaDeInscripcion,String mail,StubMensajero mensajero, List<Calificaciones> calificaciones,List<Jugador> pendientesDeCalificar,ComunidadFutbolera comunidad,ArrayList<Integer> listaCriterioDelJugador, int promedioConVariosCriteriosAplicados) {
+def Jugador createJug(String nombreJugador, String apodo, int nivelDeJuego, int promedioCalificacionesUltPart, int promedioCalificaciones,Date fechaDeNacimiento, ArrayList<Jugador> amigos, ArrayList<Infracciones> infracciones, int cantPartidosJugados, TipoDeSuscripcion formaDeInscripcion,String mail,StubMensajero mensajero, List<Calificaciones> calificaciones,List<Jugador> pendientesDeCalificar,ComunidadFutbolera comunidad,ArrayList<Integer> listaCriterioDelJugador, int promedioConVariosCriteriosAplicados) {
 var jugador = new Jugador
 jugador.nombreJugador = nombreJugador
 jugador.apodo = apodo

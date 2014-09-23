@@ -5,6 +5,7 @@ import java.util.List
 import org.uqbar.commons.utils.ApplicationContext
 import java.util.ArrayList
 import uqbar.tpFutbol.domain.Jugador
+import java.util.Date
 
 /**
  * Application model que representa la búsqueda de {@link Celular}.
@@ -27,15 +28,13 @@ class BuscadorJugadores implements Serializable {
 
 	@Property String nombre
 	@Property String apodo
-	@Property int fecha
+	@Property Date fecha
 	@Property List<Jugador> results
 	@Property List<Jugador> datos
 	@Property List<Jugador> amigos
 	@Property List<Infracciones> listaI
 	
-	new(){
-		fecha = 0
-	}
+	
 	
 	// ********************************************************
 	// ** Acciones

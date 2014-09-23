@@ -1,4 +1,4 @@
-package uqbar.tpFutbol.ui.wicket
+	package uqbar.tpFutbol.ui.wicket
 
 import org.apache.wicket.markup.html.WebPage
 import org.uqbar.wicket.xtend.WicketExtensionFactoryMethods
@@ -10,6 +10,9 @@ import org.apache.wicket.model.CompoundPropertyModel
 import uqbar.tpFutbol.domain.BuscadorJugadores
 import org.uqbar.wicket.xtend.XButton
 import java.util.List
+import org.apache.wicket.AttributeModifier
+import org.apache.wicket.model.Model
+import org.apache.wicket.behavior.AttributeAppender
 
 class DatosJugadorPage extends WebPage {
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
@@ -64,8 +67,23 @@ class DatosJugadorPage extends WebPage {
 	def agregarAcciones(Form<BuscadorJugadores> parent) {
 			val listViewJug = new XListView("datos")
 			listViewJug.populateItem = [ item |
-			item.model = item.modelObject.asCompoundModel
-			item.addChild(new Label("nombreJugador"))
+			item.model = (item.modelObject.asCompoundModel) 
+			listViewJug.add(new AttributeAppender("class", new Model("userRow"), ""))
+			listViewJug.add(new AttributeModifier("class",new Model()))
+			var cssClass = "userRow"
+				
+			
+			if(item.modelObject.tieneHandicapMayor){
+			
+			cssClass = "userBlue"
+			item.addChild(new Label("nombreJugador"))	
+			
+			}
+			else{
+				cssClass = "userBlack"
+				item.addChild(new Label("nombreJugador"))	
+			}
+			
 			item.addChild(new Label("apodo"))
 			item.addChild(new Label("nivelDeJuego"))
 			item.addChild(new Label("promedioCalificacionesUltPart"))
@@ -79,7 +97,6 @@ class DatosJugadorPage extends WebPage {
 			
 			
 			]
-			
 			
 		
 		
@@ -144,6 +161,11 @@ class DatosJugadorPage extends WebPage {
 	def volver() {
 		
 		responsePage = mainPage
+	}
+	
+	def tieneHandicapMayor(Jugador jugador) {
+		
+		jugador.nivelDeJuego > 8
 	}
 	
 	def List<String> nombreAmigos(){

@@ -75,7 +75,7 @@ def agregarCamposBusqueda(Form<BuscadorJugadores> parent) {
 		
 					
 		
-		parent.addChild(new XButton("nuevoJugador").onClick = [| nuevoJugador(new Jugador) ]) //PARA MATERIA
+		parent.addChild(new XButton("nuevoJugador").onClick = [| nuevoJugador(new Jugador) ]) 
 		val buscarButton = new XButton("buscar")
 		buscarButton.onClick = [| buscador.buscar ]
 		parent.addChild(buscarButton)
@@ -104,19 +104,9 @@ def agregarCamposBusqueda(Form<BuscadorJugadores> parent) {
 			item.addChild(new Label("nombreJugador"))
 			item.addChild(new Label("apodo"))
 			item.addChild(new Label("nivelDeJuego"))
-		//	item.addChild(new Label("promedioCalificacionesUltPart"))
 			item.addChild(new Label("promedioCalificaciones"))
 		
-			item.addChild(new XButton("datosJugador").onClick = [| datosJugador(item.modelObject)
-
-			//	item.addChild(new Label("fechaDeNacimiento"))
-	//		item.addChild(new Label("amigos"))
-		//	item.addChild(new Label("infracciones"))
-		//	item.addChild(new Label("cantPartidosJugados"))
-	
-		])
-		
-		]
+			item.addChild(new XButton("datosJugador").onClick = [| datosJugador(item.modelObject)])]
 		parent.addChild(listViewJugadores)
 		
 	}
@@ -124,6 +114,7 @@ def agregarCamposBusqueda(Form<BuscadorJugadores> parent) {
 	def datosJugador(Jugador jugador) {
 		responsePage = new DatosJugadorPage(jugador) 
 	}
+	
 	
 	
 

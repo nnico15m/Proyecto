@@ -7,6 +7,7 @@ import java.util.ArrayList
 import uqbar.tpFutbol.inscripcion.TipoDeSuscripcion
 import uqbar.tpFutbol.inscripcion.Estandar
 import uqbar.tpFutbol.observers.StubMensajero
+import java.util.Date
 
 class HomeJugadores extends CollectionBasedHome<Jugador>{
 	
@@ -134,14 +135,19 @@ calificaciones3.add(calificacion11)
 		calificaciones4.add(calificacion5)
 		calificaciones4.add(calificacionX)
 		
-		val p1 = this.createJug("p1","p1",5,6,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,5)
-		val p5 = this.createJug("p5","p5",4,8,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,8)
-		val p7 = this.createJug("p7","p7",2,3,5,1993,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
-		val p8=this.createJug("p8","p8",9,3,6,1996,amigos1,infracciones4,3,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,3)
-		val p9=this.createJug("p9","p9",4,9,8,1996,amigos1,infracciones2,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,7)
-		val p2=this.createJug("p2","p2",5,3,6,1990,amigos2,infracciones1,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,4)
-		val p3=this.createJug("p3","p3",7,1,8,1990,amigos2,infracciones4,6,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,3)
-		val p4=this.createJug("p4","p4",3,7,2,1990,amigos1,infracciones1,2,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,9)
+		val fecha1 = new Date(1991,12,24)
+		val fecha2 = new Date(1971,10,4)
+		val fecha3= new Date(1985,12,10)
+		val fecha4= new Date(1976,12,12)
+		
+		val p1 = this.createJug("p1","p1",5,6,5,fecha1,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,5)
+		val p5 = this.createJug("p5","p5",4,8,5,fecha2,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,8)
+		val p7 = this.createJug("p7","p7",2,3,5,fecha3,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
+		val p8=this.createJug("p8","p8",9,3,6,fecha1,amigos1,infracciones4,3,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,3)
+		val p9=this.createJug("p9","p9",4,9,8,fecha2,amigos1,infracciones2,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,7)
+		val p2=this.createJug("p2","p2",5,3,6,fecha3,amigos2,infracciones1,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,4)
+		val p3=this.createJug("p3","p3",7,1,8,fecha3,amigos2,infracciones4,6,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,3)
+		val p4=this.createJug("p4","p4",3,7,2,fecha1,amigos1,infracciones1,2,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,9)
 		
 		amigos2.add(p1)
 		amigosEpi.add(p5)
@@ -156,21 +162,23 @@ calificaciones3.add(calificacion11)
 		
 		
 		
-		this.create("epi","epielbostero",1,2,5,1990,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,0)
-		this.createJug("p1","p1",5,6,5,1990,amigos2,infracciones2,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,5)
-		this.create("p2","p2",5,2,5,1990,amigos2,infracciones1,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,4)
-		this.create("p3","p3",7,1,5,1990,amigos2,infracciones4,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,3)
-		this.create("p4","p4",11,7,5,1990,amigos2,infracciones1,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,9)
-		this.create("p5","p5",4,8,5,1990,amigos2,infracciones1,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,8)	
-		this.create("p6","p6",0,9,5,1990,amigos2,infracciones2,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,5)
-		this.create("p7","p7",2,3,5,1993,amigos2,infracciones3,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
-		this.create("p8","p8",9,5,5,1996,amigos2,infracciones4,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,3)
-		this.create("p9","p9",4,5,5,1996,amigos2,infracciones2,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,7)
-		this.create("p10","p10",9,6,9,1994,amigos2,infracciones1,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,2)
-		this.create("p11","p11",6,2,4,1991,amigos2,infracciones1,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,1)
-		this.create("p12","p12",6,5,3,1942,amigos2,infracciones4,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
-		this.create("jorge","george",11,7,5,1960,amigos2,infracciones2,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,9)
-		this.create("emanuel","manu",2,3,5,1990,amigos2,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
+		
+		
+		this.create("epi","epielbostero",1,2,5,fecha1,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,0)
+		this.create("p1","p1",5,6,5,fecha2,amigos2,infracciones2,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,5)
+		this.create("p2","p2",5,2,5,fecha3,amigos2,infracciones1,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,4)
+		this.create("p3","p3",7,1,5,fecha4,amigos2,infracciones4,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,3)
+		this.create("p4","p4",11,7,5,fecha1,amigos2,infracciones1,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,9)
+		this.create("p5","p5",4,8,5,fecha2,amigos2,infracciones1,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,8)	
+		this.create("p6","p6",0,9,5,fecha3,amigos2,infracciones2,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,5)
+		this.create("p7","p7",2,3,5,fecha1,amigos2,infracciones3,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
+		this.create("p8","p8",9,5,5,fecha1,amigos2,infracciones4,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,3)
+		this.create("p9","p9",4,5,5,fecha4,amigos2,infracciones2,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,7)
+		this.create("p10","p10",9,6,9,fecha2,amigos2,infracciones1,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,2)
+		this.create("p11","p11",6,2,4,fecha1,amigos2,infracciones1,5,formaDeInsc,"asd",mensajero,calificaciones2,pendientesC,comunidad,listaC,1)
+		this.create("p12","p12",6,5,3,fecha1,amigos2,infracciones4,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
+		this.create("jorge","george",11,7,5,fecha3,amigos2,infracciones2,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,9)
+		this.create("emanuel","manu",2,3,5,fecha4,amigos2,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
 		
 		
 		
@@ -179,7 +187,7 @@ calificaciones3.add(calificacion11)
 
 //USAR BUILDER!!!!
 
-	def void create(String nombreJugador, String apodo, int nivelDeJuego, int promedioCalificacionesUltPart, int promedioCalificaciones,int fechaDeNacimiento, ArrayList<Jugador> amigos, ArrayList<Infracciones> infracciones, int cantPartidosJugados, TipoDeSuscripcion formaDeInscripcion,String mail,StubMensajero mensajero, List<Calificaciones>  calificaciones,List<Jugador> pendientesDeCalificar,ComunidadFutbolera comunidad,ArrayList<Integer> listaCriterioDelJugador, int promedioConVariosCriteriosAplicados) {
+	def void create(String nombreJugador, String apodo, int nivelDeJuego, int promedioCalificacionesUltPart, int promedioCalificaciones,Date fechaDeNacimiento, ArrayList<Jugador> amigos, ArrayList<Infracciones> infracciones, int cantPartidosJugados, TipoDeSuscripcion formaDeInscripcion,String mail,StubMensajero mensajero, List<Calificaciones>  calificaciones,List<Jugador> pendientesDeCalificar,ComunidadFutbolera comunidad,ArrayList<Integer> listaCriterioDelJugador, int promedioConVariosCriteriosAplicados) {
 		
 		
 		var jugador = new Jugador
@@ -212,7 +220,7 @@ calificaciones3.add(calificacion11)
 		this.create(jugador)
 	}
 	
-	def Jugador create2(String nombreJugador, String apodo, int nivelDeJuego, int promedioCalificacionesUltPart, int promedioCalificaciones,int fechaDeNacimiento, ArrayList<Jugador> amigos, ArrayList<Infracciones> infracciones, int cantPartidosJugados, TipoDeSuscripcion formaDeInscripcion,String mail,StubMensajero mensajero, List<Calificaciones>  calificaciones,List<Jugador> pendientesDeCalificar,ComunidadFutbolera comunidad,ArrayList<Integer> listaCriterioDelJugador, int promedioConVariosCriteriosAplicados) {
+	def Jugador create2(String nombreJugador, String apodo, int nivelDeJuego, int promedioCalificacionesUltPart, int promedioCalificaciones,Date fechaDeNacimiento, ArrayList<Jugador> amigos, ArrayList<Infracciones> infracciones, int cantPartidosJugados, TipoDeSuscripcion formaDeInscripcion,String mail,StubMensajero mensajero, List<Calificaciones>  calificaciones,List<Jugador> pendientesDeCalificar,ComunidadFutbolera comunidad,ArrayList<Integer> listaCriterioDelJugador, int promedioConVariosCriteriosAplicados) {
 		
 		
 		var jugador = new Jugador
@@ -248,18 +256,17 @@ calificaciones3.add(calificacion11)
 	// ** Búsquedas
 	// ********************************************************
 	
-		
+	def search(String nombreJugador, String apodo) {
+		this.search(nombreJugador, apodo, null)
+	}	
 	
 	
 		
-	def search(String nombreJugador, String apodo, int fechaPedida) {
+	def search(String nombreJugador, String apodo, Date fechaPedida) {
 		allInstances.filter[jugador|this.empiezaCon(nombreJugador, jugador.getNombreJugador) && this.contiene(apodo, jugador.getApodo) && this.esAnterior(fechaPedida, jugador.getFechaDeNacimiento)].toList
 	}
 	
-/*	def search(String nombreJugador, String apodo) {
-		allInstances.filter[jugador|this.match(nombreJugador, jugador.getNombreJugador) && this.match(apodo, jugador.getApodo)].toList
-	}
-*/	
+	
 	def contiene(Object expectedValue, Object realValue) {
 		if (expectedValue == null) {
 			return true
@@ -289,18 +296,17 @@ calificaciones3.add(calificacion11)
 		return true
 	}
 	
-	//def esAnterior(int fecha, int fechaReferencia){
-		//fecha > fechaReferencia
-//	}
 	
-	def esAnterior(int fecha, int fechaReferencia){
-		if (fecha == 0){
+	
+	def esAnterior(Date fecha, Date fechaReferencia){
+		if (fecha == null){
 			return true
 		}
-		if (fechaReferencia == 0){
+		
+		if (fechaReferencia == null){
 			return false
 		}
-		fecha > fechaReferencia
+		fechaReferencia.before(fecha)
 	}
 	
 	def alguno(){
@@ -319,7 +325,7 @@ calificaciones3.add(calificacion11)
 		typeof (Jugador)
 	}
 	
-	def Jugador createJug(String nombreJugador, String apodo, int nivelDeJuego, int promedioCalificacionesUltPart, int promedioCalificaciones,int fechaDeNacimiento, ArrayList<Jugador> amigos, ArrayList<Infracciones> infracciones, int cantPartidosJugados, TipoDeSuscripcion formaDeInscripcion,String mail,StubMensajero mensajero, List<Calificaciones> calificaciones,List<Jugador> pendientesDeCalificar,ComunidadFutbolera comunidad,ArrayList<Integer> listaCriterioDelJugador, int promedioConVariosCriteriosAplicados) {
+	def Jugador createJug(String nombreJugador, String apodo, int nivelDeJuego, int promedioCalificacionesUltPart, int promedioCalificaciones,Date fechaDeNacimiento, ArrayList<Jugador> amigos, ArrayList<Infracciones> infracciones, int cantPartidosJugados, TipoDeSuscripcion formaDeInscripcion,String mail,StubMensajero mensajero, List<Calificaciones> calificaciones,List<Jugador> pendientesDeCalificar,ComunidadFutbolera comunidad,ArrayList<Integer> listaCriterioDelJugador, int promedioConVariosCriteriosAplicados) {
 var jugador = new Jugador
 jugador.nombreJugador = nombreJugador
 jugador.apodo = apodo

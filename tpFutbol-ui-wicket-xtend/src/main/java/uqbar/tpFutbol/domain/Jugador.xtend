@@ -12,6 +12,7 @@ import uqbar.tpFutbol.ordenamiento.OrganizadorCommand
 import org.uqbar.commons.model.Entity
 import uqbar.tpFutbol.inscripcion.Estandar
 import uqbar.tpFutbol.excepciones.LaInscripcionEstaCerradaException
+import java.util.Date
 
 class Jugador extends Entity {
 	
@@ -20,7 +21,7 @@ class Jugador extends Entity {
 	@Property int nivelDeJuego
 	@Property int promedioCalificacionesUltPart
 	@Property int promedioCalificaciones
-	@Property int fechaDeNacimiento //HASTA QUE SEPAMOS USAR FECHAS...
+	@Property Date fechaDeNacimiento //HASTA QUE SEPAMOS USAR FECHAS...
 	@Property List<Jugador> amigos = new ArrayList(25)
 	@Property List<Infracciones> infracciones = new ArrayList
 	@Property int cantPartidosJugados
@@ -33,7 +34,7 @@ class Jugador extends Entity {
 	@Property ArrayList<Integer> listaCriterioDelJugador = new ArrayList<Integer>()
 	@Property int promedioConVariosCriteriosAplicados
 	
-	
+
 		
 	
 	
@@ -221,7 +222,7 @@ class Jugador extends Entity {
 	
 	
 	
-	def Jugador crearUnJugador(String nombreJugador, String apodo, int nivelDeJuego, int promedioCalificacionesUltPart, int promedioCalificaciones,int fechaDeNacimiento, ArrayList<Jugador> amigos, ArrayList<Infracciones> infracciones, int cantPartidosJugados, TipoDeSuscripcion formaDeInscripcion,String mail,StubMensajero mensajero, List<Calificaciones>  calificaciones,List<Jugador> pendientesDeCalificar,ComunidadFutbolera comunidad,ArrayList<Integer> listaCriterioDelJugador, int promedioConVariosCriteriosAplicados) {
+	def Jugador crearUnJugador(String nombreJugador, String apodo, int nivelDeJuego, int promedioCalificacionesUltPart, int promedioCalificaciones,Date fechaDeNacimiento, ArrayList<Jugador> amigos, ArrayList<Infracciones> infracciones, int cantPartidosJugados, TipoDeSuscripcion formaDeInscripcion,String mail,StubMensajero mensajero, List<Calificaciones>  calificaciones,List<Jugador> pendientesDeCalificar,ComunidadFutbolera comunidad,ArrayList<Integer> listaCriterioDelJugador, int promedioConVariosCriteriosAplicados) {
 		
 		
 		var jugador = new Jugador
