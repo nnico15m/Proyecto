@@ -142,6 +142,8 @@ class Partido extends Entity {
 		this.setInscripciones(new InscripcionCerrada(this, this.participantes))
 	}
 	
+	
+	
 	def confirmaTusEquiposPrueba() {
 		this.setInscripciones(new InscripcionCerrada(this, this.participantes))
 		return this

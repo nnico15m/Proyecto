@@ -23,6 +23,8 @@ import org.apache.wicket.markup.html.form.TextField
 import uqbar.tpFutbol.ordenamiento.OrdenarPartidoPorNCalificaciones
 import uqbar.tpFutbol.division.DividirEquiposCommand
 import uqbar.tpFutbol.excepciones.LaInscripcionEstaCerradaException
+import uqbar.tpFutbol.inscripcion.InscripcionCerrada
+import uqbar.tpFutbol.inscripcion.InscripcionAbierta
 
 class GenerarEquiposPage extends WebPage{
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
@@ -36,7 +38,7 @@ class GenerarEquiposPage extends WebPage{
 	private final OrdenarPartidoPorUltimaCalificacion ordPromedioNotasUltimo
 	private final OrdenarPartidoPorNCalificaciones ordPromedioNotasNPartidos
 	private int cantPartidos
-	@Property boolean abierto = true
+	
 	
 	
 
@@ -73,26 +75,21 @@ class GenerarEquiposPage extends WebPage{
 		
 	}
 	
-	// BOTON PARA CAMBIAR CANTIDAD PARTIDOS
+	
+	
 	def agregarCamposEdicion(Form<GeneradorPartidos> parent){
-		parent.addChild(new TextField<String>("cantPartidos"))
-	}
-	
-	
+parent.addChild(new TextField<String>("cantPartidos"))
+}
 		
 		
 	///////////////////////////
 	
 	def agregarAcciones(Form<GeneradorPartidos> parent){
 		parent.addChild(new XButton("nuevaCantidad")
-			.onClick = [| this.cambiarCantidadPartidos() ]
-		)
-		parent.addChild(new XButton("confirmarEquipos")
-			.onClick = [| this.confirmarEquipos() ]
-		)
-		parent.addChild(new XButton("abrirInscripciones")
-			.onClick = [| this.abrirInscripciones() ]
-		)
+			.onClick = [| this.cambiarCantidadPartidos() ])
+		parent.addChild(new XButton("volver") => [
+			onClick = [| volver ]
+		])
 		
 	}
 	
@@ -108,8 +105,6 @@ class GenerarEquiposPage extends WebPage{
 			item.model = item.modelObject.asCompoundModel
 			item.addChild(new Label("codPartido"))
 			item.addChild(new Label("inscripciones.nombreParticipantes"))
-			//item.addChild(new Label("nombreJugadorEquipo1"))
-			//item.addChild(new Label("nombreJugadorEquipo2"))
 			item.addChild(new XButton("criterioPar").onClick = [| dividirEquiposP(item.modelObject,criterioPar)
 			]) 
 			item.addChild(new XButton("criterio14589").onClick = [| dividirEquiposP(item.modelObject,criterio14589)
@@ -133,7 +128,8 @@ class GenerarEquiposPage extends WebPage{
 			item.addChild(new Label("codPartido"))
 			item.addChild(new Label("nombreJugadorEquipo1"))
 			item.addChild(new Label("nombreJugadorEquipo2"))
-			
+			item.addChild(new XButton("cerrarPartido").onClick = [| this.cerrarPartido(item.modelObject)
+			]) 
 			
 			
 			]
@@ -149,7 +145,7 @@ class GenerarEquiposPage extends WebPage{
 	
 	def dividirEquiposP(Partido partidoPed, DividirEquiposCommand criterio){
 	
-		if (abierto)	{
+		if (partidoPed.inscripciones.class == InscripcionAbierta)	{
 		Partido.home.update(partidoPed.dividirEquiposPrueba(criterio))
 		
 		
@@ -165,15 +161,20 @@ class GenerarEquiposPage extends WebPage{
 	
 	def confirmarEquipos(){
 		//Partido.home.allInstances.forEach[partido.confirmaTusEquipos()]
-		this.abierto = false
+		//this.abierto = false
 		
 	}
 	
-	def abrirInscripciones(){
+	def cerrarPartido(Partido partidoPed){
 		
-		this.abierto = true
+		Partido.home.update(partidoPed.confirmaTusEquiposPrueba())
 		
+		
+			
+			
 	}
+	
+	
 	
 	def ordenarPartido (Partido partidoPed, OrganizadorCommand criterio){
 		
@@ -203,7 +204,7 @@ class GenerarEquiposPage extends WebPage{
 	
 	
 	def volver() {
-		this.mostrarEquipos()
+		mainPage.mostrarJugadores()
 		responsePage = mainPage
 	}
 	
