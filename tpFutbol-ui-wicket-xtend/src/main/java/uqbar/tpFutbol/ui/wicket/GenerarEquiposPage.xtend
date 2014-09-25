@@ -61,6 +61,10 @@ class GenerarEquiposPage extends WebPage{
 		this.agregarCamposEdicion(nuevoPartidoForm)
 		this.addChild(nuevoPartidoForm)
 		this.mostrarEquipos()
+		
+		val equiposForm=  new Form<GeneradorPartidos>("datosEquipos", new CompoundPropertyModel<GeneradorPartidos>(this.generador))
+		this.addChild(equiposForm)
+		this.agregarTablaEquipos(equiposForm)
 	
 	}
 	
@@ -104,8 +108,8 @@ class GenerarEquiposPage extends WebPage{
 			item.model = item.modelObject.asCompoundModel
 			item.addChild(new Label("codPartido"))
 			item.addChild(new Label("inscripciones.nombreParticipantes"))
-			item.addChild(new Label("nombreJugadorEquipo1"))
-			item.addChild(new Label("nombreJugadorEquipo2"))
+			//item.addChild(new Label("nombreJugadorEquipo1"))
+			//item.addChild(new Label("nombreJugadorEquipo2"))
 			item.addChild(new XButton("criterioPar").onClick = [| dividirEquiposP(item.modelObject,criterioPar)
 			]) 
 			item.addChild(new XButton("criterio14589").onClick = [| dividirEquiposP(item.modelObject,criterio14589)
@@ -122,13 +126,24 @@ class GenerarEquiposPage extends WebPage{
 		parent.addChild(listViewPartidos)
 	}
 	
-	//def dividirEquiposP(Partido partidoPed, DividirEquiposCommand criterio){
-	
+	def agregarTablaEquipos(Form<GeneradorPartidos> parent) {
+			val listEquiposInf = new XListView("listaE")
+			listEquiposInf.populateItem = [ item |
+			item.model = item.modelObject.asCompoundModel
+			item.addChild(new Label("codPartido"))
+			item.addChild(new Label("nombreJugadorEquipo1"))
+			item.addChild(new Label("nombreJugadorEquipo2"))
+			
+			
+			
+			]
+			
+			
 		
-		//Partido.home.update(partidoPed.dividirEquiposPrueba(criterio))
 		
+		parent.addChild(listEquiposInf)
 		
-	//}
+	}
 	
 	
 	
@@ -136,6 +151,7 @@ class GenerarEquiposPage extends WebPage{
 	
 		if (abierto)	{
 		Partido.home.update(partidoPed.dividirEquiposPrueba(criterio))
+		
 		
 		}
 		else {
