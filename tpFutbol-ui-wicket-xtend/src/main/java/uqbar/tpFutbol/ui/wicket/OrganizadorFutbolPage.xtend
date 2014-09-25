@@ -15,6 +15,7 @@ import uqbar.tpFutbol.domain.Jugador
 import uqbar.tpFutbol.domain.Partido
 import uqbar.tpFutbol.division.DividirPorPosicion14589
 import uqbar.tpFutbol.division.DividirPorParEImpar
+import org.apache.wicket.AttributeModifier
 
 /**
  * Pagina de busqueda de la aplicacion de celulares.
@@ -59,7 +60,7 @@ class OrganizadorFutbolPage extends WebPage {
 	}
 
 def agregarCamposBusqueda(Form<BuscadorJugadores> parent) {
-	parent.addChild(new TextField<String>("nombre"))
+	parent.addChild(new TextField<String>("nombre"))	
 	parent.addChild(new TextField<String>("apodo"))
 	parent.addChild(new TextField<String>("fecha"))
 	parent.addChild(new CheckBox("tieneInfracciones"))
@@ -104,7 +105,10 @@ def agregarCamposBusqueda(Form<BuscadorJugadores> parent) {
 			val listViewJugadores = new XListView("results")
 			listViewJugadores.populateItem = [ item |
 			item.model = item.modelObject.asCompoundModel
-			item.addChild(new Label("nombreJugador"))
+			val nombreJugador = item.addChild(new Label("nombreJugador"))
+			if(item.modelObject.tieneHandicapMayor){
+				nombreJugador.add(new AttributeModifier("style", "color:blue;font-weight:bold"));
+			}
 			item.addChild(new Label("apodo"))
 			item.addChild(new Label("nivelDeJuego"))
 			item.addChild(new Label("promedioCalificaciones"))
@@ -118,6 +122,10 @@ def agregarCamposBusqueda(Form<BuscadorJugadores> parent) {
 		responsePage = new DatosJugadorPage(jugador) 
 	}
 	
+	def tieneHandicapMayor(Jugador jugador) {
+		
+		jugador.nivelDeJuego > 8
+	}
 	
 	
 

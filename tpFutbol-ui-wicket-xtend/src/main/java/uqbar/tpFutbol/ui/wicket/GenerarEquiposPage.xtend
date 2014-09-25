@@ -16,15 +16,15 @@ import org.uqbar.wicket.xtend.XListView
 import org.apache.wicket.markup.html.basic.Label
 import uqbar.tpFutbol.domain.Administrador
 import uqbar.tpFutbol.ordenamiento.OrdenamientoPorHandicap
-import java.util.List
 import uqbar.tpFutbol.ordenamiento.OrdenarPartidoPorUltimaCalificacion
 import uqbar.tpFutbol.ordenamiento.OrganizadorCommand
 import org.apache.wicket.markup.html.form.TextField
 import uqbar.tpFutbol.ordenamiento.OrdenarPartidoPorNCalificaciones
 import uqbar.tpFutbol.division.DividirEquiposCommand
-import uqbar.tpFutbol.excepciones.LaInscripcionEstaCerradaException
-import uqbar.tpFutbol.inscripcion.InscripcionCerrada
+
 import uqbar.tpFutbol.inscripcion.InscripcionAbierta
+import org.apache.wicket.markup.html.panel.FeedbackPanel
+
 
 class GenerarEquiposPage extends WebPage{
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
@@ -78,11 +78,9 @@ class GenerarEquiposPage extends WebPage{
 	
 	
 	def agregarCamposEdicion(Form<GeneradorPartidos> parent){
-		//parent.addChild(new TextField<String>("cantPartidos"))
-		val cantPartidosTextField = new TextField<Double>("cantPartidos")
 		
-		parent.addChild(cantPartidosTextField)
-		return cantPartidosTextField
+		parent.addChild(new TextField<Integer>("cantPartidos"))
+		
 }
 		
 		
@@ -90,10 +88,12 @@ class GenerarEquiposPage extends WebPage{
 	
 	def agregarAcciones(Form<GeneradorPartidos> parent){
 		parent.addChild(new XButton("nuevaCantidad")
-			.onClick = [| ])
+			.onClick = [|this.actualizarCantPartidos()])
 		parent.addChild(new XButton("volver") => [
 			onClick = [| volver ]
 		])
+		parent.addChild(new FeedbackPanel("feedbackPanel"))
+		
 		
 	}
 	
@@ -155,7 +155,7 @@ class GenerarEquiposPage extends WebPage{
 		
 		}
 		else {
-			
+			error("El partido esta cerrado. NO PUEDEN DIVIDIRSE LOS EQUIPOS")
 			
 			}
 		
@@ -198,8 +198,8 @@ class GenerarEquiposPage extends WebPage{
 		
 	}
 	
-	def cambiarCantidadPartidos(){
-		generador.setCantPartidos(cantPartidos)
+	def actualizarCantPartidos(){
+		generador.actualizarNumPartidos()
 	}
 
 

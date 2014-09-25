@@ -68,21 +68,24 @@ class DatosJugadorPage extends WebPage {
 			val listViewJug = new XListView("datos")
 			listViewJug.populateItem = [ item |
 			item.model = (item.modelObject.asCompoundModel) 
-			listViewJug.add(new AttributeAppender("class", new Model("userRow"), ""))
-			listViewJug.add(new AttributeModifier("class",new Model()))
-			var cssClass = "userRow"
+			
+			val nombreJugador = item.addChild(new Label("nombreJugador"))
+			if(item.modelObject.tieneHandicapMayor){
+				nombreJugador.add(new AttributeModifier("style", "color:blue;font-weight:bold"));
+			}
+			
 				
 			
-			if(item.modelObject.tieneHandicapMayor){
 			
-			cssClass = "userBlue"
-			item.addChild(new Label("nombreJugador"))	
 			
-			}
-			else{
-				cssClass = "userBlack"
-				item.addChild(new Label("nombreJugador"))	
-			}
+			
+			
+			
+					
+			
+			
+			
+			
 			
 			item.addChild(new Label("apodo"))
 			item.addChild(new Label("nivelDeJuego"))
