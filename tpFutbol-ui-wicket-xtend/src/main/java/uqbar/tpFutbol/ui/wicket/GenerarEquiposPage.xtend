@@ -37,7 +37,7 @@ class GenerarEquiposPage extends WebPage{
 	private final OrdenamientoPorHandicap ordHandicap
 	private final OrdenarPartidoPorUltimaCalificacion ordPromedioNotasUltimo
 	private final OrdenarPartidoPorNCalificaciones ordPromedioNotasNPartidos
-	private int cantPartidos
+	private int cantPartidos = 1
 	
 	
 	
@@ -48,7 +48,7 @@ class GenerarEquiposPage extends WebPage{
 		this.mainPage = mainPage
 		this.partido = partidoNuevo
 		this.administrador = administrador
-		this.cantPartidos = generador.cantPartidos
+		this.cantPartidos = cantPartidos
 		this.criterioPar= new DividirPorParEImpar
 		this.criterio14589 = new DividirPorPosicion14589()
 		this.ordHandicap = new OrdenamientoPorHandicap()
@@ -78,7 +78,11 @@ class GenerarEquiposPage extends WebPage{
 	
 	
 	def agregarCamposEdicion(Form<GeneradorPartidos> parent){
-parent.addChild(new TextField<String>("cantPartidos"))
+		//parent.addChild(new TextField<String>("cantPartidos"))
+		val cantPartidosTextField = new TextField<Double>("cantPartidos")
+		
+		parent.addChild(cantPartidosTextField)
+		return cantPartidosTextField
 }
 		
 		
@@ -86,7 +90,7 @@ parent.addChild(new TextField<String>("cantPartidos"))
 	
 	def agregarAcciones(Form<GeneradorPartidos> parent){
 		parent.addChild(new XButton("nuevaCantidad")
-			.onClick = [| this.cambiarCantidadPartidos() ])
+			.onClick = [| ])
 		parent.addChild(new XButton("volver") => [
 			onClick = [| volver ]
 		])
