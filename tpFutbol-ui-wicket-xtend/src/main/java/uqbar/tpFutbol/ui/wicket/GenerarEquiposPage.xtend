@@ -37,7 +37,7 @@ class GenerarEquiposPage extends WebPage{
 	private final OrdenamientoPorHandicap ordHandicap
 	private final OrdenarPartidoPorUltimaCalificacion ordPromedioNotasUltimo
 	private final OrdenarPartidoPorNCalificaciones ordPromedioNotasNPartidos
-	private int cantPartidos = 1
+	
 	
 	
 	
@@ -48,7 +48,6 @@ class GenerarEquiposPage extends WebPage{
 		this.mainPage = mainPage
 		this.partido = partidoNuevo
 		this.administrador = administrador
-		this.cantPartidos = cantPartidos
 		this.criterioPar= new DividirPorParEImpar
 		this.criterio14589 = new DividirPorPosicion14589()
 		this.ordHandicap = new OrdenamientoPorHandicap()
@@ -88,7 +87,7 @@ class GenerarEquiposPage extends WebPage{
 	
 	def agregarAcciones(Form<GeneradorPartidos> parent){
 		parent.addChild(new XButton("nuevaCantidad")
-			.onClick = [|this.actualizarCantPartidos()])
+			.onClick = [|generador.actualizarCantPartidos()])
 		parent.addChild(new XButton("volver") => [
 			onClick = [| volver ]
 		])
@@ -163,11 +162,7 @@ class GenerarEquiposPage extends WebPage{
 	}
 	
 	
-	def confirmarEquipos(){
-		//Partido.home.allInstances.forEach[partido.confirmaTusEquipos()]
-		//this.abierto = false
-		
-	}
+	
 	
 	def cerrarPartido(Partido partidoPed){
 		
@@ -187,21 +182,17 @@ class GenerarEquiposPage extends WebPage{
 	}
 	
 	def ordenarPartidoCompuesto (Partido partidoPed, OrganizadorCommand criterio){
-		 Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(criterio,generador.getCantPartidos))
-	
+		 Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(criterio,((generador.cantPartidos)))	)
 		
 	}
 	
 	def ordenarPartidoMixto (Partido partidoPed){
 		
-		 Partido.home.update(partidoPed.ordenarLaListaPorPromedioDeVariosCriteriosPrueba(partidoPed,generador.getCantPartidos))
+		 Partido.home.update(partidoPed.ordenarLaListaPorPromedioDeVariosCriteriosPrueba(partidoPed,generador.cantPartidos))
 		
 	}
 	
-	def actualizarCantPartidos(){
-		generador.actualizarNumPartidos()
-	}
-
+	
 
 	
 	

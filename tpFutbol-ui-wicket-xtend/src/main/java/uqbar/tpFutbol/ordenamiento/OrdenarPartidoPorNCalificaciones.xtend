@@ -31,7 +31,7 @@ class OrdenarPartidoPorNCalificaciones implements OrganizadorCommand  {
 	}
 	
 	def setearPromedioCalificaciones(Partido partido) {
-		val aux1= partido.participantes.sortBy[promedioCalificacionesUltPart]
+		val aux1= partido.participantes.sortBy[promedioCalificaciones]
 		return aux1
 	}
 	

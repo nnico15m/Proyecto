@@ -105,8 +105,7 @@ class Partido extends Entity {
 	
 	def ordenarLaListaPorCriterioPrueba(OrganizadorCommand criterio,int n) {
 		
-		//this.setCriterioDeOrdenamiento(criterio) // guardo el criterio por si me lo piden
-		//this.criterioDeOrdenamiento.ordenarLaLista(this)
+		
 		criterio.ordenarLaListaPrueba(this,n)
 		
 	
