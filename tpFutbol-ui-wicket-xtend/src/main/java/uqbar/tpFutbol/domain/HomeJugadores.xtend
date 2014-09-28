@@ -24,6 +24,7 @@ class HomeJugadores extends CollectionBasedHome<Jugador>{
 		var infracciones2 = new ArrayList()
 		var infracciones3 = new ArrayList()
 		var infracciones4 = new ArrayList()
+		var infraccionesNulas = new ArrayList()
 		var amigos2 = new ArrayList<Jugador>()
 		var amigosEpi = new ArrayList<Jugador>()
 		var amigos1 = new ArrayList<Jugador>
@@ -179,6 +180,7 @@ calificaciones3.add(calificacion11)
 		this.create("p12","p12",6,5,3,fecha1,amigos2,infracciones4,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
 		this.create("jorge","george",11,7,5,fecha3,amigos2,infracciones2,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,9)
 		this.create("emanuel","manu",2,3,5,fecha4,amigos2,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
+		this.create("jugadorSinInfracciones","jugLimpio",2,3,5,fecha4,amigos2,infraccionesNulas,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
 		
 		
 		
@@ -306,31 +308,17 @@ calificaciones3.add(calificacion11)
 		
 	}
 	
-/* 	def tieneInfracciones(boolean tieneInfracciones, List<Infracciones> infracciones){
-		if (tieneInfracciones == false){
-			return true
-		}
-		
-		if (tieneInfracciones == true) {
-			return false
-		}
-		
-		infracciones.size == 0
-		
-	}
-	* 
-	* */
 	
-	def tieneInfracciones(Object expectedValue, Object realValue){
+	def tieneInfracciones(Object expectedValue, List<Infracciones> realValue){
 		if (expectedValue == false){
 			return true
 		}
 		
-		if (expectedValue == null) {
+		if (realValue == true) {
 			return false
 		}
 		
-		//infracciones.size == 0
+		realValue.size > 0
 		
 	}
 	
