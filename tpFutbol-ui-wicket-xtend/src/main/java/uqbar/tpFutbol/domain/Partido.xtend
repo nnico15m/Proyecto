@@ -8,10 +8,11 @@ import uqbar.tpFutbol.ordenamiento.OrganizadorCommand
 import uqbar.tpFutbol.inscripcion.InscripcionCerrada
 import uqbar.tpFutbol.division.DividirEquiposCommand
 import org.uqbar.commons.model.Entity
+import java.util.Date
 
 class Partido extends Entity {
 	
-	@Property Fecha fecha
+	@Property Date fecha
 	@Property double hora
 	@Property ComunidadFutbolera comunidad
 	@Property OrganizadorCommand criterioDeOrdenamiento

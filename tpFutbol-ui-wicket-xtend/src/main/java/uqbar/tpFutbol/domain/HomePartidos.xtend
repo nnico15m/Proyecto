@@ -26,7 +26,7 @@ this.init
 def void init() {
 	
 
-var fecha = new Fecha
+
 var partido = new Partido
 var losPibes = new ComunidadFutbolera()
 var criterioDeOrdenamiento = new OrdenamientoPorHandicap()
@@ -46,13 +46,14 @@ var infracciones1 = new ArrayList()
 var infracciones2 = new ArrayList()
 var infracciones3 = new ArrayList()
 var infracciones4 = new ArrayList()
+var infraccionesNulas = new ArrayList()
 var infraccion1 = new Infracciones("falto",1)
 var infraccion2 = new Infracciones("jugo mal",1)
 var infraccion3 = new Infracciones("expulsado",2)
 var infraccion4 = new Infracciones("pecho frio",2)
 var infraccion5 = new Infracciones("sin codigo",10)
 var infraccion6 = new Infracciones("manco",1)
-		
+
 		infraccionesEpi.add(infraccion2)
 		infraccionesEpi.add(infraccion5)
 		infracciones1.add(infraccion1)
@@ -142,10 +143,11 @@ calificaciones3.add(calificacion11)
 var pendientesC = new ArrayList()
 var comunidad = new ComunidadFutbolera()
 var listaC= new ArrayList()
-val fecha1 = new Date(1991,12,24)
-val fecha2 = new Date(1971,10,4)
-val fecha3= new Date(1985,12,10)
-val fecha4= new Date(1976,12,12)
+val fechaHoy = new Date()
+val fecha1 = new Date(98,11,11)
+val fecha2 = new Date(85,4,14)
+val fecha3= new Date(100,5,25)
+val fecha4= new Date(82,0,20)
 
 listaC.add(6)
 listaC.add(5)
@@ -166,7 +168,7 @@ val p12=this.createJug("p12","p12",7,6,3,fecha2,amigos3,infracciones4,4,formaDeI
 val p13=this.createJug("p12","p12",3,1,3,fecha1,amigos3,infracciones2,1,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
 val jorge=this.createJug("jorge","george",11,7,5,fecha3,amigos1,infracciones1,2,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,9)
 val manu=this.createJug("emanuel","manu",2,3,5,fecha4,amigos2,infracciones2,2,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
-
+val jugSinInf = this.createJug("jugadorSinInfracciones","jugLimpio",2,3,5,fechaHoy,amigos2,infraccionesNulas,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
 //INSCRIPCIONES
 var inscriptosPartido = new ArrayList()
 var inscriptosPartido2 = new ArrayList()
@@ -192,6 +194,8 @@ inscriptosPartido2.add(p10)
 inscriptosPartido2.add(p11)
 inscriptosPartido2.add(p12)
 inscriptosPartido2.add(p3)
+inscriptosPartido2.add(jugSinInf)
+inscriptosPartido2.add(jorge)
 inscriptosPartido3.add(jorge)
 inscriptosPartido3.add(p9)
 inscriptosPartido3.add(p4)
@@ -229,16 +233,16 @@ amigos3.add(p8)
 
 
 
-this.create(fecha,2144,losPibes,criterioDeOrdenamiento,criterioDeDivision,11,equipo1,equipo2,inscripciones)
-this.create(fecha,2124,losPibes,criterioDeOrdenamiento,criterioDeDivision,12,equipo1,equipo2,inscripciones4)
-this.create(fecha,2124,losPibes,criterioDeOrdenamiento,criterioDeDivision,13,equipo1,equipo2,inscripciones3)
-this.create(fecha,2124,losPibes,criterioDeOrdenamiento,criterioDeDivision,14,equipo1,equipo2,inscripciones2)
+this.create(fechaHoy,2144,losPibes,criterioDeOrdenamiento,criterioDeDivision,11,equipo1,equipo2,inscripciones)
+this.create(fechaHoy,2124,losPibes,criterioDeOrdenamiento,criterioDeDivision,12,equipo1,equipo2,inscripciones4)
+this.create(fechaHoy,2124,losPibes,criterioDeOrdenamiento,criterioDeDivision,13,equipo1,equipo2,inscripciones3)
+this.create(fechaHoy,2124,losPibes,criterioDeOrdenamiento,criterioDeDivision,14,equipo1,equipo2,inscripciones2)
 }
 
 
 
 //USAR BUILDER!!!!
-def void create(Fecha fecha, double hora, ComunidadFutbolera losPibes, OrdenamientoPorHandicap criterioOrdenamiento, DividirPorParEImpar criterioDivision, int codPartido, List<Jugador> equipo1,List<Jugador> equipo2, InscripcionAbierta inscripciones)
+def void create(Date fecha, double hora, ComunidadFutbolera losPibes, OrdenamientoPorHandicap criterioOrdenamiento, DividirPorParEImpar criterioDivision, int codPartido, List<Jugador> equipo1,List<Jugador> equipo2, InscripcionAbierta inscripciones)
 {
 var partido = new Partido
 partido.fecha = fecha
