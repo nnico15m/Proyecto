@@ -136,10 +136,11 @@ calificaciones3.add(calificacion11)
 		calificaciones4.add(calificacion5)
 		calificaciones4.add(calificacionX)
 		
-		val fecha1 = new Date(1991,12,24)
-		val fecha2 = new Date(1971,10,4)
-		val fecha3= new Date(1985,12,10)
-		val fecha4= new Date(1976,12,12)
+		val fechaHoy = new Date()
+		val fecha1 = new Date(98,11,11)
+		val fecha2 = new Date(85,4,14)
+		val fecha3= new Date(100,5,25)
+		val fecha4= new Date(82,0,20)
 		
 		val p1 = this.createJug("p1","p1",5,6,5,fecha1,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,5)
 		val p5 = this.createJug("p5","p5",4,8,5,fecha2,amigosEpi,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones,pendientesC,comunidad,listaC,8)
@@ -180,7 +181,7 @@ calificaciones3.add(calificacion11)
 		this.create("p12","p12",6,5,3,fecha1,amigos2,infracciones4,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
 		this.create("jorge","george",11,7,5,fecha3,amigos2,infracciones2,5,formaDeInsc,"asd",mensajero,calificaciones3,pendientesC,comunidad,listaC,9)
 		this.create("emanuel","manu",2,3,5,fecha4,amigos2,infraccionesEpi,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
-		this.create("jugadorSinInfracciones","jugLimpio",2,3,5,fecha4,amigos2,infraccionesNulas,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
+		this.create("jugadorSinInfracciones","jugLimpio",2,3,5,fechaHoy,amigos2,infraccionesNulas,5,formaDeInsc,"asd",mensajero,calificaciones4,pendientesC,comunidad,listaC,4)
 		
 		
 		
@@ -304,7 +305,7 @@ calificaciones3.add(calificacion11)
 		if (fechaJugador == null){
 			return false
 		}
-		fechaPedida.before(fechaJugador)
+		fechaJugador.before(fechaPedida)
 		
 	}
 	

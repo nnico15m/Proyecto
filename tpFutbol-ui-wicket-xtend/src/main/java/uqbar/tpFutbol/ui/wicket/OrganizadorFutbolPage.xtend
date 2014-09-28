@@ -45,10 +45,7 @@ class OrganizadorFutbolPage extends WebPage {
 		
 		
 		
-		
-	//	val Form<BuscadorMaterias> datosForm = new Form<BuscadorMaterias>("datosMateriasForm", new CompoundPropertyModel<BuscadorMaterias>(this.buscador3))
-	//	this.agregarGrillaDatos(datosForm)
-	//	this.addChild(datosForm)
+
 		
 	}
 
@@ -72,10 +69,7 @@ def agregarCamposBusqueda(Form<BuscadorJugadores> parent) {
 		
 	}
 
-//	def mostrarDatosMaterias(){
-	//	this.buscador2.buscarDatos()
-	
-//	}
+
 	
 	def agregarAccionesJug(Form<BuscadorJugadores> parent) {
 		

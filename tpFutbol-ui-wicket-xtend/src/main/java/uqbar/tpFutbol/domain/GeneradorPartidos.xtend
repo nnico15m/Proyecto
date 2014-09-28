@@ -73,6 +73,9 @@ class GeneradorPartidos implements Serializable {
 		if (cantPartidos > 4) {
 			throw new UserException("No se puede tantos partidos!")
 		}
+		else{
+					setCantPartidos(cantPartidos)
+		}
 	}
 	
 	

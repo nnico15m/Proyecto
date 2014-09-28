@@ -68,7 +68,7 @@ class DatosEquipoPage extends WebPage {
 	
 	
 	def datosJugador(Jugador jugador) {
-		//responsePage = new DatosJugadorPage(jugador, this) 
+		
 		responsePage = new DatosJugadorPage(jugador) 
 	}
 	
