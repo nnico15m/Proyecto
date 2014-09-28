@@ -257,13 +257,13 @@ calificaciones3.add(calificacion11)
 	// ********************************************************
 	
 	def search(String nombreJugador, String apodo) {
-		this.search(nombreJugador, apodo, null,0,100, false)
+		this.search(nombreJugador, apodo, null,0,100,0,100, false)
 	}	
 	
 	
 		
-	def search(String nombreJugador, String apodo, Date fechaPedida, int desdeHandicap, int hastaHandicap, boolean tieneInfracciones) {
-		allInstances.filter[jugador|this.empiezaCon(nombreJugador, jugador.getNombreJugador) && this.contiene(apodo, jugador.getApodo) && this.esAnterior(fechaPedida, jugador.getFechaDeNacimiento) && this.tieneInfracciones(tieneInfracciones,jugador.getInfracciones)&& this.handicapEstaEntre(desdeHandicap,hastaHandicap,jugador.getNivelDeJuego)].toList
+	def search(String nombreJugador, String apodo, Date fechaPedida, int desdeHandicap, int hastaHandicap,int desdePromUltPart,int hastaPromUltPart, boolean tieneInfracciones) {
+		allInstances.filter[jugador|this.empiezaCon(nombreJugador, jugador.getNombreJugador) && this.contiene(apodo, jugador.getApodo) && this.esAnterior(fechaPedida, jugador.getFechaDeNacimiento) && this.tieneInfracciones(tieneInfracciones,jugador.getInfracciones)&& this.handicapEstaEntre(desdeHandicap,hastaHandicap,jugador.getNivelDeJuego)&& this.promedioEstaEntre(desdePromUltPart,hastaPromUltPart,jugador.promedioCalificacionesUltPart)].toList
 	}
 	
 	
@@ -284,32 +284,29 @@ calificaciones3.add(calificacion11)
 		if (realValue == null) {
 			return false
 		}
-		empiezanIgual(expectedValue.toString().toLowerCase(), realValue.toString().toLowerCase())
-	}
 	
-	def empiezanIgual(String esperado, String real){
-		for(var i = 0; (i==esperado.length) || (i==real.length); i++){
-			if (!(esperado.charAt(i)==real.charAt(i))){
-				return false
-			}
-		}
-		return true
+		realValue.toString().toLowerCase.startsWith(expectedValue.toString().toLowerCase())
 	}
 	
 	
 	
-	def esAnterior(Date fecha, Date fechaReferencia){
-		if (fecha == null){
+
+	
+	
+	
+	def esAnterior(Date fechaPedida, Date fechaJugador){
+		if (fechaPedida == null){
 			return true
 		}
 		
-		if (fechaReferencia == null){
+		if (fechaJugador == null){
 			return false
 		}
-		fechaReferencia.before(fecha)
+		fechaPedida.before(fechaJugador)
+		
 	}
 	
-	def tieneInfracciones(boolean tieneInfracciones, List<Infracciones> infracciones){
+/* 	def tieneInfracciones(boolean tieneInfracciones, List<Infracciones> infracciones){
 		if (tieneInfracciones == false){
 			return true
 		}
@@ -321,18 +318,44 @@ calificaciones3.add(calificacion11)
 		infracciones.size == 0
 		
 	}
+	* 
+	* */
 	
-	def handicapEstaEntre(int num1, int num2, int handicapActual){
-		//if ((num1 > handicapActual) && (handicapActual < num2)) {
+	def tieneInfracciones(Object expectedValue, Object realValue){
+		if (expectedValue == false){
 			return true
-		//}
+		}
 		
-		//else {
-			//return false
-		//}
+		if (expectedValue == null) {
+			return false
+		}
 		
+		//infracciones.size == 0
+		
+	}
 	
+	def handicapEstaEntre(int num1, int num2, int handicapJug){
+		if ((num1 == 0)&& (num2 ==0)){
+			return true
+		}
 		
+		if (handicapJug == 0)  {
+			return false
+		}
+	
+	(num1 <= handicapJug) && (handicapJug <= num2)
+	}
+	
+	def promedioEstaEntre(int num1, int num2, int promedioUltPart){
+		if ((num1 == 0)&& (num2 ==0)){
+			return true
+		}
+		
+		if (promedioUltPart == 0)  {
+			return false
+		}
+	
+	(num1 <= promedioUltPart) && (promedioUltPart<= num2)
 	}
 	
 	

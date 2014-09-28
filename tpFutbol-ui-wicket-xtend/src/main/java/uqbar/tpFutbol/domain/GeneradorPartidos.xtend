@@ -6,6 +6,7 @@ import org.uqbar.commons.utils.ApplicationContext
 import java.util.ArrayList
 import uqbar.tpFutbol.domain.HomePartidos
 import uqbar.tpFutbol.ordenamiento.OrganizadorCommand
+import org.uqbar.commons.model.UserException
 
 /**
  * Application model que representa la búsqueda de {@link Celular}.
@@ -48,8 +49,9 @@ class GeneradorPartidos implements Serializable {
 		
 	}
 	
-	def actualizarCantPartidos(){
-		this.cantPartidos = cantPartidos
+	def void setCantPartidos(int cantidad) {
+		
+		this._cantPartidos= cantidad
 	}
 	
 	
@@ -60,6 +62,17 @@ class GeneradorPartidos implements Serializable {
 		val codPartidoActual = partido.codPartido
 		equipos = getHomePartidos.search().findFirst[codPartido == codPartidoActual].participantes
 		
+	}
+	
+	def actualizarCantPartidos() {
+		this.validarCantidad(this.cantPartidos)
+		
+	}
+	
+	def void validarCantidad(int cantPartidos) {
+		if (cantPartidos > 4) {
+			throw new UserException("No se puede tantos partidos!")
+		}
 	}
 	
 	

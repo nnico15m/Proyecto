@@ -209,25 +209,11 @@ class Jugador extends Entity {
 	}
 	
 	def unJugEsPar(Partido partido){
-/*		val posicionJug = obtenerPosicion(partido)
-		(posicionJug % 2) == 0
-		*/
+
 		!this.unJugEsImpar(partido)
 	}
 	
-		
-/*	def esDeLaPosicion14589(Partido partido){
-		val posicionJug = obtenerPosicion(partido)
-		val DividirEquiposCommand criterioOrd = new DividirPorPosicion14589
-		criterioOrd.es14589(posicionJug)
-	}
-	
-	def esDeLaPosicion236710(Partido partido){
-		val posicionJug = obtenerPosicion(partido)
-		val DividirEquiposCommand criterioOrd = new DividirPorPosicion14589
-		criterioOrd.es236710(posicionJug)
-	}
-*/	
+
 	def obtenerPosicion(Partido partido) {
 		partido.participantes.indexOf(this)
 	}
