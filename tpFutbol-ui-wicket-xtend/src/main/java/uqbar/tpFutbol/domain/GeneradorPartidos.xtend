@@ -85,6 +85,14 @@ class GeneradorPartidos implements Serializable {
 	def HomePartidos getHomePartidos() {
 		ApplicationContext::instance.getSingleton(typeof(Partido))
 	}
+	
+	
+	def obtenerParticipantesP (Partido partidoPed){
 		
+		homePartidos.obtenerParticipantes(partidoPed)
+
+		
+		
+	}	
 	
 }

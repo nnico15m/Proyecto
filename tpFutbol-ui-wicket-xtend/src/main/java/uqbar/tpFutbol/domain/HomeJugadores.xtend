@@ -202,44 +202,17 @@ calificaciones3.add(calificacion11)
 		this.create(jugador)
 	}
 	
-	def Jugador create2(String nombreJugador, String apodo, int nivelDeJuego, int promedioCalificacionesUltPart, int promedioCalificaciones,Date fechaDeNacimiento, ArrayList<Jugador> amigos, ArrayList<Infracciones> infracciones, int cantPartidosJugados, TipoDeSuscripcion formaDeInscripcion,String mail,StubMensajero mensajero, List<Calificaciones>  calificaciones,List<Jugador> pendientesDeCalificar,ComunidadFutbolera comunidad,ArrayList<Integer> listaCriterioDelJugador, int promedioConVariosCriteriosAplicados) {
-		
-		
-		var jugador = new Jugador
-		
-		jugador.nombreJugador = nombreJugador
-		jugador.apodo = apodo
-		jugador.nivelDeJuego = nivelDeJuego
-		jugador.promedioCalificacionesUltPart = promedioCalificacionesUltPart
-		jugador.promedioCalificaciones = promedioCalificaciones
-		jugador.fechaDeNacimiento = fechaDeNacimiento
-		jugador.amigos = amigos
-		jugador.infracciones = infracciones
-		jugador.cantPartidosJugados = cantPartidosJugados
-		jugador.formaDeInscripcion= formaDeInscripcion
-		jugador.mail = mail
-		jugador.mensajero = mensajero
-		jugador.calificaciones = calificaciones
-		jugador.pendientesDeCalificar = pendientesDeCalificar
-		jugador.comunidad = comunidad
-		jugador.listaCriterioDelJugador = listaCriterioDelJugador
-		jugador.promedioConVariosCriteriosAplicados = promedioConVariosCriteriosAplicados
-			
-		
 	
-		 
-				
-		
-		
-		
-		return jugador
-	}
 	// ********************************************************
 	// ** Búsquedas
 	// ********************************************************
 	
 	def search(String nombreJugador, String apodo) {
 		this.search(nombreJugador, apodo, null,0,100,0,100, false)
+	}
+	
+	def search(String nombreJugador) {
+		this.search(nombreJugador, "", null,0,100,0,100, false)
 	}	
 	
 	
