@@ -16,6 +16,7 @@ import uqbar.tpFutbol.domain.Partido
 import uqbar.tpFutbol.division.DividirPorPosicion14589
 import uqbar.tpFutbol.division.DividirPorParEImpar
 import org.apache.wicket.AttributeModifier
+import org.apache.wicket.markup.html.panel.FeedbackPanel
 
 /**
  * Pagina de busqueda de la aplicacion de celulares.
@@ -65,6 +66,7 @@ def agregarCamposBusqueda(Form<BuscadorJugadores> parent) {
 	parent.addChild(new TextField<String>("hastaHandicap"))
 	parent.addChild(new TextField<String>("desdePromUltPart"))
 	parent.addChild(new TextField<String>("hastaPromUltPart"))
+	parent.addChild(new FeedbackPanel("feedbackPanel"))
 		
 		
 	}

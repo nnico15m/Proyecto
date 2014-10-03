@@ -33,7 +33,7 @@ class BuscadorJugadores implements Serializable {
 	@Property int hastaHandicap
 	@Property int desdePromUltPart
 	@Property int hastaPromUltPart
-	@Property boolean tieneInfracciones = true
+	@Property boolean tieneInfracciones = false
 	@Property List<Jugador> results
 	@Property List<Jugador> datos
 	@Property List<Jugador> amigos

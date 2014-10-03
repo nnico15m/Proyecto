@@ -282,16 +282,16 @@ calificaciones3.add(calificacion11)
 	}
 	
 	
-	def tieneInfracciones(Object expectedValue, List<Infracciones> realValue){
+	def tieneInfracciones(boolean expectedValue, List<Infracciones> realValue){
 		if (expectedValue == false){
-			return true
+			return realValue.size == 0
 		}
 		
-		if (realValue == true) {
-			return false
+		if (expectedValue == true){
+			return realValue.size > 0
 		}
 		
-		realValue.size > 0
+		//realValue.size > 0
 		
 	}
 	
