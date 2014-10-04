@@ -152,14 +152,16 @@ class Jugador extends Entity {
 	}
 	
 		def promedioDeUltimasNCalificacionesPedidasPrueba(Partido partidoAOrganizar,int numeroPedido){
-		val ultimasNCalificaciones = calificaciones.subList( ((calificaciones.size) - numeroPedido ) ,(calificaciones.size))
+		val ultimasNCalificaciones = calificaciones.subList((calificaciones.size - numeroPedido),calificaciones.size)
 		val valor =(ultimasNCalificaciones.fold(0, [ acum, jugador | (acum + jugador.nota)]))
-		if ((ultimasNCalificaciones.size) == 0) {
-		 this.setPromedioCalificaciones(1)
+		if ((ultimasNCalificaciones.size) != 0) {
+		 this.setPromedioCalificaciones(valor/(ultimasNCalificaciones.size))
 		 
-		 }
-			else{
-				this.setPromedioCalificaciones(valor/(ultimasNCalificaciones.size) )
+		 
+		 
+		 
+		
+				 
 				
 			}
 		}

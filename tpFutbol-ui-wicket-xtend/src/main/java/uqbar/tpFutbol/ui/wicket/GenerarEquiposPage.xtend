@@ -167,9 +167,12 @@ class GenerarEquiposPage extends WebPage{
 	
 	
 	def cerrarPartido(Partido partidoPed){
-		
+		if (partidoPed.equipo1.empty){
+			error("No puede cerrarse un partido sin equipos")
+		}
+		else{
 		Partido.home.update(partidoPed.confirmaTusEquiposPrueba())
-		
+		}
 		
 			
 			
@@ -184,8 +187,12 @@ class GenerarEquiposPage extends WebPage{
 	}
 	
 	def ordenarPartidoCompuesto (Partido partidoPed, OrganizadorCommand criterio){
+		if (generador.cantPartidos != 0){
 		 Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(criterio,((generador.cantPartidos)))	)
-		
+		}
+		else{
+			error("Tiene que elegir la cantidad de partidos que desea ver")
+		}
 	}
 	
 	def ordenarPartidoMixto (Partido partidoPed){
