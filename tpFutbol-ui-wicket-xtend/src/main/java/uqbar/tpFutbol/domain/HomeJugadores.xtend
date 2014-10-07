@@ -262,9 +262,10 @@ calificaciones8.add(calificacionX)
 	}
 	
 	def searchDatosJug (String nombreJugador, String apodo, Date fechaPedida, int desdeHandicap, int hastaHandicap,int desdePromUltPart,int hastaPromUltPart){
-		allInstances.filter[jugador|this.empiezaCon(nombreJugador, jugador.getNombreJugador) && this.contiene(apodo, jugador.getApodo) && this.esAnterior(fechaPedida, jugador.getFechaDeNacimiento) && this.handicapEstaEntre(desdeHandicap,hastaHandicap,jugador.getNivelDeJuego)&& this.promedioEstaEntre(desdePromUltPart,hastaPromUltPart,jugador.promedioCalificacionesUltPart)].toList
+		allInstances.filter[jugador|this.esExacto(nombreJugador, jugador.getNombreJugador) && this.contiene(apodo, jugador.getApodo) && this.esAnterior(fechaPedida, jugador.getFechaDeNacimiento) && this.handicapEstaEntre(desdeHandicap,hastaHandicap,jugador.getNivelDeJuego)&& this.promedioEstaEntre(desdePromUltPart,hastaPromUltPart,jugador.promedioCalificacionesUltPart)].toList.take(1).toList
 	}
 	
+
 	
 	
 	
@@ -289,6 +290,17 @@ calificaciones8.add(calificacionX)
 		realValue.toString().toLowerCase.startsWith(expectedValue.toString().toLowerCase())
 	}
 	
+	def esExacto(Object expectedValue, Object realValue){
+		if (expectedValue == null) {
+			return true
+		}
+		if (realValue == null) {
+			return false
+		}
+	
+		
+		realValue.toString().toLowerCase().contentEquals(expectedValue.toString().toLowerCase())
+	}
 	
 	
 
