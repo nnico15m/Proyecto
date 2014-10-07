@@ -52,7 +52,7 @@ class DatosJugadorPage extends WebPage {
 	
 	
 	def mostrarJugadores(){
-			buscador.buscarJugador(jugador)
+			buscador.buscarDatosJugador(jugador)
 
 	}
 	

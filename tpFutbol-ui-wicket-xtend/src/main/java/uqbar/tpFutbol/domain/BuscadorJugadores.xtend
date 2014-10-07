@@ -54,8 +54,16 @@ class BuscadorJugadores implements Serializable {
 	
 	def void buscarJugador(Jugador jugadorPedido){
 
-		//datos = getHomeJugadores.allInstances().findFirst
+		datos = new ArrayList<Jugador>
 		datos = getHomeJugadores.search(getNombre, jugadorPedido.apodo, getFecha, getDesdeHandicap, getHastaHandicap, getDesdePromUltPart,getHastaPromUltPart, tieneInfracciones)
+	
+	}
+	
+	def void buscarDatosJugador(Jugador jugadorPedido){
+
+		datos = new ArrayList<Jugador>
+		datos = getHomeJugadores.searchDatosJug(getNombre,jugadorPedido.apodo, getFecha, getDesdeHandicap, getHastaHandicap, getDesdePromUltPart,getHastaPromUltPart)
+	
 	}
 	
 	def void mostrarAmigosJ(Jugador jugadorPedido){
