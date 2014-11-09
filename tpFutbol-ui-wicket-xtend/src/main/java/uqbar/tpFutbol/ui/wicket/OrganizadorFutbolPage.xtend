@@ -54,7 +54,7 @@ class OrganizadorFutbolPage extends WebPage {
 	
 	def mostrarJugadores(){
 		this.buscador.buscar()
-	
+	//	this.buscador.fillJugadores()
 	}
 
 def agregarCamposBusqueda(Form<BuscadorJugadores> parent) {

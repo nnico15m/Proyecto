@@ -9,8 +9,10 @@ import uqbar.tpFutbol.inscripcion.Estandar
 import uqbar.tpFutbol.observers.StubMensajero
 import java.util.Date
 
-class HomeJugadores extends CollectionBasedHome<Jugador>{
+//class HomeJugadores extends CollectionBasedHome<Jugador>{
+class HomeJugadores{
 	
+	/* 
 	new() {
 		this.init
 	 }
@@ -398,6 +400,6 @@ return jugador
 
 
 }
-	
+*/	
 
 }

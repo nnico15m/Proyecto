@@ -6,6 +6,7 @@ import org.uqbar.commons.utils.ApplicationContext
 import java.util.ArrayList
 import uqbar.tpFutbol.domain.Jugador
 import java.util.Date
+import uqbar.tpFutbol.dao.JugadoresRepo
 
 /**
  * Application model que representa la búsqueda de {@link Celular}.
@@ -49,20 +50,20 @@ class BuscadorJugadores implements Serializable {
 	
 	def void buscar(){
 		results = new ArrayList<Jugador>
-		results = getHomeJugadores.search(getNombre, getApodo, getFecha, getDesdeHandicap, getHastaHandicap,getDesdePromUltPart,getHastaPromUltPart, tieneInfracciones)
+	//	results = getHomeJugadores.search(getNombre, getApodo, getFecha, getDesdeHandicap, getHastaHandicap,getDesdePromUltPart,getHastaPromUltPart, tieneInfracciones)
 	}
 	
 	def void buscarJugador(Jugador jugadorPedido){
 
 		datos = new ArrayList<Jugador>
-		datos = getHomeJugadores.search(getNombre, jugadorPedido.apodo, getFecha, getDesdeHandicap, getHastaHandicap, getDesdePromUltPart,getHastaPromUltPart, tieneInfracciones)
+	//	datos = getHomeJugadores.search(getNombre, jugadorPedido.apodo, getFecha, getDesdeHandicap, getHastaHandicap, getDesdePromUltPart,getHastaPromUltPart, tieneInfracciones)
 	
 	}
 	
 	def void buscarDatosJugador(Jugador jugadorPedido){
 
 		datos = new ArrayList<Jugador>
-		datos = getHomeJugadores.searchDatosJug(getNombre,jugadorPedido.apodo, getFecha, getDesdeHandicap, getHastaHandicap, getDesdePromUltPart,getHastaPromUltPart)
+	//	datos = getHomeJugadores.searchDatosJug(getNombre,jugadorPedido.apodo, getFecha, getDesdeHandicap, getHastaHandicap, getDesdePromUltPart,getHastaPromUltPart)
 		
 	}
 	
@@ -81,7 +82,10 @@ class BuscadorJugadores implements Serializable {
 	}
 	
 	
-
+	def fillJugadores() {
+		
+		this.results = new JugadoresRepo().getAll()
+	}
 
 	
 

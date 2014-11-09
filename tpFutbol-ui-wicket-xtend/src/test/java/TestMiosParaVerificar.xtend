@@ -351,7 +351,7 @@ def cuandoSeRechazaAUnPendienteSeRegistraElRechazo(){
 def unJugadorCalificaAOtro(){
 	juan.generarUnaCalificacionParaEseJug(carlos,2,"muerto",2)
 	Assert.assertTrue(carlos.calificaciones.size ==1)
-	Assert.assertTrue(carlos.calificaciones.filter[descripcion.contains('muerto')].size ==1)
+	Assert.assertTrue(carlos.calificaciones.filter[(nota ==2)].size ==1)
 	
 }
 

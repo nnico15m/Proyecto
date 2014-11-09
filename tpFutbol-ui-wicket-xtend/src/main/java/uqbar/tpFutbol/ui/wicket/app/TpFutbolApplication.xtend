@@ -8,8 +8,7 @@ import uqbar.tpFutbol.domain.HomeJugadores
 import uqbar.tpFutbol.ui.wicket.OrganizadorFutbolPage
 import uqbar.tpFutbol.domain.Partido
 import uqbar.tpFutbol.domain.HomePartidos
-
-
+import uqbar.tpFutbol.dao.SessionManager
 
 /**
  * 
@@ -18,7 +17,7 @@ class TpFutbolApplication extends WebApplication {
 	
 	override protected init() {
 		super.init()
-		
+		SessionManager::startApplication
 	
 		
 	

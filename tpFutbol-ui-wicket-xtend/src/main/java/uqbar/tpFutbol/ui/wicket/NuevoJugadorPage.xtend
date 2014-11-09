@@ -35,9 +35,9 @@ class NuevoJugadorPage extends WebPage {
 	}
 	
 	def void agregarAcciones(Form<Jugador> parent) {
-		parent.addChild(new XButton("aceptar").onClick = [| Jugador.home.create(jugador)
-			volver()
-		])
+	//	parent.addChild(new XButton("aceptar").onClick = [| Jugador.home.create(jugador)
+	//		volver()
+	//	])
 		
 	}
 	

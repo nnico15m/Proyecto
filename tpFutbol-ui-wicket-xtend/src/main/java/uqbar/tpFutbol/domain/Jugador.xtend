@@ -9,26 +9,47 @@ import java.util.List
 import uqbar.tpFutbol.inscripcion.TipoDeSuscripcion
 import uqbar.tpFutbol.observers.StubMensajero
 import uqbar.tpFutbol.ordenamiento.OrganizadorCommand
-import org.uqbar.commons.model.Entity
+import javax.persistence.Entity
 import uqbar.tpFutbol.inscripcion.Estandar
 import uqbar.tpFutbol.excepciones.LaInscripcionEstaCerradaException
 import java.util.Date
+import java.io.Serializable
+import org.uqbar.commons.utils.Observable
+import javax.persistence.Id
+import javax.persistence.GeneratedValue
+import javax.persistence.OneToMany
+import javax.persistence.CascadeType
 
-class Jugador extends Entity {
+//@Entity
+@Observable
+
+class Jugador implements Serializable {
 	
-	@Property String nombreJugador
-	@Property String apodo
-	@Property int nivelDeJuego
-	@Property int promedioCalificacionesUltPart
-	@Property int promedioCalificaciones
-	@Property Date fechaDeNacimiento //HASTA QUE SEPAMOS USAR FECHAS...
-	@Property List<Jugador> amigos = new ArrayList(25)
-	@Property List<Infracciones> infracciones = new ArrayList
-	@Property int cantPartidosJugados
+//	@Property String nombreJugador
+//	@Property String apodo
+//	@Property int nivelDeJuego
+//	@Property int promedioCalificacionesUltPart
+//	@Property int promedioCalificaciones
+//	@Property Date fechaDeNacimiento //HASTA QUE SEPAMOS USAR FECHAS...
+	private Long id
+	private String nombreJugador
+	private String apodo
+	private int nivelDeJuego
+	private int promedioCalificacionesUltPart
+	private int promedioCalificaciones
+	private Date fechaDeNacimiento 
+	//@Property List<Jugador> amigos = new ArrayList(25)
+	private List<Jugador> amigos = new ArrayList(25)
+	private List<Infracciones> infracciones = new ArrayList
+	private int cantPartidosJugados
+	//@Property List<Infracciones> infracciones = new ArrayList
+	//@Property int cantPartidosJugados
 	@Property TipoDeSuscripcion formaDeInscripcion
-	@Property String mail
+	//@Property String mail
+	private String mail
 	@Property StubMensajero mensajero
-	@Property List<Calificaciones> calificaciones = new ArrayList
+	//@Property List<Calificaciones> calificaciones = new ArrayList
+	private List<Calificaciones> calificaciones = new ArrayList
 	@Property List<Jugador> pendientesDeCalificar = new ArrayList
 	@Property ComunidadFutbolera comunidad
 	@Property ArrayList<Integer> listaCriterioDelJugador = new ArrayList<Integer>()
@@ -37,9 +58,112 @@ class Jugador extends Entity {
 
 		
 	
+	@Id
+	@GeneratedValue
+	def getId() {
+		id
+	}
+
+	def setId(Long value) {
+		id = value
+	}
+	
+	/** Constructor que necesita Hibernate */	
+	new() {
+		
+	}
+	
+	def getNombreJugador() {
+		nombreJugador
+	}
+
+	def void setNombreJugador(String value) {
+		nombreJugador = value
+	}	
+	
+	def getApodo() {
+		apodo
+	}
+
+	def void setApodo(String value) {
+		apodo = value
+	}	
+	
+	def getNivelDeJuego() {
+		nivelDeJuego
+	}
+
+	def void setNivelDeJuego(int value) {
+		nivelDeJuego = value
+	}
+	
+	def getPromedioCalificacionesUltPart() {
+		promedioCalificacionesUltPart
+	}
+
+	def void setPromedioCalificacionesUltPart(int value) {
+		promedioCalificacionesUltPart = value
+	}
+	
+	def getPromedioCalificaciones() {
+		promedioCalificaciones
+	}
+
+	def void setPromedioCalificaciones(int value) {
+		promedioCalificaciones = value
+	}
+	
+	def getFechaDeNacimiento() {
+		fechaDeNacimiento
+	}
+
+	def void setFechaDeNacimiento(Date value) {
+		fechaDeNacimiento = value
+	}					
 	
 	
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=false)
+	def getAmigos() {
+		amigos
+	}
+
+	def void setAmigos(List<Jugador> value) {
+		amigos = value
+	}
 	
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+	def getInfracciones() {
+		infracciones
+	}
+
+	def void setInfracciones(List<Infracciones> value) {
+		infracciones = value
+	}
+	
+	def getCantPartidosJugados() {
+		cantPartidosJugados
+	}
+
+	def void setCantPartidosJugadost(int value) {
+		cantPartidosJugados = value
+	}
+	
+	def getMail() {
+		mail
+	}
+
+	def void setMail(String value) {
+		mail = value
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+	def getCalificaciones() {
+		calificaciones
+	}
+
+	def void setCalificaciones(List<Calificaciones> value) {
+		calificaciones = value
+	}
 	
 	
 	

@@ -151,7 +151,7 @@ class GenerarEquiposPage extends WebPage{
 	def dividirEquiposP(Partido partidoPed, DividirEquiposCommand criterio){
 	
 		if (partidoPed.inscripciones.class == InscripcionAbierta)	{
-		Partido.home.update(partidoPed.dividirEquiposPrueba(criterio))
+		//Partido.home.update(partidoPed.dividirEquiposPrueba(criterio))
 		
 		
 		}
@@ -171,7 +171,7 @@ class GenerarEquiposPage extends WebPage{
 			error("No puede cerrarse un partido sin equipos")
 		}
 		else{
-		Partido.home.update(partidoPed.confirmaTusEquiposPrueba())
+	//	Partido.home.update(partidoPed.confirmaTusEquiposPrueba())
 		}
 		
 			
@@ -182,13 +182,13 @@ class GenerarEquiposPage extends WebPage{
 	
 	def ordenarPartido (Partido partidoPed, OrganizadorCommand criterio){
 		
-		 Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(criterio,1))
+		// Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(criterio,1))
 		
 	}
 	
 	def ordenarPartidoCompuesto (Partido partidoPed, OrganizadorCommand criterio){
 		if (generador.cantPartidos != 0){
-		 Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(criterio,((generador.cantPartidos)))	)
+	//	 Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(criterio,((generador.cantPartidos)))	)
 		}
 		else{
 			error("Tiene que elegir la cantidad de partidos que desea ver")
@@ -197,7 +197,7 @@ class GenerarEquiposPage extends WebPage{
 	
 	def ordenarPartidoMixto (Partido partidoPed){
 		
-		 Partido.home.update(partidoPed.ordenarLaListaPorPromedioDeVariosCriteriosPrueba(partidoPed,generador.cantPartidos))
+		// Partido.home.update(partidoPed.ordenarLaListaPorPromedioDeVariosCriteriosPrueba(partidoPed,generador.cantPartidos))
 		
 	}
 	

@@ -43,8 +43,8 @@ class GeneradorPartidos implements Serializable {
 	def void buscarPartidos(){
 		//resultados = new ArrayList<Partido>
 		//listaE = new ArrayList<Partido>
-		resultados = getHomePartidos.search()
-		listaE = getHomePartidos.search()
+//		resultados = getHomePartidos.search()
+//		listaE = getHomePartidos.search()
 		
 		
 	}
@@ -60,7 +60,7 @@ class GeneradorPartidos implements Serializable {
 		
 	
 		val codPartidoActual = partido.codPartido
-		equipos = getHomePartidos.search().findFirst[codPartido == codPartidoActual].participantes
+	//	equipos = getHomePartidos.search().findFirst[codPartido == codPartidoActual].participantes
 		
 	}
 	
@@ -89,7 +89,7 @@ class GeneradorPartidos implements Serializable {
 	
 	def obtenerParticipantesP (Partido partidoPed){
 		
-		homePartidos.obtenerParticipantes(partidoPed)
+	//	homePartidos.obtenerParticipantes(partidoPed)
 
 		
 		

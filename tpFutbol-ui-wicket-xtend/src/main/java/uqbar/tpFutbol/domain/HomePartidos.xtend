@@ -16,9 +16,9 @@ import java.util.Date
 import java.text.SimpleDateFormat
 import java.util.Collections
 
-class HomePartidos extends CollectionBasedHome<Partido>{
-	
-	
+//class HomePartidos extends CollectionBasedHome<Partido>{
+class HomePartidos {	
+	/* 
 	
 new() {
 this.init
@@ -147,6 +147,6 @@ def HomeJugadores getHomeJugadores() {
 
 
 
-
+*/
  
 }

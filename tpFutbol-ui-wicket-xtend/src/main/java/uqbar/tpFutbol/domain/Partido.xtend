@@ -7,22 +7,71 @@ import uqbar.tpFutbol.inscripcion.TipoDeInscripcion
 import uqbar.tpFutbol.ordenamiento.OrganizadorCommand
 import uqbar.tpFutbol.inscripcion.InscripcionCerrada
 import uqbar.tpFutbol.division.DividirEquiposCommand
-import org.uqbar.commons.model.Entity
 import java.util.Date
+import org.uqbar.commons.utils.Observable
+import java.io.Serializable
+import javax.persistence.Id
+import javax.persistence.GeneratedValue
+import javax.persistence.Entity
 
-class Partido extends Entity {
+//@Entity SI PONGO EL enTITY NO ANDA !!!!
+@Observable
+class Partido  implements Serializable {
 	
-	@Property Date fecha
-	@Property double hora
+//	@Property Date fecha
+	private Long id
+	private Date fecha	
+	private double hora
+	//@Property double hora
 	@Property ComunidadFutbolera comunidad
 	@Property OrganizadorCommand criterioDeOrdenamiento
 	@Property DividirEquiposCommand criterioDeDivision
-	@Property int codPartido
+	//@Property int codPartido
+	private int codPartido
 	@Property List<Jugador> equipo1 = new ArrayList (5)
 	@Property List<Jugador> equipo2 = new ArrayList (5)
 	@Property TipoDeInscripcion inscripciones
 	
 	
+	
+/** Constructor que necesita Hibernate */	
+	new() {
+		
+	}
+	
+	@Id
+	@GeneratedValue
+	def getId() {
+		this.id
+	}
+	
+	def setId(Long id) {
+		this.id = id
+	}
+	
+	def getFecha(){
+		fecha
+	}
+	
+	def setFecha(Date fecha) {
+		this.fecha = fecha
+	}	
+	
+	def getHora(){
+		hora
+	}
+	
+	def setHora(double hora) {
+		this.hora = hora
+	}
+	
+	def getCodPartido(){
+		codPartido
+	}
+	
+	def setCodPartido(int codPartido) {
+		this.codPartido = codPartido
+	}
 
 //es una prueba
 	def participantes(){
