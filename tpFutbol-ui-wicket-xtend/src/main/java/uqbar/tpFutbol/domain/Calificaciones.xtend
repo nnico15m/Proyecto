@@ -1,7 +1,7 @@
 package uqbar.tpFutbol.domain
 
-import javax.persistence.Entity
 import org.uqbar.commons.utils.Observable
+import javax.persistence.Entity
 import java.io.Serializable
 import javax.persistence.Id
 import javax.persistence.GeneratedValue
@@ -34,10 +34,6 @@ class Calificaciones implements Serializable {
 		id = value
 	}
 	
-	/** Constructor que necesita Hibernate */	
-	new() {
-		
-	}
 	
 	def getNota() {
 		nota
@@ -47,7 +43,7 @@ class Calificaciones implements Serializable {
 		nota = value
 	}
 	def getDescripcion() {
-		nota
+		descripcion
 	}
 
 	def void setDescripcion(String value) {

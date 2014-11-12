@@ -10,8 +10,6 @@ import uqbar.tpFutbol.inscripcion.TipoDeSuscripcion
 import uqbar.tpFutbol.observers.StubMensajero
 import uqbar.tpFutbol.ordenamiento.OrganizadorCommand
 import javax.persistence.Entity
-import uqbar.tpFutbol.inscripcion.Estandar
-import uqbar.tpFutbol.excepciones.LaInscripcionEstaCerradaException
 import java.util.Date
 import java.io.Serializable
 import org.uqbar.commons.utils.Observable
@@ -19,8 +17,9 @@ import javax.persistence.Id
 import javax.persistence.GeneratedValue
 import javax.persistence.OneToMany
 import javax.persistence.CascadeType
+import javax.persistence.ManyToOne
 
-//@Entity
+@Entity
 @Observable
 
 class Jugador implements Serializable {
@@ -31,31 +30,46 @@ class Jugador implements Serializable {
 //	@Property int promedioCalificacionesUltPart
 //	@Property int promedioCalificaciones
 //	@Property Date fechaDeNacimiento //HASTA QUE SEPAMOS USAR FECHAS...
+	//@Property List<Jugador> amigos = new ArrayList(25)
+//@Property List<Infracciones> infracciones = new ArrayList
+	//@Property int cantPartidosJugados
+	//@Property String mail
+	//@Property List<Calificaciones> calificaciones = new ArrayList
+	
 	private Long id
 	private String nombreJugador
 	private String apodo
-	private int nivelDeJuego
-	private int promedioCalificacionesUltPart
-	private int promedioCalificaciones
 	private Date fechaDeNacimiento 
-	//@Property List<Jugador> amigos = new ArrayList(25)
-	private List<Jugador> amigos = new ArrayList(25)
+	private int nivelDeJuego
+	private int promedioCalificaciones
+	private int promedioCalificacionesUltPart
 	private List<Infracciones> infracciones = new ArrayList
-	private int cantPartidosJugados
-	//@Property List<Infracciones> infracciones = new ArrayList
-	//@Property int cantPartidosJugados
-	@Property TipoDeSuscripcion formaDeInscripcion
-	//@Property String mail
-	private String mail
-	@Property StubMensajero mensajero
-	//@Property List<Calificaciones> calificaciones = new ArrayList
+	private List<Jugador> amigos = new ArrayList(25)
 	private List<Calificaciones> calificaciones = new ArrayList
-	@Property List<Jugador> pendientesDeCalificar = new ArrayList
-	@Property ComunidadFutbolera comunidad
-	@Property ArrayList<Integer> listaCriterioDelJugador = new ArrayList<Integer>()
-	@Property int promedioConVariosCriteriosAplicados
+	private int cantPartidosJugados
+	private String mail
+	private int promedioConVariosCriteriosAplicados
+	private ComunidadFutbolera comunidad
 	
+	
+	//@Property TipoDeSuscripcion formaDeInscripcion
+	//@Property StubMensajero mensajero
+	//@Property List<Jugador> pendientesDeCalificar = new ArrayList
+	//@Property ComunidadFutbolera comunidad
+	//@Property ArrayList<Integer> listaCriterioDelJugador = new ArrayList<Integer>()
+	//@Property int promedioConVariosCriteriosAplicados
 
+ 	private ArrayList<Integer> listaCriterioDelJugador = new ArrayList<Integer>()
+ 	private StubMensajero mensajero
+	private List<Jugador> pendientes = new ArrayList
+	private TipoDeSuscripcion formaDeInscripcion
+	private List<Jugador> equipo1
+	private List<Jugador> equipo2
+	
+	
+	
+	
+	
 		
 	
 	@Id
@@ -121,17 +135,10 @@ class Jugador implements Serializable {
 		fechaDeNacimiento = value
 	}					
 	
+	 
 	
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=false)
-	def getAmigos() {
-		amigos
-	}
-
-	def void setAmigos(List<Jugador> value) {
-		amigos = value
-	}
 	
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="jugador")
 	def getInfracciones() {
 		infracciones
 	}
@@ -139,12 +146,21 @@ class Jugador implements Serializable {
 	def void setInfracciones(List<Infracciones> value) {
 		infracciones = value
 	}
+	 
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="amigos")
+	def getAmigos() {
+		amigos
+	}
+
+	def void setAmigos(List<Jugador> value) {
+		amigos= value
+	}
 	
 	def getCantPartidosJugados() {
 		cantPartidosJugados
 	}
 
-	def void setCantPartidosJugadost(int value) {
+	def void setCantPartidosJugados(int value) {
 		cantPartidosJugados = value
 	}
 	
@@ -155,8 +171,8 @@ class Jugador implements Serializable {
 	def void setMail(String value) {
 		mail = value
 	}
-	
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+	  
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="jugador")
 	def getCalificaciones() {
 		calificaciones
 	}
@@ -165,8 +181,91 @@ class Jugador implements Serializable {
 		calificaciones = value
 	}
 	
+		def getPromedioConVariosCriteriosAplicados() {
+		promedioConVariosCriteriosAplicados
+	}
+
+	def void setPromedioConVariosCriteriosAplicados(int value) {
+		promedioConVariosCriteriosAplicados = value
+	}
+	
+	//PROBANDO NO SE SI FUNCIONA ASI
 	
 	
+	def getListaCriterioDelJugador(){
+		listaCriterioDelJugador
+	}
+	
+	def setListaCriterioDelJugador(ArrayList<Integer> c) {
+		this.listaCriterioDelJugador = c
+	}
+	
+
+	
+	def getMensajero() {
+		mensajero
+	}
+
+	def void setMensajero(StubMensajero value) {
+		mensajero = value
+	}
+	 
+	
+	@ManyToOne
+	def getFormaDeInscripcion() {
+		formaDeInscripcion
+	}
+
+	def void setFormaDeInscripcion(TipoDeSuscripcion value) {
+		formaDeInscripcion = value
+	}
+
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="pendientes")
+	def getPendientes() {
+	pendientes
+	}
+
+	def void setPendientes(List<Calificaciones> value) {
+	pendientes = value
+	} 
+	 
+	
+	@ManyToOne
+	def getComunidad(){ 
+		comunidad
+	}
+	
+	def setComunidad(ComunidadFutbolera c) {
+		comunidad = c
+	}
+	
+	@ManyToOne
+	def getEquipo1(){ 
+		comunidad
+	}
+	
+	def setEquipo(List<Jugador> c) {
+		equipo1 = c
+	}
+	
+	@ManyToOne
+	def getEquipo2(){ 
+		comunidad
+	}
+	
+	def setEquipo2(List<Jugador> c) {
+		equipo2 = c
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
 	
 	//new(String nombreJugador, String apodo, int nivelDeJuego, int promedioCalificacionesUltPart, int promedioCalificaciones,int fechaDeNacimiento, ArrayList<Jugador> amigos, ArrayList<Infracciones> infracciones, int cantPartidosJugados, TipoDeSuscripcion formaDeInscripcion,String mail,StubMensajero mensajero, List<Calificaciones>  calificaciones,List<Jugador> pendientesDeCalificar,ComunidadFutbolera comunidad,ArrayList<Integer> listaCriterioDelJugador,  int m) {
 //		
@@ -228,12 +327,12 @@ class Jugador implements Serializable {
 	}
 	
 	def agregarALaListaDependientesDeCalificar(Jugador jug){
-		pendientesDeCalificar.add(jug)
+		pendientes.add(jug)
 	}
 	
 	
 	def generarUnaCalificacionParaEseJug(Jugador otroJug, int nota, String descripcion,int codPartidoJugado){
-		this.pendientesDeCalificar.remove(otroJug)
+		this.pendientes.remove(otroJug)
 		var nuevaCalificacion = new Calificaciones(codPartidoJugado,nota,descripcion)
 		otroJug.agregarCalificacion(nuevaCalificacion)
 		
@@ -373,7 +472,7 @@ class Jugador implements Serializable {
 		jugador.mail = mail
 		jugador.mensajero = mensajero
 		jugador.calificaciones = calificaciones
-		jugador.pendientesDeCalificar = pendientesDeCalificar
+		jugador.pendientes = pendientesDeCalificar
 		jugador.comunidad = comunidad
 		jugador.listaCriterioDelJugador = listaCriterioDelJugador
 		jugador.promedioConVariosCriteriosAplicados = promedioConVariosCriteriosAplicados

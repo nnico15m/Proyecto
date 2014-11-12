@@ -375,9 +375,9 @@ def unJugadorCalificaATodosLosQueJugaronUnPartido(){
 	partidoInagural.inscribiSiPodesA(martin)
 	partidoInagural.seJugoElPartido()
 	
-	Assert.assertTrue(carlos.pendientesDeCalificar.length == 2)
-	Assert.assertTrue(juan.pendientesDeCalificar.length == 2)
-	Assert.assertTrue(martin.pendientesDeCalificar.length == 2)
+	Assert.assertTrue(carlos.pendientes.length == 2)
+	Assert.assertTrue(juan.pendientes.length == 2)
+	Assert.assertTrue(martin.pendientes.length == 2)
 }	
 /* 
 @Test

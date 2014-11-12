@@ -13,8 +13,11 @@ import java.io.Serializable
 import javax.persistence.Id
 import javax.persistence.GeneratedValue
 import javax.persistence.Entity
+import javax.persistence.ManyToOne
+import javax.persistence.OneToMany
+import javax.persistence.CascadeType
 
-//@Entity SI PONGO EL enTITY NO ANDA !!!!
+@Entity 
 @Observable
 class Partido  implements Serializable {
 	
@@ -23,16 +26,24 @@ class Partido  implements Serializable {
 	private Date fecha	
 	private double hora
 	//@Property double hora
-	@Property ComunidadFutbolera comunidad
-	@Property OrganizadorCommand criterioDeOrdenamiento
-	@Property DividirEquiposCommand criterioDeDivision
+	//@Property ComunidadFutbolera comunidad
+	private ComunidadFutbolera comunidad
+	//@Property OrganizadorCommand criterioDeOrdenamiento
+	//@Property DividirEquiposCommand criterioDeDivision
 	//@Property int codPartido
 	private int codPartido
-	@Property List<Jugador> equipo1 = new ArrayList (5)
-	@Property List<Jugador> equipo2 = new ArrayList (5)
-	@Property TipoDeInscripcion inscripciones
+	//@Property List<Jugador> equipo1 = new ArrayList (5)
+	//@Property List<Jugador> equipo2 = new ArrayList (5)
+	//@Property TipoDeInscripcion inscripciones
+	
+	private List<Jugador> equipo1 = new ArrayList (5) 
+	private List<Jugador> equipo2 = new ArrayList (5)
 	
 	
+	
+	private TipoDeInscripcion inscripciones
+	private OrganizadorCommand criterioDeOrdenamiento
+	private DividirEquiposCommand criterioDeDivision
 	
 /** Constructor que necesita Hibernate */	
 	new() {
@@ -72,6 +83,65 @@ class Partido  implements Serializable {
 	def setCodPartido(int codPartido) {
 		this.codPartido = codPartido
 	}
+	@ManyToOne
+	def getComunidad(){
+		this.comunidad
+	}
+	
+	def setComunidad(ComunidadFutbolera c) {
+		this.comunidad = c
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="equipo1")
+	def getEquipo1(){
+		this.equipo1
+	}
+	
+	def setEquipo1(List<Jugador> equipo1) {
+		this.equipo1 = equipo1
+	}
+	
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="equipo2")
+	def getEquipo2(){
+		this.equipo2
+	}
+	
+	def setEquipo2(List<Jugador> equipo2) {
+		this.equipo2 = equipo2
+	}
+	 
+	def getInscripciones(){
+		inscripciones
+	}
+	
+	def setInscripciones(TipoDeInscripcion inscripciones) {
+		this.inscripciones = inscripciones
+	}
+	
+	def getCriterioDeOrdenamiento(){
+		this.criterioDeOrdenamiento
+	}
+	
+	def setCriterioDeOrdenamiento(OrganizadorCommand criterioDeOrdenamiento) {
+		this.criterioDeOrdenamiento = criterioDeOrdenamiento
+	}
+	
+	def getCriterioDeDivision(){
+		this.criterioDeDivision
+	}
+	
+	def setCriterioDeDivision(DividirEquiposCommand criterioDeDivision) {
+		this.criterioDeDivision = criterioDeDivision
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 //es una prueba
 	def participantes(){

@@ -5,6 +5,12 @@ import org.hibernate.SessionFactory
 import org.hibernate.cfg.Configuration
 import uqbar.tpFutbol.domain.Jugador
 import uqbar.tpFutbol.domain.Partido
+import uqbar.tpFutbol.domain.Infracciones
+import uqbar.tpFutbol.domain.Calificaciones
+import uqbar.tpFutbol.domain.ComunidadFutbolera
+import uqbar.tpFutbol.domain.Amigos
+import uqbar.tpFutbol.domain.Pendientes
+import uqbar.tpFutbol.domain.Mensajero
 
 class SessionManager {
 	static ThreadLocal<Session> tlSession = new ThreadLocal
@@ -34,6 +40,13 @@ class SessionManager {
 	def static addClasses(Configuration cfg) {
 		cfg.addAnnotatedClass(Jugador)
 		cfg.addAnnotatedClass(Partido)
+		cfg.addAnnotatedClass(Infracciones)
+		cfg.addAnnotatedClass(Calificaciones)
+		cfg.addAnnotatedClass(ComunidadFutbolera)
+		cfg.addAnnotatedClass(Amigos)
+		cfg.addAnnotatedClass(Pendientes)
+		cfg.addAnnotatedClass(Mensajero)
+		
 	}
 	
 	def static startApplication(){

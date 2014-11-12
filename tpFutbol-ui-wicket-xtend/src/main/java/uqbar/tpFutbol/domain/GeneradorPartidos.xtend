@@ -7,6 +7,7 @@ import java.util.ArrayList
 import uqbar.tpFutbol.domain.HomePartidos
 import uqbar.tpFutbol.ordenamiento.OrganizadorCommand
 import org.uqbar.commons.model.UserException
+import org.uqbar.commons.utils.Observable
 
 /**
  * Application model que representa la búsqueda de {@link Celular}.
@@ -24,7 +25,7 @@ import org.uqbar.commons.model.UserException
  *
  * @author npasserini
  */
-@org.uqbar.commons.utils.Observable
+@Observable
 class GeneradorPartidos implements Serializable {
 
 

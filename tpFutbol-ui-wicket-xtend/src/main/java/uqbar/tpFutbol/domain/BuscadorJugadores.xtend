@@ -7,6 +7,7 @@ import java.util.ArrayList
 import uqbar.tpFutbol.domain.Jugador
 import java.util.Date
 import uqbar.tpFutbol.dao.JugadoresRepo
+import org.uqbar.commons.utils.Observable
 
 /**
  * Application model que representa la búsqueda de {@link Celular}.
@@ -24,7 +25,7 @@ import uqbar.tpFutbol.dao.JugadoresRepo
  *
  * @author npasserini
  */
-@org.uqbar.commons.utils.Observable
+@Observable
 class BuscadorJugadores implements Serializable {
 
 	@Property String nombre

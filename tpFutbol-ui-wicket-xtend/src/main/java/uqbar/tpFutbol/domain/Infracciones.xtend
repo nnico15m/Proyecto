@@ -1,11 +1,11 @@
 package uqbar.tpFutbol.domain
 
-import org.uqbar.commons.utils.Observable
 import javax.persistence.Entity
-import java.io.Serializable
-import javax.persistence.Id
 import javax.persistence.GeneratedValue
+import javax.persistence.Id
 import javax.persistence.ManyToOne
+import org.uqbar.commons.utils.Observable
+import java.io.Serializable
 
 @Entity
 @Observable
@@ -17,6 +17,8 @@ class Infracciones  implements Serializable{
 	private double duracion
 	private Jugador jugador
 	
+	new() {
+	}
 	
 	@Id
 	@GeneratedValue
@@ -28,10 +30,6 @@ class Infracciones  implements Serializable{
 		id = value
 	}
 	
-	/** Constructor que necesita Hibernate */	
-	new() {
-		
-	}
 	
 	def getMotivo() {
 		motivo
@@ -45,11 +43,11 @@ class Infracciones  implements Serializable{
 		duracion
 	}
 
-	def void setDuracion(String value) {
+	def void setDuracion(double value) {
 		duracion= value
 	}
 	
-	@ManyToOne
+	@ManyToOne 
 	def getJugador() {
 		jugador
 	}
