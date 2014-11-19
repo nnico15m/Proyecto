@@ -8,7 +8,7 @@ import uqbar.tpFutbol.domain.Jugador
 import org.uqbar.commons.model.Entity
 import uqbar.tpFutbol.domain.HomePartidos
 
-class DividirPorParEImpar implements DividirEquiposCommand    {
+class DividirPorParEImpar extends DividirEquiposCommand    {
 	
 	override dividirEquipos(Partido partido){
 		
@@ -16,7 +16,7 @@ class DividirPorParEImpar implements DividirEquiposCommand    {
 		val listaPares = partido.participantes.filter[jug|jug.unJugEsPar(partido)].toList
 
  		
-		partido.setEquipo1(listaImpares)
+		 partido.setEquipo1(listaImpares)
 		partido.setEquipo2(listaPares)
 		
 		

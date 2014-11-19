@@ -18,10 +18,12 @@ import javax.persistence.GeneratedValue
 import javax.persistence.OneToMany
 import javax.persistence.CascadeType
 import javax.persistence.ManyToOne
+import javax.persistence.Transient
+import javax.persistence.Table
 
 @Entity
 @Observable
-
+@Table(name="Jugadores") 
 class Jugador implements Serializable {
 	
 //	@Property String nombreJugador
@@ -63,8 +65,8 @@ class Jugador implements Serializable {
  	private StubMensajero mensajero
 	private List<Jugador> pendientes = new ArrayList
 	private TipoDeSuscripcion formaDeInscripcion
-	private List<Jugador> equipo1
-	private List<Jugador> equipo2
+	//private List<Jugador> equipo1
+	//private List<Jugador> equipo2
 	
 	
 	
@@ -201,7 +203,7 @@ class Jugador implements Serializable {
 	}
 	
 
-	
+	@Transient
 	def getMensajero() {
 		mensajero
 	}
@@ -225,7 +227,7 @@ class Jugador implements Serializable {
 	pendientes
 	}
 
-	def void setPendientes(List<Calificaciones> value) {
+	def void setPendientes(List<Jugador> value) {
 	pendientes = value
 	} 
 	 
@@ -238,7 +240,7 @@ class Jugador implements Serializable {
 	def setComunidad(ComunidadFutbolera c) {
 		comunidad = c
 	}
-	
+	/*
 	@ManyToOne
 	def getEquipo1(){ 
 		comunidad
@@ -256,7 +258,7 @@ class Jugador implements Serializable {
 	def setEquipo2(List<Jugador> c) {
 		equipo2 = c
 	}
-	
+	*/
 	
 	
 	
@@ -279,7 +281,7 @@ class Jugador implements Serializable {
 
 	
 	def prioridad() {
-		this.formaDeInscripcion.prioridad()
+		this.formaDeInscripcion.getPrioridad()
 	}
 	
 	// AHORA TENEMOS QUE INSCRIBIRNOS POR AC�

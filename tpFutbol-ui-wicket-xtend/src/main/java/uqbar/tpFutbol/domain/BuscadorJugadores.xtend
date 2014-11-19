@@ -51,6 +51,7 @@ class BuscadorJugadores implements Serializable {
 	
 	def void buscar(){
 		results = new ArrayList<Jugador>
+		results = new JugadoresRepo().getAll()
 	//	results = getHomeJugadores.search(getNombre, getApodo, getFecha, getDesdeHandicap, getHastaHandicap,getDesdePromUltPart,getHastaPromUltPart, tieneInfracciones)
 	}
 	
@@ -89,12 +90,12 @@ class BuscadorJugadores implements Serializable {
 	}
 
 	
-
+/*
 	
 	def HomeJugadores getHomeJugadores() {
 		ApplicationContext::instance.getSingleton(typeof(Jugador))
 	}
-	
+*/	
 	
 
 }

@@ -11,6 +11,11 @@ import uqbar.tpFutbol.domain.ComunidadFutbolera
 import uqbar.tpFutbol.domain.Amigos
 import uqbar.tpFutbol.domain.Pendientes
 import uqbar.tpFutbol.domain.Mensajero
+import uqbar.tpFutbol.inscripcion.TipoDeSuscripcion
+import uqbar.tpFutbol.inscripcion.Estandar
+import uqbar.tpFutbol.inscripcion.Condicional
+import uqbar.tpFutbol.inscripcion.Solidaria
+import uqbar.tpFutbol.division.DividirEquiposCommand
 
 class SessionManager {
 	static ThreadLocal<Session> tlSession = new ThreadLocal
@@ -45,8 +50,12 @@ class SessionManager {
 		cfg.addAnnotatedClass(ComunidadFutbolera)
 		cfg.addAnnotatedClass(Amigos)
 		cfg.addAnnotatedClass(Pendientes)
-		cfg.addAnnotatedClass(Mensajero)
-		
+//		cfg.addAnnotatedClass(Mensajero)
+//		cfg.addAnnotatedClass(TipoDeSuscripcion)
+		cfg.addAnnotatedClass(Estandar)
+		cfg.addAnnotatedClass(Condicional)
+		cfg.addAnnotatedClass(Solidaria)
+		cfg.addAnnotatedClass(DividirEquiposCommand)
 	}
 	
 	def static startApplication(){

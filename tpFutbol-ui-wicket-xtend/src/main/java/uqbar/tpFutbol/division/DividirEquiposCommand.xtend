@@ -5,7 +5,7 @@ package uqbar.tpFutbol.division
 import uqbar.tpFutbol.domain.Partido
 import org.uqbar.commons.model.Entity
 
-interface DividirEquiposCommand  {
+abstract class DividirEquiposCommand  {
 
 
 def void dividirEquipos(Partido partido)

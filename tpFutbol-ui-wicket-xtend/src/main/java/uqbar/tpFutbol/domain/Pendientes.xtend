@@ -6,10 +6,11 @@ import java.io.Serializable
 import javax.persistence.Id
 import javax.persistence.GeneratedValue
 import javax.persistence.ManyToOne
+import javax.persistence.Table
 
 @Entity
 @Observable
-
+@Table(name="Pendientedecalificar")
 class Pendientes implements Serializable {
 	
 	private Long id

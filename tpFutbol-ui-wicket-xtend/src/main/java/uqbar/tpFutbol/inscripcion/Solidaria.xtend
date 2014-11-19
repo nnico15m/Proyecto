@@ -8,16 +8,42 @@ import javax.persistence.CascadeType
 import uqbar.tpFutbol.domain.Jugador
 import javax.persistence.Entity
 import org.uqbar.commons.utils.Observable
+import javax.persistence.Table
+import javax.persistence.DiscriminatorValue
 
 @Entity
+//@Table(name="inscripcion")
+//@DiscriminatorValue(value="S")
 @Observable
 
-class Solidaria implements TipoDeSuscripcion {
+class Solidaria extends TipoDeSuscripcion {
 	
-	@Property int prioridad = 1
+	private int prioridad = 1
+	private Long id
+	
+	new() {
+	}
+	
+	
+	@Id
+	@GeneratedValue
+	override getId() {
+		id
+	}
 
-	override prioridad() {
-		this.getPrioridad
+	override setId(Long value) {
+		id = value
+	}
+	
+
+	override getPrioridad() {
+		prioridad
+	}
+	
+
+	
+	override setPrioridad(int n) {
+		prioridad = n
 	}
 
 

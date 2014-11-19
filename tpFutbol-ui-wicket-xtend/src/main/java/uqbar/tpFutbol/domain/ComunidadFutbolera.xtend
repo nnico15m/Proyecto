@@ -13,7 +13,7 @@ import javax.persistence.Table
 
 @Entity
 
-@Table(name="comunidadfutbolera")
+@Table(name="Comunidades")
 @Observable
 class ComunidadFutbolera implements Serializable {
 	
@@ -42,7 +42,7 @@ class ComunidadFutbolera implements Serializable {
 	}
 	 
 	//@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="comunidadfutbolera")
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true,  mappedBy="comunidad")
 	def getJugadores(){ 
 		this.jugadores
 	}
@@ -52,7 +52,7 @@ class ComunidadFutbolera implements Serializable {
 	}
 	 
 	//@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="comunidadFutbolera")
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="comunidad")
 	def getPartidos(){ 
 		this.partidos
 	}

@@ -44,7 +44,7 @@ class JugadoresRepo {
 	}
 	
 	def List<Jugador> getAll() {
-		val query = session.createQuery("from Jugador")
+		val query =  session.createQuery("from Jugadores")
 		query.list()
 	}
 }

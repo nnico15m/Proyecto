@@ -16,9 +16,13 @@ import javax.persistence.Entity
 import javax.persistence.ManyToOne
 import javax.persistence.OneToMany
 import javax.persistence.CascadeType
+import javax.persistence.Column
+import javax.persistence.Transient
+import javax.persistence.Table
 
 @Entity 
 @Observable
+@Table(name ="Partidos")
 class Partido  implements Serializable {
 	
 //	@Property Date fecha
@@ -76,6 +80,7 @@ class Partido  implements Serializable {
 		this.hora = hora
 	}
 	
+	@Transient
 	def getCodPartido(){
 		codPartido
 	}
@@ -83,6 +88,8 @@ class Partido  implements Serializable {
 	def setCodPartido(int codPartido) {
 		this.codPartido = codPartido
 	}
+	
+	
 	@ManyToOne
 	def getComunidad(){
 		this.comunidad
@@ -92,7 +99,8 @@ class Partido  implements Serializable {
 		this.comunidad = c
 	}
 	
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="equipo1")
+	@Transient
+	//@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="equipo1")
 	def getEquipo1(){
 		this.equipo1
 	}
@@ -101,7 +109,8 @@ class Partido  implements Serializable {
 		this.equipo1 = equipo1
 	}
 	
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="equipo2")
+	@Transient
+	//@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="equipo2")
 	def getEquipo2(){
 		this.equipo2
 	}
@@ -110,6 +119,7 @@ class Partido  implements Serializable {
 		this.equipo2 = equipo2
 	}
 	 
+	@Transient
 	def getInscripciones(){
 		inscripciones
 	}
@@ -118,6 +128,8 @@ class Partido  implements Serializable {
 		this.inscripciones = inscripciones
 	}
 	
+	@Transient
+	//@Column(name = "criterioOrdenamiento")
 	def getCriterioDeOrdenamiento(){
 		this.criterioDeOrdenamiento
 	}
@@ -126,6 +138,8 @@ class Partido  implements Serializable {
 		this.criterioDeOrdenamiento = criterioDeOrdenamiento
 	}
 	
+	@Transient
+	//@Column(name = "criterioDivision")
 	def getCriterioDeDivision(){
 		this.criterioDeDivision
 	}
@@ -134,7 +148,7 @@ class Partido  implements Serializable {
 		this.criterioDeDivision = criterioDeDivision
 	}
 	
-	
+
 	
 	
 	

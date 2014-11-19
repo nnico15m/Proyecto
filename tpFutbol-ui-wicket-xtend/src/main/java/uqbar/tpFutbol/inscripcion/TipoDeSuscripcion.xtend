@@ -12,14 +12,19 @@ import javax.persistence.OneToMany
 import javax.persistence.CascadeType
 import java.util.List
 import javax.persistence.Table
+import javax.persistence.Inheritance
+import javax.persistence.InheritanceType
+import javax.persistence.DiscriminatorColumn
+import javax.persistence.DiscriminatorValue
+import javax.persistence.DiscriminatorType
 
 @Entity
-@Table(name="inscripcion")
+@Table(name="Tiposdeinscripcion")
 @Observable
-interface TipoDeSuscripcion  {
-	
-/* 	private Long id
-	private List<Jugador> jugadores
+abstract class TipoDeSuscripcion  implements Serializable{
+	 
+ 	private Long id
+//	private List<Jugador> jugadores
 	
 	new() {
 	}
@@ -35,7 +40,7 @@ interface TipoDeSuscripcion  {
 		id = value
 	}
 	
-	
+/* 
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)
 	def getJugadores() {
 		jugadores
@@ -43,11 +48,12 @@ interface TipoDeSuscripcion  {
 	
 	
 
-	def void setJugadores(Jugador value) {
+	def void setJugadores(List<Jugador> value) {
 		jugadores = value
 	}
-	
-	*/	
-	def  int prioridad()
+*/	
+
+	def  int getPrioridad()
+	def  int setPrioridad(int n)
 	
 }
