@@ -10,6 +10,8 @@ import javax.persistence.CascadeType
 import javax.persistence.Id
 import javax.persistence.GeneratedValue
 import javax.persistence.Table
+import javax.persistence.Column
+import javax.persistence.Transient
 
 @Entity
 
@@ -40,9 +42,10 @@ class ComunidadFutbolera implements Serializable {
 	new() {
 		
 	}
-	 
-	//@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="comunidadfutbolera")
+	
+	@Transient
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true,  mappedBy="comunidad")
+	@Column(name="idComunidad")
 	def getJugadores(){ 
 		this.jugadores
 	}
@@ -51,8 +54,10 @@ class ComunidadFutbolera implements Serializable {
 		this.jugadores = c
 	}
 	 
-	//@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="comunidadFutbolera")
+
+	@Transient
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="comunidad")
+	@Column(name="idComunidad")
 	def getPartidos(){ 
 		this.partidos
 	}

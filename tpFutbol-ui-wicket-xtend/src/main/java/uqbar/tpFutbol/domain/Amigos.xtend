@@ -16,7 +16,7 @@ class Amigos implements Serializable {
 	
 	
 	
-	private Long id
+	 private Long id
 	private Jugador jugador
 	
 	new() {

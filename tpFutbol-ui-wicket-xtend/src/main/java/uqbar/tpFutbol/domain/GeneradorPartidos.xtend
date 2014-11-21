@@ -8,6 +8,7 @@ import uqbar.tpFutbol.domain.HomePartidos
 import uqbar.tpFutbol.ordenamiento.OrganizadorCommand
 import org.uqbar.commons.model.UserException
 import org.uqbar.commons.utils.Observable
+import uqbar.tpFutbol.dao.PartidosRepo
 
 /**
  * Application model que representa la búsqueda de {@link Celular}.
@@ -32,7 +33,7 @@ class GeneradorPartidos implements Serializable {
 	@Property List<Partido> resultados = new ArrayList<Partido>
 	@Property Partido partidoSeleccionado
 	@Property int cantPartidos
-	@Property List<Jugador> equipos
+	@Property List<Jugador> equipos 
 	@Property List<Partido> listaE = new ArrayList<Partido>
 
 	// ********************************************************
@@ -42,10 +43,11 @@ class GeneradorPartidos implements Serializable {
 	
 	
 	def void buscarPartidos(){
-		//resultados = new ArrayList<Partido>
-		//listaE = new ArrayList<Partido>
+//		resultados = new ArrayList<Partido>
+//		listaE = new ArrayList<Partido>
 //		resultados = getHomePartidos.search()
 //		listaE = getHomePartidos.search()
+		resultados = new PartidosRepo().getAll()
 		
 		
 	}

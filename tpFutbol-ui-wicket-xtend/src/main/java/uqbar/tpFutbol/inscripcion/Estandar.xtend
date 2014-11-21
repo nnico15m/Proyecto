@@ -10,6 +10,7 @@ import javax.persistence.Entity
 import org.uqbar.commons.utils.Observable
 import javax.persistence.Table
 import javax.persistence.DiscriminatorValue
+import javax.persistence.Transient
 
 @Entity
 //@Table(name="inscripcion")
@@ -19,8 +20,8 @@ import javax.persistence.DiscriminatorValue
 class Estandar extends TipoDeSuscripcion {
 	
 	private int prioridad = 0
-	private Long id
-	
+	//private Long id
+	/* 
 	new() {
 	}
 	
@@ -35,7 +36,8 @@ class Estandar extends TipoDeSuscripcion {
 		id = value
 	}
 
-	
+	*/
+	@Transient
 	override getPrioridad() {
 		prioridad
 	}

@@ -27,8 +27,8 @@ class Partido  implements Serializable {
 	
 //	@Property Date fecha
 	private Long id
-	private Date fecha	
-	private double hora
+	private Date fechayhora	
+	//private double hora
 	//@Property double hora
 	//@Property ComunidadFutbolera comunidad
 	private ComunidadFutbolera comunidad
@@ -64,14 +64,14 @@ class Partido  implements Serializable {
 		this.id = id
 	}
 	
-	def getFecha(){
-		fecha
+	def getFechayhora(){
+		fechayhora
 	}
 	
-	def setFecha(Date fecha) {
-		this.fecha = fecha
+	def setFechayhora(Date fecha) {
+		this.fechayhora = fechayhora
 	}	
-	
+	/* 
 	def getHora(){
 		hora
 	}
@@ -79,7 +79,7 @@ class Partido  implements Serializable {
 	def setHora(double hora) {
 		this.hora = hora
 	}
-	
+	*/
 	@Transient
 	def getCodPartido(){
 		codPartido

@@ -53,7 +53,7 @@ class OrganizadorFutbolPage extends WebPage {
 	
 	
 	def mostrarJugadores(){
-		this.buscador.buscar()
+		this.buscador.mostrarTodos()
 	//	this.buscador.fillJugadores()
 	}
 
@@ -79,7 +79,7 @@ def agregarCamposBusqueda(Form<BuscadorJugadores> parent) {
 		
 		parent.addChild(new XButton("nuevoJugador").onClick = [| nuevoJugador(new Jugador) ]) 
 		val buscarButton = new XButton("buscar")
-		buscarButton.onClick = [| buscador.buscar ]
+		buscarButton.onClick = [| buscador.buscarJugador ]
 		parent.addChild(buscarButton)
 		parent.addChild(new XButton("generarEquipos").onClick = [| generarEquipos(new Partido) ])
 		

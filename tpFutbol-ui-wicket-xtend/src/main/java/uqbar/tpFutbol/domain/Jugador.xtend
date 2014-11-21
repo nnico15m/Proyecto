@@ -20,10 +20,11 @@ import javax.persistence.CascadeType
 import javax.persistence.ManyToOne
 import javax.persistence.Transient
 import javax.persistence.Table
+import javax.persistence.Column
 
 @Entity
 @Observable
-@Table(name="Jugadores") 
+@Table(name="jugadores") 
 class Jugador implements Serializable {
 	
 //	@Property String nombreJugador
@@ -88,7 +89,7 @@ class Jugador implements Serializable {
 	new() {
 		
 	}
-	
+	@Column(name="nombre")
 	def getNombreJugador() {
 		nombreJugador
 	}
@@ -104,7 +105,7 @@ class Jugador implements Serializable {
 	def void setApodo(String value) {
 		apodo = value
 	}	
-	
+	@Column(name="handicap")
 	def getNivelDeJuego() {
 		nivelDeJuego
 	}
@@ -112,7 +113,7 @@ class Jugador implements Serializable {
 	def void setNivelDeJuego(int value) {
 		nivelDeJuego = value
 	}
-	
+	@Column(name="promedioultpart")
 	def getPromedioCalificacionesUltPart() {
 		promedioCalificacionesUltPart
 	}
@@ -120,11 +121,11 @@ class Jugador implements Serializable {
 	def void setPromedioCalificacionesUltPart(int value) {
 		promedioCalificacionesUltPart = value
 	}
-	
+	@Column(name="promediocalif")
 	def getPromedioCalificaciones() {
 		promedioCalificaciones
 	}
-
+	
 	def void setPromedioCalificaciones(int value) {
 		promedioCalificaciones = value
 	}
@@ -148,7 +149,7 @@ class Jugador implements Serializable {
 	def void setInfracciones(List<Infracciones> value) {
 		infracciones = value
 	}
-	 
+	
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="amigos")
 	def getAmigos() {
 		amigos
@@ -157,7 +158,7 @@ class Jugador implements Serializable {
 	def void setAmigos(List<Jugador> value) {
 		amigos= value
 	}
-	
+	@Transient
 	def getCantPartidosJugados() {
 		cantPartidosJugados
 	}
@@ -165,7 +166,7 @@ class Jugador implements Serializable {
 	def void setCantPartidosJugados(int value) {
 		cantPartidosJugados = value
 	}
-	
+	@Transient
 	def getMail() {
 		mail
 	}
@@ -173,7 +174,7 @@ class Jugador implements Serializable {
 	def void setMail(String value) {
 		mail = value
 	}
-	  
+	@Transient  
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="jugador")
 	def getCalificaciones() {
 		calificaciones
@@ -182,18 +183,18 @@ class Jugador implements Serializable {
 	def void setCalificaciones(List<Calificaciones> value) {
 		calificaciones = value
 	}
-	
-		def getPromedioConVariosCriteriosAplicados() {
-		promedioConVariosCriteriosAplicados
+	@Transient
+	def getPromedioConVariosCriteriosAplicados() {
+	promedioConVariosCriteriosAplicados
 	}
 
 	def void setPromedioConVariosCriteriosAplicados(int value) {
 		promedioConVariosCriteriosAplicados = value
 	}
 	
-	//PROBANDO NO SE SI FUNCIONA ASI
+
 	
-	
+	@Transient
 	def getListaCriterioDelJugador(){
 		listaCriterioDelJugador
 	}
@@ -214,6 +215,7 @@ class Jugador implements Serializable {
 	 
 	
 	@ManyToOne
+	@Transient
 	def getFormaDeInscripcion() {
 		formaDeInscripcion
 	}
@@ -222,7 +224,8 @@ class Jugador implements Serializable {
 		formaDeInscripcion = value
 	}
 
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="pendientes")
+	//@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="pendientes")
+	@Transient
 	def getPendientes() {
 	pendientes
 	}
@@ -231,7 +234,7 @@ class Jugador implements Serializable {
 	pendientes = value
 	} 
 	 
-	
+	@Transient
 	@ManyToOne
 	def getComunidad(){ 
 		comunidad
