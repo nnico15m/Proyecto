@@ -71,6 +71,7 @@ class BuscadorJugadores implements Serializable {
 
 		
 		datos = jugadorPedido.amigos
+		datos= new JugadoresRepo().buscarAmigos(jugadorPedido)
 	
 		
 	}
@@ -78,7 +79,8 @@ class BuscadorJugadores implements Serializable {
 	def void mostrarInfraccionesJ(Jugador jugadorPedido){
 
 		
-		listaI= jugadorPedido.infracciones
+		//listaI= jugadorPedido.infracciones
+		listaI= new JugadoresRepo().buscarInfracciones(jugadorPedido)
 	}
 	
 	

@@ -19,11 +19,12 @@ import javax.persistence.DiscriminatorValue
 import javax.persistence.DiscriminatorType
 
 @Entity
-@Table(name="Tiposdeinscripcion")
+@Table(name="inscripciones")
 @Observable
 abstract class TipoDeSuscripcion  implements Serializable{
 	 
  	private Long id
+ 	private Long idPartido
 //	private List<Jugador> jugadores
 	
 	new() {
@@ -39,6 +40,16 @@ abstract class TipoDeSuscripcion  implements Serializable{
 	def setId(Long value) {
 		id = value
 	}
+	
+	def getIdPartido() {
+		idPartido
+	}
+
+	def setIdPartido(Long value) {
+		idPartido = value
+	}
+	
+	
 	
 /* 
 	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true)

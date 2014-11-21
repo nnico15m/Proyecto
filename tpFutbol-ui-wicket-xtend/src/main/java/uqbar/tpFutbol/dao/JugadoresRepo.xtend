@@ -7,6 +7,8 @@ import static org.hibernate.criterion.Restrictions.*
 import static uqbar.tpFutbol.dao.SessionManager.*
 import uqbar.tpFutbol.domain.Jugador
 import java.util.Date
+import uqbar.tpFutbol.domain.Infracciones
+import uqbar.tpFutbol.domain.Amigos
 
 class JugadoresRepo {
 
@@ -66,6 +68,20 @@ class JugadoresRepo {
 		query.list()
 		
 	
+	}
+	
+	def List<Infracciones> buscarInfracciones(Jugador jugadorPedido) {
+		val query =  session.createCriteria(Infracciones)
+		val id = jugadorPedido.id
+			query.add(eq("id", id))
+				query.list()
+	}
+	
+	def List<Jugador> buscarAmigos(Jugador jugadorPedido) {
+		val query =  session.createCriteria(Amigos)
+		val id = jugadorPedido.id
+			query.add(eq("id", id))
+				query.list()
 	}
 	
 	def List<Jugador> getAll() {

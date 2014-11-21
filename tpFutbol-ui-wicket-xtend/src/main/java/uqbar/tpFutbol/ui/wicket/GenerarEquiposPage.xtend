@@ -106,7 +106,7 @@ class GenerarEquiposPage extends WebPage{
 		val listViewPartidos = new XListView("resultados")
 			listViewPartidos.populateItem = [ item |
 			item.model = item.modelObject.asCompoundModel
-			item.addChild(new Label("codPartido"))
+			item.addChild(new Label("id"))
 			item.addChild(new Label("inscripciones.nombreParticipantes"))
 			item.addChild(new XButton("obtenerParticipantes").onClick = [| generador.obtenerParticipantesP(item.modelObject)
 			])
