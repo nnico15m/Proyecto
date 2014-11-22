@@ -19,8 +19,8 @@ import javax.persistence.Transient
 class Condicional extends TipoDeSuscripcion {
 	
 	private int prioridad = 2
-	//private Long id
-	/* 
+	private Long id
+	 
 	new() {
 	}
 	
@@ -36,7 +36,7 @@ class Condicional extends TipoDeSuscripcion {
 	}
 	
 
-*/	@Transient
+	@Transient
 	override getPrioridad() {
 		prioridad
 	}

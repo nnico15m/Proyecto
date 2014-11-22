@@ -20,8 +20,8 @@ import javax.persistence.Transient
 class Solidaria extends TipoDeSuscripcion {
 	
 	private int prioridad = 1
-	//private Long id
-	/* 
+	private Long id
+	
 	new() {
 	}
 	
@@ -35,7 +35,7 @@ class Solidaria extends TipoDeSuscripcion {
 	override setId(Long value) {
 		id = value
 	}
-	*/
+	
 	@Transient
 	override getPrioridad() {
 		prioridad

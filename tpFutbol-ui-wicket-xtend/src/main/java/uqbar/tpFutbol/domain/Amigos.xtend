@@ -17,7 +17,9 @@ class Amigos implements Serializable {
 	
 	
 	private Long id
-	private Jugador jugador
+	private Jugador jugador1
+	private Jugador jugador2
+
 	
 	new() {
 	}
@@ -32,18 +34,28 @@ class Amigos implements Serializable {
 		id = value
 	}
 	
-	
-	
-	@ManyToOne 
-	def getJugador() {
-		jugador
+	def getJugador1() {
+		jugador1
 	}
 	
 	
 
-	def void setJugador(Jugador value) {
-		jugador = value
+	def void setJugador1(Jugador value) {
+		jugador1 = value
 	}
+	def getJugador2() {
+		jugador2
+	}
+	
+	
+
+	def void setJugador2(Jugador value) {
+		jugador2 = value
+	}
+
+	
+	
+	
 
 	
 }

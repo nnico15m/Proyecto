@@ -21,6 +21,9 @@ import javax.persistence.ManyToOne
 import javax.persistence.Transient
 import javax.persistence.Table
 import javax.persistence.Column
+import javax.persistence.ManyToMany
+import javax.persistence.FetchType
+import java.util.Set
 
 @Entity
 @Observable
@@ -47,7 +50,7 @@ class Jugador implements Serializable {
 	private int promedioCalificaciones
 	private int promedioCalificacionesUltPart
 	private List<Infracciones> infracciones = new ArrayList
-	private List<Jugador> amigos = new ArrayList(25)
+	private List<Jugador> amigos = new ArrayList(25)		
 	private List<Calificaciones> calificaciones = new ArrayList
 	private int cantPartidosJugados
 	private String mail
@@ -149,8 +152,8 @@ class Jugador implements Serializable {
 	def void setInfracciones(List<Infracciones> value) {
 		infracciones = value
 	}
-	
-	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="amigos")
+	 
+	@OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.ALL, mappedBy="amigos")
 	def getAmigos() {
 		amigos
 	}
@@ -158,6 +161,9 @@ class Jugador implements Serializable {
 	def void setAmigos(List<Jugador> value) {
 		amigos= value
 	}
+	
+	
+	
 	@Transient
 	def getCantPartidosJugados() {
 		cantPartidosJugados
@@ -459,7 +465,7 @@ class Jugador implements Serializable {
 	
 	
 	
-	def Jugador crearUnJugador(String nombreJugador, String apodo, int nivelDeJuego, int promedioCalificacionesUltPart, int promedioCalificaciones,Date fechaDeNacimiento, ArrayList<Jugador> amigos, ArrayList<Infracciones> infracciones, int cantPartidosJugados, TipoDeSuscripcion formaDeInscripcion,String mail,StubMensajero mensajero, List<Calificaciones>  calificaciones,List<Jugador> pendientesDeCalificar,ComunidadFutbolera comunidad,ArrayList<Integer> listaCriterioDelJugador, int promedioConVariosCriteriosAplicados) {
+	def Jugador crearUnJugador(String nombreJugador, String apodo, int nivelDeJuego, int promedioCalificacionesUltPart, int promedioCalificaciones,Date fechaDeNacimiento, List<Jugador> amigos, ArrayList<Infracciones> infracciones, int cantPartidosJugados, TipoDeSuscripcion formaDeInscripcion,String mail,StubMensajero mensajero, List<Calificaciones>  calificaciones,List<Jugador> pendientesDeCalificar,ComunidadFutbolera comunidad,ArrayList<Integer> listaCriterioDelJugador, int promedioConVariosCriteriosAplicados) {
 		
 		
 		var jugador = new Jugador

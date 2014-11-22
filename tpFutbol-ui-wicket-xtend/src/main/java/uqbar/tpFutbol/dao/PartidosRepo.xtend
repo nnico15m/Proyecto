@@ -5,6 +5,7 @@ import static uqbar.tpFutbol.dao.SessionManager.*
 import static org.hibernate.criterion.Restrictions.*
 import uqbar.tpFutbol.domain.Jugador
 import uqbar.tpFutbol.inscripcion.TipoDeSuscripcion
+import uqbar.tpFutbol.inscripcion.Inscripciones
 
 class PartidosRepo {
 	def List<Partido> getAll() {
@@ -14,13 +15,16 @@ class PartidosRepo {
 	
 	
 	def List<Jugador> obtenerInscriptos(Partido partidoPed){
-		val query =  session.createCriteria(TipoDeSuscripcion)
-		val idPartido = partidoPed.id
+		val query =  session.createCriteria(Inscripciones)
+		val id = partidoPed.id
 		
-			query.add(eq("idPartido", idPartido))
+		
+			query.add(eq("id", id))
 				query.list()
 		
 	}
+	
+	
 	
 	}
 	

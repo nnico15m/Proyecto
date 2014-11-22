@@ -1,30 +1,20 @@
 package uqbar.tpFutbol.inscripcion
 
-import javax.persistence.Entity
-import org.uqbar.commons.utils.Observable
+
 import java.io.Serializable
 import uqbar.tpFutbol.domain.Jugador
 
 import javax.persistence.Id
 import javax.persistence.GeneratedValue
-import javax.persistence.ManyToOne
-import javax.persistence.OneToMany
-import javax.persistence.CascadeType
-import java.util.List
-import javax.persistence.Table
-import javax.persistence.Inheritance
-import javax.persistence.InheritanceType
-import javax.persistence.DiscriminatorColumn
-import javax.persistence.DiscriminatorValue
-import javax.persistence.DiscriminatorType
 
-@Entity
-@Table(name="inscripciones")
-@Observable
+
+
 abstract class TipoDeSuscripcion  implements Serializable{
 	 
  	private Long id
  	private Long idPartido
+ 	private Long idJugador
+ 	private Long idTipoeInscripcion
 //	private List<Jugador> jugadores
 	
 	new() {
@@ -47,6 +37,22 @@ abstract class TipoDeSuscripcion  implements Serializable{
 
 	def setIdPartido(Long value) {
 		idPartido = value
+	}
+	
+	def getIdJugador() {
+		idJugador
+	}
+
+	def setIdJugador(Long value) {
+		idJugador = value
+	}
+	
+	def getIdTipoeInscripcion() {
+		idTipoeInscripcion
+	}
+
+	def setIdTipoeInscripcion(Long value) {
+		idTipoeInscripcion = value
 	}
 	
 	

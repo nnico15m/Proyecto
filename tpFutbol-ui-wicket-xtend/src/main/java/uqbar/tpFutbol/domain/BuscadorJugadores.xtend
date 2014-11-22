@@ -8,6 +8,7 @@ import uqbar.tpFutbol.domain.Jugador
 import java.util.Date
 import uqbar.tpFutbol.dao.JugadoresRepo
 import org.uqbar.commons.utils.Observable
+import java.util.Set
 
 /**
  * Application model que representa la búsqueda de {@link Celular}.
@@ -70,7 +71,7 @@ class BuscadorJugadores implements Serializable {
 	def void mostrarAmigosJ(Jugador jugadorPedido){
 
 		
-		datos = jugadorPedido.amigos
+	//	datos = jugadorPedido.amigos
 		datos= new JugadoresRepo().buscarAmigos(jugadorPedido)
 	
 		

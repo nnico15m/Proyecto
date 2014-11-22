@@ -20,8 +20,8 @@ import javax.persistence.Transient
 class Estandar extends TipoDeSuscripcion {
 	
 	private int prioridad = 0
-	//private Long id
-	/* 
+	private Long id
+	 
 	new() {
 	}
 	
@@ -36,7 +36,7 @@ class Estandar extends TipoDeSuscripcion {
 		id = value
 	}
 
-	*/
+	
 	@Transient
 	override getPrioridad() {
 		prioridad

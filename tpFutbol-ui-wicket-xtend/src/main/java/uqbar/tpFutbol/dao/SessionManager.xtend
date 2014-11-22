@@ -16,6 +16,7 @@ import uqbar.tpFutbol.inscripcion.Estandar
 import uqbar.tpFutbol.inscripcion.Condicional
 import uqbar.tpFutbol.inscripcion.Solidaria
 import uqbar.tpFutbol.division.DividirEquiposCommand
+import uqbar.tpFutbol.inscripcion.Inscripciones
 
 class SessionManager {
 	static ThreadLocal<Session> tlSession = new ThreadLocal
@@ -51,11 +52,11 @@ class SessionManager {
 		cfg.addAnnotatedClass(Amigos)
 		cfg.addAnnotatedClass(Pendientes)
 //		cfg.addAnnotatedClass(Mensajero)
-//		cfg.addAnnotatedClass(TipoDeSuscripcion)
 		cfg.addAnnotatedClass(Estandar)
 		cfg.addAnnotatedClass(Condicional)
 		cfg.addAnnotatedClass(Solidaria)
 		cfg.addAnnotatedClass(DividirEquiposCommand)
+		cfg.addAnnotatedClass(Inscripciones)
 	}
 	
 	def static startApplication(){

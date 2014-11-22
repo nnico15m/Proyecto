@@ -9,6 +9,9 @@ import uqbar.tpFutbol.domain.Jugador
 import java.util.Date
 import uqbar.tpFutbol.domain.Infracciones
 import uqbar.tpFutbol.domain.Amigos
+import uqbar.tpFutbol.domain.Partido
+import uqbar.tpFutbol.inscripcion.TipoDeSuscripcion
+import uqbar.tpFutbol.inscripcion.Inscripciones
 
 class JugadoresRepo {
 
@@ -79,8 +82,8 @@ class JugadoresRepo {
 	
 	def List<Jugador> buscarAmigos(Jugador jugadorPedido) {
 		val query =  session.createCriteria(Amigos)
-		val id = jugadorPedido.id
-			query.add(eq("id", id))
+		val jugador1 = jugadorPedido.id
+			query.add(eq("jugador1", jugador1))
 				query.list()
 	}
 	
@@ -89,6 +92,14 @@ class JugadoresRepo {
 		query.list()
 		
 	
+	}
+	
+	def List<Jugador> obtenerInscriptos(Partido partidoPed) {
+		val query =  session.createCriteria(Inscripciones)
+		val idPartido = partidoPed.id
+		
+			query.add(eq("idPartido", idPartido))
+				query.list()
 	}
 }
 

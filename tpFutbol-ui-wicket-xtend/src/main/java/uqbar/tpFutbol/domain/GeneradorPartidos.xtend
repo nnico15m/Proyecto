@@ -9,6 +9,7 @@ import uqbar.tpFutbol.ordenamiento.OrganizadorCommand
 import org.uqbar.commons.model.UserException
 import org.uqbar.commons.utils.Observable
 import uqbar.tpFutbol.dao.PartidosRepo
+import uqbar.tpFutbol.dao.JugadoresRepo
 
 /**
  * Application model que representa la búsqueda de {@link Celular}.
@@ -62,9 +63,9 @@ class GeneradorPartidos implements Serializable {
 	def mostrarEquiposGen(Partido partido) {
 		
 	
-		val codPartidoActual = partido.codPartido
-	//	equipos = getHomePartidos.search().findFirst[codPartido == codPartidoActual].participantes
 		
+	//	equipos = getHomePartidos.search().findFirst[codPartido == codPartidoActual].participantes
+	//	equipos = new PartidosRepo().participantesEquipo(partido)
 	}
 	
 	def actualizarCantPartidos() {
@@ -92,8 +93,9 @@ class GeneradorPartidos implements Serializable {
 	
 	def obtenerParticipantesP (Partido partidoPed){
 		
-	//	homePartidos.obtenerParticipantes(partidoPed)
-		new PartidosRepo().obtenerInscriptos(partidoPed)
+		//homePartidos.obtenerParticipantes(partidoPed)
+		new JugadoresRepo().obtenerInscriptos(partidoPed)
+
 		
 		
 	}	
