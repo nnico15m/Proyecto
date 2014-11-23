@@ -24,6 +24,9 @@ import javax.persistence.Column
 import javax.persistence.ManyToMany
 import javax.persistence.FetchType
 import java.util.Set
+import uqbar.tpFutbol.inscripcion.Inscripciones
+import javax.persistence.JoinTable
+import javax.persistence.JoinColumn
 
 @Entity
 @Observable
@@ -57,6 +60,8 @@ class Jugador implements Serializable {
 	private int promedioConVariosCriteriosAplicados
 	private ComunidadFutbolera comunidad
 	
+
+	
 	
 	//@Property TipoDeSuscripcion formaDeInscripcion
 	//@Property StubMensajero mensajero
@@ -74,8 +79,7 @@ class Jugador implements Serializable {
 	
 	
 	
-	
-	
+
 		
 	
 	@Id
@@ -108,7 +112,7 @@ class Jugador implements Serializable {
 	def void setApodo(String value) {
 		apodo = value
 	}	
-	@Column(name="handicap")
+	//@Column(name="handicap")
 	def getNivelDeJuego() {
 		nivelDeJuego
 	}
@@ -152,12 +156,24 @@ class Jugador implements Serializable {
 	def void setInfracciones(List<Infracciones> value) {
 		infracciones = value
 	}
-	 
-	@OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.ALL, mappedBy="amigos")
+	/* 
+	@Transient 
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="amigos")
 	def getAmigos() {
 		amigos
 	}
 
+	def void setAmigos(List<Jugador> value) {
+		amigos= value
+	}
+	*/
+	
+	
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	def getAmigos() {
+		amigos
+	}
+	
 	def void setAmigos(List<Jugador> value) {
 		amigos= value
 	}
@@ -272,8 +288,7 @@ class Jugador implements Serializable {
 	
 	
 	
-	
-	
+
 	
 	
 

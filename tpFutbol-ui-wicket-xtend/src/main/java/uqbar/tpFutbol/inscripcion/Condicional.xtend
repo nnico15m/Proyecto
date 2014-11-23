@@ -11,7 +11,7 @@ import javax.persistence.Table
 import javax.persistence.DiscriminatorValue
 import javax.persistence.Transient
 
-@Entity
+//@Entity
 //@Table(name="inscripcion")
 //@DiscriminatorValue(value="C")
 @Observable

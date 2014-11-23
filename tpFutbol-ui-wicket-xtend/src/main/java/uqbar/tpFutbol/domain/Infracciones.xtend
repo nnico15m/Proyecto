@@ -6,6 +6,8 @@ import javax.persistence.Id
 import javax.persistence.ManyToOne
 import org.uqbar.commons.utils.Observable
 import java.io.Serializable
+import javax.persistence.Column
+import javax.persistence.Transient
 
 @Entity
 @Observable
@@ -16,6 +18,8 @@ class Infracciones  implements Serializable{
 	private String motivo
 	private double duracion
 	private Jugador jugador
+	private Long jugador_id
+
 	
 	new() {
 	}
@@ -47,16 +51,30 @@ class Infracciones  implements Serializable{
 		duracion= value
 	}
 	
-	@ManyToOne 
+	@ManyToOne
 	def getJugador() {
 		jugador
 	}
 	
 	
-
+	
 	def void setJugador(Jugador value) {
 		jugador = value
 	}
+	
+	@Column(name = "jugador_id", insertable = false, updatable = false)
+	def getJugador_id() {
+		jugador_id
+	}
+
+	def setJugador_id(Long value) {
+		jugador_id = value
+	}
+	
+	
+	
+	
+
 	
 	new(String motivo,double duracion){
 		this.motivo = motivo

@@ -25,6 +25,8 @@ import uqbar.tpFutbol.division.DividirEquiposCommand
 import uqbar.tpFutbol.inscripcion.InscripcionAbierta
 import org.apache.wicket.markup.html.panel.FeedbackPanel
 import org.apache.wicket.AttributeModifier
+import uqbar.tpFutbol.dao.JugadoresRepo
+import uqbar.tpFutbol.dao.PartidosRepo
 
 class GenerarEquiposPage extends WebPage{
 	extension WicketExtensionFactoryMethods = new WicketExtensionFactoryMethods
@@ -108,7 +110,9 @@ class GenerarEquiposPage extends WebPage{
 			item.model = item.modelObject.asCompoundModel
 			item.addChild(new Label("id"))
 			item.addChild(new Label("inscripciones.nombreParticipantes"))
-			item.addChild(new XButton("obtenerParticipantes").onClick = [| generador.obtenerParticipantesP(item.modelObject)
+			//item.addChild(new XButton("obtenerParticipantes").onClick = [| generador.obtenerParticipantesP(item.modelObject)
+			//])
+			item.addChild(new XButton("obtenerParticipantes").onClick = [| new PartidosRepo().getAllInscriptos(item.modelObject)
 			])
 			item.addChild(new XButton("criterioPar").onClick = [| dividirEquiposP(item.modelObject,criterioPar)
 			]) 

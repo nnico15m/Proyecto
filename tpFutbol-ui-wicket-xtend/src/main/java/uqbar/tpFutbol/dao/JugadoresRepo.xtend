@@ -75,16 +75,18 @@ class JugadoresRepo {
 	
 	def List<Infracciones> buscarInfracciones(Jugador jugadorPedido) {
 		val query =  session.createCriteria(Infracciones)
-		val id = jugadorPedido.id
-			query.add(eq("id", id))
+		val id =  jugadorPedido.getId()
+			query.add(eq("jugador_id", id))
 				query.list()
 	}
 	
 	def List<Jugador> buscarAmigos(Jugador jugadorPedido) {
-		val query =  session.createCriteria(Amigos)
-		val jugador1 = jugadorPedido.id
-			query.add(eq("jugador1", jugador1))
-				query.list()
+		val query = session.createCriteria(Amigos)
+		val idJugador = jugadorPedido.id
+ 		if (idJugador != null) {
+			query.add(eq("jugadores_id", "%" + idJugador + "%"))
+		}
+		query.list()
 	}
 	
 	def List<Jugador> getAll() {
@@ -94,13 +96,7 @@ class JugadoresRepo {
 	
 	}
 	
-	def List<Jugador> obtenerInscriptos(Partido partidoPed) {
-		val query =  session.createCriteria(Inscripciones)
-		val idPartido = partidoPed.id
-		
-			query.add(eq("idPartido", idPartido))
-				query.list()
-	}
+	
 }
 
 

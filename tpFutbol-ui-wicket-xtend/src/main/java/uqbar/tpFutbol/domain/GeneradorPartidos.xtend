@@ -94,7 +94,7 @@ class GeneradorPartidos implements Serializable {
 	def obtenerParticipantesP (Partido partidoPed){
 		
 		//homePartidos.obtenerParticipantes(partidoPed)
-		new JugadoresRepo().obtenerInscriptos(partidoPed)
+	//	new PartidosRepo().getAllInscriptos(partidoPed)
 
 		
 		

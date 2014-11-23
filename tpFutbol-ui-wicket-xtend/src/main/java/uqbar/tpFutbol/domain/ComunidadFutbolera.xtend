@@ -67,7 +67,7 @@ class ComunidadFutbolera implements Serializable {
 		this.partidos = c
 	}
 	
-	
+	@Transient
 	def getAdmin(){ 
 		this.admin
 	}

@@ -14,13 +14,15 @@ class PartidosRepo {
 	}
 	
 	
-	def List<Jugador> obtenerInscriptos(Partido partidoPed){
+	def List<Jugador> getAllInscriptos(Partido partidoPed){
 		val query =  session.createCriteria(Inscripciones)
-		val id = partidoPed.id
+		val id = partidoPed.getId()
 		
+	
 		
-			query.add(eq("id", id))
+		query.add(eq("partido_id", id))
 				query.list()
+		
 		
 	}
 	

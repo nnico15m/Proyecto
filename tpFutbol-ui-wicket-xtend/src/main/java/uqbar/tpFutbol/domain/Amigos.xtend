@@ -6,10 +6,12 @@ import javax.persistence.Id
 import javax.persistence.GeneratedValue
 import javax.persistence.ManyToOne
 import javax.persistence.Table
+import javax.persistence.Column
+import javax.persistence.Transient
 
 @Entity
 
-@Table(name="amigos")
+@Table(name="jugadores_jugadores")
 @Observable
 
 class Amigos implements Serializable {
@@ -17,8 +19,9 @@ class Amigos implements Serializable {
 	
 	
 	private Long id
-	private Jugador jugador1
-	private Jugador jugador2
+	private Jugador jugadores_id
+	private Jugador amigos_id
+
 
 	
 	new() {
@@ -33,29 +36,26 @@ class Amigos implements Serializable {
 	def setId(Long value) {
 		id = value
 	}
+	@Column(name = "jugadores_id", insertable = false, updatable = false)
+	def getJugadores_id() {
+		jugadores_id
+	}
+
+	def setJugadores_id(Jugador value) {
+		jugadores_id = value
+	}
 	
-	def getJugador1() {
-		jugador1
+	@Column(name = "amigos_id", insertable = false, updatable = false)
+	def getAmigos_id() {
+		amigos_id
+	}
+
+	def setAmigos_id(Jugador value) {
+		amigos_id = value
 	}
 	
 	
-
-	def void setJugador1(Jugador value) {
-		jugador1 = value
-	}
-	def getJugador2() {
-		jugador2
+	
 	}
 	
 	
-
-	def void setJugador2(Jugador value) {
-		jugador2 = value
-	}
-
-	
-	
-	
-
-	
-}

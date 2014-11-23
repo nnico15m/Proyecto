@@ -19,6 +19,7 @@ import javax.persistence.CascadeType
 import javax.persistence.Column
 import javax.persistence.Transient
 import javax.persistence.Table
+import uqbar.tpFutbol.inscripcion.Inscripciones
 
 @Entity 
 @Observable
@@ -48,6 +49,7 @@ class Partido  implements Serializable {
 	private TipoDeInscripcion inscripciones
 	private OrganizadorCommand criterioDeOrdenamiento
 	private DividirEquiposCommand criterioDeDivision
+	
 	
 /** Constructor que necesita Hibernate */	
 	new() {

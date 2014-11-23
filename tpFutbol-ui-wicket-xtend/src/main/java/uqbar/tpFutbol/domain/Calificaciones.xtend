@@ -6,6 +6,7 @@ import java.io.Serializable
 import javax.persistence.Id
 import javax.persistence.GeneratedValue
 import javax.persistence.ManyToOne
+import javax.persistence.Transient
 
 @Entity
 @Observable
@@ -49,7 +50,7 @@ class Calificaciones implements Serializable {
 	def void setDescripcion(String value) {
 		descripcion = value
 	}
-	
+	@Transient
 	def getCodPartidoJugado() {
 		codPartidoJugado
 	}
