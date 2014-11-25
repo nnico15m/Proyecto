@@ -43,6 +43,33 @@ class PartidosRepo {
 		query.list().head
 	}
 	
+	def Jugador encontrarInscripto(Partido partidoPed, Jugador jugadorPed){
+		val query =  session.createCriteria(Jugador)
+		val id = partidoPed.getId()
+		val idJ = jugadorPed.getId()
+		query.createAlias("inscripcionesP", "inscripcion")
+		query.add(eq("inscripcion.partido_id", id))
+		query.add(eq("inscripcion.jugador_id", idJ))
+		query.list().head
+	}
+	
+	def List<Partido> obtenerLosQueTienenUnEquipo(){
+		val query = session.createCriteria(Partido)
+		query.createAlias("inscripcionesP", "inscripcion")
+		query.add(eq("inscripcion.equipo_id", 1))
+		
+		query.list() 
+		
+	}
+	
+	def Partido obtenerCriterioDivision(Partido partidoPed){
+		val query =  session.createCriteria(Partido)
+		val id = partidoPed.getId()
+		query.add(eq("id", id))
+		query.list().head
+		
+	}
+	
 	
 	
 	}

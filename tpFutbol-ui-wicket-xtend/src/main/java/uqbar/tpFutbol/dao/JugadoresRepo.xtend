@@ -12,6 +12,7 @@ import uqbar.tpFutbol.domain.Amigos
 import uqbar.tpFutbol.domain.Partido
 import uqbar.tpFutbol.inscripcion.TipoDeSuscripcion
 import uqbar.tpFutbol.inscripcion.Inscripciones
+import org.hibernate.criterion.Restrictions
 
 class JugadoresRepo {
 
@@ -36,7 +37,10 @@ class JugadoresRepo {
 		}
 		
 		if (tieneInfracciones != false) {
-			query.add(eq("infracciones", tieneInfracciones))
+			
+			query.createAlias("infracciones", "infraccion")
+			query.add(isNotNull("infraccion.jugador_id"))
+			
 		}
 		
 		query.list()
@@ -97,6 +101,14 @@ class JugadoresRepo {
 	
 	}
 	
+	def Inscripciones actualizarEquipo(Jugador jugadorPed, Partido partidoPed ,int numero){
+		val query =  session.createCriteria(Inscripciones)
+		val id = partidoPed.getId()
+		val idJ = jugadorPed.getId()
+		query.add(Restrictions.eq("partido_id", id)).add(Restrictions.eq("jugador_id", idJ))
+		query.list().head
+		
+	}
 	
 }
 

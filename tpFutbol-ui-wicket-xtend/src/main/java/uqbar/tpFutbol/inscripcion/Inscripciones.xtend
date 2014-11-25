@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne
 import java.util.List
 import uqbar.tpFutbol.dao.PartidosRepo
 import java.util.ArrayList
+import uqbar.tpFutbol.dao.SessionManager
 
 @Entity
 @Observable
@@ -25,6 +26,7 @@ class Inscripciones  implements Serializable{
  	private Long idTipoeInscripcion
  	private Long partido_id
  	private Long jugador_id
+ 	private int equipo_id
 	private List<Jugador> participantes = new ArrayList (10)
 	
 	new() {
@@ -85,6 +87,15 @@ class Inscripciones  implements Serializable{
 		idTipoeInscripcion = value
 	}
 	
+	@Column(name = "equipo_id")
+	def getEquipo_id() {
+		equipo_id
+	}
+
+	def setEquipo_id(int value) {
+		equipo_id = value
+	}
+	
 	
 	
 	def List<String> nombreJug(){
@@ -93,6 +104,16 @@ class Inscripciones  implements Serializable{
 		inscriptos.map[nombreJugador]
 	 }
 	 
+	def actualizateEnLaBase(int numero){
+		this.setEquipo_id(numero)
+		
+		SessionManager::getSession().saveOrUpdate(this)
+		SessionManager::commit()
+		SessionManager::closeSession		
+		SessionManager::openSession
 
+			
+		}
+	}
 	 
-	 }
+	 

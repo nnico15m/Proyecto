@@ -81,7 +81,7 @@ class GenerarEquiposPage extends WebPage{
 	
 	def agregarCamposEdicion(Form<GeneradorPartidos> parent){
 		
-		parent.addChild(new TextField<Integer>("cantPartidos"))
+		//parent.addChild(new TextField<Integer>("cantPartidos"))
 		
 }
 		
@@ -90,7 +90,7 @@ class GenerarEquiposPage extends WebPage{
 	
 	def agregarAcciones(Form<GeneradorPartidos> parent){
 		parent.addChild(new XButton("nuevaCantidad")
-			.onClick = [|generador.actualizarCantPartidos()])
+			.onClick = [|this.mostrarEquipos()])
 		parent.addChild(new XButton("volver") => [
 			onClick = [| volver ]
 		])
@@ -131,10 +131,10 @@ class GenerarEquiposPage extends WebPage{
 				ordenarPartido(item.modelObject,ordPromedioNotasUltimo)
 				
 			])
-			item.addChild(new XButton("ordenarPorNCalificaciones").onClick = [| setearEnLaBaseCriterioOrden(item.modelObject,3) 
-				ordenarPartidoCompuesto(item.modelObject,ordPromedioNotasNPartidos)
+		//	item.addChild(new XButton("ordenarPorNCalificaciones").onClick = [| setearEnLaBaseCriterioOrden(item.modelObject,3) 
+		//		ordenarPartidoCompuesto(item.modelObject,ordPromedioNotasNPartidos)
 				
-			])
+		//	])
 			item.addChild(new XButton("mixto").onClick = [| setearEnLaBaseCriterioOrden(item.modelObject,4) 
 				ordenarPartidoMixto(item.modelObject)
 			])
@@ -175,6 +175,7 @@ class GenerarEquiposPage extends WebPage{
 		val partidoNuevo = partidoPed.dividirEquiposPrueba(criterio)
 		partidoPed.setEquipo1(partidoNuevo.equipo1)
 		partidoPed.setEquipo2(partidoNuevo.equipo2)
+		generador.actualizarListaEquipos()
 		
 		//}
 		//else {
@@ -194,9 +195,15 @@ class GenerarEquiposPage extends WebPage{
 		}
 		else{
 	//	Partido.home.update(partidoPed.confirmaTusEquiposPrueba())
-	partidoPed.confirmaTusEquiposPrueba()
-	//SessionManager::getSession().saveOrUpdate(partidoPed)
-	//SessionManager::commit()
+	//partidoPed.confirmaTusEquiposPrueba()
+	val equipo1conf = partidoPed.equipo1
+	val equipo2conf = partidoPed.equipo2
+	equipo1conf.forEach[jug|jug.ingresarElEquipo(partidoPed,1)]
+	equipo2conf.forEach[jug|jug.ingresarElEquipo(partidoPed,2)]
+	
+	
+
+	
 	
 		}
 		

@@ -20,9 +20,9 @@
 	        
 	        <form wicket:id=equiposForm class="form">
 	        	       	<div class="form-group">
-		        	<label class="control-label" for="nombre">Cantidad Partidos para orden</label>
+		        <!--  	<label class="control-label" for="nombre">Cantidad Partidos para orden</label> -->
 		        	<div class="controls">
-		        		<input wicket:id="cantPartidos" type="text" placeholder="1" size="5"/>
+		        	<!--  	<input wicket:id="cantPartidos" type="text" placeholder="1" size="5"/>-->
 		        	</div>
 		        
 		        	
@@ -30,7 +30,7 @@
 	        	</div>
 	        	
 	        	<div class="form-actions">
-                    <button wicket:id="nuevaCantidad" type="submit" class="btn btn-primary">Aceptar</button>
+                    <button wicket:id="nuevaCantidad" type="submit" class="btn btn-primary">Recargar base de datos</button>
                     <button wicket:id="volver" type="submit" class="btn">Volver</button>
                     <div wicket:id="feedbackPanel" class="alert alert-error" color:red>
 						<strong>Warning!</strong> Best check yo self, you're not looking too good.  
@@ -75,7 +75,7 @@
 	           	        	
 	           	        		<button wicket:id="ordenarPorHandicap" class="btn-link">ordHandicap</button>
 	           	        		<button wicket:id="ordenarPorUltimaCalificacion" class="btn-link">ordUltimoPartidos</button>
-	           	        		<button wicket:id="ordenarPorNCalificaciones" class="btn-link">ordUltimosNPartidos</button>
+	           	        	<!--  	<button wicket:id="ordenarPorNCalificaciones" class="btn-link">ordUltimosNPartidos</button> -->
 	           	        		<button wicket:id="mixto" class="btn-link">Mixto</button>
 	           	        		
 	           	        	

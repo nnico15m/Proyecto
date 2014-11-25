@@ -27,6 +27,9 @@ import java.util.Set
 import uqbar.tpFutbol.inscripcion.Inscripciones
 import javax.persistence.JoinTable
 import javax.persistence.JoinColumn
+import uqbar.tpFutbol.dao.PartidosRepo
+import uqbar.tpFutbol.dao.JugadoresRepo
+import uqbar.tpFutbol.dao.SessionManager
 
 @Entity
 @Observable
@@ -208,7 +211,7 @@ class Jugador implements Serializable {
 	def void setCalificaciones(List<Calificaciones> value) {
 		calificaciones = value
 	}
-	@Transient
+	@Column(name="promediovarios")
 	def getPromedioConVariosCriteriosAplicados() {
 	promedioConVariosCriteriosAplicados
 	}
@@ -506,6 +509,15 @@ class Jugador implements Serializable {
 	def obtenerPosicion(Partido partido) {
 		partido.participantes.indexOf(this)
 	}
+	
+	def void ingresarElEquipo(Partido partido, int numero) {
+		val jugEncontrado = new PartidosRepo().encontrarInscripto(partido,this)
+		val inscripcion = new JugadoresRepo().actualizarEquipo(jugEncontrado,partido,numero)
+		
+		inscripcion.actualizateEnLaBase(numero)
+		
+	}
+	
 	
 	
 	
