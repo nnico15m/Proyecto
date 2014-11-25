@@ -243,6 +243,7 @@ class GenerarEquiposPage extends WebPage{
 			val inscriptosOrd = partidoPed.ordenarLaListaPorCriterioPrueba(criterio,generador.cantPartidos)
 			val nombresOrd = inscriptosOrd.map[nombreJugador]
 			partidoPed.setInscripcionesAux(nombresOrd)
+			partidoPed.setInscripcionesAuxOrd(inscriptosOrd)
 		}
 		else{
 			error("Tiene que elegir la cantidad de partidos que desea ver")
@@ -255,6 +256,7 @@ class GenerarEquiposPage extends WebPage{
 		val inscriptosOrd = partidoPed.ordenarLaListaPorPromedioDeVariosCriteriosPrueba(partidoPed,generador.cantPartidos)
 		val nombresOrd = inscriptosOrd.map[nombreJugador]
 		partidoPed.setInscripcionesAux(nombresOrd)
+		partidoPed.setInscripcionesAuxOrd(inscriptosOrd)
 		
 	}
 	

@@ -28,6 +28,23 @@ class DividirPorPosicion14589  extends DividirEquiposCommand {
 	override dividirEquiposPrueba(Partido partido){
 			
 	
+		//partido.inscripcionesAuxOrd= partido.participantes()
+	val listaAux = partido.inscripcionesAuxOrd		
+//		val lista14589= listaAux.filter[jug|jug.esDeLaPosicion14589(partido)]
+//		val lista236710= listaAux.filter[jug|jug.esDeLaPosicion236710(partido)]
+
+		val lista14589= listaAux.filter[jug|this.es14589(jug.obtenerPosicion(partido))].toList
+		val lista236710= listaAux.filter[jug|this.es236710(jug.obtenerPosicion(partido))].toList
+		
+		partido.setEquipo1(lista14589)
+		partido.setEquipo2(lista236710)
+		return partido
+
+	}
+	
+	override dividirEquiposPruebaBase(Partido partido){
+			
+	
 		partido.inscripcionesAuxOrd= partido.participantes()
 	val listaAux = partido.inscripcionesAuxOrd		
 //		val lista14589= listaAux.filter[jug|jug.esDeLaPosicion14589(partido)]

@@ -113,13 +113,13 @@ class GeneradorPartidos implements Serializable {
 		
 		val codPartidoPed = new PartidosRepo().obtenerCriterioDivision(partidoPed).getDivisionPers
 		if(codPartidoPed == 1){
-			val partidoNuevo = partidoPed.dividirEquiposPrueba(new DividirPorParEImpar)
+			val partidoNuevo = partidoPed.dividirEquiposPruebaBase(new DividirPorParEImpar)
 			partidoPed.setEquipo1(partidoNuevo.equipo1)
 			partidoPed.setEquipo2(partidoNuevo.equipo2)
 			
 		}
 		if(codPartidoPed == 2){
-			val partidoNuevo = partidoPed.dividirEquiposPrueba(new DividirPorPosicion14589)
+			val partidoNuevo = partidoPed.dividirEquiposPruebaBase(new DividirPorPosicion14589)
 			partidoPed.setEquipo1(partidoNuevo.equipo1)
 			partidoPed.setEquipo2(partidoNuevo.equipo2)
 			

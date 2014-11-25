@@ -52,8 +52,8 @@ class Partido  implements Serializable {
 	private DividirEquiposCommand criterioDeDivision
 	private int ordenamientoPers
 	private int divisionPers
-	
-	private List<Jugador> inscripcionesAuxOrd = new ArrayList
+		private List<Jugador> inscripcionesSinOrd = new ArrayList
+		private List<Jugador> inscripcionesAuxOrd = new ArrayList
 	
 	
 /** Constructor que necesita Hibernate */	
@@ -202,6 +202,15 @@ class Partido  implements Serializable {
 		this.inscripcionesAuxOrd = inscripciones
 	}
 	
+	@Transient
+	def getInscripcionesSinOrd(){
+		inscripcionesSinOrd
+	}
+	
+	def setInscripcionesSinOrd(List<Jugador>inscripciones) {
+		this.inscripcionesSinOrd = inscripciones
+	}
+	
 	
 	
 
@@ -318,6 +327,10 @@ class Partido  implements Serializable {
 	
 	def dividirEquiposPrueba(DividirEquiposCommand criterioDivision){
 		criterioDivision.dividirEquiposPrueba(this)
+	}
+	
+	def dividirEquiposPruebaBase(DividirEquiposCommand criterioDivision){
+		criterioDivision.dividirEquiposPruebaBase(this)
 	}
 	
 	def confirmaTusEquipos() {

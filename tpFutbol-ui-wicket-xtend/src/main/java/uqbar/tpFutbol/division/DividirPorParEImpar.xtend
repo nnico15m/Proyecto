@@ -24,6 +24,24 @@ class DividirPorParEImpar extends DividirEquiposCommand    {
 	}
 	
 	override dividirEquiposPrueba(Partido partido){
+	//	partido.inscripcionesAuxOrd= partido.participantes()
+		val listaAux = partido.inscripcionesAuxOrd	
+		//val listaAuxNombres = listaAux.map[nombreJugador]
+	
+
+		val listaImpares = listaAux.filter[jug|jug.unJugEsImpar(partido)].toList
+		val listaPares = listaAux.filter[jug|jug.unJugEsPar(partido)].toList
+
+ 		
+		partido.setEquipo1(listaImpares)
+		partido.setEquipo2(listaPares)
+		return partido
+		
+		
+		
+	}
+	
+	override dividirEquiposPruebaBase(Partido partido){
 		partido.inscripcionesAuxOrd= partido.participantes()
 		val listaAux = partido.inscripcionesAuxOrd	
 		//val listaAuxNombres = listaAux.map[nombreJugador]
