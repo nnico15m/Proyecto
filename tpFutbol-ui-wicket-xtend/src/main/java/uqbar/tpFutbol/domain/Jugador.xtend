@@ -79,6 +79,8 @@ class Jugador implements Serializable {
 	
 		private List<Inscripciones> inscripcionesP = new ArrayList
 	
+	//private Partido partido
+	//private Long partido_id
 	
 
 		
@@ -297,9 +299,28 @@ class Jugador implements Serializable {
 	
 	
 
+/* 	
+	@ManyToOne
+	def getPartido() {
+		partido
+	}
 	
 	
+	
+	def void setPartido(Partido value) {
+		partido = value
+	}
+	
+	@Column(name = "partido_id", insertable = false, updatable = false)
+	def getPartido_id() {
+		partido_id
+	}
 
+	def setPartido_id(Long value) {
+		partido_id = value
+	}
+	
+*/
 	
 	//new(String nombreJugador, String apodo, int nivelDeJuego, int promedioCalificacionesUltPart, int promedioCalificaciones,int fechaDeNacimiento, ArrayList<Jugador> amigos, ArrayList<Infracciones> infracciones, int cantPartidosJugados, TipoDeSuscripcion formaDeInscripcion,String mail,StubMensajero mensajero, List<Calificaciones>  calificaciones,List<Jugador> pendientesDeCalificar,ComunidadFutbolera comunidad,ArrayList<Integer> listaCriterioDelJugador,  int m) {
 //		

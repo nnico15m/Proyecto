@@ -107,6 +107,7 @@ class Partido  implements Serializable {
 	}
 	
 	@Transient
+	//@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="equipo1")
 	def getEquipo1(){
 		this.equipo1
 	}
@@ -116,6 +117,7 @@ class Partido  implements Serializable {
 	}
 	
 	@Transient
+	//@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="equipo2")
 	def getEquipo2(){
 		this.equipo2
 	}

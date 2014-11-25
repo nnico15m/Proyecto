@@ -15,6 +15,7 @@ class Equipo implements Serializable {
 	private Long id
 	private Jugador jugador
 	
+	
 	@Id
 	@GeneratedValue
 	def getId() {

@@ -1,4 +1,4 @@
-package uqbar.tpFutbol.ui.wicket
+	package uqbar.tpFutbol.ui.wicket
 
 
 import org.uqbar.wicket.xtend.WicketExtensionFactoryMethods
@@ -150,7 +150,7 @@ class GenerarEquiposPage extends WebPage{
 			val listEquiposInf = new XListView("listaE")
 			listEquiposInf.populateItem = [ item |
 			item.model = item.modelObject.asCompoundModel
-			item.addChild(new Label("codPartido"))
+			item.addChild(new Label("id"))
 			item.addChild(new Label("nombreJugadorEquipo1"))
 			item.addChild(new Label("nombreJugadorEquipo2"))
 			item.addChild(new XButton("cerrarPartido").onClick = [| this.cerrarPartido(item.modelObject)
@@ -195,6 +195,9 @@ class GenerarEquiposPage extends WebPage{
 		else{
 	//	Partido.home.update(partidoPed.confirmaTusEquiposPrueba())
 	partidoPed.confirmaTusEquiposPrueba()
+	//SessionManager::getSession().saveOrUpdate(partidoPed)
+	//SessionManager::commit()
+	
 		}
 		
 			

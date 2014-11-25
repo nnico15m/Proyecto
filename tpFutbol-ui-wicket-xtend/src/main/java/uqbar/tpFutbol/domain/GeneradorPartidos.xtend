@@ -44,10 +44,9 @@ class GeneradorPartidos implements Serializable {
 	
 	
 	def void buscarPartidos(){
-//		resultados = new ArrayList<Partido>
-//		listaE = new ArrayList<Partido>
+
 //		resultados = getHomePartidos.search()
-//		listaE = getHomePartidos.search()
+		listaE = new PartidosRepo().getAll()
 		resultados = new PartidosRepo().getAll()
 		
 		
