@@ -20,13 +20,13 @@ class OrdenamientoPorHandicap implements OrganizadorCommand {
 		
 	}
 	
-		override def Partido ordenarLaListaPrueba(Partido partido,int n){
+		override def List<Jugador> ordenarLaListaPrueba(Partido partido,int n){
 		
 		
 		val participantesOrd = partido.participantes.sortBy[nivelDeJuego]
 		partido.participantes.clear
 		partido.participantes.addAll(participantesOrd)
-		return partido
+		return participantesOrd
 		
 		
 	}

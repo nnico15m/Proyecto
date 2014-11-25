@@ -19,10 +19,7 @@ class PartidosRepo {
 		val query =  session.createCriteria(Jugador)
 		val id = partidoPed.getId()
 		//query.add( Restrictions.like("partido_id", id)).createCriteria("jugador").list()
-		
-		
-		
-				//query.createAlias("inscripcionesP.partido", "partido_id")
+		//query.createAlias("inscripcionesP.partido", "partido_id")
 		query.createAlias("inscripcionesP", "inscripcion")
 		//query.createAlias("inscripcion.partido", "partido")
 		//val id = partidoPed.getId()

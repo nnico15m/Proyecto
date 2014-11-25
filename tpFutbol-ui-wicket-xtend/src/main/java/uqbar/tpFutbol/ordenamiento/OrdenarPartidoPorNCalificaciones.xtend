@@ -23,7 +23,7 @@ class OrdenarPartidoPorNCalificaciones implements OrganizadorCommand  {
 	val aux1 = partido.participantes.sortBy[promedioCalificaciones]
 	partido.inscripciones.participantes.clear
 	partido.inscripciones.participantes.addAll(aux1)
-	return partido	
+	return aux1	
 
 		
 		

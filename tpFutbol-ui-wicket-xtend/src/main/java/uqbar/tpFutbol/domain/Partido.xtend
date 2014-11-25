@@ -44,7 +44,7 @@ class Partido  implements Serializable {
 	
 	private List<Jugador> equipo1 = new ArrayList (5) 
 	private List<Jugador> equipo2 = new ArrayList (5)
-	
+	private List<String> inscripcionesAux = new ArrayList
 	private List<Inscripciones> inscripcionesP = new ArrayList
 	
 	private TipoDeInscripcion inscripciones
@@ -52,6 +52,8 @@ class Partido  implements Serializable {
 	private DividirEquiposCommand criterioDeDivision
 	private int ordenamientoPers
 	private int divisionPers
+	
+	
 	
 	
 /** Constructor que necesita Hibernate */	
@@ -105,7 +107,6 @@ class Partido  implements Serializable {
 	}
 	
 	@Transient
-	//@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="equipo1")
 	def getEquipo1(){
 		this.equipo1
 	}
@@ -115,7 +116,6 @@ class Partido  implements Serializable {
 	}
 	
 	@Transient
-	//@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="equipo2")
 	def getEquipo2(){
 		this.equipo2
 	}
@@ -162,6 +162,18 @@ class Partido  implements Serializable {
 	def setInscripcionesP(List<Inscripciones>inscripciones) {
 		this.inscripcionesP = inscripciones
 	}
+	
+	@Transient
+	def getInscripcionesAux(){
+		inscripcionesAux
+	}
+	
+	def setInscripcionesAux(List<String>inscripciones) {
+		this.inscripcionesAux = inscripciones
+	}
+	
+	
+	
 	@Column(name="criterioOrdenamiento")
 	def getOrdenamientoPers(){
 		ordenamientoPers
@@ -178,6 +190,8 @@ class Partido  implements Serializable {
 	def setDivisionPers(int criterioPers) {
 		this.divisionPers =criterioPers
 	}
+	
+	
 	
 	
 	
@@ -283,7 +297,7 @@ class Partido  implements Serializable {
 		val participantesOrd = partidoAOrganizar.participantes.sortBy[promedioConVariosCriteriosAplicados]
 		partidoAOrganizar.participantes.clear
 		partidoAOrganizar.participantes.addAll(participantesOrd)
-		return partidoAOrganizar
+		return participantesOrd
 		
 		
 		

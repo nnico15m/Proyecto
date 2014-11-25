@@ -111,31 +111,29 @@ class GenerarEquiposPage extends WebPage{
 			item.model = item.modelObject.asCompoundModel
 			item.addChild(new Label("id"))
 			//item.addChild(new Label("inscripciones.nombreParticipantes"))
-			item.addChild(new Label("inscripcionesP"))
-			//item.addChild(new XButton("obtenerParticipantes").onClick = [| generador.obtenerParticipantesP(item.modelObject)
-			//])
+			item.addChild(new Label("inscripcionesAux"))
 			item.addChild(new XButton("obtenerParticipantes").onClick = [| this.obtenerInscriptos(item.modelObject)
 				
 			])
 			item.addChild(new XButton("criterioPar").onClick = [|setearEnLaBaseCriterioDiv(item.modelObject,1)
 				 dividirEquiposP(item.modelObject,criterioPar)
-				 SessionManager::session.update(item.modelObject)
+				 
 			]) 
 			item.addChild(new XButton("criterio14589").onClick = [| setearEnLaBaseCriterioDiv(item.modelObject,2)
 				dividirEquiposP(item.modelObject,criterio14589)
-				SessionManager::session.update(item.modelObject)
+				
 			])
 			item.addChild(new XButton("ordenarPorHandicap").onClick = [|setearEnLaBaseCriterioOrden(item.modelObject,1) 
 				ordenarPartido(item.modelObject,ordHandicap)
-				SessionManager::session.update(item.modelObject)
+			
 			])	
 			item.addChild(new XButton("ordenarPorUltimaCalificacion").onClick = [| setearEnLaBaseCriterioOrden(item.modelObject,2) 
 				ordenarPartido(item.modelObject,ordPromedioNotasUltimo)
-				SessionManager::session.update(item.modelObject)
+				
 			])
 			item.addChild(new XButton("ordenarPorNCalificaciones").onClick = [| setearEnLaBaseCriterioOrden(item.modelObject,3) 
 				ordenarPartidoCompuesto(item.modelObject,ordPromedioNotasNPartidos)
-				SessionManager::session.update(item.modelObject)
+				
 			])
 			item.addChild(new XButton("mixto").onClick = [| setearEnLaBaseCriterioOrden(item.modelObject,4) 
 				ordenarPartidoMixto(item.modelObject)
@@ -174,8 +172,9 @@ class GenerarEquiposPage extends WebPage{
 	
 		//if (partidoPed.inscripciones.class == InscripcionAbierta)	{
 		//Partido.home.update(partidoPed.dividirEquiposPrueba(criterio))
-		new PartidosRepo().buscarPart(partidoPed).dividirEquiposPrueba(criterio)
-		
+		val partidoNuevo = partidoPed.dividirEquiposPrueba(criterio)
+		partidoPed.setEquipo1(partidoNuevo.equipo1)
+		partidoPed.setEquipo2(partidoNuevo.equipo2)
 		
 		//}
 		//else {
@@ -195,7 +194,7 @@ class GenerarEquiposPage extends WebPage{
 		}
 		else{
 	//	Partido.home.update(partidoPed.confirmaTusEquiposPrueba())
-	new PartidosRepo().buscarPart(partidoPed).confirmaTusEquiposPrueba()
+	partidoPed.confirmaTusEquiposPrueba()
 		}
 		
 			
@@ -206,21 +205,17 @@ class GenerarEquiposPage extends WebPage{
 	
 	def ordenarPartido (Partido partidoPed, OrganizadorCommand criterio){
 		
-		// Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(criterio,1))
-		//val partidoEnc= new PartidosRepo().buscarPart(partidoPed)
-		val partidoOrd = partidoPed.ordenarLaListaPorCriterioPrueba(criterio,1)
-	//	SessionManager::getSession().saveOrUpdate(partidoOrd)	
-	//	SessionManager::commit()
-		
-		
-		
+		val inscriptosOrd = partidoPed.ordenarLaListaPorCriterioPrueba(criterio,1)
+		val nombresOrd = inscriptosOrd.map[nombreJugador]
+		partidoPed.setInscripcionesAux(nombresOrd)
 	}
 	
 	def ordenarPartidoCompuesto (Partido partidoPed, OrganizadorCommand criterio){
 		if (generador.cantPartidos != 0){
-	//	 Partido.home.update(partidoPed.ordenarLaListaPorCriterioPrueba(criterio,((generador.cantPartidos)))	)
-			new PartidosRepo().buscarPart(partidoPed).ordenarLaListaPorCriterioPrueba(criterio,generador.cantPartidos)
-			
+	
+			val inscriptosOrd = partidoPed.ordenarLaListaPorCriterioPrueba(criterio,generador.cantPartidos)
+			val nombresOrd = inscriptosOrd.map[nombreJugador]
+			partidoPed.setInscripcionesAux(nombresOrd)
 		}
 		else{
 			error("Tiene que elegir la cantidad de partidos que desea ver")
@@ -230,7 +225,9 @@ class GenerarEquiposPage extends WebPage{
 	def ordenarPartidoMixto (Partido partidoPed){
 		
 		// Partido.home.update(partidoPed.ordenarLaListaPorPromedioDeVariosCriteriosPrueba(partidoPed,generador.cantPartidos))
-		new PartidosRepo().buscarPart(partidoPed).ordenarLaListaPorPromedioDeVariosCriteriosPrueba(partidoPed,generador.cantPartidos)
+		val inscriptosOrd = partidoPed.ordenarLaListaPorPromedioDeVariosCriteriosPrueba(partidoPed,generador.cantPartidos)
+		val nombresOrd = inscriptosOrd.map[nombreJugador]
+		partidoPed.setInscripcionesAux(nombresOrd)
 		
 	}
 	
@@ -258,21 +255,15 @@ class GenerarEquiposPage extends WebPage{
 	def setearEnLaBaseCriterioDiv(Partido partidoP,int num){
 		partidoP.setDivisionPers(num)
 		SessionManager::getSession().saveOrUpdate(partidoP)
-		
 		SessionManager::commit()
 	} 
 	
-	def obtenerInscriptos (Partido partido){
-		//val inscriptos = new PartidosRepo().getAllInscriptos(partido)
-		switch(partido.ordenamientoPers){
-			case 1:
-				this.ordenarPartido(partido, ordHandicap)
-			case 2:
-				this.ordenarPartido(partido, ordPromedioNotasUltimo)
-			case 3:
-				this.ordenarPartidoCompuesto(partido, ordPromedioNotasNPartidos)
-		}
-		partido.participantes
+	def obtenerInscriptos (Partido partidoPed){
+	
+		val inscriptos =  new PartidosRepo().getAllInscriptos(partidoPed)
+		val nombres = inscriptos.map[nombreJugador]
+		partidoPed.setInscripcionesAux(nombres)
+		
 	}
 	
 	

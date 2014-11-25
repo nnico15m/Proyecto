@@ -16,7 +16,7 @@ class DividirPorParEImpar extends DividirEquiposCommand    {
 		val listaPares = partido.participantes.filter[jug|jug.unJugEsPar(partido)].toList
 
  		
-		 partido.setEquipo1(listaImpares)
+		partido.setEquipo1(listaImpares)
 		partido.setEquipo2(listaPares)
 		
 		
