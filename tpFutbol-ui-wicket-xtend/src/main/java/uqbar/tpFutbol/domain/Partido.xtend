@@ -53,7 +53,7 @@ class Partido  implements Serializable {
 	private int ordenamientoPers
 	private int divisionPers
 	
-	
+	private List<Jugador> inscripcionesAuxOrd = new ArrayList
 	
 	
 /** Constructor que necesita Hibernate */	
@@ -193,7 +193,14 @@ class Partido  implements Serializable {
 		this.divisionPers =criterioPers
 	}
 	
+	@Transient
+	def getInscripcionesAuxOrd(){
+		inscripcionesAuxOrd
+	}
 	
+	def setInscripcionesAuxOrd(List<Jugador>inscripciones) {
+		this.inscripcionesAuxOrd = inscripciones
+	}
 	
 	
 	

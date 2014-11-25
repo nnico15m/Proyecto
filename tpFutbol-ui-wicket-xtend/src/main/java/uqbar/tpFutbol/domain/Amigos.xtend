@@ -11,7 +11,7 @@ import javax.persistence.Transient
 
 @Entity
 
-@Table(name="jugadores_jugadores")
+@Table(name="amigos")
 @Observable
 
 class Amigos implements Serializable {
@@ -19,8 +19,8 @@ class Amigos implements Serializable {
 	
 	
 	private Long id
-	private Jugador jugadores_id
-	private Jugador amigos_id
+	private Jugador jugador_id
+	private Jugador jugador
 
 
 	
@@ -36,22 +36,25 @@ class Amigos implements Serializable {
 	def setId(Long value) {
 		id = value
 	}
-	@Column(name = "jugadores_id", insertable = false, updatable = false)
-	def getJugadores_id() {
-		jugadores_id
+	@Column(name = "jugador_id", insertable = false, updatable = false)
+	def getJugador_id() {
+		jugador_id
 	}
 
-	def setJugadores_id(Jugador value) {
-		jugadores_id = value
+	def setJugador_id(Jugador value) {
+		jugador_id = value
 	}
 	
-	@Column(name = "amigos_id", insertable = false, updatable = false)
-	def getAmigos_id() {
-		amigos_id
+	
+	@ManyToOne
+	def getJugador() {
+		jugador
 	}
-
-	def setAmigos_id(Jugador value) {
-		amigos_id = value
+	
+	
+	
+	def void setJugador(Jugador value) {
+		jugador = value
 	}
 	
 	

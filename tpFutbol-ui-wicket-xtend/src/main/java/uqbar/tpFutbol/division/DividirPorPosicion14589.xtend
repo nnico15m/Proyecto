@@ -12,7 +12,7 @@ class DividirPorPosicion14589  extends DividirEquiposCommand {
 
 	override dividirEquipos(Partido partido){
 			
-		val listaAux = partido.participantes	
+		val listaAux = partido.inscripcionesAuxOrd	
 		
 //		val lista14589= listaAux.filter[jug|jug.esDeLaPosicion14589(partido)]
 //		val lista236710= listaAux.filter[jug|jug.esDeLaPosicion236710(partido)]
@@ -27,8 +27,9 @@ class DividirPorPosicion14589  extends DividirEquiposCommand {
 	
 	override dividirEquiposPrueba(Partido partido){
 			
-		val listaAux = partido.participantes	
-		
+	
+		partido.inscripcionesAuxOrd= partido.participantes()
+	val listaAux = partido.inscripcionesAuxOrd		
 //		val lista14589= listaAux.filter[jug|jug.esDeLaPosicion14589(partido)]
 //		val lista236710= listaAux.filter[jug|jug.esDeLaPosicion236710(partido)]
 

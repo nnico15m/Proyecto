@@ -87,10 +87,8 @@ class JugadoresRepo {
 	
 	def List<Jugador> buscarAmigos(Jugador jugadorPedido) {
 		val query = session.createCriteria(Amigos)
-		val idJugador = jugadorPedido.id
- 		if (idJugador != null) {
-			query.add(eq("jugadores_id", "%" + idJugador + "%"))
-		}
+		val idJugador = jugadorPedido.id	
+ 		query.add(eq("jugador_id", idJugador))
 		query.list()
 	}
 	

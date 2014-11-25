@@ -190,12 +190,28 @@ class GenerarEquiposPage extends WebPage{
 	
 	
 	def cerrarPartido(Partido partidoPed){
+		
+		
+		if((partidoPed.equipo1.size < 5) && (partidoPed.equipo1.size < 5)){
+		error("No puede cerrarse un partido con menos de 10 jugadores")
+	}
+	
+	
+	
 		if (partidoPed.equipo1.empty){
 			error("No puede cerrarse un partido sin equipos")
 		}
-		else{
-	//	Partido.home.update(partidoPed.confirmaTusEquiposPrueba())
-	//partidoPed.confirmaTusEquiposPrueba()
+		
+	
+	
+	
+	if((partidoPed.equipo1.size > 5) ||(partidoPed.equipo1.size > 5) ){
+		val equipo1confA = partidoPed.equipo1.subList(0,4)
+		val equipo2confA = partidoPed.equipo2.subList(0,4)
+		equipo1confA.forEach[jug|jug.ingresarElEquipo(partidoPed,1)]
+		equipo2confA.forEach[jug|jug.ingresarElEquipo(partidoPed,2)]
+	}
+	
 	val equipo1conf = partidoPed.equipo1
 	val equipo2conf = partidoPed.equipo2
 	equipo1conf.forEach[jug|jug.ingresarElEquipo(partidoPed,1)]
@@ -205,7 +221,7 @@ class GenerarEquiposPage extends WebPage{
 
 	
 	
-		}
+		
 		
 			
 			
@@ -218,6 +234,7 @@ class GenerarEquiposPage extends WebPage{
 		val inscriptosOrd = partidoPed.ordenarLaListaPorCriterioPrueba(criterio,1)
 		val nombresOrd = inscriptosOrd.map[nombreJugador]
 		partidoPed.setInscripcionesAux(nombresOrd)
+		partidoPed.setInscripcionesAuxOrd(inscriptosOrd)
 	}
 	
 	def ordenarPartidoCompuesto (Partido partidoPed, OrganizadorCommand criterio){

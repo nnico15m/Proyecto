@@ -175,7 +175,7 @@ class Jugador implements Serializable {
 	*/
 	
 	
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="amigos")
 	def getAmigos() {
 		amigos
 	}
@@ -507,8 +507,11 @@ class Jugador implements Serializable {
 	
 
 	def obtenerPosicion(Partido partido) {
-		partido.participantes.indexOf(this)
+		//partido.participantes.indexOf(this)
+		partido.inscripcionesAuxOrd.indexOf(this)
 	}
+	
+	
 	
 	def void ingresarElEquipo(Partido partido, int numero) {
 		val jugEncontrado = new PartidosRepo().encontrarInscripto(partido,this)

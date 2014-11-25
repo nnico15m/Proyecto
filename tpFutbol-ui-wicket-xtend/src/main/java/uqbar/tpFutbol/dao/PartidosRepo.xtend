@@ -56,7 +56,7 @@ class PartidosRepo {
 	def List<Partido> obtenerLosQueTienenUnEquipo(){
 		val query = session.createCriteria(Partido)
 		query.createAlias("inscripcionesP", "inscripcion")
-		query.add(eq("inscripcion.equipo_id", 1))
+		query.add(eq("inscripcion.equipo_id", 1))or(eq("inscripcion.equipo_id", 2))
 		
 		query.list() 
 		
