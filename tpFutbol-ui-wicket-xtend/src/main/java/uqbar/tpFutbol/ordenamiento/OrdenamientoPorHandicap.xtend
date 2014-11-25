@@ -24,8 +24,8 @@ class OrdenamientoPorHandicap implements OrganizadorCommand {
 		
 		
 		val participantesOrd = partido.participantes.sortBy[nivelDeJuego]
-		partido.inscripciones.participantes.clear
-		partido.inscripciones.participantes.addAll(participantesOrd)
+		partido.participantes.clear
+		partido.participantes.addAll(participantesOrd)
 		return partido
 		
 		

@@ -65,7 +65,7 @@ class GeneradorPartidos implements Serializable {
 	
 		
 	//	equipos = getHomePartidos.search().findFirst[codPartido == codPartidoActual].participantes
-	//	equipos = new PartidosRepo().participantesEquipo(partido)
+		equipos = new PartidosRepo().getAllInscriptos(partido)
 	}
 	
 	def actualizarCantPartidos() {

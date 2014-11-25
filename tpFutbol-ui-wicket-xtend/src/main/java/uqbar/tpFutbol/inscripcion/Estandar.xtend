@@ -22,7 +22,7 @@ class Estandar extends TipoDeSuscripcion {
 	private int prioridad = 0
 	private Long id
 	 
-	new() {
+ 	new() {
 	}
 	
 	

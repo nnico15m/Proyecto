@@ -77,6 +77,7 @@ class Jugador implements Serializable {
 	//private List<Jugador> equipo1
 	//private List<Jugador> equipo2
 	
+		private List<Inscripciones> inscripcionesP = new ArrayList
 	
 	
 
@@ -285,7 +286,14 @@ class Jugador implements Serializable {
 	}
 	*/
 	
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="jugador")
+	def getInscripcionesP(){
+		inscripcionesP
+	}
 	
+	def setInscripcionesP(List<Inscripciones>inscripciones) {
+		this.inscripcionesP = inscripciones
+	}
 	
 	
 

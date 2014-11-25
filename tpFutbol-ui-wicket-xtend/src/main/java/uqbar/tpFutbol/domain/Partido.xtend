@@ -20,6 +20,7 @@ import javax.persistence.Column
 import javax.persistence.Transient
 import javax.persistence.Table
 import uqbar.tpFutbol.inscripcion.Inscripciones
+import uqbar.tpFutbol.dao.PartidosRepo
 
 @Entity 
 @Observable
@@ -44,11 +45,13 @@ class Partido  implements Serializable {
 	private List<Jugador> equipo1 = new ArrayList (5) 
 	private List<Jugador> equipo2 = new ArrayList (5)
 	
-	
+	private List<Inscripciones> inscripcionesP = new ArrayList
 	
 	private TipoDeInscripcion inscripciones
 	private OrganizadorCommand criterioDeOrdenamiento
 	private DividirEquiposCommand criterioDeDivision
+	private int ordenamientoPers
+	private int divisionPers
 	
 	
 /** Constructor que necesita Hibernate */	
@@ -151,20 +154,41 @@ class Partido  implements Serializable {
 	}
 	
 
+	@OneToMany(cascade=CascadeType.ALL, orphanRemoval=true, mappedBy="partido")
+	def getInscripcionesP(){
+		inscripcionesP
+	}
 	
+	def setInscripcionesP(List<Inscripciones>inscripciones) {
+		this.inscripcionesP = inscripciones
+	}
+	@Column(name="criterioOrdenamiento")
+	def getOrdenamientoPers(){
+		ordenamientoPers
+	}
 	
+	def setOrdenamientoPers(int ordenamientoPers) {
+		this.ordenamientoPers = ordenamientoPers
+	}
+	@Column(name="criterioDivision")
+	def getDivisionPers(){
+		divisionPers
+	}
 	
-	
+	def setDivisionPers(int criterioPers) {
+		this.divisionPers =criterioPers
+	}
 	
 	
 	
 
 //es una prueba
 	def participantes(){
-		this.inscripciones.participantes
+		//this.inscripciones.participantes
+		new PartidosRepo().getAllInscriptos(this)
 	}
 	
-	def nombreParticipantes(){
+	def nombreParticipantes(){//FIXME
 		this.inscripciones.nombreParticipantes
 	}
 	
@@ -241,7 +265,7 @@ class Partido  implements Serializable {
 	
 	def ordenarLaListaPorCriterioPrueba(OrganizadorCommand criterio,int n) {
 		
-		
+		this.setCriterioDeOrdenamiento(criterio)
 		criterio.ordenarLaListaPrueba(this,n)
 		
 	
@@ -257,8 +281,8 @@ class Partido  implements Serializable {
 	def ordenarLaListaPorPromedioDeVariosCriteriosPrueba(Partido partidoAOrganizar, int n){
 		//partidoAOrganizar.participantes.forEach[jug|jug.valorPromedioDeVariosCriterios(this,listaCriterios, n)]
 		val participantesOrd = partidoAOrganizar.participantes.sortBy[promedioConVariosCriteriosAplicados]
-		partidoAOrganizar.inscripciones.participantes.clear
-		partidoAOrganizar.inscripciones.participantes.addAll(participantesOrd)
+		partidoAOrganizar.participantes.clear
+		partidoAOrganizar.participantes.addAll(participantesOrd)
 		return partidoAOrganizar
 		
 		

@@ -10,6 +10,8 @@ import javax.persistence.Transient
 import uqbar.tpFutbol.domain.Partido
 import uqbar.tpFutbol.domain.Jugador
 import javax.persistence.ManyToOne
+import java.util.List
+import uqbar.tpFutbol.dao.PartidosRepo
 
 @Entity
 @Observable
@@ -82,4 +84,13 @@ class Inscripciones  implements Serializable{
 		idTipoeInscripcion = value
 	}
 	
+	def List<String> nombreParticipantes(){
+		//jugadores.map[nombreJugador] 
+		val nombres = new PartidosRepo().getAllInscriptos(partido)
+		nombres.map[jug|jug.getNombreJugador]
+	
+	 }
+	 
+
+	 
 	 }

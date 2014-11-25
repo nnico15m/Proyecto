@@ -78,6 +78,7 @@ class JugadoresRepo {
 		val id =  jugadorPedido.getId()
 			query.add(eq("jugador_id", id))
 				query.list()
+				
 	}
 	
 	def List<Jugador> buscarAmigos(Jugador jugadorPedido) {
