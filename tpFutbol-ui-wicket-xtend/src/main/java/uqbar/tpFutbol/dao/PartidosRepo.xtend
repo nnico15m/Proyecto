@@ -58,6 +58,9 @@ class PartidosRepo {
 		query.createAlias("inscripcionesP", "inscripcion")
 		query.add(eq("inscripcion.equipo_id", 1))or(eq("inscripcion.equipo_id", 2))
 		
+		
+
+		
 		query.list() 
 		
 	}
