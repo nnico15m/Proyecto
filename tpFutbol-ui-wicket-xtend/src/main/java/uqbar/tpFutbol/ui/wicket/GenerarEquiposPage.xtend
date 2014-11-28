@@ -173,6 +173,15 @@ class GenerarEquiposPage extends WebPage{
 		//if (partidoPed.inscripciones.class == InscripcionAbierta)	{
 		//Partido.home.update(partidoPed.dividirEquiposPrueba(criterio))
 		val partidoNuevo = partidoPed.dividirEquiposPrueba(criterio)
+		
+		if(criterio.class == DividirPorParEImpar){
+			partidoPed.setDivisionPers(1)
+		}
+		
+		else{
+			partidoPed.setDivisionPers(2)
+		}
+		
 		partidoPed.setEquipo1(partidoNuevo.equipo1)
 		partidoPed.setEquipo2(partidoNuevo.equipo2)
 		generador.actualizarListaEquipos()
@@ -199,8 +208,9 @@ class GenerarEquiposPage extends WebPage{
 	
 		
 		else{
-			val equipo1conf = partidoPed.equipo1
+	val equipo1conf = partidoPed.equipo1
 	val equipo2conf = partidoPed.equipo2
+	partido.inscripcionesAuxOrd.forEach[jug|jug.ingresarElEquipo(partidoPed,0)]
 	equipo1conf.forEach[jug|jug.ingresarElEquipo(partidoPed,1)]
 	equipo2conf.forEach[jug|jug.ingresarElEquipo(partidoPed,2)]
 		}
@@ -237,6 +247,18 @@ class GenerarEquiposPage extends WebPage{
 		
 		val inscriptosOrd = partidoPed.ordenarLaListaPorCriterioPrueba(criterio,1)
 		val nombresOrd = inscriptosOrd.map[nombreJugador]
+		
+		if(criterio.class == OrdenamientoPorHandicap){
+			partidoPed.setOrdenamientoPers(1)
+		}
+		
+		if(criterio.class == OrdenarPartidoPorUltimaCalificacion){
+			partidoPed.setOrdenamientoPers(2)
+		}
+		
+
+		
+		
 		partidoPed.setInscripcionesAux(nombresOrd)
 		partidoPed.setInscripcionesAuxOrd(inscriptosOrd)
 	}
@@ -255,6 +277,9 @@ class GenerarEquiposPage extends WebPage{
 	}
 	
 	def ordenarPartidoMixto (Partido partidoPed){
+		
+		
+			partidoPed.setOrdenamientoPers(3)
 		
 		// Partido.home.update(partidoPed.ordenarLaListaPorPromedioDeVariosCriteriosPrueba(partidoPed,generador.cantPartidos))
 		val inscriptosOrd = partidoPed.ordenarLaListaPorPromedioDeVariosCriteriosPrueba(partidoPed,generador.cantPartidos)

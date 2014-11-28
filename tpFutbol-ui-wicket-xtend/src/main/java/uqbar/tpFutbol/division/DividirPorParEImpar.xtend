@@ -7,6 +7,9 @@ import uqbar.tpFutbol.domain.Partido
 import uqbar.tpFutbol.domain.Jugador
 import org.uqbar.commons.model.Entity
 import uqbar.tpFutbol.domain.HomePartidos
+import uqbar.tpFutbol.dao.PartidosRepo
+import uqbar.tpFutbol.ordenamiento.OrdenamientoPorHandicap
+import uqbar.tpFutbol.ordenamiento.OrdenarPartidoPorUltimaCalificacion
 
 class DividirPorParEImpar extends DividirEquiposCommand    {
 	
@@ -24,20 +27,20 @@ class DividirPorParEImpar extends DividirEquiposCommand    {
 	}
 	
 	override dividirEquiposPrueba(Partido partido){
-	//	partido.inscripcionesAuxOrd= partido.participantes()
+	
 		val listaAux2 = partido.inscripcionesAuxOrd	
-		val listaAux = listaAux2
 		
-		if(listaAux.size >10){
 		
-		listaAux.subList(0,10)
+		if(listaAux2.size >10){
+		
+		partido.inscripcionesAuxOrd = listaAux2.subList(0,9)
 		}
 		
-		//val listaAuxNombres = listaAux.map[nombreJugador]
+		
 	
 
-		val listaImpares = listaAux.filter[jug|jug.unJugEsImpar(partido)].toList
-		val listaPares = listaAux.filter[jug|jug.unJugEsPar(partido)].toList
+		val listaImpares = partido.inscripcionesAuxOrd.filter[jug|jug.unJugEsImpar(partido)].toList
+		val listaPares =partido.inscripcionesAuxOrd.filter[jug|jug.unJugEsPar(partido)].toList
 
  		
 		partido.setEquipo1(listaImpares)
@@ -49,10 +52,21 @@ class DividirPorParEImpar extends DividirEquiposCommand    {
 	}
 	
 	override dividirEquiposPruebaBase(Partido partido){
-		partido.inscripcionesAuxOrd= partido.participantes()
-		val listaAux = partido.inscripcionesAuxOrd	
-		//val listaAuxNombres = listaAux.map[nombreJugador]
-	
+		val aux = partido.participantes()
+		val ordPers = new PartidosRepo().obtenerCriterioOrd(partido).ordenamientoPers
+		var listaAux = aux
+		if(ordPers == 1){
+			listaAux  = partido.ordenarLaListaPorCriterioPrueba(new OrdenamientoPorHandicap,1)
+		}
+		if(ordPers == 2){
+			listaAux = partido.ordenarLaListaPorCriterioPrueba(new OrdenarPartidoPorUltimaCalificacion,1)
+		}
+		if(ordPers == 3){
+			listaAux =partido.ordenarLaListaPorPromedioDeVariosCriteriosPrueba(partido,1)
+		}
+		
+		
+		partido.inscripcionesAuxOrd=listaAux
 
 		val listaImpares = listaAux.filter[jug|jug.unJugEsImpar(partido)].toList
 		val listaPares = listaAux.filter[jug|jug.unJugEsPar(partido)].toList

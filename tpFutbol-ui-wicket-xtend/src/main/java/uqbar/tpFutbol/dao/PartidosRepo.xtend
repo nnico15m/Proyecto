@@ -7,6 +7,7 @@ import uqbar.tpFutbol.domain.Jugador
 import uqbar.tpFutbol.inscripcion.TipoDeSuscripcion
 import uqbar.tpFutbol.inscripcion.Inscripciones
 import org.hibernate.criterion.Restrictions
+import java.util.Set
 
 class PartidosRepo {
 	def List<Partido> getAll() {
@@ -18,17 +19,8 @@ class PartidosRepo {
 	def List<Jugador> getAllInscriptos(Partido partidoPed){
 		val query =  session.createCriteria(Jugador)
 		val id = partidoPed.getId()
-		//query.add( Restrictions.like("partido_id", id)).createCriteria("jugador").list()
-		//query.createAlias("inscripcionesP.partido", "partido_id")
 		query.createAlias("inscripcionesP", "inscripcion")
-		//query.createAlias("inscripcion.partido", "partido")
-		//val id = partidoPed.getId()
-		
 		query.add(eq("inscripcion.partido_id", id))
-		
-		//query.createAlias("inscripcionesP.jugador_id", "jugador_id")
-		//query.add(Restrictions.eq("partido_id", id))
-	
 		query.list()
 		
 	}
@@ -53,7 +45,7 @@ class PartidosRepo {
 		query.list().head
 	}
 	
-	def List<Partido> obtenerLosQueTienenUnEquipo(){
+	def Set<Partido> obtenerLosQueTienenUnEquipo(){
 		val query = session.createCriteria(Partido)
 		query.createAlias("inscripcionesP", "inscripcion")
 		query.add(eq("inscripcion.equipo_id", 1))or(eq("inscripcion.equipo_id", 2))
@@ -61,11 +53,19 @@ class PartidosRepo {
 		
 
 		
-		query.list() 
+		query.list().toSet
 		
 	}
 	
 	def Partido obtenerCriterioDivision(Partido partidoPed){
+		val query =  session.createCriteria(Partido)
+		val id = partidoPed.getId()
+		query.add(eq("id", id))
+		query.list().head
+		
+	}
+	
+	def Partido obtenerCriterioOrd(Partido partidoPed){
 		val query =  session.createCriteria(Partido)
 		val id = partidoPed.getId()
 		query.add(eq("id", id))

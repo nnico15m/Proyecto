@@ -30,7 +30,7 @@ class Amigos implements Serializable {
 	@Id
 	@GeneratedValue
 	def getId() {
-		id
+		 id
 	}
 
 	def setId(Long value) {

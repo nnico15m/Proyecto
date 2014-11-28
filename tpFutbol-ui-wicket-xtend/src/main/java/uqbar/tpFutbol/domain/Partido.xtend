@@ -326,6 +326,8 @@ class Partido  implements Serializable {
 	}
 	
 	def dividirEquiposPrueba(DividirEquiposCommand criterioDivision){
+		
+	
 		criterioDivision.dividirEquiposPrueba(this)
 	}
 	
